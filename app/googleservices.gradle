@@ -1,0 +1,29 @@
+task switchToRelease() << {
+    copy {
+        description = 'Switches to RELEASE google-services.json'
+        from '../google-services-release.json'
+        into '.'
+        rename { String fileName ->
+            fileName.replace("google-services-release.json", "google-services.json")
+        }
+    }
+}
+
+task switchToDebug() << {
+    copy {
+        description = 'Switches to DEBUG google-services.json'
+        from '../google-services-debug.json'
+        into '.'
+        rename { String fileName ->
+            fileName.replace("google-services-debug.json", "google-services.json")
+        }
+    }
+}
+
+tasks.whenTaskAdded { task ->
+    if (task.name == 'processDebugGoogleServices') {
+        task.dependsOn 'switchToDebug'
+    } else if (task.name == 'processReleaseGoogleServices') {
+        task.dependsOn 'switchToRelease'
+    }
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/TextTitle"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/margin_normal"
+    android:gravity="center"
+    android:textAllCaps="true"
+    tools:background="@color/colorPrimary"
+    tools:text="@string/common.label.i_like_to_buy" />

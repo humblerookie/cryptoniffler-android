@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:paddingBottom="?android:attr/actionBarSize">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dp16">
+
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+            style="@style/TextBig"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_huge"
+            android:layout_marginTop="@dimen/margin_huge"
+            android:gravity="center"
+            android:paddingTop="@dimen/margin_huge"
+            android:text="@string/common.label.amount"
+            android:textColor="@color/white_54" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                style="@style/EditTextBig"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="₹"
+                android:textColor="@color/white_54" />
+
+            <EditText
+                android:id="@+id/inrAmount"
+                style="@style/EditTextBig"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white_54"
+                android:hint="min(1000)"
+                android:imeOptions="actionDone"
+                android:inputType="number"
+                android:maxLength="10"
+                android:minWidth="100dp"
+                android:textColor="@color/white_87"
+                android:textColorHint="@color/white_12" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_normal"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatCheckBox
+                android:id="@+id/includeFees"
+                style="@style/TextNormal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:gravity="center"
+                android:text="@string/common.label.network_fees"
+                android:textColor="@color/white_54" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/margin_small"
+                android:src="@drawable/ic_help"
+                android:tint="@color/white_87" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btcEquivalent"
+            style="@style/TextNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:gravity="right"
+            android:textColor="@color/white_54"
+            tools:text="@string/common.label.equivalent_amount" />
+
+        <TextView
+            android:id="@+id/next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:alpha="0.5"
+            android:background="@color/colorAccent"
+            android:elevation="@dimen/margin_small"
+            android:fontFamily="@font/regular"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/margin_huge"
+            android:paddingVertical="@dimen/margin_small"
+            android:text="@string/common.label.button_next"
+            android:textAllCaps="true"
+            android:textSize="@dimen/font_huge" />
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

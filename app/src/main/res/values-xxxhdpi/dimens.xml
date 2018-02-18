@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="search_row_height">150dp</dimen>
+	<dimen name="font_tiny">13.3sp</dimen>
+	<dimen name="font_huge">27.7sp</dimen>
+	<dimen name="margin_large">22.5dp</dimen>
+	<dimen name="button_normal_height">47.2dp</dimen>
+	<dimen name="icon_small">27dp</dimen>
+	<dimen name="font_small">14.9sp</dimen>
+	<dimen name="font_normal">17.1sp</dimen>
+	<dimen name="margin_normal">18dp</dimen>
+	<dimen name="margin_small">14dp</dimen>
+	<dimen name="margin_tiny">10dp</dimen>
+	<dimen name="margin_atomic">6dp</dimen>
+	<dimen name="logo_size">120dp</dimen>
+	<dimen name="logo_size_medium">102dp</dimen>
+	<dimen name="margin_huge">28.8dp</dimen>
+	<dimen name="min_text_height">36dp</dimen>
+	<dimen name="font_medium">22.4sp</dimen>
+</resources>
