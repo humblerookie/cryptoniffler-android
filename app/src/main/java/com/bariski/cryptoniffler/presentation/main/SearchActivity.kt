@@ -10,6 +10,8 @@ import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.model.Coin
 import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.presentation.common.BaseActivity
+import com.bariski.cryptoniffler.presentation.common.BasePresenter
+import com.bariski.cryptoniffler.presentation.common.BaseView
 import com.bariski.cryptoniffler.presentation.main.adapters.SearchAdapter
 import com.jakewharton.rxbinding2.InitialValueObservable
 import com.jakewharton.rxbinding2.widget.RxTextView
@@ -74,6 +76,10 @@ class SearchActivity : BaseActivity(), SearchView {
         intent.putExtra("coin", coin)
         setResult(Activity.RESULT_OK, intent)
         finish()
+    }
+
+    override fun <T : BaseView> getBasePresenter(): BasePresenter<T> {
+        return presenter as BasePresenter<T>
     }
 
 }

@@ -1,7 +1,7 @@
 package com.bariski.cryptoniffler.domain.util
 
 import android.util.Log
-import com.google.firebase.crash.FirebaseCrash
+import com.crashlytics.android.Crashlytics
 import timber.log.Timber
 
 class LogTree : Timber.DebugTree() {
@@ -37,7 +37,7 @@ class LogTree : Timber.DebugTree() {
 
     override fun log(priority: Int, t: Throwable?) {
         if (sendToRemoteLogger) {
-            FirebaseCrash.report(t)
+            Crashlytics.logException(t)
         }
         super.log(priority, t)
     }

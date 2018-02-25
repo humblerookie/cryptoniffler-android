@@ -65,7 +65,9 @@ class SearchPresenterImpl(val repository: NifflerRepository, val schedulers: Sch
         disposable.dispose()
     }
 
-    override fun onRefresh() {}
+    override fun onRefresh() {
+        repository.fetchLatestConfig()
+    }
 
 
 }

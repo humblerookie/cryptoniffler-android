@@ -13,7 +13,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginTop="?android:attr/actionBarSize"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/dp16">
@@ -102,7 +102,7 @@
             android:layout_marginTop="@dimen/margin_normal"
             android:alpha="0.5"
             android:background="@color/colorAccent"
-            android:elevation="@dimen/margin_small"
+            android:elevation="@dimen/margin_tiny"
             android:fontFamily="@font/regular"
             android:gravity="center"
             android:paddingHorizontal="@dimen/margin_huge"

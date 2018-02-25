@@ -11,12 +11,15 @@ import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.presentation.common.models.GridItemDetail
 import com.bariski.cryptoniffler.presentation.common.models.ImageRequest
+import java.text.DecimalFormat
 import javax.inject.Inject
 
-class ItemDetailAdapter @Inject constructor(val loader: ImageLoader) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ItemDetailAdapter @Inject constructor(private val loader: ImageLoader) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     @JvmField
     val data = ArrayList<GridItemDetail>()
+
+    val formatter = DecimalFormat("0.00")
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == 0) {
@@ -37,7 +40,7 @@ class ItemDetailAdapter @Inject constructor(val loader: ImageLoader) : RecyclerV
             layoutParams.leftMargin = context.resources.getDimension(if (position % 2 == 0) R.dimen.dp16 else R.dimen.dp8).toInt()
             layoutParams.rightMargin = context.resources.getDimension(if (position % 2 != 0) R.dimen.dp16 else R.dimen.dp8).toInt()
             layoutParams.bottomMargin = context.resources.getDimension(R.dimen.dp16).toInt()
-            vH.setData(data[position - 2], loader)
+            vH.setData(data[position - 2], loader, formatter)
         }
     }
 
@@ -68,12 +71,12 @@ class ItemDetailAdapter @Inject constructor(val loader: ImageLoader) : RecyclerV
         @JvmField
         val container: View = view
 
-        fun setData(d: GridItemDetail, loader: ImageLoader) {
+        fun setData(d: GridItemDetail, loader: ImageLoader, formatter: DecimalFormat) {
             val context = name.context
             name.text = d.name
-            price.text = context.getString(R.string.common_label_price, d.price)
+            price.text = context.getString(R.string.common_label_price, formatter.format(d.price))
             summary.text = d.summary
-            d.image?.let { loader.loadImage(ImageRequest(icon, R.drawable.placeholder, it, null, context as Activity?, R.drawable.placeholder)) }
+            loader.loadImage(ImageRequest(icon, R.drawable.placeholder, d.image ?: "", null, context as Activity?, R.drawable.placeholder))
 
         }
 

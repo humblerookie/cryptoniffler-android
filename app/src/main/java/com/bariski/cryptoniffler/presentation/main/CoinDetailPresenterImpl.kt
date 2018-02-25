@@ -201,6 +201,6 @@ class CoinDetailPresenterImpl(val repository: NifflerRepository, private val sch
     }
 
     override fun onRefresh() {
-
+        repository.fetchLatestConfig()
     }
 }

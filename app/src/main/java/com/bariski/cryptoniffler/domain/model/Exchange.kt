@@ -6,6 +6,7 @@ import com.squareup.moshi.Json
 data class Exchange(@Json(name = "name") val name: String,
                     @Json(name = "code") val code: String,
                     @Json(name = "fees") val fees: String,
+                    @Json(name = "priority") var priority: Int = 0,
                     @Json(name = "imgUrl") val imgUrl: String?,
                     @Json(name = "coins") val coins: List<String>,
                     @Json(name = "inrWithdrawalsActive") val inrWithdrawalsActive: String) : GridItem {

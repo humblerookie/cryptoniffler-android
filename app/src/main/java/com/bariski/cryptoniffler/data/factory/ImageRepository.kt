@@ -16,7 +16,7 @@ class ImageRepositoryImpl : ImageLoader {
         request.errorImage?.let {
             requestOptions.error(it)
         }
-        if (request.activity != null && !request.activity?.isDestroyed) {
+        if (request.activity != null && !request.activity.isDestroyed) {
 
             Glide.with(request.activity)
                     .setDefaultRequestOptions(requestOptions)

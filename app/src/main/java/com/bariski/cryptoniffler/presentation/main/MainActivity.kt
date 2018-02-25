@@ -13,6 +13,10 @@ import android.view.MenuItem
 import android.view.View
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.presentation.common.BaseActivity
+import com.bariski.cryptoniffler.presentation.common.BasePresenter
+import com.bariski.cryptoniffler.presentation.common.BaseView
+import com.crashlytics.android.Crashlytics
+import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
@@ -24,27 +28,23 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     @Inject
     lateinit var presenter: MainPresenter
 
+
     override val layoutResId: Int
         get() = R.layout.activity_main
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
+        Fabric.with(this, Crashlytics())
         title = null
-
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
         presenter.initView(this)
-        search.setOnClickListener({ presenter?.onSearchClicked() })
+        search.setOnClickListener({ presenter.onSearchClicked() })
 
-    }
-
-    override fun onResume() {
-        super.onResume()
-        presenter.onRefresh()
     }
 
     override fun moveToNext(fragment: Fragment, isForward: Boolean) {
@@ -68,7 +68,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         drawer_layout.closeDrawer(GravityCompat.START)
-        when(item.itemId){
+        when (item.itemId) {
             R.id.share -> shareApp()
             R.id.review -> reviewApp()
         }
@@ -134,5 +134,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         sendIntent.type = "text/plain"
         startActivity(sendIntent)
     }
+
+    override fun <T : BaseView> getBasePresenter(): BasePresenter<T> {
+        return presenter as BasePresenter<T>
+    }
+
 
 }

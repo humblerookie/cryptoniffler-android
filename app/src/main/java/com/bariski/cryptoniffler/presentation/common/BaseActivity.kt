@@ -43,6 +43,9 @@ abstract class BaseActivity : DaggerAppCompatActivity(), BaseView {
     @Inject
     lateinit var storage: AndroidDataStore
 
+
+    abstract fun <T : BaseView> getBasePresenter(): BasePresenter<T>
+
     var revealX: Int = 0
     var revealY: Int = 0
 
@@ -125,6 +128,12 @@ abstract class BaseActivity : DaggerAppCompatActivity(), BaseView {
                 onPermissionDenied(permissions[i])
             }
         }
+    }
+
+
+    override fun onResume() {
+        super.onResume()
+        getBasePresenter<BaseView>().onRefresh()
     }
 
     protected fun onPermissionGranted(permission: String) {

@@ -7,6 +7,7 @@ import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.injection.AppComponent
 import com.bariski.cryptoniffler.domain.injection.DaggerAppComponent
 import com.bariski.cryptoniffler.domain.util.LogTree
+import com.crashlytics.android.Crashlytics
 import com.google.firebase.FirebaseApp
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
@@ -14,8 +15,11 @@ import com.tspoon.traceur.Traceur
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
+import io.fabric.sdk.android.Fabric
 import timber.log.Timber
 import javax.inject.Inject
+
+
 
 
 class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
@@ -30,7 +34,10 @@ class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        Traceur.enableLogging()
+        if (BuildConfig.DEBUG) {
+            Traceur.enableLogging()
+        }
+
         initLogger()
         FirebaseApp.initializeApp(this)
         val configSettings = FirebaseRemoteConfigSettings.Builder()

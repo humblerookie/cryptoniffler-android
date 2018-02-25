@@ -19,8 +19,6 @@ import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import io.reactivex.Single
-import io.reactivex.rxkotlin.subscribeBy
-import io.reactivex.rxkotlin.toSingle
 
 //http://jsoneditoronline.org/?id=296639de32b80b0cf4aa48aeeb343d43
 //http://jsoneditoronline.org/?id=ba02e037b8700a258d14f50f6b462dfc
@@ -63,15 +61,14 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
 
     override fun fetchLatestConfig() {
         initIfNeeded()
-        var cacheExpiration = if (remoteConfig.info.configSettings.isDeveloperModeEnabled) 0 else AlarmManager.INTERVAL_DAY
-        remoteConfig.fetch(cacheExpiration).toSingle()
-                .observeOn(scheduler.io())
-                .subscribeOn(scheduler.io())
-                .subscribeBy {
-                    if (it.isSuccessful) {
-                        remoteConfig.activateFetched()
-                    }
-                }
+        var cacheExpiration = if (remoteConfig.info.configSettings.isDeveloperModeEnabled) 0 else 2 * AlarmManager.INTERVAL_HOUR
+        remoteConfig.fetch(cacheExpiration).addOnCompleteListener({
+            if (it.isSuccessful) {
+                initExchanges()
+                initCoins()
+                remoteConfig.activateFetched()
+            }
+        })
     }
 
     private fun initIfNeeded() {
@@ -89,7 +86,7 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
 
     override fun getExchanges(): Single<ArrayList<Exchange>> {
         initIfNeeded()
-        return Single.just(ArrayList(mapOfExchanges.values))
+        return Single.just(ArrayList(mapOfExchanges.values)).map { it.sortByDescending { it.priority }; it }
     }
 
     override fun getBtcInrRates() = api.getBtcInrRate(remoteConfig.getString(BTC_INR_API))

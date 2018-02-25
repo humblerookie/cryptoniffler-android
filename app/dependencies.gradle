@@ -52,8 +52,7 @@ ext {
     ]
     googlePlay = [
             firebaseCore: "com.google.firebase:firebase-core:$versions.firebase",
-            firebaseConfig: "com.google.firebase:firebase-config:$versions.firebase",
-            crash       : "com.google.firebase:firebase-crash:$versions.firebase",
+            firebaseConfig: "com.google.firebase:firebase-config:$versions.firebase"
     ]
 
 

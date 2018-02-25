@@ -9,6 +9,8 @@ import android.view.View
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.presentation.common.BaseActivity
+import com.bariski.cryptoniffler.presentation.common.BasePresenter
+import com.bariski.cryptoniffler.presentation.common.BaseView
 import com.bariski.cryptoniffler.presentation.common.models.ImageRequest
 import com.bariski.cryptoniffler.presentation.main.adapters.ItemDetailAdapter
 import com.bariski.cryptoniffler.presentation.main.model.GridDetailWrapper
@@ -17,7 +19,6 @@ import javax.inject.Inject
 
 
 class CoinDetailActivity : BaseActivity(), CoinDetailView {
-
 
     @Inject
     lateinit var presenter: CoinDetailPresenter
@@ -85,5 +86,9 @@ class CoinDetailActivity : BaseActivity(), CoinDetailView {
                 snackbar?.dismiss()
             }
         }
+    }
+
+    override fun <T : BaseView> getBasePresenter(): BasePresenter<T> {
+        return presenter as BasePresenter<T>
     }
 }
