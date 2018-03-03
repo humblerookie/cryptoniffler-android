@@ -6,8 +6,13 @@
     <group>
         <item
             android:id="@+id/home"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_home"
             android:title="Home" />
+
+        <item
+            android:id="@+id/calendar"
+            android:icon="@drawable/ic_event"
+            android:title="Events" />
         <item
             android:id="@+id/share"
             android:icon="@drawable/ic_menu_share"

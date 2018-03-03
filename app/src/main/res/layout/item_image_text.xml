@@ -3,10 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
+    android:background="?android:attr/selectableItemBackground"
     android:orientation="vertical"
-    android:paddingHorizontal="@dimen/margin_normal"
-    android:paddingVertical="@dimen/margin_normal"
+    android:paddingBottom="@dimen/margin_normal"
+    android:paddingLeft="@dimen/margin_normal"
+    android:paddingRight="@dimen/margin_normal"
+    android:paddingTop="@dimen/margin_normal"
     tools:background="@color/colorPrimary"
     tools:layout_height="match_parent"
     tools:layout_width="match_parent"
@@ -15,8 +17,9 @@
     <ImageView
         android:id="@+id/itemIcon"
         style="@style/IconGrid"
-        android:elevation="@dimen/margin_normal"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="Icon of item"
+        android:elevation="@dimen/margin_normal" />
 
     <TextView
         android:id="@+id/itemName"

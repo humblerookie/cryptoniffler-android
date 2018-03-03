@@ -19,7 +19,6 @@ import android.view.ViewTreeObserver
 import android.view.animation.AccelerateInterpolator
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.repository.AndroidDataStore
-import com.bariski.cryptoniffler.presentation.CryptNifflerApplication
 import com.bariski.cryptoniffler.presentation.common.extensions.makeInvisible
 import com.bariski.cryptoniffler.presentation.common.extensions.makeVisible
 import dagger.android.support.DaggerAppCompatActivity
@@ -77,7 +76,6 @@ abstract class BaseActivity : DaggerAppCompatActivity(), BaseView {
                 overridePendingTransition(intent.getIntExtra("entryAnim", 0), intent.getIntExtra("exitAnim", 0))
             }
         }
-        (applicationContext as CryptNifflerApplication).appComponent.inject(this)
 
     }
 
@@ -188,24 +186,22 @@ abstract class BaseActivity : DaggerAppCompatActivity(), BaseView {
     }
 
     protected fun unRevealActivity() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP) {
-            finish()
-        } else {
-            val finalRadius = (Math.max(rootLayout.width, rootLayout.height) * 1.1).toFloat()
-            val circularReveal = ViewAnimationUtils.createCircularReveal(
-                    rootLayout, revealX, revealY, finalRadius, 0f)
 
-            circularReveal.duration = 400
-            circularReveal.addListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    rootLayout.makeInvisible()
-                    finish()
-                }
-            })
+        val finalRadius = (Math.max(rootLayout.width, rootLayout.height) * 1.1).toFloat()
+        val circularReveal = ViewAnimationUtils.createCircularReveal(
+                rootLayout, revealX, revealY, finalRadius, 0f)
+
+        circularReveal.duration = 400
+        circularReveal.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator) {
+                rootLayout.makeInvisible()
+                finish()
+            }
+        })
 
 
-            circularReveal.start()
-        }
+        circularReveal.start()
+
     }
 
 }

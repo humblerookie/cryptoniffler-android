@@ -18,6 +18,14 @@ class BuyNSellFragment : BaseFragment(), View.OnClickListener {
 
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (activity is MainView) {
+            presenter = (activity as MainView).getCommonPresenter()
+        } else {
+            throw RuntimeException("Parent activity needs to override MainView")
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle?): View {
         val view = inflater.inflate(R.layout.fragment_buynsell, container, false)
@@ -29,9 +37,8 @@ class BuyNSellFragment : BaseFragment(), View.OnClickListener {
 
     companion object {
 
-        fun getInstance(mainPresenter: MainPresenter): Fragment {
+        fun getInstance(): Fragment {
             val frag = BuyNSellFragment()
-            frag.presenter = mainPresenter
             return frag
         }
     }

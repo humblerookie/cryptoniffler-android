@@ -11,6 +11,7 @@ import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.presentation.common.models.GridItemDetail
 import com.bariski.cryptoniffler.presentation.common.models.ImageRequest
+import com.facebook.shimmer.ShimmerFrameLayout
 import java.text.DecimalFormat
 import javax.inject.Inject
 
@@ -21,11 +22,13 @@ class ItemDetailAdapter @Inject constructor(private val loader: ImageLoader) : R
 
     val formatter = DecimalFormat("0.00")
 
+    var showLoadingCards = false
+
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == 0) {
             TextViewHolder(LayoutInflater.from(parent?.context).inflate(R.layout.item_title, parent, false))
         } else {
-            ViewHolder(LayoutInflater.from(parent?.context).inflate(R.layout.item_detail_grid, parent, false))
+            ViewHolder(LayoutInflater.from(parent?.context).inflate(if (showLoadingCards) R.layout.item_detail_dummy else R.layout.item_detail_grid, parent, false))
         }
 
     }
@@ -40,12 +43,20 @@ class ItemDetailAdapter @Inject constructor(private val loader: ImageLoader) : R
             layoutParams.leftMargin = context.resources.getDimension(if (position % 2 == 0) R.dimen.dp16 else R.dimen.dp8).toInt()
             layoutParams.rightMargin = context.resources.getDimension(if (position % 2 != 0) R.dimen.dp16 else R.dimen.dp8).toInt()
             layoutParams.bottomMargin = context.resources.getDimension(R.dimen.dp16).toInt()
-            vH.setData(data[position - 2], loader, formatter)
+            if (!showLoadingCards) {
+                vH.setData(data[position - 2], loader, formatter)
+            } else {
+                vH.startShimmerAnimation()
+            }
         }
     }
 
     override fun getItemCount(): Int {
-        return if (data.size == 0) 0 else data.size + 2
+        return when {
+            showLoadingCards -> 4
+            data.size == 0 -> 0
+            else -> data.size + 2
+        }
     }
 
     fun setItems(d: ArrayList<GridItemDetail>) {
@@ -55,7 +66,10 @@ class ItemDetailAdapter @Inject constructor(private val loader: ImageLoader) : R
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (position > 1) 1 else 0
+        return when {
+            position > 1 -> if (showLoadingCards) 1 else 2
+            else -> 0
+        }
     }
 
 
@@ -70,16 +84,22 @@ class ItemDetailAdapter @Inject constructor(private val loader: ImageLoader) : R
         val icon: ImageView = view.findViewById(R.id.itemIcon)
         @JvmField
         val container: View = view
+        @JvmField
+        val shimmerFrameLayout: ShimmerFrameLayout? = view.findViewById(R.id.shimmerContainer)
 
         fun setData(d: GridItemDetail, loader: ImageLoader, formatter: DecimalFormat) {
             val context = name.context
             name.text = d.name
             price.text = context.getString(R.string.common_label_price, formatter.format(d.price))
             summary.text = d.summary
-            loader.loadImage(ImageRequest(icon, R.drawable.placeholder, d.image ?: "", null, context as Activity?, R.drawable.placeholder))
+            loader.loadImage(ImageRequest(icon, R.drawable.placeholder, d.image
+                    ?: "", null, context as Activity?, R.drawable.placeholder))
 
         }
 
+        fun startShimmerAnimation() {
+            shimmerFrameLayout?.startShimmerAnimation()
+        }
     }
 
     class TextViewHolder(view: View) : RecyclerView.ViewHolder(view) {

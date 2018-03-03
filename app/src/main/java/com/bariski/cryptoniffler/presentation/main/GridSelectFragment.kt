@@ -8,15 +8,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bariski.cryptoniffler.R
-import com.bariski.cryptoniffler.presentation.common.BaseFragment
+import com.bariski.cryptoniffler.domain.model.Coin
+import com.bariski.cryptoniffler.domain.model.Exchange
+import com.bariski.cryptoniffler.presentation.common.BaseInjectFragment
 import com.bariski.cryptoniffler.presentation.common.models.GridItem
 import com.bariski.cryptoniffler.presentation.main.adapters.GridItemAdapter
+import javax.inject.Inject
 
-class GridSelectFragment : BaseFragment() {
+class GridSelectFragment : BaseInjectFragment() {
 
     lateinit var presenter: MainPresenter
     lateinit var list: RecyclerView
-    var adapter: GridItemAdapter? = null
+
+    @Inject
+    lateinit var adapter: GridItemAdapter
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle?): View {
@@ -32,20 +37,37 @@ class GridSelectFragment : BaseFragment() {
                 }
             }
         }
-        list.adapter = adapter
+
+
         return view
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (activity is MainView) {
+            presenter = (activity as MainView).getCommonPresenter()
+            adapter.title = arguments.getString("title")
+            if (arguments.getInt("type") == 0) {
+                adapter.setData((arguments.getParcelableArrayList<Coin>("data") as java.util.ArrayList<GridItem>))
+            } else {
+                adapter.setData((arguments.getParcelableArrayList<Exchange>("data") as java.util.ArrayList<GridItem>))
+            }
+            adapter.listener = presenter
+            list.adapter = adapter
+
+        } else {
+            throw RuntimeException("Parent activity needs to override MainView")
+        }
     }
 
     companion object {
 
-        fun getInstance(mainPresenter: MainPresenter, adapter: GridItemAdapter, data: ArrayList<GridItem>, title: String?): Fragment {
+        fun getInstance(data: ArrayList<GridItem>, title: String?, type: Int): Fragment {
             val frag = GridSelectFragment()
-            frag.presenter = mainPresenter
-            frag.adapter = adapter
-            frag.adapter?.listener = mainPresenter
-            frag.adapter?.setData(data)
-            title?.let { frag.adapter?.title = it }
             val b = Bundle()
+            b.putString("title", title)
+            b.putInt("type", type)
+            b.putParcelableArrayList("data", data)
             frag.arguments = b
             return frag
         }

@@ -26,17 +26,19 @@ import kotlinx.android.synthetic.main.fragment_amount.*
 class AmountFragment : BaseFragment() {
 
 
-    var presenter: MainPresenter? = null
+    lateinit var presenter: MainPresenter
     lateinit var inrInput: EditText
     lateinit var btcEquivalent: TextView
     lateinit var next: TextView
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle?): View {
         val view = inflater.inflate(R.layout.fragment_amount, container, false)
         inrInput = view.findViewById(R.id.inrAmount)
         btcEquivalent = view.findViewById(R.id.btcEquivalent)
         next = view.findViewById(R.id.next)
         view.findViewById<View>(R.id.help).setOnClickListener({
-            presenter?.infoClicked()
+            presenter.infoClicked()
             showInfo()
         })
         view.findViewById<CheckBox>(R.id.includeFees).setOnCheckedChangeListener({ _, b -> presenter?.onIncludeFeeChanged(b) })
@@ -60,14 +62,6 @@ class AmountFragment : BaseFragment() {
             }
             false
         })
-        presenter?.onAmountScreenCreated(RxTextView.textChanges(inrInput).map({
-            if (it.toString().isNotEmpty()) {
-                next.alpha = if (it.toString().toLong() >= 1000) 1.0f else 0.5f
-                it
-            } else {
-                "0"
-            }
-        }), getObserver())
         inrInput.requestFocus()
         return view
     }
@@ -117,11 +111,27 @@ class AmountFragment : BaseFragment() {
         }
     }
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        if (activity is MainView) {
+            presenter = (activity as MainView).getCommonPresenter()
+            presenter.onAmountScreenCreated(RxTextView.textChanges(inrInput).map({
+                if (it.toString().isNotEmpty()) {
+                    next.alpha = if (it.toString().toLong() >= 1000) 1.0f else 0.5f
+                    it
+                } else {
+                    "0"
+                }
+            }), getObserver())
+        } else {
+            throw RuntimeException("Parent activity needs to override MainView")
+        }
+    }
+
     companion object {
 
-        fun getInstance(mainPresenter: MainPresenter, showFees: Boolean): Fragment {
+        fun getInstance(showFees: Boolean): Fragment {
             val frag = AmountFragment()
-            frag.presenter = mainPresenter
             val b = Bundle()
             b.putBoolean("showFees", showFees)
             frag.arguments = b

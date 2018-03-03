@@ -112,4 +112,13 @@ class NetworkModule {
     fun provideNetworkUtil(context: Context): NetworkUtil {
         return NetworkUtilImpl(context)
     }
+
+    @Provides
+    @Singleton
+    fun provideMoshi(): Moshi {
+        return Moshi.Builder()
+                .add(KotlinJsonAdapterFactory())
+                .build()
+    }
+
 }

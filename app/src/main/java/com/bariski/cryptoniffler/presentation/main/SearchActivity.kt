@@ -42,7 +42,7 @@ class SearchActivity : BaseActivity(), SearchView {
         adapter = SearchAdapter(loader, presenter)
         list.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         list.adapter = adapter
-        presenter.initView(this)
+        presenter.initView(this, savedInstanceState, intent.extras)
         clear.setOnClickListener { search.setText("") }
 
     }

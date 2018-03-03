@@ -1,15 +1,18 @@
 package com.bariski.cryptoniffler.presentation.common
 
+import android.os.Bundle
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.util.*
 
 open interface BasePresenter<T> {
 
-    fun initView(view: T)
+    fun initView(view: T, savedState: Bundle?, args: Bundle?)
 
     fun releaseView()
 
     fun onRefresh()
+
+    fun saveState(outState: Bundle?)
 
     companion object {
         val MESSAGE_MAP = hashMapOf(

@@ -202,6 +202,7 @@
 -keep class com.bariski.cryptoniffler.domain.model.** { *; }
 -keep class com.bariski.cryptoniffler.data.api.models.** { *; }
 -keep class com.bariski.cryptoniffler.presentation.model.** { *; }
+-keep class com.bariski.cryptoniffler.domain.model.Event { *; }
 -keep interface com.squareup.moshi.Json
 -keepclassmembers class com.bariski.cryptoniffler.domain.model** {
   <init>(...);
@@ -232,3 +233,5 @@
 -keepclassmembers class kotlin.Metadata {
     public <methods>;
 }
+-keep interface com.bariski.cryptoniffler.presentation.calendar.models.CalendarItem{*;}
+-dontwarn com.clevertap.android.sdk.**

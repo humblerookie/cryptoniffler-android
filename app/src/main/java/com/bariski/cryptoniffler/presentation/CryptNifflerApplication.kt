@@ -1,13 +1,13 @@
 package com.bariski.cryptoniffler.presentation
 
 import android.app.Activity
+import android.os.StrictMode
 import android.support.multidex.MultiDexApplication
 import com.bariski.cryptoniffler.BuildConfig
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.injection.AppComponent
 import com.bariski.cryptoniffler.domain.injection.DaggerAppComponent
 import com.bariski.cryptoniffler.domain.util.LogTree
-import com.crashlytics.android.Crashlytics
 import com.google.firebase.FirebaseApp
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
@@ -15,11 +15,8 @@ import com.tspoon.traceur.Traceur
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
-import io.fabric.sdk.android.Fabric
 import timber.log.Timber
 import javax.inject.Inject
-
-
 
 
 class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
@@ -32,6 +29,20 @@ class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
 
 
     override fun onCreate() {
+        if (BuildConfig.DEBUG) {
+            StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder()
+                    .detectDiskReads()
+                    .detectDiskWrites()
+                    .detectNetwork()   // or .detectAll() for all detectable problems
+                    .penaltyLog()
+                    .build())
+            StrictMode.setVmPolicy(StrictMode.VmPolicy.Builder()
+                    .detectLeakedSqlLiteObjects()
+                    .detectLeakedClosableObjects()
+                    .penaltyLog()
+                    .penaltyDeath()
+                    .build())
+        }
         super.onCreate()
         instance = this
         if (BuildConfig.DEBUG) {

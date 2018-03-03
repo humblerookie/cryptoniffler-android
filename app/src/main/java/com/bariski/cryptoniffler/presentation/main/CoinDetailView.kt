@@ -9,4 +9,5 @@ interface CoinDetailView : BaseView {
     fun toggleError(visible: Boolean, error: String?)
     fun setData(response:GridDetailWrapper)
 
+    fun toggleDummyCards(visible: Boolean)
 }

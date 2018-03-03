@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/margin_small"
+        android:paddingLeft="@dimen/margin_small"
+        android:paddingRight="@dimen/margin_small"
+        android:paddingTop="@dimen/margin_small">
+
+        <TextView
+            style="@style/TextMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/common.label.filter_by"
+            android:textColor="@color/white_87" />
+
+        <TextView
+            android:id="@+id/clearAll"
+            style="@style/TextMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/common.label.clear_all"
+            android:textColor="@color/white_87" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/close"
+            style="@style/TextMedium"
+            android:layout_width="@dimen/filter_left_width"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/black_54"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingBottom="@dimen/margin_tiny"
+            android:paddingTop="@dimen/margin_tiny"
+            android:text="@string/common.label.close"
+            android:textAllCaps="true"
+            android:textColor="@color/white_87" />
+
+        <TextView
+            android:id="@+id/apply"
+            style="@style/TextMedium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@id/close"
+            android:background="@color/amber_700"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingBottom="@dimen/margin_tiny"
+            android:paddingTop="@dimen/margin_tiny"
+            android:text="@string/common.label.apply"
+            android:textAllCaps="true"
+            android:textColor="@color/white_87" />
+
+        <LinearLayout
+            android:id="@+id/left"
+            android:layout_width="@dimen/filter_left_width"
+            android:layout_height="match_parent"
+            android:layout_above="@id/close"
+            android:background="@color/black_02"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/coins"
+                style="@style/TextMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/margin_tiny"
+                android:paddingTop="@dimen/margin_tiny"
+                android:text="@string/filter.label.coins"
+                android:textAllCaps="true"
+                android:textColor="@color/black_54"
+                android:textSize="@dimen/font_small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black_08" />
+
+            <TextView
+                android:id="@+id/category"
+                style="@style/TextMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/margin_tiny"
+                android:paddingTop="@dimen/margin_tiny"
+                android:text="@string/filter.label.category"
+                android:textAllCaps="true"
+                android:textColor="@color/black_54"
+                android:textSize="@dimen/font_small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black_08" />
+
+            <TextView
+                android:id="@+id/period"
+                style="@style/TextMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/margin_tiny"
+                android:paddingTop="@dimen/margin_tiny"
+                android:text="@string/filter.label.period"
+                android:textAllCaps="true"
+                android:textColor="@color/black_54"
+                android:textSize="@dimen/font_small" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black_08" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/periodContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/apply"
+            android:layout_marginLeft="@dimen/margin_atomic"
+            android:layout_marginRight="@dimen/margin_atomic"
+            android:layout_toRightOf="@id/left"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:ellipsize="end"
+                android:fontFamily="@font/light"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/margin_tiny"
+                android:paddingTop="@dimen/margin_tiny"
+                android:text="From"
+                android:textColor="@color/black_87"
+                android:textSize="@dimen/font_small" />
+
+
+            <TextView
+                android:id="@+id/fromDate"
+                style="@style/TextMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/green_400"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/margin_tiny"
+                android:paddingLeft="@dimen/margin_normal"
+                android:paddingRight="@dimen/margin_normal"
+                android:paddingTop="@dimen/margin_tiny"
+                android:textAllCaps="true"
+                android:textColor="@color/white_87"
+                tools:text="1/03/2018" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_huge"
+                android:ellipsize="end"
+                android:fontFamily="@font/light"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/margin_tiny"
+                android:paddingTop="@dimen/margin_tiny"
+                android:text="To"
+                android:textColor="@color/black_87"
+                android:textSize="@dimen/font_small" />
+
+            <TextView
+                android:id="@+id/toDate"
+                style="@style/TextMedium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/green_400"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingBottom="@dimen/margin_tiny"
+                android:paddingLeft="@dimen/margin_normal"
+                android:paddingRight="@dimen/margin_normal"
+                android:paddingTop="@dimen/margin_tiny"
+                android:textAllCaps="true"
+                android:textColor="@color/white_87"
+                tools:text="1/03/2018" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/margin_huge"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/left"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:hint="Search.."
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_atomic"
+            android:layout_marginRight="@dimen/margin_atomic"
+            android:layout_toRightOf="@id/left"
+            android:visibility="gone" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/apply"
+            android:layout_below="@id/search"
+            android:layout_marginBottom="@dimen/margin_atomic"
+            android:layout_marginLeft="@dimen/margin_atomic"
+            android:layout_marginRight="@dimen/margin_atomic"
+            android:layout_toRightOf="@id/left"
+            android:clipToPadding="false"
+            android:padding="@dimen/dp16"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+</LinearLayout>

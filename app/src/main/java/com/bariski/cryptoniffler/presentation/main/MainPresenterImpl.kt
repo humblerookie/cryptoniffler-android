@@ -12,6 +12,7 @@ import com.bariski.cryptoniffler.domain.util.COIN
 import com.bariski.cryptoniffler.domain.util.EXCHANGE
 import com.bariski.cryptoniffler.domain.util.Event
 import com.bariski.cryptoniffler.domain.util.Screen
+import com.bariski.cryptoniffler.presentation.calendar.CalendarFragment
 import com.bariski.cryptoniffler.presentation.common.BasePresenter
 import com.bariski.cryptoniffler.presentation.common.models.AmountInput
 import com.bariski.cryptoniffler.presentation.common.models.GridItem
@@ -50,18 +51,28 @@ class MainPresenterImpl(val repository: NifflerRepository, val adapter: GridItem
         }
     }
 
-
-    override fun initView(mainView: MainView) {
-        viewWeak = WeakReference(mainView)
-        analytics.sendScreenView(Screen.MAIN)
-        viewWeak.get()?.moveToNext(BuyNSellFragment.getInstance(this), true)
-    }
-
     override fun releaseView() {
         disposable.clear()
     }
 
     override fun onDrawerItemSelected(id: Int) {
+        viewWeak.get()?.apply {
+            when (id) {
+                R.id.share -> shareApp()
+                R.id.review -> reviewApp()
+                R.id.calendar -> navigateToEvents()
+                R.id.home -> navigateToMain(true)
+            }
+        }
+    }
+
+    private fun navigateToEvents() {
+        viewWeak.get()?.let {
+            it.toggleSearch(false)
+            it.toggleFilter(true)
+            state = -1
+            it.moveToNext(CalendarFragment.getInstance(), true)
+        }
 
     }
 
@@ -90,7 +101,7 @@ class MainPresenterImpl(val repository: NifflerRepository, val adapter: GridItem
                 analytics.logEvent(Event.PROCEED, Bundle())
             }
             it.moveToDetailsScreen(ignoreFees, coin, exchange, amount)
-            it.moveToNext(BuyNSellFragment.getInstance(this), false)
+            it.moveToNext(BuyNSellFragment.getInstance(), false)
             ignoreFees = false
             coin = ""
             exchange = ""
@@ -151,7 +162,7 @@ class MainPresenterImpl(val repository: NifflerRepository, val adapter: GridItem
                     navigateToCoinSelection(false)
                 }
             }
-            0 -> {
+            0, -2 -> {
                 navigateToMain(false)
             }
             else -> viewWeak.get()?.exit()
@@ -162,7 +173,8 @@ class MainPresenterImpl(val repository: NifflerRepository, val adapter: GridItem
         state = 0
         viewWeak.get()?.let {
             it.toggleSearch(false)
-            it.moveToNext(BuyNSellFragment.getInstance(this), isForward)
+            it.toggleFilter(false)
+            it.moveToNext(BuyNSellFragment.getInstance(), isForward)
         }
     }
 
@@ -171,23 +183,29 @@ class MainPresenterImpl(val repository: NifflerRepository, val adapter: GridItem
         viewWeak.get()?.let {
             analytics.sendScreenView(Screen.AMOUNT)
             it.toggleSearch(false)
-            it.moveToNext(AmountFragment.getInstance(this, coin.trim().isNotEmpty()), isForward)
+            it.moveToNext(AmountFragment.getInstance(coin.trim().isNotEmpty()), isForward)
         }
     }
 
 
     private fun navigateToExchangeSelection(isForward: Boolean) {
-        disposable.add(repository.getExchanges().observeOn(schedulerProvider.io())
+        disposable.add(repository.getExchanges()
+                .observeOn(schedulerProvider.io())
                 .subscribeOn(schedulerProvider.io())
-                .observeOn(schedulerProvider.ui()).subscribeBy(
-                onSuccess = { data ->
-                    state = 1
-                    viewWeak.get()?.let {
-                        analytics.sendScreenView(Screen.PICK_EXCHANGE)
-                        it.toggleSearch(false)
-                        it.moveToNext(GridSelectFragment.getInstance(this, adapter, ArrayList(data), it.getMessage(R.string.common_label_buy_at)), isForward)
-                    }
-                })
+                .observeOn(schedulerProvider.ui())
+                .doOnSubscribe {
+                    viewWeak.get()?.toggleProgress(true)
+                }
+                .subscribeBy(
+                        onSuccess = { data ->
+                            state = 1
+                            viewWeak.get()?.let {
+                                it.toggleProgress(false)
+                                analytics.sendScreenView(Screen.PICK_EXCHANGE)
+                                it.toggleSearch(false)
+                                it.moveToNext(GridSelectFragment.getInstance(ArrayList(data), it.getMessage(R.string.common_label_buy_at), 1), isForward)
+                            }
+                        }, onError = {})
         )
 
     }
@@ -195,17 +213,59 @@ class MainPresenterImpl(val repository: NifflerRepository, val adapter: GridItem
     private fun navigateToCoinSelection(isForward: Boolean) {
         disposable.add(repository.getCoins().observeOn(schedulerProvider.io())
                 .subscribeOn(schedulerProvider.io())
-                .observeOn(schedulerProvider.ui()).subscribeBy(
-                onSuccess = { data ->
-                    state = 1
-                    viewWeak.get()?.let {
-                        analytics.sendScreenView(Screen.PICK_COIN)
-                        it.toggleSearch(true)
-                        it.moveToNext(GridSelectFragment.getInstance(this, adapter, ArrayList(data), it.getMessage(R.string.common_label_i_like_to_buy)), isForward)
-                    }
-                })
+                .observeOn(schedulerProvider.ui())
+                .doOnSubscribe {
+                    viewWeak.get()?.toggleProgress(true)
+                }
+                .subscribeBy(
+                        onSuccess = { data ->
+                            state = 1
+                            viewWeak.get()?.let {
+                                it.toggleProgress(false)
+                                analytics.sendScreenView(Screen.PICK_COIN)
+                                it.toggleSearch(true)
+                                it.moveToNext(GridSelectFragment.getInstance(ArrayList(data), it.getMessage(R.string.common_label_i_like_to_buy), 0), isForward)
+                            }
+                        }, onError = {})
         )
 
+    }
+
+    override fun initView(view: MainView, savedState: Bundle?, args: Bundle?) {
+        viewWeak = WeakReference(view)
+        if (savedState != null) {
+            savedState.apply {
+                btcRate = getFloat("btcRate")
+                coin = getString("coin")
+                exchange = getString("exchange")
+                amount = getLong("amount")
+                ignoreFees = getBoolean("ignoreFees")
+                state = getInt("state")
+                when (state) {
+                    1 -> view.toggleSearch(true)
+                    -1 -> view.toggleFilter(true)
+                }
+            }
+        } else {
+            if (!repository.hasDrawerBeenShown()) {
+                viewWeak.get()?.toggleDrawer(true)
+                repository.setDrawerShown(true)
+            }
+            analytics.sendScreenView(Screen.MAIN)
+            viewWeak.get()?.moveToNext(BuyNSellFragment.getInstance(), true)
+        }
+
+    }
+
+    override fun saveState(outState: Bundle?) {
+        outState?.apply {
+            putFloat("btcRate", btcRate)
+            putString("coin", coin)
+            putLong("amount", amount)
+            putInt("state", state)
+            putString("exchange", exchange)
+            putBoolean("ignoreFees", ignoreFees)
+        }
     }
 
     override fun onAmountScreenDestroyed() {

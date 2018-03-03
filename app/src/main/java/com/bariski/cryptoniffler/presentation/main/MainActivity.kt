@@ -6,9 +6,14 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.support.design.internal.NavigationMenuItemView
+import android.support.design.internal.NavigationMenuView
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
+import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
+import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import com.bariski.cryptoniffler.R
@@ -19,6 +24,7 @@ import com.crashlytics.android.Crashlytics
 import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import me.toptas.fancyshowcase.FancyShowCaseView
 import javax.inject.Inject
 
 
@@ -27,6 +33,8 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     @Inject
     lateinit var presenter: MainPresenter
+
+    var showcase: FancyShowCaseView? = null
 
 
     override val layoutResId: Int
@@ -42,9 +50,16 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
-        presenter.initView(this)
         search.setOnClickListener({ presenter.onSearchClicked() })
+        presenter.initView(this, savedInstanceState, intent.extras)
 
+
+        filter.setOnClickListener({
+            val f = fragmentManager.findFragmentById(R.id.container)
+            if (f != null && f is View.OnClickListener) {
+                f.onClick(it)
+            }
+        })
     }
 
     override fun moveToNext(fragment: Fragment, isForward: Boolean) {
@@ -57,25 +72,31 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        presenter.saveState(outState)
+    }
+
     override fun onBackPressed() {
-        if (drawer_layout.isDrawerOpen(GravityCompat.START)) {
-            drawer_layout.closeDrawer(GravityCompat.START)
-        } else {
-            presenter.onBackPressed()
+
+        when {
+            drawer_layout.isDrawerOpen(GravityCompat.START) -> {
+                drawer_layout.closeDrawer(GravityCompat.START)
+            }
+            else -> presenter.onBackPressed()
         }
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         drawer_layout.closeDrawer(GravityCompat.START)
-        when (item.itemId) {
-            R.id.share -> shareApp()
-            R.id.review -> reviewApp()
-        }
+        presenter.onDrawerItemSelected(item.itemId)
+
         return true
     }
 
-    private fun reviewApp() {
+
+    override fun reviewApp() {
         val uri = Uri.parse("market://details?id=" + packageName)
         val goToMarket = Intent(Intent.ACTION_VIEW, uri)
         // To count with Play market backstack, After pressing back button,
@@ -127,7 +148,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
 
-    private fun shareApp() {
+    override fun shareApp() {
         val sendIntent = Intent()
         sendIntent.action = Intent.ACTION_SEND
         sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.common_share_text))
@@ -139,5 +160,35 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         return presenter as BasePresenter<T>
     }
 
+    override fun toggleFilter(b: Boolean) {
+        filter.visibility = if (b) View.VISIBLE else View.GONE
+    }
 
+    override fun toggleProgress(b: Boolean) {
+        mainProgress.visibility = if (b) View.VISIBLE else View.GONE
+        mainProgress.isClickable = b
+        drawer_layout.isEnabled = !b
+        drawer_layout.setDrawerLockMode(if (b) DrawerLayout.LOCK_MODE_LOCKED_CLOSED else DrawerLayout.LOCK_MODE_UNLOCKED)
+    }
+
+    override fun toggleDrawer(b: Boolean) {
+        if (b) {
+            drawer_layout.openDrawer(Gravity.LEFT)
+            Handler().postDelayed({
+                if (isAlive()) {
+                    val view = ((findViewById<NavigationMenuView>(R.id.design_navigation_view)).getChildAt(2) as NavigationMenuItemView)
+                    showcase = FancyShowCaseView.Builder(this)
+                            .focusOn(view)
+                            .title(getString(R.string.common_tutorial_events))
+                            .build()
+                    showcase?.show()
+                }
+            }, 500)
+
+        } else {
+            drawer_layout.closeDrawer(Gravity.LEFT)
+        }
+    }
+
+    override fun getCommonPresenter() = presenter
 }

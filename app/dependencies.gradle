@@ -13,7 +13,7 @@ ext {
             mockito              : '2.8.47',
             junit                : '4.12',
             timber               : '4.5.1',
-            firebase             : '11.2.0',
+            firebase             : '11.4.0',
             constraint           : '1.0.2',
             recyclerviewanimators: '2.2.7',
             glide                : '4.0.0',
@@ -28,7 +28,9 @@ ext {
             traceur              : '1.0.1',
             mockwebserver        : '3.9.0',
             flex                 : '0.3.1',
-            inject               : "1"
+            inject               : "1",
+            shimmer              : "0.1.0@aar"
+
     ]
 
     mockito = [mockito: "org.mockito:mockito-core:$versions.mockito"]
@@ -51,8 +53,9 @@ ext {
             traceur  : "com.tspoon.traceur:traceur:$versions.traceur"
     ]
     googlePlay = [
-            firebaseCore: "com.google.firebase:firebase-core:$versions.firebase",
-            firebaseConfig: "com.google.firebase:firebase-config:$versions.firebase"
+            firebaseCore  : "com.google.firebase:firebase-core:$versions.firebase",
+            firebaseConfig: "com.google.firebase:firebase-config:$versions.firebase",
+            fcm           : "com.google.firebase:firebase-messaging:$versions.firebase"
     ]
 
 
@@ -104,6 +107,10 @@ ext {
             daggerAndroid: "com.google.dagger:dagger-android-processor:$versions.dagger"
 
     ]
+    ui = [
+            shimmer : "com.facebook.shimmer:shimmer:$versions.shimmer",
+            showcase: "com.github.faruktoptas:FancyShowCaseView:1.0.0"
+    ]
 
     daggerLibs = dagger.values()
     archLibs = architecture.values()
@@ -115,5 +122,6 @@ ext {
     androidTestsLibs = androidTests.values() + supportLibs
     googlePlayLibs = googlePlay.values()
     loggingLibs = logging.values()
+    uiLibs = ui.values()
     leakCannary = "com.squareup.leakcanary:leakcanary-android:$versions.leakcanary"
 }

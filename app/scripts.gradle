@@ -1,0 +1,12 @@
+// Copy mapping file for proguard
+tasks.whenTaskAdded { task ->
+    if (task.name == "assembleRelease") {
+        task.doLast {
+            copy {
+                description = 'Copies mapping file to root'
+                from 'build/outputs/mapping/release/mapping.txt'
+                into '.'
+            }
+        }
+    }
+}

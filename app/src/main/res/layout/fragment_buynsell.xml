@@ -12,11 +12,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginTop="?android:attr/actionBarSize"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingHorizontal="@dimen/dp16"
-        android:paddingVertical="@dimen/dp8"
+        android:paddingBottom="@dimen/dp8"
+        android:paddingLeft="@dimen/dp16"
+        android:paddingRight="@dimen/dp16"
+        android:paddingTop="@dimen/dp8"
         tools:context="com.bariski.cryptoniffler.presentation.main.MainActivity">
 
         <TextView
@@ -50,6 +52,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_large"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:text="@string/common.label.buynsell_cryptocurrency"
                     android:textColor="@color/black_87" />
             </LinearLayout>
@@ -78,6 +82,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_large"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:text="@string/common.label.view_exchanges"
                     android:textColor="@color/black_87" />
             </LinearLayout>

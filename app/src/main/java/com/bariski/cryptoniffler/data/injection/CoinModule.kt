@@ -3,9 +3,10 @@ package com.bariski.cryptoniffler.data.injection
 import android.content.Context
 import com.bariski.cryptoniffler.data.api.CryptoNifflerApi
 import com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl
-import com.bariski.cryptoniffler.domain.common.Schedulers
+import com.bariski.cryptoniffler.data.storage.KeyValueStore
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
@@ -14,8 +15,8 @@ import retrofit2.Retrofit
 class CoinModule {
 
     @Provides
-    fun provideCoinRepository(context: Context, api: CryptoNifflerApi, firebaseRemoteConfig: FirebaseRemoteConfig, schedulers: Schedulers): NifflerRepository {
-        return NifflerRepositoryImpl(context, api, firebaseRemoteConfig, schedulers)
+    fun provideCoinRepository(context: Context, api: CryptoNifflerApi, firebaseRemoteConfig: FirebaseRemoteConfig, keyValueStore: KeyValueStore, moshi: Moshi): NifflerRepository {
+        return NifflerRepositoryImpl(context, api, firebaseRemoteConfig, keyValueStore, moshi)
     }
 
     @Provides

@@ -14,4 +14,6 @@ interface NifflerRepository {
     fun getBestRates(coin: String?, amount: Long, ignoreFees: Boolean): Single<BestExchangeResponse>
     fun getBestCoin(exchange: String, amount: Long, ignoreFees: Boolean): Single<BestCoinResponse>
     fun fetchLatestConfig()
+    fun hasDrawerBeenShown(): Boolean
+    fun setDrawerShown(b: Boolean)
 }

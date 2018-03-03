@@ -1,5 +1,6 @@
 package com.bariski.cryptoniffler.presentation.main
 
+import android.os.Bundle
 import com.bariski.cryptoniffler.analytics.Analytics
 import com.bariski.cryptoniffler.domain.common.Schedulers
 import com.bariski.cryptoniffler.domain.model.Coin
@@ -21,7 +22,7 @@ class SearchPresenterImpl(val repository: NifflerRepository, val schedulers: Sch
 
     lateinit var view: WeakReference<SearchView>
 
-    override fun initView(searchView: SearchView) {
+    override fun initView(searchView: SearchView, state: Bundle?, args: Bundle?) {
         view = WeakReference(searchView)
         analytics.sendScreenView(Screen.SEARCH_COIN)
         var input: String? = null
@@ -35,7 +36,7 @@ class SearchPresenterImpl(val repository: NifflerRepository, val schedulers: Sch
                     val list = ArrayList<Coin>()
                     if (trimmedString.isNotEmpty()) {
                         analytics.logQueryEvent(trimmedString)
-                        repository.getCoins().blockingGet().filterTo(list) { c -> c.coinName.toLowerCase().startsWith(trimmedString.toLowerCase()) || c.symbol.toLowerCase().startsWith(trimmedString.toLowerCase()) }
+                        repository.getCoins().blockingGet().filterTo(list) { c -> c.name.toLowerCase().startsWith(trimmedString.toLowerCase()) || c.symbol.toLowerCase().startsWith(trimmedString.toLowerCase()) }
 
                     }
                     list
@@ -67,6 +68,10 @@ class SearchPresenterImpl(val repository: NifflerRepository, val schedulers: Sch
 
     override fun onRefresh() {
         repository.fetchLatestConfig()
+    }
+
+    override fun saveState(outState: Bundle?) {
+
     }
 
 

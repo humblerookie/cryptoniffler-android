@@ -2,6 +2,7 @@ package com.bariski.cryptoniffler.presentation.main
 
 import android.content.Context
 import android.graphics.Typeface
+import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.text.Spannable
 import android.text.SpannableString
@@ -19,20 +20,25 @@ import com.bariski.cryptoniffler.presentation.common.utils.AT
 import com.bariski.cryptoniffler.presentation.common.utils.HERE
 import com.bariski.cryptoniffler.presentation.common.utils.PERCENTAGE
 import com.bariski.cryptoniffler.presentation.main.model.GridDetailWrapper
+import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import java.io.IOException
 import java.lang.ref.WeakReference
 import java.text.DecimalFormat
+import java.util.concurrent.TimeUnit
 
 
 class CoinDetailPresenterImpl(val repository: NifflerRepository, private val schedulerProvider: Schedulers, private val context: Context, val analytics: Analytics) : CoinDetailPresenter {
+
 
     var ignoreFees = false
     var coin: String? = null
     var exchange: String? = null
     var amount: Long = 0
     val disposable = CompositeDisposable()
+    var loadFinished = false
+
     override fun onRetry() {
         loadData(ignoreFees, coin, exchange, amount)
     }
@@ -43,6 +49,18 @@ class CoinDetailPresenterImpl(val repository: NifflerRepository, private val sch
         this.exchange = exchange
         this.amount = amount
         if (exchange == null || exchange.trim().isEmpty()) {
+            disposable.add(Single.just(1)
+                    .delay(2000, TimeUnit.MILLISECONDS)
+                    .subscribeOn(schedulerProvider.io())
+                    .observeOn(schedulerProvider.ui())
+                    .subscribeBy {
+                        if (!loadFinished) {
+                            view.get()?.apply {
+                                toggleProgress(false)
+                                toggleDummyCards(true)
+                            }
+                        }
+                    })
             disposable.add(repository.getBestRates(coinName, amount, ignoreFees)
                     .subscribeOn(schedulerProvider.io())
                     .doOnSubscribe {
@@ -76,12 +94,23 @@ class CoinDetailPresenterImpl(val repository: NifflerRepository, private val sch
                     .observeOn(schedulerProvider.ui())
                     .doAfterTerminate { view.get()?.toggleProgress(false) }
                     .subscribeBy(onSuccess = {
+                        loadFinished = true
+
                         analytics.itemDetailEvent(true, null, COIN, coinName!!, amount, ignoreFees)
-                        view.get()?.setData(it)
+                        view.get()?.apply {
+                            toggleDummyCards(false)
+                            setData(it)
+                        }
                     },
                             onError = {
+                                loadFinished = true
+
                                 analytics.itemDetailEvent(false, it.toString(), COIN, coinName!!, amount, ignoreFees)
-                                view.get()?.toggleError(true, view.get()?.getMessage(if (it is IOException) R.string.error_common_network else R.string.error_common_something_wrong))
+                                view.get()?.apply {
+                                    toggleDummyCards(false)
+                                    toggleError(true, view.get()?.getMessage(if (it is IOException) R.string.error_common_network else R.string.error_common_something_wrong))
+                                }
+
                             }
 
                     )
@@ -192,9 +221,6 @@ class CoinDetailPresenterImpl(val repository: NifflerRepository, private val sch
 
     }
 
-    override fun initView(view: CoinDetailView) {
-        this.view = WeakReference(view)
-    }
 
     override fun releaseView() {
         disposable.clear()
@@ -202,5 +228,26 @@ class CoinDetailPresenterImpl(val repository: NifflerRepository, private val sch
 
     override fun onRefresh() {
         repository.fetchLatestConfig()
+    }
+
+    override fun initView(view: CoinDetailView, savedState: Bundle?, args: Bundle?) {
+        this.view = WeakReference(view)
+        val state = savedState ?: args!!
+        state?.apply {
+            ignoreFees = getBoolean("ignoreFees")
+            coin = getString("coin")
+            exchange = getString("exchange")
+            amount = getLong("amount")
+        }
+        loadData(ignoreFees, coin, exchange, amount)
+    }
+
+    override fun saveState(outState: Bundle?) {
+        outState?.apply {
+            putBoolean("ignoreFees", ignoreFees)
+            putString("coin", coin)
+            putString("exchange", exchange)
+            putLong("amount", amount)
+        }
     }
 }

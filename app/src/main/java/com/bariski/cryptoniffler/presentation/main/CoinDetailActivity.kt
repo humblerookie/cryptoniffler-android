@@ -39,8 +39,7 @@ class CoinDetailActivity : BaseActivity(), CoinDetailView {
         list.adapter = adapter
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
-        presenter.initView(this)
-        presenter.loadData(intent.getBooleanExtra("ignoreFees", false), intent.getStringExtra("coin"), intent.getStringExtra("exchange"), intent.getLongExtra("amount", 0))
+        presenter.initView(this, savedInstanceState, intent.extras)
     }
 
     override fun setData(gridDetailWrapper: GridDetailWrapper) {
@@ -48,7 +47,7 @@ class CoinDetailActivity : BaseActivity(), CoinDetailView {
             app_bar.visibility = View.VISIBLE
             adapter.setItems(gridDetailWrapper.items)
             toolbar.title = gridDetailWrapper.name
-            title = gridDetailWrapper.name.substring(0,1).toUpperCase()+gridDetailWrapper.name.substring(1).toUpperCase()
+            title = gridDetailWrapper.name.substring(0, 1).toUpperCase() + gridDetailWrapper.name.substring(1).toLowerCase()
             if (gridDetailWrapper.img != null) {
                 loader.loadImage(ImageRequest(mainImg, R.drawable.placeholder, gridDetailWrapper.img, null, this, R.drawable.placeholder))
             } else {
@@ -56,6 +55,19 @@ class CoinDetailActivity : BaseActivity(), CoinDetailView {
             }
         }
     }
+
+    override fun toggleDummyCards(visible: Boolean) {
+        if (isAlive()) {
+            app_bar.visibility = View.VISIBLE
+            val exchange = intent.getStringExtra("exchange")
+            title = if (exchange == null || exchange.isEmpty()) intent.getStringExtra("coin") else exchange
+            toolbar.title = if (exchange == null || exchange.isEmpty()) intent.getStringExtra("coin") else exchange
+            loader.loadImage(ImageRequest(mainImg, R.drawable.placeholder, "", null, this, R.drawable.placeholder))
+            adapter.showLoadingCards = visible
+            adapter.notifyDataSetChanged()
+        }
+    }
+
 
     override fun toggleProgress(visible: Boolean) {
         if (isAlive()) {
@@ -68,6 +80,12 @@ class CoinDetailActivity : BaseActivity(), CoinDetailView {
             onBackPressed()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        presenter.saveState(outState)
     }
 
     override fun toggleError(visible: Boolean, error: String?) {

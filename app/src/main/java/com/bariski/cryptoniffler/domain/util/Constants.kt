@@ -24,7 +24,10 @@ const val COIN = "coin"
 const val EXCHANGE = "exchange"
 const val BTC_INR_API = "btcInrUrl"
 const val BASE_URL = "apiUrl"
-
+const val EVENTS_BASE_URL = "eventsBaseUrl"
+const val EVENT_SUFFIX_URL = "/events"
+const val COIN_SUFFIX_URL = "/coins"
+const val CATEGORIES_SUFFIX_URL = "/categories"
 
 class Key {
     companion object {
@@ -57,7 +60,7 @@ class Event {
         val COPIED_ADDRESS = "copied_address"
         val ITEM_CLICKED = "item_clicked"
         val PROCEED = "proceed_detail"
-        val BTC_VAL="btc_val"
-        val INCLUDE_FEE="include_fee"
+        val BTC_VAL = "btc_val"
+        val INCLUDE_FEE = "include_fee"
     }
 }

@@ -83,6 +83,26 @@
     <string name="search.label.oops_no_results">Oops! No results found.</string>
     <string name="common.label.network_fees">Include Network Fees</string>
     <string name="common.hint.type_a_coin_name">type a coin name like BTC..</string>
+    <string name="calendar.suffix.votes">of %s votes</string>
+    <string name="calendar.suffix.percentage">%s %%</string>
     <string name="common_share_text">I found this app that tells you about the best buy/sell coins, check it out! \nhttps://play.google.com/store/apps/details?id=com.bariski.cryptoniffler</string>
+    <string name="common.label.filter_by">Filter By</string>
+    <string name="common.label.clear_all">Clear All</string>
+    <string name="common.label.close">Close</string>
+    <string name="common.label.apply">Apply</string>
+    <string name="filter.label.coins">Coins</string>
+    <string name="filter.label.category">Category</string>
+    <string name="filter.label.period">Period</string>
+    <string name="filter.label.period_from">From</string>
+    <string name="filter.label.to">To</string>
+    <string name="calendar.label.credits">Powered by coinmarketcal.com</string>
+    <string name="calendar.error.empty">Oops! We could not find any events.\nTry changing the filters.</string>
+    <string name="common.tutorial.events">\n\n\nTap here to view \ncrypto events.</string>
 
+    <string name="default.channel_id" translatable="false">fcm_default_channel</string>
+    <!--
+        This is the name that users will see when interacting with this channel.
+        It should describe the category of notifications that will be sent through this channel
+     -->
+    <string name="default.channel_name" translatable="true">News</string>
 </resources>

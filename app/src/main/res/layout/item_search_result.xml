@@ -11,8 +11,10 @@
         android:background="@color/white"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/margin_small"
-        android:paddingVertical="@dimen/margin_normal">
+        android:paddingBottom="@dimen/margin_normal"
+        android:paddingLeft="@dimen/margin_small"
+        android:paddingRight="@dimen/margin_small"
+        android:paddingTop="@dimen/margin_normal">
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/icon"
