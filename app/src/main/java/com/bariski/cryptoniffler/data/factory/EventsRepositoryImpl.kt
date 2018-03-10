@@ -25,6 +25,7 @@ class EventsRepositoryImpl(private val api: EventsApi, private val remoteConfig:
     private val EVENT_FILTER_TIMESTAMP_CATEGORIES = "event_filter_timestamp_categories"
     private val EVENT_FILTER_CATEGORY = "event_filter_category"
     private val EVENT_FILTER_COINS = "event_filter_coins"
+    private val FLAG_TUTORIAL_EVENT_FILTER = "flag_tutorial_event_filter"
 
     override fun getCoins(): Single<List<String>> {
         val delta = Calendar.getInstance().timeInMillis - keyValue.getLong(EVENT_FILTER_TIMESTAMP_COINS)
@@ -105,5 +106,10 @@ class EventsRepositoryImpl(private val api: EventsApi, private val remoteConfig:
         keyValue.storeString(EVENT_FILTER_COINS, adapter.toJson(data))
     }
 
+    override fun isFilterTutorialShown() = keyValue.getBoolean(FLAG_TUTORIAL_EVENT_FILTER)
+
+    override fun setFilterTutorialShown(b: Boolean) {
+        keyValue.storeBoolean(FLAG_TUTORIAL_EVENT_FILTER, b)
+    }
 
 }

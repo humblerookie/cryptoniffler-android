@@ -5,8 +5,8 @@ import com.bariski.cryptoniffler.analytics.Analytics
 import com.bariski.cryptoniffler.domain.common.Schedulers
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
 import com.bariski.cryptoniffler.presentation.injection.scopes.PerActivity
-import com.bariski.cryptoniffler.presentation.main.CoinDetailPresenter
-import com.bariski.cryptoniffler.presentation.main.CoinDetailPresenterImpl
+import com.bariski.cryptoniffler.presentation.main.ItemDetailPresenter
+import com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl
 import dagger.Module
 import dagger.Provides
 
@@ -16,8 +16,8 @@ class CoinDetailModule {
 
     @Provides
     @PerActivity
-    fun providesPresenter(repository: NifflerRepository, schedulers: Schedulers, context: Context,analytics: Analytics): CoinDetailPresenter {
-        return CoinDetailPresenterImpl(repository, schedulers, context,analytics)
+    fun providesPresenter(repository: NifflerRepository, schedulers: Schedulers, context: Context,analytics: Analytics): ItemDetailPresenter {
+        return ItemDetailPresenterImpl(repository, schedulers, context,analytics)
     }
 
 }

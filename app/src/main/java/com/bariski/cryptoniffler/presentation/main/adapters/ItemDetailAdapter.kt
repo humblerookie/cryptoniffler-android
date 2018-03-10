@@ -2,6 +2,7 @@ package com.bariski.cryptoniffler.presentation.main.adapters
 
 import android.app.Activity
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,6 +61,7 @@ class ItemDetailAdapter @Inject constructor(private val loader: ImageLoader) : R
     }
 
     fun setItems(d: ArrayList<GridItemDetail>) {
+        Log.d("ItemDetail", "Items Set:${d.size}")
         data.clear()
         data.addAll(d)
         notifyDataSetChanged()

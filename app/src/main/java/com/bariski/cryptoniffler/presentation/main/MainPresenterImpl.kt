@@ -1,5 +1,6 @@
 package com.bariski.cryptoniffler.presentation.main
 
+import android.Manifest
 import android.os.Bundle
 import android.util.Log
 import com.bariski.cryptoniffler.R
@@ -7,6 +8,7 @@ import com.bariski.cryptoniffler.analytics.Analytics
 import com.bariski.cryptoniffler.domain.common.Schedulers
 import com.bariski.cryptoniffler.domain.model.Coin
 import com.bariski.cryptoniffler.domain.model.Exchange
+import com.bariski.cryptoniffler.domain.repository.DeviceDataStore
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
 import com.bariski.cryptoniffler.domain.util.COIN
 import com.bariski.cryptoniffler.domain.util.EXCHANGE
@@ -24,7 +26,7 @@ import io.reactivex.processors.PublishProcessor
 import io.reactivex.rxkotlin.subscribeBy
 import java.lang.ref.WeakReference
 
-class MainPresenterImpl(val repository: NifflerRepository, val adapter: GridItemAdapter, private val schedulerProvider: Schedulers, val analytics: Analytics) : BasePresenter<MainView>, MainPresenter {
+class MainPresenterImpl(val repository: NifflerRepository, private val deviceStore: DeviceDataStore, val adapter: GridItemAdapter, private val schedulerProvider: Schedulers, val analytics: Analytics) : BasePresenter<MainView>, MainPresenter {
 
 
     private lateinit var viewWeak: WeakReference<MainView>
@@ -290,5 +292,14 @@ class MainPresenterImpl(val repository: NifflerRepository, val adapter: GridItem
     override fun infoClicked() {
         analytics.logInfoClick(false)
     }
+
+    override fun onMainViewResumed() {
+        if (!deviceStore.hasPermissionRationaleShown(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            deviceStore.setPermissionRationaleShown(Manifest.permission.WRITE_EXTERNAL_STORAGE, true)
+            viewWeak.get()?.requestStoragePermission()
+        }
+
+    }
+
 
 }

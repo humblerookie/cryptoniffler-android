@@ -21,7 +21,7 @@ import javax.inject.Inject
 class CoinDetailActivity : BaseActivity(), CoinDetailView {
 
     @Inject
-    lateinit var presenter: CoinDetailPresenter
+    lateinit var presenter: ItemDetailPresenter
     @Inject
     lateinit var adapter: ItemDetailAdapter
     @Inject
@@ -45,6 +45,8 @@ class CoinDetailActivity : BaseActivity(), CoinDetailView {
     override fun setData(gridDetailWrapper: GridDetailWrapper) {
         if (isAlive()) {
             app_bar.visibility = View.VISIBLE
+            adapter = ItemDetailAdapter(loader)
+            list.adapter = adapter
             adapter.setItems(gridDetailWrapper.items)
             toolbar.title = gridDetailWrapper.name
             title = gridDetailWrapper.name.substring(0, 1).toUpperCase() + gridDetailWrapper.name.substring(1).toLowerCase()

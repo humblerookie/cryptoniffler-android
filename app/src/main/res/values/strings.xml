@@ -105,4 +105,10 @@
         It should describe the category of notifications that will be sent through this channel
      -->
     <string name="default.channel_name" translatable="true">News</string>
+
+    <string name="common.permission.storage_rationale">Cryptoniffler needs storage permission to improve your experience</string>
+    <string name="common.permission.storage">Please provide storage permission</string>
+    <string name="common.label.permission">Permission</string>
+    <string name="events.tutorial.filters">\nTap here to\napply filters.</string>
+
 </resources>

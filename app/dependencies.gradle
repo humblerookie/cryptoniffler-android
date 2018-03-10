@@ -16,7 +16,7 @@ ext {
             firebase             : '11.4.0',
             constraint           : '1.0.2',
             recyclerviewanimators: '2.2.7',
-            glide                : '4.0.0',
+            glide                : '4.6.1',
             lifecycle            : '1.0.0-alpha9',
             retrofit             : '2.3.0',
             moshi                : '1.5.0',
@@ -79,11 +79,6 @@ ext {
             testRules      : "com.android.support.test:rules:$versions.espressoRunner",
     ] + mockito
 
-    architecture = [
-            archRuntime  : "android.arch.lifecycle:runtime:$versions.lifecycle",
-            archExtension: "android.arch.lifecycle:extensions:$versions.lifecycle"
-    ]
-
     logging = [
             timber: "com.jakewharton.timber:timber:$versions.timber"
     ]
@@ -109,11 +104,11 @@ ext {
     ]
     ui = [
             shimmer : "com.facebook.shimmer:shimmer:$versions.shimmer",
-            showcase: "com.github.faruktoptas:FancyShowCaseView:1.0.0"
+            showcase: "com.github.faruktoptas:FancyShowCaseView:1.0.0",
+            autofit : "me.grantland:autofittextview:0.2.1"
     ]
 
     daggerLibs = dagger.values()
-    archLibs = architecture.values()
     supportLibs = supportDeps.values()
     rxJavaLibs = rxJava.values()
     unitTestLibs = unitTest.values()

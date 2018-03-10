@@ -16,4 +16,5 @@ interface MainView : BaseView {
     fun toggleProgress(b: Boolean)
     fun getCommonPresenter(): MainPresenter
     fun toggleDrawer(b: Boolean)
+    fun requestStoragePermission()
 }

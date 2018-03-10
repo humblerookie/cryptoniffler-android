@@ -1,24 +1,33 @@
 package com.bariski.cryptoniffler.presentation.calendar.adapters
 
+import android.content.Intent
+import android.graphics.Rect
+import android.net.Uri
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.TouchDelegate
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.presentation.calendar.models.CalendarItem
+import com.crashlytics.android.Crashlytics
+import java.util.*
+
 
 class CalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val data = ArrayList<CalendarItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        if (viewType == 0) {
-            return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_calendar, parent, false))
+        return if (viewType == 0) {
+            ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_calendar, parent, false))
         } else {
-            return CreditsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_credits, parent, false))
+            CreditsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_credits, parent, false))
         }
     }
 
@@ -61,7 +70,72 @@ class CalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         @JvmField
         val confidence: ProgressBar = view.findViewById(R.id.progress)
 
+        var item: CalendarItem? = null
+
+        init {
+            view.setOnClickListener {
+                val context = it.context
+                item?.apply {
+                    val calendarIcon = view.findViewById<View>(R.id.addReminder)
+                    if (calendarIcon is ImageView) {
+                        (calendarIcon?.parent as View).post({
+                            val delegateArea = Rect()
+                            val myButton = calendarIcon
+                            myButton.getHitRect(delegateArea)
+                            delegateArea.top -= 200
+                            delegateArea.left -= 200
+                            delegateArea.right += 200
+                            delegateArea.bottom += 200
+                            val touchDelegate = TouchDelegate(delegateArea,
+                                    myButton)
+                            if (View::class.java.isInstance(myButton.parent)) {
+                                (myButton.parent as View).touchDelegate = touchDelegate
+                            }
+                        })
+                        val calendarHeader = view.findViewById<View>(R.id.calendarHeader)
+                        (calendarHeader?.parent as View).post({
+                            val delegateArea = Rect()
+                            val myButton = calendarHeader
+                            myButton.getHitRect(delegateArea)
+                            delegateArea.top -= 100
+                            delegateArea.bottom += 100
+                            val touchDelegate = TouchDelegate(delegateArea,
+                                    myButton)
+                            if (View::class.java.isInstance(myButton.parent)) {
+                                (myButton.parent as View).touchDelegate = touchDelegate
+                            }
+                        })
+                    }
+                    val listener = View.OnClickListener { view ->
+                        val intent = Intent(Intent.ACTION_EDIT)
+                        intent.type = "vnd.android.cursor.item/event"
+                        intent.putExtra("beginTime", getEventTimeInMillis())
+                        intent.putExtra("allDay", true)
+                        intent.putExtra("title", getTitle() + " : " + getSubTitle())
+                        view.context.startActivity(intent)
+                    }
+                    calendarIcon.setOnClickListener(listener)
+                    time.setOnClickListener(listener)
+
+                    getUrl()?.let {
+                        try {
+                            val intent = Intent(Intent.ACTION_VIEW)
+                            intent.data = Uri.parse(it)
+                            context.startActivity(intent)
+                        } catch (e: Exception) {
+                            Log.e("Calendar Url", e.toString())
+                            Crashlytics.logException(e)
+                        }
+                    }
+                }
+
+            }
+
+
+        }
+
         fun setData(item: CalendarItem) {
+            this.item = item
             val context = coinTitle.context
             coinTitle.text = item.getTitle()
             desc.text = item.getDescription()
@@ -82,6 +156,7 @@ class CalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 p <= 30 -> R.color.black_87
                 else -> R.color.black_87
             }))
+
 
         }
 

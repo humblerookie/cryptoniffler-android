@@ -9,4 +9,5 @@ interface DeviceRepository : DeviceDataStore {
 
     fun registerDevice(device: Device): Single<ResponseWrapper>
 
+
 }

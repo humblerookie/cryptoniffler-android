@@ -10,5 +10,7 @@ interface EventsRepository {
     fun getEvents(coins: String?, categories: String?, startDate: String?, endDate: String?, page: Int, max: Int): Single<List<Event>>
 
     fun getCategories(): Single<List<String>>
+    fun isFilterTutorialShown():Boolean
+    fun setFilterTutorialShown(b: Boolean)
 
 }

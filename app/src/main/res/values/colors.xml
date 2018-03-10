@@ -46,4 +46,5 @@
 
     <color name="amber_500">#FFC107</color>
     <color name="amber_700">#FFA000</color>
+    <color name="color_teal">#3E6C9A</color>
 </resources>

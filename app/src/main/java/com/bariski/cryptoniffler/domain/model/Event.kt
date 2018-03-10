@@ -15,14 +15,16 @@ data class Event(@Json(name = "id") val id: String,
                  @Json(name = "date_event") val date: String,
                  @Json(name = "created_date") val created: String,
                  @Json(name = "description") val desc: String?,
-                 @Json(name = "proof") val proof: String,
-                 @Json(name = "source") val source: String,
+                 @Json(name = "proof") val proof: String?,
+                 @Json(name = "source") val source: String?,
                  @Json(name = "is_hot") val isHot: Boolean,
                  @Json(name = "vote_count") val voteCount: Int,
                  @Json(name = "positive_vote_count") val positiveCount: Int,
                  @Json(name = "percentage") val percentage: Float,
                  @Json(name = "categories") val categories: List<String>,
                  @Json(name = "can_occur_before") val canOccurPrior: Boolean) : CalendarItem, Parcelable {
+
+
     constructor(parcel: Parcel) : this(
             parcel.readString(),
             parcel.readString(),
@@ -74,6 +76,9 @@ data class Event(@Json(name = "id") val id: String,
         return percentage.toInt()
     }
 
+    override fun getUrl() = source
+
+    override fun getEventTimeInMillis() = dateFormatInput.parse(date).time
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(id)

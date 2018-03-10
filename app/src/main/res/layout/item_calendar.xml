@@ -14,9 +14,10 @@
 
         <LinearLayout
             style="@style/PaddingNormal"
+            android:id="@+id/calendarHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#3E6C9A"
+            android:background="@color/color_teal"
             android:orientation="horizontal">
 
             <TextView
@@ -36,7 +37,16 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/medium"
                 android:textColor="@color/white_87"
+                android:textSize="@dimen/font_tiny"
                 tools:text="28th Feb 2018" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/addReminder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:src="@drawable/ic_add_alarm"
+                android:tint="@color/amber_500" />
         </LinearLayout>
 
         <TextView

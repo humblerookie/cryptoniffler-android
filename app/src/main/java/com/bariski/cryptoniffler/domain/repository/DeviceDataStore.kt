@@ -13,4 +13,8 @@ interface DeviceDataStore {
     fun getAnonymousToken(): String?
 
     fun storeDeviceToken(value: String): Boolean
+
+    fun hasPermissionRationaleShown(permission: String): Boolean
+
+    fun setPermissionRationaleShown(permission: String, b: Boolean)
 }

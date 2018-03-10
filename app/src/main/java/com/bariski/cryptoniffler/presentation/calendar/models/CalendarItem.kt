@@ -16,4 +16,8 @@ interface CalendarItem {
     fun getCount(): Int
 
     fun getPercentage(): Int
+
+    fun getUrl():String?
+
+    fun getEventTimeInMillis():Long
 }

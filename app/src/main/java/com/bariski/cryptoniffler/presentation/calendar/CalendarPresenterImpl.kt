@@ -29,7 +29,7 @@ class CalendarPresenterImpl(repository: EventsRepository, schedulers: Schedulers
         outState?.apply {
             putString("startDate", startDate)
             putString("endDate", endDate)
-            putStringArrayList("coins", ArrayList(selectedCoins))
+            putStringArrayList("coins", ArrayList<String>(selectedCoins))
             putStringArrayList("categories", ArrayList(selectedCategories))
             putParcelableArrayList("events", events)
         }
@@ -52,7 +52,7 @@ class CalendarPresenterImpl(repository: EventsRepository, schedulers: Schedulers
                             .flatMap {
                                 val coinsString = selectedCoins.joinToString(",")
                                 val catString = selectedCategories.joinToString(",")
-                                repository.getEvents(coinsString, catString, startDate, endDate, page, MAX)
+                                repository.getEvents(coinsString, catString, startDate, endDate, initPage, MAX)
 
                             }
                             .observeOn(schedulers.ui())
@@ -124,12 +124,37 @@ class CalendarPresenterImpl(repository: EventsRepository, schedulers: Schedulers
         categories?.let { selectedCategories.addAll(it) }
         from?.let {
             it[1]++
-            startDate = it.joinToString("/")
+            val sb = StringBuilder()
+            var count = 0
+            for (i in it) {
+                if (i < 10) {
+                    sb.append("0")
+                }
+                sb.append(i)
+                count++
+                if (count != it.size) {
+                    sb.append("/")
+                }
+            }
+            startDate = sb.toString()
             it[1]--
+
         }
         to?.let {
             it[1]++
-            endDate = it.joinToString("/")
+            val sb = StringBuilder()
+            var count = 0
+            for (i in it) {
+                if (i < 10) {
+                    sb.append("0")
+                }
+                sb.append(i)
+                count++
+                if (count != it.size) {
+                    sb.append("/")
+                }
+            }
+            endDate = sb.toString()
             it[1]--
         }
         loadNextPage()
@@ -142,7 +167,10 @@ class CalendarPresenterImpl(repository: EventsRepository, schedulers: Schedulers
 
     override fun initView(view: CalendarView, state: Bundle?, args: Bundle?) {
         this.view = WeakReference(view)
-
+        if (!repository.isFilterTutorialShown()) {
+            repository.setFilterTutorialShown(true)
+            view.showFilterTutorial()
+        }
         if (state != null) {
             state.apply {
                 startDate = getString("startDate")
@@ -157,6 +185,7 @@ class CalendarPresenterImpl(repository: EventsRepository, schedulers: Schedulers
                     view.setData(list, false)
                 }
             }
+
         } else {
             loadNextPage()
         }

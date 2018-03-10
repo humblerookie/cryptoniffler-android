@@ -12,12 +12,12 @@ import dagger.android.ContributesAndroidInjector
 abstract class FragmentBindingModule {
 
     @PerFragment
-    @ContributesAndroidInjector(modules = arrayOf(CalendarModule::class))
+    @ContributesAndroidInjector(modules = [CalendarModule::class])
     abstract fun calendarFragment(): CalendarFragment
 
 
     @PerFragment
-    @ContributesAndroidInjector(modules = arrayOf(GridSelectModule::class))
+    @ContributesAndroidInjector(modules = [GridSelectModule::class])
     abstract fun gridSelectFragment(): GridSelectFragment
 
 }

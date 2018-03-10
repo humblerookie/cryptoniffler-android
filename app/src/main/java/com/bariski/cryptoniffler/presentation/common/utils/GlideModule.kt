@@ -20,7 +20,7 @@ class GlideModule : AppGlideModule() {
         builder.setDiskCache(ExternalCacheDiskCacheFactory(context, diskCacheSizeBytes))
         builder.setDefaultRequestOptions(
                 RequestOptions()
-                        .format(DecodeFormat.PREFER_RGB_565).diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .format(DecodeFormat.PREFER_RGB_565).diskCacheStrategy(DiskCacheStrategy.ALL)
         )
     }
 }

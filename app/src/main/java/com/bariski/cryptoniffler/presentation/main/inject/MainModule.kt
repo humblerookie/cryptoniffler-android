@@ -2,6 +2,7 @@ package com.bariski.cryptoniffler.presentation.main.inject
 
 import com.bariski.cryptoniffler.analytics.Analytics
 import com.bariski.cryptoniffler.domain.common.Schedulers
+import com.bariski.cryptoniffler.domain.repository.DeviceDataStore
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
 import com.bariski.cryptoniffler.presentation.injection.scopes.PerActivity
 import com.bariski.cryptoniffler.presentation.main.MainPresenter
@@ -16,8 +17,8 @@ class MainModule {
 
     @Provides
     @PerActivity
-    fun providesPresenter(repository: NifflerRepository, adapter: GridItemAdapter, schedulers: Schedulers,analytics: Analytics): MainPresenter {
-        return MainPresenterImpl(repository, adapter, schedulers,analytics)
+    fun providesPresenter(repository: NifflerRepository, deviceDataStore: DeviceDataStore, adapter: GridItemAdapter, schedulers: Schedulers, analytics: Analytics): MainPresenter {
+        return MainPresenterImpl(repository, deviceDataStore, adapter, schedulers, analytics)
     }
 
 }

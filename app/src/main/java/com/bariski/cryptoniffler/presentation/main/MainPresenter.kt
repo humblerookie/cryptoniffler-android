@@ -21,4 +21,5 @@ interface MainPresenter : BasePresenter<MainView>, GridItemAdapter.OnItemClickLi
     fun onSearchResult(coin: Coin?)
     fun onIncludeFeeChanged(b: Boolean)
     fun infoClicked()
+    fun onMainViewResumed()
 }

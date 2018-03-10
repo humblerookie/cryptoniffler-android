@@ -12,5 +12,6 @@ interface CalendarView : BaseView {
     fun setFilterCategoryData(data: List<String>, selected: HashSet<String>)
     fun toggleFilterMode(mode: Int)
     fun toggleEmptyView(b: Boolean)
+    fun showFilterTutorial()
 
 }

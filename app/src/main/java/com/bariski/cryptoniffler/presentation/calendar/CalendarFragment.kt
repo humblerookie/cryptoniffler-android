@@ -22,7 +22,7 @@ import com.bariski.cryptoniffler.domain.model.Event
 import com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter
 import com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarFilterAdapter
 import com.bariski.cryptoniffler.presentation.common.BaseInjectFragment
-import kotlinx.android.synthetic.main.fragment_calendar.*
+import me.toptas.fancyshowcase.FancyShowCaseView
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -47,7 +47,11 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
     lateinit var applyFilter: View
     lateinit var search: EditText
     lateinit var progress: View
-
+    lateinit var list: RecyclerView
+    lateinit var bottomProgress: View
+    lateinit var centerProgress: View
+    lateinit var empty: TextView
+    lateinit var container: View
 
     var snackbar: Snackbar? = null
     var dialog: Dialog? = null
@@ -62,23 +66,6 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
     var from: Array<Int>? = null
     var to: Array<Int>? = null
 
-
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        adapter = CalendarAdapter()
-        list.adapter = adapter
-        list.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                val lm = (list.layoutManager as LinearLayoutManager)
-                if (lm.findLastVisibleItemPosition() == adapter.itemCount - 2 && adapter.itemCount != 0) {
-                    presenter.loadNextPage()
-                }
-            }
-        })
-        presenter.initView(this, savedInstanceState, arguments)
-    }
 
     override fun toggleCenterProgress(visible: Boolean) {
         if (isAlive()) {
@@ -353,7 +340,37 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        return inflater.inflate(R.layout.fragment_calendar, container, false)
+        val view = inflater.inflate(R.layout.fragment_calendar, container, false)
+        adapter = CalendarAdapter()
+        list = view.findViewById(R.id.list)
+        bottomProgress = view.findViewById(R.id.bottomProgress)
+        centerProgress = view.findViewById(R.id.centerProgress)
+        empty = view.findViewById(R.id.empty)
+        this.container = view.findViewById(R.id.container)
+        list.adapter = adapter
+        list.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        list.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val lm = (list.layoutManager as LinearLayoutManager)
+                if (lm.findLastVisibleItemPosition() == adapter.itemCount - 2 && adapter.itemCount != 0) {
+                    presenter.loadNextPage()
+                }
+            }
+        })
+        presenter.initView(this, savedInstanceState, arguments)
+        return view
+
+    }
+
+    override fun showFilterTutorial() {
+        if (isAlive()) {
+            FancyShowCaseView.Builder(activity)
+                    .focusOn(activity.findViewById(R.id.filter))
+                    .title(getString(R.string.events_tutorial_filters))
+                    .build()
+                    .show()
+        }
     }
 
 

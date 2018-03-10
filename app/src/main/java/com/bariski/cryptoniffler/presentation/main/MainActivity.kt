@@ -1,15 +1,16 @@
 package com.bariski.cryptoniffler.presentation.main
 
+import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
+import android.app.Dialog
 import android.app.Fragment
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.support.design.internal.NavigationMenuItemView
-import android.support.design.internal.NavigationMenuView
 import android.support.design.widget.NavigationView
+import android.support.v4.app.ActivityCompat
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
@@ -24,17 +25,15 @@ import com.crashlytics.android.Crashlytics
 import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import me.toptas.fancyshowcase.FancyShowCaseView
 import javax.inject.Inject
 
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, MainView {
 
-
     @Inject
     lateinit var presenter: MainPresenter
 
-    var showcase: FancyShowCaseView? = null
+    lateinit var permissionDialog: Dialog
 
 
     override val layoutResId: Int
@@ -70,6 +69,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 fragmentManager.beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out).replace(R.id.container, fragment).commitAllowingStateLoss()
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.onMainViewResumed()
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
@@ -174,20 +178,24 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun toggleDrawer(b: Boolean) {
         if (b) {
             drawer_layout.openDrawer(Gravity.LEFT)
-            Handler().postDelayed({
-                if (isAlive()) {
-                    val view = ((findViewById<NavigationMenuView>(R.id.design_navigation_view)).getChildAt(2) as NavigationMenuItemView)
-                    showcase = FancyShowCaseView.Builder(this)
-                            .focusOn(view)
-                            .title(getString(R.string.common_tutorial_events))
-                            .build()
-                    showcase?.show()
-                }
-            }, 500)
 
         } else {
             drawer_layout.closeDrawer(Gravity.LEFT)
         }
+    }
+
+    override fun requestStoragePermission() {
+        val builder = AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog)
+        permissionDialog = builder.setTitle(R.string.common_label_permission)
+                .setMessage(R.string.common_permission_storage_rationale)
+                .setPositiveButton(android.R.string.ok, { _, _ ->
+                    ActivityCompat.requestPermissions(this,
+                            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                            1)
+                    permissionDialog.dismiss()
+                })
+                .show()
+
     }
 
     override fun getCommonPresenter() = presenter

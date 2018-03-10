@@ -103,8 +103,8 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideImageLoader(): ImageLoader {
-        return ImageRepositoryImpl()
+    fun provideImageLoader(context: Context): ImageLoader {
+        return ImageRepositoryImpl(context)
     }
 
     @Provides
