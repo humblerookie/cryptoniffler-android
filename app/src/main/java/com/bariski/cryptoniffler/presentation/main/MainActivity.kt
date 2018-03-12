@@ -185,17 +185,18 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun requestStoragePermission() {
-        val builder = AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog)
-        permissionDialog = builder.setTitle(R.string.common_label_permission)
-                .setMessage(R.string.common_permission_storage_rationale)
-                .setPositiveButton(android.R.string.ok, { _, _ ->
-                    ActivityCompat.requestPermissions(this,
-                            arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                            1)
-                    permissionDialog.dismiss()
-                })
-                .show()
-
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+            val builder = AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog)
+            permissionDialog = builder.setTitle(R.string.common_label_permission)
+                    .setMessage(R.string.common_permission_storage_rationale)
+                    .setPositiveButton(android.R.string.ok, { _, _ ->
+                        ActivityCompat.requestPermissions(this,
+                                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                                1)
+                        permissionDialog.dismiss()
+                    })
+                    .show()
+        }
     }
 
     override fun getCommonPresenter() = presenter

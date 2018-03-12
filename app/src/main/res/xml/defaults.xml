@@ -8,4 +8,9 @@
         <key>btcInrUrl</key>
         <value>https://api.coinmarketcap.com/v1/ticker/bitcoin/?convert=INR</value>
     </entry>
+
+    <entry>
+        <key>eventsBaseUrl</key>
+        <value>https://coinmarketcal.com/api</value>
+    </entry>
 </defaultsMap><!-- END xml_defaults -->

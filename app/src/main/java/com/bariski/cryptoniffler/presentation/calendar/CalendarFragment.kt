@@ -324,6 +324,7 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
 
     override fun onDestroyView() {
         super.onDestroyView()
+        toggleError(null)
         presenter.releaseView()
     }
 

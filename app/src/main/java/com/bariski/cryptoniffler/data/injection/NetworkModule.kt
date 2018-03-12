@@ -1,6 +1,7 @@
 package com.bariski.cryptoniffler.data.injection
 
 import android.content.Context
+import com.bariski.cryptoniffler.BuildConfig
 import com.bariski.cryptoniffler.data.factory.ImageRepositoryImpl
 import com.bariski.cryptoniffler.data.logging.GlobalHeaderInterceptor
 import com.bariski.cryptoniffler.data.logging.HttpLoggingInterceptor
@@ -77,7 +78,7 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideNetworkInterceptor(): Interceptor {
-        return GlobalHeaderInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+        return GlobalHeaderInterceptor().setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
     }
 
     @Singleton
