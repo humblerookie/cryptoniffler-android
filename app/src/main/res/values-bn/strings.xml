@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ক্রিপ্টো নাইফলার</string>
+        
+    <string name="navigation_drawer_open"> ন্যাভিগেশন ড্রয়ারের খুলুন </string>
+        
+    <string name="navigation_drawer_close"> নিকটবর্তী ড্রয়ারের বন্ধ করুন </string>
+        
+    <string name="common.label.permission_settings"> সেটিংস </string>
+        
+    <string name="common.label.ok"> ঠিক আছে </string>
+        
+    <string name="error.common.network"> নেটওয়ার্ক অনুপলব্ধ। দয়া করে আপনার নেটওয়ার্ক সংযোগ পরীক্ষা করুন। </string>
+        
+    <string name="error.common.something_wrong"> ওপস! কিছু বন্ধ আছে, দয়া করে কিছুক্ষণের পরে চেষ্টা করুন। </string>
+        
+    <string name="error.common.request_invalid"> ওহো! আমরা একটি ভুল তৈরি করেছি !, আমরা এই হিসাবে ফিক্সিং কথা বলতে। দয়া করে কিছুক্ষণের মধ্যে চেষ্টা করুন। </string>
+        
+    <string name="error.common.unreachable"> আমাদের সার্ভারগুলিতে সংযোগ করা যায়নি। \n কিছুক্ষণের পরে চেষ্টা করুন। </string>
+        
+    <string name="common.label.i_am_looking"> আমি এ খুঁজছি</string>
+        
+    <string name="common.label.buy_cryptocurrency"> ক্রিপ্টো মুদ্রা কিনুন </string>
+        
+    <string name="common.label.sell_cryptocurrency"> ক্রিপ্টো মুদ্রা বিক্রি </string>
+        
+    <string name="common.label.buynsell_cryptocurrency"> <![CDATA[ক্রয় এবং বিক্রি ক্রিপ্টোকুরেন্স]]> </string>
+        
+    <string name="common.label.view_exchanges"> ব্রাউজ এক্সচেঞ্জ </string>
+        
+    <string name="common.label.i_like_to_buy"> আমি কিনতে চাই / বিক্রয় করতে চাই </string>
+        
+    <string name="common_label_buy_at"> আমি এ কিনতে চাই </string>
+        
+    <string name="common.label.amount"> আমি  এর জন্য কিনতে চাই</string>
+        
+    <string name="common.label.equivalent_amount"> <![CDATA[সমমানের BTC = <b>%s</ b>]]> </string>
+        
+    <string name="common.label.button_next"> পরবর্তী </string>
+        
+    <string name="detail.content.selling_above">%s এখানে বিক্রি হতে পারে %s এর উপরে বাজারের হার। </string>
+        
+    <string name="detail.content.selling_below">%s এখানে বিক্রি হতে পারে %s এর নীচে বাজার হার। </string>
+        
+    <string name="detail.content.selling_exactly">%s সঠিকভাবে বাজারের হারে এখানে বিক্রি করা যাবে। </string>
+        
+    <string name="detail.content.buying_above">%s বাজারের রেট থেকে %s এ এখানে কেনা যাবে। </string>
+        
+    <string name="detail.content.buying_below">%s এখানে বাজারের হারের নীচে %s এ কেনা যাবে। </string>
+        
+    <string name="detail.content.buying_exactly">%s সঠিকভাবে বাজারের হারে এখানে কেনা যাবে। </string>
+        
+    <string name="detail.content.at">এর</string>
+    <string name="detail.content.here">এখানে</string>
+
+    <string name="detail.content.on_exchange">%s এ</string>
+        
+    <string name="common.label.best_buy"> সেরা কিনুন </string>
+        
+    <string name="common.label.best_sell"> শ্রেষ্ঠ বিক্রয় </string>
+        
+    <string name="error.input.minamount"> দয়া করে সর্বনিম্ন 1000 সংখ্যা লিখুন। </string>
+        
+    <string name="common.label.transfer_to"> অন্য এক্সচেঞ্জে স্থানান্তর করুন। </string>
+        
+    <string name="common.label.trade_same"> একই এক্সচেঞ্জে ট্রেড করুন। </string>
+        
+    <string name="common.label.retry"> পুনরায় চেষ্টা করা </string>
+        
+    <string name="common.label.fee_info"> ফি তথ্য </string>
+        
+    <string name="common.info.fee_info"> এটি আমাদের গণনাগুলিতে একটি ক্রিপ্টো মুদ্রা নেটওয়ার্ক ফি অন্তর্ভুক্ত কিনা তা জানতে দেয়। প্রতিটি ক্রিপ্টো একটি সংযুক্ত নেটওয়ার্ক ফি প্রদান করে যখন আপনি এটি যে বিনিময় ছাড়াই এটি স্থানান্তর করেন। </string>
+        
+    <string name="search.label.oops_no_results"> ওহো! কোন ফলাফল পাওয়া যায় নি। </string>
+        
+    <string name="common.label.network_fees"> নেটওয়ার্ক ফি অন্তর্ভুক্ত করুন </string>
+        
+    <string name="common.hint.type_a_coin_name"> BTC এর মত মুদ্রা নাম টাইপ করুন। </string>
+        
+    <string name="calendar.suffix.votes">%sভোটগুলির </string>
+        
+    <string name="common_share_text"> আমি এই অ্যাপটি খুঁজে পেয়েছি যা আপনাকে সেরা ক্রয় / বিক্রি কয়েন সম্পর্কে বলে, এটি পরীক্ষা করুন!\nhttps: //play.google.com/store/apps/details?id=com.bariski.cryptoniffler </string>
+        
+    <string name="common.label.filter_by"> ফিল্টার করুন </string>
+        
+    <string name="common.label.clear_all"> সকল সাফ করুন </string>
+        
+    <string name="common.label.close"> বন্ধ করুন </string>
+        
+    <string name="common.label.apply"> প্রয়োগ করুন </string>
+        
+    <string name="filter.label.coins"> কয়েন </string>
+        
+    <string name="filter.label.category"> বিভাগ </string>
+        
+    <string name="filter.label.period"> মেয়াদ </string>
+        
+    <string name="filter.label.period_from"> থেকে </string>
+        
+    <string name="filter.label.to"> এ </string>
+        
+    <string name="calendar.label.credits"> দ্বারা প্রস্তুত coinmarketcal.com </string>
+        
+    <string name="calendar.error.empty"> ওহো! আমরা কোনও ইভেন্ট খুঁজে পাইনি। \n ফিল্টারগুলি পরিবর্তন করার চেষ্টা করুন। </string>
+        
+    <string name="common.tutorial.events"> \n \n \n ইভেন্টগুলি দেখতে এখানে ট্যাপ করুন। </string>
+        
+    <string name="common.permission.storage_rationale"> আপনার অভিজ্ঞতা উন্নত করতে ক্রিপ্টনিফেলের স্টোরেজ অনুমতি প্রয়োজন </string>
+        
+    <string name="common.permission.storage"> দয়া করে স্টোরেজ অনুমতি প্রদান করুন </string>
+        
+    <string name="common.label.permission"> অনুমতি </string>
+        
+    <string name="events.tutorial.filters"> \n ফিল্টারকে \n প্রয়োগ করতে এখানে ট্যাপ করুন। </string>
+
+    <string name="drawer.title.events">ইভেন্ট নেই।</string>
+        
+    <string name="drawer.title.home">উত্স</string>
+        
+    <string name="drawer.title.share">বন্ধুকে বলুন</string>
+        
+    <string name="drawer.title.review">পর্যালোচনা</string>
+</resources>

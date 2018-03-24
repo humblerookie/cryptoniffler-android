@@ -29,7 +29,6 @@
         </activity>
         <activity
             android:name=".presentation.main.CoinDetailActivity"
-            android:label="@string/title_activity_coin_detail"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".presentation.main.SearchActivity"

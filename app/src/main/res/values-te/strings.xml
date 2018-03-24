@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">క్రిప్టో నిఫ్లెర్</string>
+        
+    <string name="navigation_drawer_open"> నావిగేషన్ డ్రాయర్ తెరవండి </string>
+        
+    <string name="navigation_drawer_close"> నావిగేషన్ డ్రాయర్ను మూసివేయి </string>
+        
+    <string name="common.label.permission_settings"> సెట్టింగులు </string>
+        
+    <string name="common.label.ok"> సరే </string>
+        
+    <string name="error.common.network"> నెట్వర్క్ అందుబాటులో లేదు. దయచేసి మీ నెట్వర్క్ కనెక్షన్ను తనిఖీ చేయండి. </string>
+        
+    <string name="error.common.something_wrong"> అయ్యో! ఏదో ఆఫ్లో ఉంది, కొంతకాలం తర్వాత దయచేసి ప్రయత్నించండి. </string>
+        
+    <string name="error.common.request_invalid"> అయ్యో! మేము ఒక booboo చేసిన !, మేము మాట్లాడటం ఈ ఫిక్సింగ్. దయచేసి కొంతకాలం ప్రయత్నించండి. </string>
+        
+    <string name="error.common.unreachable"> మా సర్వర్లకు కనెక్ట్ కాలేదు. \n కొంతకాలం తర్వాత దయచేసి ప్రయత్నించండి. </string>
+        
+    <string name="common.label.i_am_looking"> నేను కు చూస్తున్నాను</string>
+        
+    <string name="common.label.buy_cryptocurrency"> క్రిప్టోకోర్టీవీ కొనండి </string>
+        
+    <string name="common.label.sell_cryptocurrency"> క్రిప్టోకోర్టైటీ విక్రయ </string>
+        
+    <string name="common.label.buynsell_cryptocurrency"> <![CDATA[క్రిప్టోకోర్యురిని కొనుగోలు చేయండి]]></string>
+        
+    <string name="common.label.view_exchanges"> ఎక్స్ఛేంజ్ బ్రౌజ్ </string>
+        
+    <string name="common.label.i_like_to_buy"> నేను \ "కొనుగోలు / విక్రయించాలనుకుంటున్నాను </string>
+        
+    <string name="common_label_buy_at"> నేను వద్ద కొనుగోలు చెయ్యాలనుకుంటున్నాను</string>
+        
+    <string name="common.label.amount"> నేను కోసం కొనుగోలు చెయ్యాలనుకుంటున్నాను</string>
+        
+    <string name="common.label.equivalent_amount"> <![CDATA[సమానమైన BTC = <b>%s </ b>]]> </string>
+        
+    <string name="common.label.button_next"> తదుపరి </string>
+        
+    <string name="detail.content.selling_above">%s మార్కెట్ రేటు కంటే %s వద్ద ఇక్కడ అమ్మవచ్చు. </string>
+        
+    <string name="detail.content.selling_below">%s మార్కెట్ రేటు క్రింద %s లో ఇక్కడ అమ్మవచ్చు. </string>
+        
+    <string name="detail.content.selling_exactly">%s సరిగ్గా మార్కెట్ రేటు వద్ద ఇక్కడ అమ్మవచ్చు. </string>
+        
+    <string name="detail.content.buying_above">%s మార్కెట్ రేటు కంటే %s వద్ద ఇక్కడ కొనుగోలు చేయవచ్చు. </string>
+        
+    <string name="detail.content.buying_below">%s మార్కెట్ రేటు క్రింద %s వద్ద ఇక్కడ కొనుగోలు చేయవచ్చు. </string>
+        
+    <string name="detail.content.buying_exactly">%s సరిగ్గా మార్కెట్ రేటు వద్ద ఇక్కడ కొనుగోలు చేయవచ్చు. </string>
+        
+    <string name="detail.content.at">వద్ద</string>
+    <string name="detail.content.here">ఇక్కడ</string>
+
+    <string name="detail.content.on_exchange">%s పై</string>
+        
+    <string name="common.label.best_buy"> ఉత్తమ కొనుగోలు </string>
+        
+    <string name="common.label.best_sell"> ఉత్తమ సెల్ </string>
+        
+    <string name="error.input.minamount"> దయచేసి 1000 కనీస మొత్తాన్ని నమోదు చేయండి. </string>
+        
+    <string name="common.label.transfer_to"> మరొక మార్పిడికి బదిలీ </string>
+        
+    <string name="common.label.trade_same"> అదే మార్పిడిలో వాణిజ్యం. </string>
+        
+    <string name="common.label.retry"> రిట్రీ </string>
+        
+    <string name="common.label.fee_info"> ఫీజు సమాచారం </string>
+        
+    <string name="common.info.fee_info"> మా లెక్కలలో ఒక క్రిప్టో నాణెం యొక్క నెట్వర్క్ రుసుమును చేర్చాలా వద్దా అని మాకు తెలియచేస్తుంది. మీరుకొనుగోలు చేసిన ఎక్స్ఛేంజ్ వెలుపల మీరు దానిని బదిలీ చేసినప్పుడు ప్రతి క్రిప్టో అనుబంధ నెట్వర్క్ ఫీజును కలిగి ఉంటుంది</string>
+
+    <string name="search.label.oops_no_results"> అయ్యో! ఫలితాలు కనుగొనబడలేదు. </string>
+        
+    <string name="common.label.network_fees"> నెట్వర్క్ ఫీజులను చేర్చండి </string>
+        
+    <string name="common.hint.type_a_coin_name"> BTC వంటి నాణెం పేరును టైప్ చేయండి. %s ఓట్ల</string>
+
+    <string name="calendar.suffix.votes"> </string>
+        
+    <string name="common_share_text">నేను ఉత్తమ కొనుగోలు / అమ్మకపు నాణేల గురించి మీకు చెప్పే ఈ అనువర్తనాన్ని కనుగొన్నాను, దాన్ని తనిఖీ చేయండి! \n https://play.google.com/store/apps/details?id=com.bariski.cryptoniffler</string>
+        
+    <string name="common.label.filter_by"> వడపోత </string>
+        
+    <string name="common.label.clear_all"> అన్నింటినీ క్లియర్ చెయ్యి </string>
+        
+    <string name="common.label.close"> మూసివేయి </string>
+        
+    <string name="common.label.apply"> వర్తించు</string>
+
+        
+    <string name="filter.label.coins"> నాణేలు </string>
+        
+    <string name="filter.label.category"> వర్గం </string>
+        
+    <string name="filter.label.period"> కాలం </string>
+        
+    <string name="filter.label.period_from"> నుండి </string>
+        
+    <string name="filter.label.to"> కు</string>
+        
+    <string name="calendar.label.credits"> coinmarketcal.com చేత ఆధారితం </string>
+        
+    <string name="calendar.error.empty"> అయ్యో! మేము ఏవైనా ఈవెంట్లను కనుగొనలేకపోయాము. \n ఫిల్టర్లను మార్చడం ప్రయత్నించండి. </string>
+        
+    <string name="common.tutorial.events"> \n \n \n వీక్షించడానికి ఇక్కడ నొక్కండి \n క్రిస్ప్యూ ఈవెంట్స్. </string>
+        
+    <string name="common.permission.storage_rationale"> మీ అనుభవాన్ని మెరుగుపరచడానికి Cryptoniffler నిల్వ అనుమతి అవసరం </string>
+        
+    <string name="common.permission.storage"> దయచేసి నిల్వ అనుమతిని ఇవ్వండి </string>
+        
+    <string name="common.label.permission"> అనుమతి </string>
+        
+    <string name="events.tutorial.filters"> \n ఫిల్టర్లను వర్తింప చేయడానికి ఇక్కడ నొక్కండి. </string>
+
+    <string name="drawer.title.events"> ఈవెంట్స్ </string>
+        
+    <string name="drawer.title.home"> ప్రారంభించండి</string>
+        
+    <string name="drawer.title.share">స్నేహితులతో భాగస్వామ్యం చేయండి</string>
+        
+    <string name="drawer.title.review">సమీక్షించండి</string>
+
+</resources>

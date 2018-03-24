@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+     
+    <string name="app_name">क्रिप्टो नफ़्लर</string>
+        
+    <string name="navigation_drawer_open"> ओपन नेविगेशन ड्रॉवर </string>
+        
+    <string name="navigation_drawer_close"> नेविगेशन ड्रॉवर बंद करें </string>
+        
+    <string name="common.label.permission_settings"> सेटिंग्स </string>
+        
+    <string name="common.label.ok"> ठीक </string>
+        
+    <string name="error.common.network"> नेटवर्क अनुपलब्ध है। कृपया अपने नेटवर्क कनेक्शन की जांच करें। </string>
+        
+    <string name="error.common.something_wrong"> ओह! कुछ बंद है, कृपया कुछ समय बाद प्रयास करें। </string>
+        
+    <string name="error.common.request_invalid"> ओह! हमने एक गलती की!, कृपया कुछ समय में प्रयास करें। </string>
+        
+    <string name="error.common.unreachable"> हमारे सर्वर से कनेक्ट नहीं हो सका। \nकृपया कुछ समय बाद प्रयास करें। </string>
+
+    <string name="common.label.i_am_looking">मैं इनमें से क्या करना चाहता हूं</string>
+        
+    <string name="common.label.buy_cryptocurrency"> क्रिप्टोकुरेंसी खरीदें </string>
+        
+    <string name="common.label.sell_cryptocurrency"> क्रिप्टोकुरेंसी बेचें </string>
+        
+    <string name="common.label.buynsell_cryptocurrency"> <![CDATA[खरीदें और बेचना क्रिप्टो मुद्रा]]> </string>
+        
+    <string name="common.label.view_exchanges"> एक्सचेंज ब्राउज़ करें </string>
+        
+    <string name="common.label.i_like_to_buy"> मैं खरीदना / बेचना चाहता हूं </string>
+        
+    <string name="common_label_buy_at"> मैं खरीदना चाहूंगा </string>
+        
+    <string name="common.label.amount"> निवेश राशि</string>
+        
+    <string name="common.label.equivalent_amount"><![CDATA[बराबर बीटीसी = <b>%s </b>]]></string>
+        
+    <string name="common.label.button_next"> अगला </string>
+        
+    <string name="detail.content.selling_above">%s को बाजार दर से ऊपर %s पर यहां बेचा जा सकता है। </string>
+
+    <string name="detail.content.selling_below">%s को यहां बाजार दर से नीचे %s पर बेचा जा सकता है। </string>
+        
+    <string name="detail.content.selling_exactly">%s को बिल्कुल बाजार दर पर यहां बेचा जा सकता है। </string>
+        
+    <string name="detail.content.buying_above">%s को यहां बाजार दर से ऊपर %s पर खरीदा जा सकता है। </string>
+        
+    <string name="detail.content.buying_below">%s को यहां बाजार दर से नीचे %s पर खरीदा जा सकता है। </string>
+        
+    <string name="detail.content.buying_exactly">%s को यहां बिल्कुल बाजार दर पर खरीदा जा सकता है। </string>
+       
+    <string name="detail.content.at">पर</string>
+
+    <string name="detail.content.here">यहां</string>
+     <string name="detail.content.on_exchange">%s पर </string>    
+    <string name="common.label.best_buy"> सर्वश्रेष्ठ खरीदें </string>    
+    <string name="common.label.best_sell"> सर्वश्रेष्ठ बेचना </string>    
+    <string name="error.input.minamount"> कृपया 1000 की न्यूनतम राशि दर्ज करें। </string>    
+    <string name="common.label.transfer_to"> अन्य एक्सचेंज में स्थानांतरण करें। </string>    
+    <string name="common.label.trade_same"> एक ही एक्सचेंज में व्यापार करें। </string>    
+    <string name="common.label.retry"> पुनः प्रयास करें </string>   
+     <string name="common.label.fee_info"> शुल्क जानकारी </string>    
+    <string name="common.info.fee_info"> यह हमें बताता है कि हमारी गणना में क्रिप्टो सिक्का का नेटवर्क शुल्क शामिल करना है या नहीं। प्रत्येक क्रिप्टो का एक संबद्ध नेटवर्क शुल्क होता है जब आप इसे किसी एक्सचेंज के बाहर स्थानांतरित करते हैं। </string>
+       
+     <string name="search.label.oops_no_results"> ओह! कोई परिणाम नहीं मिला। </string>   
+     <string name="common.label.network_fees"> नेटवर्क शुल्क शामिल करें </string>    
+    <string name="common.hint.type_a_coin_name"> एक सिक्का नाम टाइप करें जैसे बीटीसी.. </string>   
+     <string name="calendar.suffix.votes">%s वोटों की </string>    
+    <string name="common_share_text"> मुझे यह ऐप मिला जो आपको सबसे अच्छा खरीदें / बेचने वाले सिक्कों के बारे में बताता है, इसे जांचें! \n https://play.google.com/store/apps/details?id=com.bariski.cryptoniffler</string>
+    <string name="common.label.filter_by"> द्वारा फ़िल्टर करें </string>    
+    <string name="common.label.clear_all"> सभी साफ़ करें </string>    
+    <string name="common.label.close"> बंद करें </string>    
+    <string name="common.label.apply"> लागू करें </string>    
+    <string name="filter.label.coins"> सिक्के </string>    
+    <string name="filter.label.category"> श्रेणी</string>
+    <string name="filter.label.period"> अवधि </string>    
+    <string name="filter.label.period_from"> से </string>    
+    <string name="filter.label.to"> से </string>    
+    <string name="calendar.label.credits"> द्वारा संचालित coinmarketcal.com </string>    
+    <string name="calendar.error.empty"> ओह! हमें कोई भी ईवेंट नहीं मिल सका। \n फिल्टर को बदलने का प्रयास करें। </string>
+       
+     <string name="common.tutorial.events"> \n \n \n \क्रिप्टो ईवेंट देखने के लिए यहां टैप करें। </string>        
+    <string name="common.permission.storage_rationale"> आपके अनुभव को सुधारने के लिए क्रिप्टिफ़ोन को स्टोरेज अनुमति की आवश्यकता है </string>
+        
+    <string name="common.permission.storage"> कृपया स्टोरेज अनुमति प्रदान करें </string>    
+    <string name="common.label.permission"> अनुमति </string>  
+      
+    <string name="events.tutorial.filters"> \n फिल्टर को \n अपलोड करने के लिए यहां टैप करें। </string>
+    <string name="drawer.title.events"> ईवेंट </string>
+        
+    <string name="drawer.title.home"> प्रारंभ</string>
+        
+    <string name="drawer.title.share">मित्रों को बताओ</string>
+        
+    <string name="drawer.title.review">समीक्षा करें </string>
+
+</resources>

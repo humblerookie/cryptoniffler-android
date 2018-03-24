@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ક્રિપ્ટો નિફલર</string>
+        
+    <string name="navigation_drawer_open"> નેવિગેશન ડ્રોવરને ખોલો </string>
+        
+    <string name="navigation_drawer_close"> નેવિગેશન ડ્રોવરને બંધ કરો </string>
+        
+    <string name="common.label.permission_settings"> સેટિંગ્સ </string>
+        
+    <string name="common.label.ok"> બરાબર </string>
+        
+    <string name="error.common.network"> નેટવર્ક અનુપલબ્ધ છે. કૃપા કરીને તમારું નેટવર્ક કનેક્શન તપાસો. </string>
+        
+    <string name="error.common.something_wrong"> અરેરે! કંઈક બંધ છે, કૃપા કરીને થોડીવાર પછી પ્રયાસ કરો. </string>
+        
+    <string name="error.common.request_invalid"> અરેરે! અમે \'બોબો બનાવી દીધું છે!\', આપણે બોલી રહ્યા છીએ. કૃપા કરીને થોડીવારમાં પ્રયાસ કરો. </string>
+        
+    <string name="error.common.unreachable"> અમારા સર્વર્સ સાથે કનેક્ટ કરી શકાયું નથી. \ n કૃપા કરીને થોડીવાર પછી પ્રયાસ કરો. </string>
+        
+    <string name="common.label.i_am_looking"> હું ને શોધી રહ્યો છું</string>
+        
+    <string name="common.label.buy_cryptocurrency"> ક્રિપ્ટોક્યુરેંસી ખરીદો </string>
+        
+    <string name="common.label.sell_cryptocurrency"> ક્રિપ્ટોક્યુરેંસી વેચો </string>
+        
+    <string name="common.label.buynsell_cryptocurrency"> <![CDATA[ખરીદો અને વેચો ક્રિપ્ટોક્રુર્જેન્સ]]> </string>
+        
+    <string name="common.label.view_exchanges"> એક્સ્ચેન્જ બ્રાઉઝ કરો </string>
+        
+    <string name="common.label.i_like_to_buy"> હું ખરીદવા / વેચવા માંગું છું </string>
+        
+    <string name="common_label_buy_at"> હું ખરીદવા માંગું છું </string>
+        
+    <string name="common.label.amount"> હું ખરીદવા માંગું છું </string>
+        
+    <string name="common.label.equivalent_amount"> <![CDATA[સમકક્ષ BTC = <b>%s </ b>]]> </string>
+        
+    <string name="common.label.button_next"> આગલું </string>
+        
+    <string name="detail.content.selling_above">%s ને અહીં બજાર દરથી %s પર વેચી શકાય છે. </string>
+        
+    <string name="detail.content.selling_below">%s ને અહીં બજાર દર કરતાં નીચે %s પર વેચી શકાય છે. </string>
+        
+    <string name="detail.content.selling_exactly">%s અહીં બરાબર બજાર દર પર વેચી શકાય છે. </string>
+        
+    <string name="detail.content.buying_above">%s ને બજાર દર કરતાં %s પર અહીં ખરીદી શકાય છે. </string>
+        
+    <string name="detail.content.buying_below">%s ને અહીં બજાર દરથી નીચે %s પર ખરીદી શકાય છે. </string>
+        
+    <string name="detail.content.buying_exactly">%s ને અહીં બરાબર બજાર દર પર ખરીદી શકાય છે. </string>
+        
+    <string name="detail.content.on_exchange"> પર %s </string>
+        
+    <string name="common.label.best_buy"> શ્રેષ્ઠ ખરીદો </string>
+        
+    <string name="common.label.best_sell"> શ્રેષ્ઠ વેચો </string>
+
+    <string name="detail.content.at">અંતે</string>
+    <string name="detail.content.here">અહીં</string>
+        
+    <string name="error.input.minamount"> કૃપા કરીને 1000 ની ઓછામાં ઓછી રકમ દાખલ કરો. </string>
+        
+    <string name="common.label.transfer_to"> બીજા એક્સચેન્જમાં સ્થાનાંતરિત કરો. </string>
+        
+    <string name="common.label.trade_same"> સમાન વિનિમયમાં વેપાર કરો. </string>
+        
+    <string name="common.label.retry"> RETRY </string>
+        
+    <string name="common.label.fee_info"> ફી માહિતી </string>
+        
+    <string name="common.info.fee_info"> આ આપણને જાણવા દે છે કે અમારી ગણતરીમાં ક્રિપ્ટો સિક્કોની નેટવર્ક ફી શામેલ છે કે નહીં. દરેક ક્રિપ્ટોમાં સંકળાયેલ નેટવર્ક ફી હોય છે જ્યારે તમે તેને કોઈ વિનિમય બહાર લઈ જાઓ છો, જેમાંથી તમે તેને ખરીદ્યું છે. </string>
+        
+    <string name="search.label.oops_no_results"> અરે! કોઈ પરિણામો મળ્યાં નથી. </string>
+        
+    <string name="common.label.network_fees"> નેટવર્ક ફી શામેલ કરો </string>
+        
+    <string name="common.hint.type_a_coin_name"> બીટીસી જેવી સિક્કો નામ લખો .. </string>
+        
+    <string name="calendar.suffix.votes">%s મતની </string>
+        
+    <string name="common_share_text"> મને આ એપ્લિકેશન મળી જે તમને શ્રેષ્ઠ ખરીદી / વેચાણ સિક્કા વિશે કહે છે, તેને તપાસો! \ nhttps: //play.google.com/store/apps/details?id= com.bariski.cryptoniffler </string>
+        
+    <string name="common.label.filter_by"> ફિલ્ટર કરો </string>
+        
+    <string name="common.label.clear_all"> બધા સાફ કરો </string>
+        
+    <string name="common.label.close"> બંધ કરો </string>
+        
+    <string name="common.label.apply"> લાગુ કરો </string>
+        
+    <string name="filter.label.coins"> સિક્કાઓ </string>
+        
+    <string name="filter.label.category"> કેટેગરી </string>
+        
+    <string name="filter.label.period"> પીરિયડ </string>
+        
+    <string name="filter.label.period_from"> પ્રતિ </string>
+        
+    <string name="filter.label.to"> માટે </string>
+        
+    <string name="calendar.label.credits"> દ્વારા સંચાલિત coinmarketcal.com </string>
+        
+    <string name="calendar.error.empty"> અરેરે! અમે કોઈ ઇવેન્ટ્સ શોધી શક્યાં નથી. \ N ફિલ્ટર્સને બદલવાનો પ્રયાસ કરો. </string>
+        
+    <string name="common.tutorial.events"> \ n \ n \ n \ ncrypto ઇવેન્ટ્સ જોવા માટે અહીં ક્લિક કરો. </string>
+        
+    <string name="common.permission.storage_rationale"> તમારા અનુભવને સુધારવા માટે ક્રિપ્ટોનિફેલને સ્ટોરેજ પરવાનગીની જરૂર છે </string>
+        
+    <string name="common.permission.storage"> કૃપા કરીને સ્ટોરેજ પરવાનગી પ્રદાન કરો </string>
+        
+    <string name="common.label.permission"> પરવાનગી </string>
+        
+    <string name="events.tutorial.filters"> \ n ફિલ્ડ લાગુ કરવા માટે \ n અહીં ક્લિક કરો. </string>
+    <string name="drawer.title.events">બનાવ</string>
+    <string name="drawer.title.home">આરંભ</string>
+    <string name="drawer.title.share">મિત્રો સાથે વહેંચવું</string>
+    <string name="drawer.title.review">સમીક્ષા</string>
+</resources>

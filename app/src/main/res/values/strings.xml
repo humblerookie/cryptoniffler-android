@@ -1,58 +1,13 @@
 <resources>
     <string name="app_name">Crypto Niffler</string>
-
-    <string name="title_activity_splash">SplashActivity</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
-    <string name="action_settings">Settings</string>
-    <string name="login.hint_email">Email address*</string>
-    <string name="login.hint_password">Password*</string>
-    <string name="login.forgot_password">Forgot Password?</string>
-    <string name="login.try_other">-or try other ways-</string>
-    <string name="login.label.google">Google</string>
-    <string name="login.label.facebook">Facebook</string>
-    <string name="login.new_here">New here?&#160;</string>
-    <string name="login.label.signup">Sign Up</string>
-    <string name="login.label.login">Login</string>
-    <string name="title_activity_sign_up">SignUpActivity</string>
-
-
-    <string name="signup.title.registration">Registration</string>
-    <string name="login.hint_fullname">Full name*</string>
-    <string name="login.label.register">Register</string>
-
-    <string name="facebook_app_id">363927567376648</string>
-    <string name="fb_login_protocol_scheme">fb363927567376648</string>
-    <string name="title_activity_search">SearchActivity</string>
-
-    <string name="icon.close">clear</string>
-    <string name="icon.arrow_back">arrow_back</string>
-    <string name="icon.search">search</string>
     <string name="common.label.permission_settings">Settings</string>
     <string name="common.label.ok">OK</string>
     <string name="error.common.network">Network is unavailable. Please check your network connection.</string>
     <string name="error.common.something_wrong">Oops! Something is off, Please try after sometime.</string>
     <string name="error.common.request_invalid">Oops! We\'ve made a booboo!, Fixing this as we speak. Please try in sometime.</string>
     <string name="error.common.unreachable">Could not connect to our servers.\nPlease try after sometime.</string>
-    <string name="error.login.invalid_creds">Either email or password is incorrect. Please check the same.</string>
-    <string name="error.login.facebook_retrieve">Could not login with facebook</string>
-    <string name="error.login.google">Could not login with google</string>
-    <string name="movie_detail.label.produced_by">Produced by</string>
-    <string name="movie_detail.label.runtime">Runtime</string>
-    <string name="app.shortcuts.search_label">Search</string>
-    <string name="app.shortcuts.search_label_disabled">Search is temporarily disallowed</string>
-    <string name="transition_search_back" translatable="false">transition_search_back</string>
-
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-
-    <string name="action_example">Example action</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
-    <string name="nav_header_desc">Navigation header</string>
     <string name="common.label.i_am_looking">I am looking to</string>
     <string name="common.label.buy_cryptocurrency">Buy Cryptocurrency</string>
     <string name="common.label.sell_cryptocurrency">Sell Cryptocurrency</string>
@@ -69,12 +24,12 @@
     <string name="detail.content.buying_above">%s can be bought here at %s above the market rate.</string>
     <string name="detail.content.buying_below">%s can be bought here at %s below the market rate.</string>
     <string name="detail.content.buying_exactly">%s can be bought here at exactly the market rate.</string>
+    <string name="detail.content.at">at</string>
+    <string name="detail.content.here">here</string>
     <string name="detail.content.on_exchange">on %s</string>
     <string name="common.label.best_buy">Best Buy</string>
     <string name="common.label.best_sell">Best Sell</string>
-    <string name="common.label.price">\u20b9 %s</string>
     <string name="error.input.minamount">Please enter a minimum amount of 1000.</string>
-    <string name="title_activity_coin_detail">CoinDetailActivity</string>
     <string name="common.label.transfer_to">Transfer to another exchange.</string>
     <string name="common.label.trade_same">Trade in the same exchange.</string>
     <string name="common.label.retry">RETRY</string>
@@ -84,7 +39,7 @@
     <string name="common.label.network_fees">Include Network Fees</string>
     <string name="common.hint.type_a_coin_name">type a coin name like BTC..</string>
     <string name="calendar.suffix.votes">of %s votes</string>
-    <string name="calendar.suffix.percentage">%s %%</string>
+
     <string name="common_share_text">I found this app that tells you about the best buy/sell coins, check it out! \nhttps://play.google.com/store/apps/details?id=com.bariski.cryptoniffler</string>
     <string name="common.label.filter_by">Filter By</string>
     <string name="common.label.clear_all">Clear All</string>
@@ -104,11 +59,19 @@
         This is the name that users will see when interacting with this channel.
         It should describe the category of notifications that will be sent through this channel
      -->
-    <string name="default.channel_name" translatable="true">News</string>
+    <string name="default.channel_name" translatable="false">News</string>
 
     <string name="common.permission.storage_rationale">Cryptoniffler needs storage permission to improve your experience</string>
     <string name="common.permission.storage">Please provide storage permission</string>
     <string name="common.label.permission">Permission</string>
-    <string name="events.tutorial.filters">\nTap here to\napply filters.</string>
+    <string name="events.tutorial.filters">\nTap here to \n apply filters.</string>
 
+
+    <string name="drawer.title.events">Events</string>
+    <string name="drawer.title.home">Home</string>
+    <string name="drawer.title.share">Share</string>
+    <string name="drawer.title.review">Review</string>
+    <string name="calendar.suffix.percentage" translatable="false">%s %%</string>
+    <string name="common.label.price" translatable="false">\u20b9 %s</string>
+    <string name="common.suffix.percentage" translatable="false">%s %% </string>
 </resources>

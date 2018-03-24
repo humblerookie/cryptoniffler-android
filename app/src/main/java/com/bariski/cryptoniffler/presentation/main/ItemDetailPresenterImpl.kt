@@ -17,8 +17,6 @@ import com.bariski.cryptoniffler.domain.util.COIN
 import com.bariski.cryptoniffler.domain.util.EXCHANGE
 import com.bariski.cryptoniffler.presentation.common.models.GridItemDetail
 import com.bariski.cryptoniffler.presentation.common.utils.ALL
-import com.bariski.cryptoniffler.presentation.common.utils.AT
-import com.bariski.cryptoniffler.presentation.common.utils.HERE
 import com.bariski.cryptoniffler.presentation.common.utils.PERCENTAGE
 import com.bariski.cryptoniffler.presentation.main.model.GridDetailWrapper
 import io.reactivex.Single
@@ -27,6 +25,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import java.io.IOException
 import java.lang.ref.WeakReference
 import java.text.DecimalFormat
+import java.util.*
 import java.util.concurrent.TimeUnit
 
 
@@ -55,9 +54,7 @@ class ItemDetailPresenterImpl(val repository: NifflerRepository, private val sch
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
                 .subscribeBy {
-                    Log.i("ItemDetail", "1.1")
                     if (!loadFinished) {
-                        Log.i("ItemDetail", "1.2")
                         view.get()?.apply {
                             toggleProgress(false)
                             toggleDummyCards(true)
@@ -68,13 +65,11 @@ class ItemDetailPresenterImpl(val repository: NifflerRepository, private val sch
             disposable.add(repository.getBestRates(coinName, amount, ignoreFees)
                     .subscribeOn(schedulerProvider.io())
                     .doOnSubscribe {
-                        Log.i("ItemDetail", "2.1")
                         view.get()?.toggleProgress(true)
                         view.get()?.toggleError(false, null)
                     }
                     .observeOn(schedulerProvider.io())
                     .map {
-                        Log.i("ItemDetail", "2.2")
                         val bestBuy = ArrayList(it.values).sortedWith(compareByDescending({ it.buyEfficiency }))
                         val bestSell = ArrayList(it.values).sortedWith(compareByDescending({ it.sellEfficiency }))
 
@@ -101,7 +96,6 @@ class ItemDetailPresenterImpl(val repository: NifflerRepository, private val sch
                     .doAfterTerminate { view.get()?.toggleProgress(false) }
                     .subscribeBy(onSuccess = {
                         loadFinished = true
-                        Log.i("ItemDetail", "2.3")
                         analytics.itemDetailEvent(true, null, COIN, coinName!!, amount, ignoreFees)
                         view.get()?.apply {
                             toggleDummyCards(false)
@@ -110,7 +104,6 @@ class ItemDetailPresenterImpl(val repository: NifflerRepository, private val sch
                     },
                             onError = {
                                 loadFinished = true
-                                Log.i("ItemDetail", "2.4")
                                 analytics.itemDetailEvent(false, it.toString(), COIN, coinName!!, amount, ignoreFees)
                                 view.get()?.apply {
                                     toggleDummyCards(false)
@@ -127,13 +120,11 @@ class ItemDetailPresenterImpl(val repository: NifflerRepository, private val sch
             disposable.add(repository.getBestCoin(exchange, amount, ignoreFees)
                     .subscribeOn(schedulerProvider.io())
                     .doOnSubscribe {
-                        Log.i("ItemDetail", "3.1")
                         view.get()?.toggleProgress(true)
                         view.get()?.toggleError(false, null)
                     }
                     .observeOn(schedulerProvider.io())
                     .map {
-                        Log.i("ItemDetail", "3.2")
                         val bestBuy = ArrayList(it.coins).sortedWith(compareByDescending({ it.buyEfficiency }))
                         val bestSell = ArrayList(it.coins).sortedWith(compareByDescending({ it.sellEfficiency }))
 
@@ -149,13 +140,13 @@ class ItemDetailPresenterImpl(val repository: NifflerRepository, private val sch
                     .observeOn(schedulerProvider.ui())
                     .doAfterTerminate { view.get()?.toggleProgress(false) }
                     .subscribeBy(onSuccess = {
-                        Log.i("ItemDetail", "3.3")
+
                         loadFinished = true
                         analytics.itemDetailEvent(true, null, EXCHANGE, exchange, amount, ignoreFees)
                         view.get()?.setData(it)
                     },
                             onError = {
-                                Log.i("ItemDetail", "3.4")
+
                                 loadFinished = true
                                 analytics.itemDetailEvent(false, it.toString(), EXCHANGE, exchange, amount, ignoreFees)
                                 view.get()?.toggleError(true, view.get()?.getMessage(if (it is IOException) R.string.error_common_network else R.string.error_common_something_wrong))
@@ -200,21 +191,25 @@ class ItemDetailPresenterImpl(val repository: NifflerRepository, private val sch
             ret?.let {
                 var string = it
                 return if (delta != 0.0f) {
-
+                    val at = " " + context.getString(R.string.detail_content_at) + " "
+                    val here = " " + context.getString(R.string.detail_content_here) + " "
                     var exchangeReplaceMent: String? = null
                     if (exchange != null) {
                         exchangeReplaceMent = " " + context.getString(R.string.detail_content_on_exchange, exchange) + " "
-                        string = string.replace(HERE, exchangeReplaceMent)
+                        string = string.replace(here, exchangeReplaceMent)
                     }
-                    val index = string.indexOf(AT)
+
+                    val index = string.indexOf(at)
                     val wordtoSpan = SpannableString(string)
-                    wordtoSpan.setSpan(StyleSpan(Typeface.BOLD), 0, coin.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
-                    wordtoSpan.setSpan(ForegroundColorSpan(ContextCompat.getColor(context, R.color.black_54)), 0, coin.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
-                    wordtoSpan.setSpan(ForegroundColorSpan(color), index + AT.length, string.indexOf(PERCENTAGE) + 1, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
-                    wordtoSpan.setSpan(StyleSpan(Typeface.BOLD), index + AT.length, string.indexOf(PERCENTAGE) + 1, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
-                    exchangeReplaceMent?.let {
-                        wordtoSpan.setSpan(ForegroundColorSpan(ContextCompat.getColor(context, R.color.black_54)), string.indexOf(it) + 3, string.indexOf(it) + it.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
-                        wordtoSpan.setSpan(StyleSpan(Typeface.BOLD), string.indexOf(it) + 3, string.indexOf(it) + it.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+                    if (Locale.getDefault().language == "en") {
+                        wordtoSpan.setSpan(StyleSpan(Typeface.BOLD), 0, coin.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+                        wordtoSpan.setSpan(ForegroundColorSpan(ContextCompat.getColor(context, R.color.black_54)), 0, coin.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+                        wordtoSpan.setSpan(ForegroundColorSpan(color), index + at.length, string.indexOf(PERCENTAGE) + 1, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+                        wordtoSpan.setSpan(StyleSpan(Typeface.BOLD), index + at.length, string.indexOf(PERCENTAGE) + 1, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+                        exchangeReplaceMent?.let {
+                            wordtoSpan.setSpan(ForegroundColorSpan(ContextCompat.getColor(context, R.color.black_54)), string.indexOf(it) + 3, string.indexOf(it) + it.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+                            wordtoSpan.setSpan(StyleSpan(Typeface.BOLD), string.indexOf(it) + 3, string.indexOf(it) + it.length, Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+                        }
                     }
                     wordtoSpan
                 } else {

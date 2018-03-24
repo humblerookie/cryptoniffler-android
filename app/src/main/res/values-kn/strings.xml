@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name"> ್ರಿಪ್ಟೊ ನಿಫ್ಲರ್</string>
+       
+    <string name="navigation_drawer_open"> ನ್ಯಾವಿಗೇಷನ್ ಡ್ರಾಯರ್ ತೆರೆಯಿರಿ </string>
+        
+    <string name="navigation_drawer_close"> ಸಂಚರಣೆ ಡ್ರಾಯರ್ ಅನ್ನು ಮುಚ್ಚಿ </string>
+        
+    <string name="common.label.permission_settings"> ಸೆಟ್ಟಿಂಗ್ಗಳು </string>
+        
+    <string name="common.label.ok"> ಸರಿ </string>
+        
+    <string name="error.common.network"> ನೆಟ್ವರ್ಕ್ ಲಭ್ಯವಿಲ್ಲ. ದಯವಿಟ್ಟು ನಿಮ್ಮ ನೆಟ್ವರ್ಕ್ ಸಂಪರ್ಕವನ್ನು ಪರಿಶೀಲಿಸಿ. </string>
+        
+    <string name="error.common.something_wrong"> ಓಹ್! ಏನೋ ಆಫ್ ಆಗಿದೆ, ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಪ್ರಯತ್ನಿಸಿ. </string>
+        
+    <string name="error.common.request_invalid"> ಓಹ್! ನಾವು ಬೂಬೂ! ಅನ್ನು ಮಾಡಿದ್ದೇವೆ, ನಾವು ಮಾತನಾಡುವಂತೆ ಇದನ್ನು ಸರಿಪಡಿಸಿ. ದಯವಿಟ್ಟು ಸ್ವಲ್ಪ ಸಮಯದಲ್ಲಿ ಪ್ರಯತ್ನಿಸಿ. </string>
+        
+    <string name="error.common.unreachable"> ನಮ್ಮ ಸರ್ವರ್ಗಳಿಗೆ ಸಂಪರ್ಕಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. \n ಸ್ವಲ್ಪ ಸಮಯದ ನಂತರ ಪ್ರಯತ್ನಿಸಿ. </string>
+
+        
+    <string name="common.label.i_am_looking"> ನಾನು ಗೆ ನೋಡುತ್ತಿದ್ದೇನೆ</string>
+        
+    <string name="common.label.buy_cryptocurrency"> ಕ್ರಿಪ್ಟೋಕೂರ್ನ್ಸಿಯನ್ನು ಖರೀದಿಸಿ </string>
+        
+    <string name="common.label.sell_cryptocurrency"> ಕ್ರಿಪ್ಟೋಕೂರ್ನ್ಸಿಯನ್ನು ಮಾರಾಟ ಮಾಡಿ </string>
+        
+    <string name="common.label.buynsell_cryptocurrency"> <![CDATA[ಕ್ರಿಪ್ಟೊಕ್ಯೂರನ್ಸಿ ಖರೀದಿ ಮತ್ತು ಮಾರಾಟ]]> </string>
+        
+    <string name="common.label.view_exchanges"> ಬ್ರೌಸ್ ಎಕ್ಸ್ಚೇಂಜ್ </string>
+        
+    <string name="common.label.i_like_to_buy"> ನಾನು ಖರೀದಿಸಲು / ಮಾರಾಟ ಮಾಡಲು ಬಯಸುತ್ತೇನೆ </string>
+        
+    <string name="common_label_buy_at"> ನಾನು ನಲ್ಲಿ ಖರೀದಿಸಲು ಬಯಸುತ್ತೇನೆ </string>
+        
+    <string name="common.label.amount"> ನಾನು ಗೆ ಖರೀದಿಸಲು ಬಯಸುತ್ತೇನೆ </string>
+
+    <string name="common.label.equivalent_amount"> <![CDATA[ಸಮನಾದ ಬಿಟ್ನಾಣ್ಯ = <b>%s </ b>]]> </string>
+        
+    <string name="common.label.button_next"> ಮುಂದಿನ </string>
+        
+    <string name="detail.content.selling_above">%s ಅನ್ನು ಮಾರುಕಟ್ಟೆ ದರಕ್ಕಿಂತ %s ನಲ್ಲಿ ಮಾರಾಟ ಇಲ್ಲಿ ಮಾಡಬಹುದು. </string>
+        
+    <string name="detail.content.selling_below">%s ಅನ್ನು ಮಾರುಕಟ್ಟೆ ದರದ ಕೆಳಗೆ %s ನಲ್ಲಿ ಮಾರಾಟ ಇಲ್ಲಿ ಮಾಡಬಹುದು. </string>
+        
+    <string name="detail.content.selling_exactly">%s ಅನ್ನು ನಿಖರವಾಗಿ ಮಾರುಕಟ್ಟೆಯ ದರದಲ್ಲಿ ಇಲ್ಲಿ ಮಾರಾಟ ಮಾಡಬಹುದು. </string>
+        
+    <string name="detail.content.buying_above">%s ಅನ್ನು ಮಾರುಕಟ್ಟೆ ದರದ ಮೇಲೆ %s ನಲ್ಲಿ ಇಲ್ಲಿ ಕೊಂಡುಕೊಳ್ಳಬಹುದು. </string>
+        
+    <string name="detail.content.buying_below">%s ಅನ್ನು ಮಾರುಕಟ್ಟೆ ದರದ ಕೆಳಗೆ %s ನಲ್ಲಿ ಇಲ್ಲಿ ಕೊಂಡುಕೊಳ್ಳಬಹುದು. </string>
+        
+    <string name="detail.content.buying_exactly">%s ಅನ್ನು ನಿಖರವಾಗಿ ಮಾರುಕಟ್ಟೆಯ  ದರದಲ್ಲಿ ಇಲ್ಲಿ ಖರೀದಿಸಬಹುದು. </string>
+        
+    <string name="detail.content.on_exchange">%s ನಲ್ಲಿ </string>
+        
+    <string name="common.label.best_buy"> ಬೆಸ್ಟ್ ಬೈ </string>
+        
+    <string name="common.label.best_sell"> ಅತ್ಯುತ್ತಮ ಮಾರಾಟ </string>
+        
+    <string name="error.input.minamount"> ದಯವಿಟ್ಟು ಕನಿಷ್ಟ 1000 ಅನ್ನು ನಮೂದಿಸಿ. </string>
+        
+    <string name="common.label.transfer_to"> ಇನ್ನೊಂದು ವಿನಿಮಯಕ್ಕೆ ವರ್ಗಾಯಿಸಿ. </string>
+        
+    <string name="common.label.trade_same"> ಅದೇ ವಿನಿಮಯದಲ್ಲಿ ವ್ಯಾಪಾರ. </string>
+        
+    <string name="common.label.retry"> ಮರುಪ್ರಯತ್ನಿಸಿ </string>
+        
+    <string name="common.label.fee_info"> ಶುಲ್ಕ ಮಾಹಿತಿ </string>
+        
+    <string name="common.info.fee_info"> ಇದು ನಮ್ಮ ಲೆಕ್ಕಾಚಾರಗಳಲ್ಲಿ ಕ್ರಿಪ್ಟೋ ನಾಣ್ಯದ ನೆಟ್ವರ್ಕ್ ಶುಲ್ಕವನ್ನು ಸೇರಿಸಬೇಕೆ ಎಂದು ನಮಗೆ ಅನುಮತಿಸುತ್ತದೆ. ನೀವು ಅದನ್ನು ಖರೀದಿಸಿದ ವಿನಿಮಯದ ಹೊರಗೆ ನೀವು ವರ್ಗಾಯಿಸಿದಾಗ ಪ್ರತಿ ಕ್ರಿಪ್ಟೋಗೆ ಸಂಬಂಧಿಸಿದ ನೆಟ್ವರ್ಕ್ ಶುಲ್ಕವನ್ನು ಹೊಂದಿದೆ. </string>
+        
+    <string name="search.label.oops_no_results"> ಓಹ್! ಯಾವುದೇ ಫಲಿತಾಂಶಗಳು ಕಂಡುಬಂದಿಲ್ಲ. </string>
+        
+    <string name="common.label.network_fees"> ನೆಟ್ವರ್ಕ್ ಶುಲ್ಕವನ್ನು ಸೇರಿಸಿ </string>
+        
+    <string name="common.hint.type_a_coin_name"> BTC ನಂತಹ ನಾಣ್ಯದ ಹೆಸರನ್ನು ಟೈಪ್ ಮಾಡಿ .. </string>
+        
+    <string name="calendar.suffix.votes">%s ಮತಗಳು </string>
+        
+    <string name="common_share_text"> ನಾನು ಉತ್ತಮವಾದ ಖರೀದಿ / ಮಾರಾಟದ ನಾಣ್ಯಗಳ ಬಗ್ಗೆ ಹೇಳುವ ಈ ಅಪ್ಲಿಕೇಶನ್ ಅನ್ನು ಕಂಡುಕೊಂಡಿದ್ದೇನೆ, ಅದನ್ನು ಪರಿಶೀಲಿಸಿ! \nhttps: //play.google.com/store/apps/details?id=com.bariski.cryptoniffler</string>
+        
+    <string name="common.label.filter_by"> ಮೂಲಕ ಫಿಲ್ಟರ್ ಮಾಡಿ </string>
+        
+    <string name="common.label.clear_all"> ಎಲ್ಲಾ ತೆರವುಗೊಳಿಸಿ </string>
+        
+    <string name="common.label.close"> ಮುಚ್ಚು </string>stri
+        
+    <string name="common.label.apply"> ಅನ್ವಯಿಸು </string>a
+        
+    <string name="filter.label.coins"> ನಾಣ್ಯಗಳು </string>
+        
+    <string name="filter.label.category"> ವರ್ಗ </string>
+        
+    <string name="filter.label.period"> ಅವಧಿ </string>
+     
+    <string name="filter.label.period_from">ದಿಂದ </string>
+        
+    <string name="filter.label.to"> ಗೆ </string>
+        
+    <string name="calendar.label.credits"> coinmarketcal.com ನಿಂದ ನಡೆಸಲ್ಪಡುತ್ತಿದೆ </string>
+        
+    <string name="calendar.error.empty"> ಓಹ್! ನಮಗೆ ಯಾವುದೇ ಘಟನೆಗಳು ಕಂಡುಬಂದಿಲ್ಲ. \n ಫಿಲ್ಟರ್ಗಳನ್ನು ಬದಲಿಸಲು ಪ್ರಯತ್ನಿಸಿ. </string>
+        
+    <string name="common.tutorial.events"> \n \n \n ಕ್ರಿಪ್ಟೋ ಘಟನೆಗಳನ್ನು ವೀಕ್ಷಿಸಲು ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ. </string>
+        
+    <string name="common.permission.storage_rationale"> ಕ್ರಿಪ್ಟೋನಿಫ್ಲರ್ ನಿಮ್ಮ ಅನುಭವವನ್ನು ಸುಧಾರಿಸಲು ಶೇಖರಣಾ ಅನುಮತಿ ಅಗತ್ಯವಿದೆ </string>
+        
+    <string name="common.permission.storage"> ದಯವಿಟ್ಟು ಶೇಖರಣಾ ಅನುಮತಿಯನ್ನು ಒದಗಿಸಿ </string>
+        
+    <string name="common.label.permission"> ಅನುಮತಿ </string>
+        
+    <string name="events.tutorial.filters"> \n ಫಿಲ್ಟರ್ಗಳನ್ನು ಅನ್ವಯಿಸಲು \n ಇಲ್ಲಿ ಟ್ಯಾಪ್ ಮಾಡಿ. </string>
+
+    <string name="detail.content.at">ನಲ್ಲಿ</string>
+
+    <string name="detail.content.here">ಇಲ್ಲಿ</string>
+
+    <string name="drawer.title.events">ಘಟನೆಗಳು</string>
+        
+    <string name="drawer.title.home">ಮೂಲ</string>
+        
+    <string name="drawer.title.share">ಸ್ನೇಹಿತರಿಗೆ ತಿಳಿಸಿ</string>
+        
+    <string name="drawer.title.review">ವಿಮರ್ಶೆ</string>
+</resources>

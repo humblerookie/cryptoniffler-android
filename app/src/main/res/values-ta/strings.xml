@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">கிரிப்டோனிஃளேர்</string>
+        
+    <string name="navigation_drawer_open"> வழிசெலுத்தல் டிராயரைத் திற </string>
+        
+    <string name="navigation_drawer_close"> வழிசெலுத்தல் டிராயரை மூடுக </string>
+        
+    <string name="common.label.permission_settings"> அமைப்புகள் </string>
+        
+    <string name="common.label.ok"> சரி </string>
+        
+    <string name="error.common.network">நெட்வொர்க் கிடைக்கவில்லை. உங்கள் பிணைய இணைப்பைச் சரிபார்க்கவும்</string>
+        
+    <string name="error.common.something_wrong"> அச்சச்சோ! ஏதோ ஒன்று உண்டு, தயவுசெய்து சிறிது முயற்சி செய்து பாருங்கள். </string>
+        
+    <string name="error.common.request_invalid"> அச்சச்சோ! நாங்கள் ஒரு booboo செய்தோம் !, நாங்கள் பேசும் போது இதை சரிசெய்கிறோம் தயவுசெய்து சிறிது நேரம் முயற்சி செய்யுங்கள். </string>
+        
+    <string name="error.common.unreachable"> எங்கள் சேவையகங்களுடன் இணைக்க முடியவில்லை. \n தயவுசெய்து சிறிது முயற்சி செய்க. </string>
+
+    <string name="common.label.i_am_looking"> நான் பார்க்கிறேன்</string>
+        
+    <string name="common.label.buy_cryptocurrency"> வாங்கவும் வாங்கவும்</string>
+        
+    <string name="common.label.sell_cryptocurrency"> Cryptocurrency விற்கவும்</string>
+        
+    <string name="common.label.buynsell_cryptocurrency"> <![CDATA[கொள்முதல் மற்றும் விற்பனை Cryptocurrency]]> </string>
+        
+    <string name="common.label.view_exchanges"> Exchange உலாவுக </string>
+        
+    <string name="common.label.i_like_to_buy">நான் வாங்க மற்றும் விற்க விரும்புகிறேன்</string>
+        
+    <string name="common_label_buy_at"> நான் இல் வாங்க விரும்புகிறேன்</string>
+        
+    <string name="common.label.amount"> நான் வாங்க விரும்புகிறேன் </string>
+        
+    <string name="common.label.equivalent_amount"> <![CDATA[சமமான முதற் = <b>%s</b>]]></string>
+        
+    <string name="common.label.button_next"> அடுத்த </string>
+        
+    <string name="detail.content.selling_above">%s சந்தை விகிதத்திற்கு மேலே %s இல் இங்கே விற்கப்படலாம். </string>
+        
+    <string name="detail.content.selling_below">%s சந்தை விகிதத்திற்கு கீழே %s இல் இங்கே விற்கப்படலாம். </string>
+        
+    <string name="detail.content.selling_exactly">%s இல் சரியாக சந்தை விகிதத்தில் இங்கே விற்கப்படலாம். </string>
+        
+    <string name="detail.content.buying_above">%s இல் %s சந்தை விகிதம் மேற்கண்டவற்றைப் இங்கே வாங்கி முடியும். </string>
+        
+    <string name="detail.content.buying_below">%s இல் %s சந்தை விகிதம் கீழே உள்ள இங்கே வாங்கி முடியும். </string>
+        
+    <string name="detail.content.buying_exactly">%s இல் ங்கள் சரியாக சந்தை விகிதத்தில் இங்கே வாங்கி முடியும். </string>
+
+    <string name="detail.content.at">இல்</string>
+    <string name="detail.content.here">இங்கே</string>
+        
+    <string name="detail.content.on_exchange">%s இல்</string>
+        
+    <string name="common.label.best_buy"> சிறந்த வாங்க </string>
+        
+    <string name="common.label.best_sell"> சிறந்த விற்பனையானது </string>
+        
+    <string name="error.input.minamount"> 1000 என்ற குறைந்தபட்ச அளவு உள்ளிடவும். </string>
+        
+    <string name="common.label.transfer_to"> மற்றொரு பரிமாற்றத்திற்கு மாற்றவும் </string>
+        
+    <string name="common.label.trade_same"> அதே பரிமாற்றத்தில் வர்த்தகம். </string>
+        
+    <string name="common.label.retry"> மீண்டும் </string>
+        
+    <string name="common.label.fee_info"> கட்டணம் தகவல் </string>
+        
+    <string name="common.info.fee_info"> இது எங்களுக்கு எங்கள் கணிப்புகளில் ஒரு க்ரிப்டோ நாணயம் \ இன்நெட்வொர்க் கட்டணம் சேர்க்கலாமா வேண்டாமா என்பதைத் தெரிவிக்கும். ஒவ்வொரு கிரிப்டோவிற்கும் உங்கள் கணக்குக்கு ஒரு பரிமாற்றத்திலிருந்து மாற்றும் போது பிணைய கட்டணத்துடன் தொடர்புடையது. </string>
+        
+    <string name="search.label.oops_no_results"> அச்சச்சோ! முடிவுகள் எதுவும் இல்லை. </string>
+        
+    <string name="common.label.network_fees"> நெட்வொர்க் கட்டணம் அடங்கும்</string>
+        
+    <string name="common.hint.type_a_coin_name"> BTC போன்ற ஒரு நாணயத்தின் பெயரை உள்ளிடவும். </string>
+
+    <string name="calendar.suffix.votes">%s வாக்குகள்</string>
+        
+    <string name="common_share_text"> நான் இந்த பயன்பாட்டை கண்டுபிடித்தேன் சிறந்த வாங்க / விற்க நாணயங்கள், அதை பாருங்கள்! \nhttps: //play.google.com/store/apps/details? id = com.bariski.cryptoniffler </string>
+        
+    <string name="common.label.filter_by"> வடிகட்டும் </string>
+        
+    <string name="common.label.clear_all"> அனைத்தையும் அழிக்கவும்</string>
+        
+    <string name="common.label.close"> மூடு </string>
+        
+    <string name="common.label.apply">விண்ணப்பிக்கவும்</string>
+
+        
+    <string name="filter.label.coins"> நாணயங்கள் </string>
+        
+    <string name="filter.label.category"> வகை </string>
+        
+    <string name="filter.label.period"> காலம் </string>
+        
+    <string name="filter.label.period_from"> </string>
+       
+    <string name="filter.label.to"> க்கு </string>
+        
+    <string name="calendar.label.credits"> coinmarketcal.com ஆல் இயக்கப்படுகிறது </string>
+        
+    <string name="calendar.error.empty">அச்சச்சோ! எந்த நிகழ்வுகளையும் கண்டுபிடிக்க முடியவில்லை.\n வடிகட்டிகளை மாற்ற முயற்சிக்கவும்.</string>
+        
+    <string name="common.tutorial.events"> \n \n \n இங்கே தட்டவும் \n நிகழ்வுகள் தொடரவும். </string>
+        
+    <string name="common.permission.storage_rationale"> உங்கள் அனுபவத்தை மேம்படுத்துவதற்கு </string>
+        
+    <string name="common.permission.storage"> சேமிப்பிட அனுமதிகளை வழங்கவும் </string>
+        
+    <string name="common.label.permission"> அனுமதி </string>
+        
+    <string name="events.tutorial.filters"> \n வடிப்பான்களை விண்ணப்பிக்க இங்கே தட்டவும். </string>
+
+    <string name="drawer.title.events">நிகழ்வுகள்</string>
+        
+    <string name="drawer.title.home">துவக்கம்</string>
+        
+    <string name="drawer.title.share">நண்பர்களிடம் சொல்</string>
+        
+    <string name="drawer.title.review">விமர்சனம்</string>
+
+
+</resources>
