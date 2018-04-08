@@ -29,6 +29,8 @@
     <color name="white_54">#8Affffff</color>
     <color name="white_70">#B3ffffff</color>
     <color name="white_87">#DEffffff</color>
+    <color name="primary_54">#8A1E88E5</color>
+    <color name="primary_87">#DE1E88E5</color>
     <color name="solid_grey">#666666</color>
     <color name="background_dark">#ff333333</color>
     <color name="white">@android:color/white</color>
@@ -37,9 +39,11 @@
     <color name="peach">#f4786f</color>
     <color name="red_400">#ef5350</color>
     <color name="red_500">#f44336</color>
+    <color name="red_700">#D32F2F</color>
     <color name="red_900">#b71c1c</color>
     <color name="green_400">#66BB6A</color>
     <color name="green_500">#4CAF50</color>
+    <color name="green_700">#388E3C</color>
     <color name="green_900">#1B5E20</color>
     <color name="scrim">#99323232</color>
     <color name="calendar_strip">#FFAB00</color>

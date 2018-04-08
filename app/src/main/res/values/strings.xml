@@ -71,7 +71,18 @@
     <string name="drawer.title.home">Home</string>
     <string name="drawer.title.share">Share</string>
     <string name="drawer.title.review">Review</string>
+    <string name="drawer.title.arbitrage">Arbitrage</string>
+
     <string name="calendar.suffix.percentage" translatable="false">%s %%</string>
     <string name="common.label.price" translatable="false">\u20b9 %s</string>
     <string name="common.suffix.percentage" translatable="false">%s %% </string>
+    <string name="arbitrage.label.trade_amount">Trade Amount</string>
+    <string name="arbitrage.label.total_fees">Total Fees</string>
+    <string name="arbitrage.label.profit">Profit</string>
+    <string name="arbitrage.label.triangle">Triangle</string>
+    <string name="arbitrage.label.direct">Direct</string>
+    <string name="error.arbitrage.empty">No arbitrages found.</string>
+    <string name="arbitrage.description">Arbitrage is the way to make money based on price differences among different exchanges. If an exchange allows buying a coin at \u20b910 and another exchange lets you sell this coin at  \u20b912. You could make money by buying at the lower priced exchange and selling at higher.\n\nTypically there are two kinds of arbitrages Direct and Triangle.\nWhereas direct arbitrage involves the same coin, Triangle  arbitrage involves two or more coins.\n\nTriangle arbitrage often has higher probability of rewards than direct arbitrage.</string>
+    <string name="arbitrage.disclaimer">- Ensure the arbitrage coin wallets on the corresponding exchanges are working.\n- There is enough volume at your final sell price before engaging in arbitrage</string>
+
 </resources>

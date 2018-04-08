@@ -9,11 +9,13 @@ import com.bariski.cryptoniffler.domain.common.Schedulers
 import com.bariski.cryptoniffler.domain.model.Coin
 import com.bariski.cryptoniffler.domain.model.Exchange
 import com.bariski.cryptoniffler.domain.repository.DeviceDataStore
+import com.bariski.cryptoniffler.domain.repository.EventsRepository
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
 import com.bariski.cryptoniffler.domain.util.COIN
 import com.bariski.cryptoniffler.domain.util.EXCHANGE
 import com.bariski.cryptoniffler.domain.util.Event
 import com.bariski.cryptoniffler.domain.util.Screen
+import com.bariski.cryptoniffler.presentation.arbitrage.ArbitrageFragment
 import com.bariski.cryptoniffler.presentation.calendar.CalendarFragment
 import com.bariski.cryptoniffler.presentation.common.BasePresenter
 import com.bariski.cryptoniffler.presentation.common.models.AmountInput
@@ -26,7 +28,7 @@ import io.reactivex.processors.PublishProcessor
 import io.reactivex.rxkotlin.subscribeBy
 import java.lang.ref.WeakReference
 
-class MainPresenterImpl(val repository: NifflerRepository, private val deviceStore: DeviceDataStore, val adapter: GridItemAdapter, private val schedulerProvider: Schedulers, val analytics: Analytics) : BasePresenter<MainView>, MainPresenter {
+class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository: EventsRepository, private val deviceStore: DeviceDataStore, val adapter: GridItemAdapter, private val schedulerProvider: Schedulers, val analytics: Analytics) : BasePresenter<MainView>, MainPresenter {
 
 
     private lateinit var viewWeak: WeakReference<MainView>
@@ -63,6 +65,7 @@ class MainPresenterImpl(val repository: NifflerRepository, private val deviceSto
                 R.id.share -> shareApp()
                 R.id.review -> reviewApp()
                 R.id.calendar -> navigateToEvents()
+                R.id.arbitrage -> navigateToArbitrage()
                 R.id.home -> navigateToMain(true)
             }
         }
@@ -72,8 +75,20 @@ class MainPresenterImpl(val repository: NifflerRepository, private val deviceSto
         viewWeak.get()?.let {
             it.toggleSearch(false)
             it.toggleFilter(true)
+            it.toggleInfo(false)
             state = -1
             it.moveToNext(CalendarFragment.getInstance(), true)
+        }
+
+    }
+
+    private fun navigateToArbitrage() {
+        viewWeak.get()?.let {
+            it.toggleSearch(false)
+            it.toggleFilter(false)
+            state = -2
+            it.toggleInfo(true)
+            it.moveToNext(ArbitrageFragment.getInstance(), true)
         }
 
     }
@@ -164,7 +179,7 @@ class MainPresenterImpl(val repository: NifflerRepository, private val deviceSto
                     navigateToCoinSelection(false)
                 }
             }
-            0, -2 -> {
+            0, -2, -3 -> {
                 navigateToMain(false)
             }
             else -> viewWeak.get()?.exit()
@@ -176,6 +191,7 @@ class MainPresenterImpl(val repository: NifflerRepository, private val deviceSto
         viewWeak.get()?.let {
             it.toggleSearch(false)
             it.toggleFilter(false)
+            it.toggleInfo(false)
             it.moveToNext(BuyNSellFragment.getInstance(), isForward)
         }
     }
@@ -235,6 +251,7 @@ class MainPresenterImpl(val repository: NifflerRepository, private val deviceSto
 
     override fun initView(view: MainView, savedState: Bundle?, args: Bundle?) {
         viewWeak = WeakReference(view)
+
         if (savedState != null) {
             savedState.apply {
                 btcRate = getFloat("btcRate")
@@ -246,12 +263,17 @@ class MainPresenterImpl(val repository: NifflerRepository, private val deviceSto
                 when (state) {
                     1 -> view.toggleSearch(true)
                     -1 -> view.toggleFilter(true)
+                    -2 ->view.toggleInfo(true)
                 }
             }
         } else {
             if (!repository.hasDrawerBeenShown()) {
                 viewWeak.get()?.toggleDrawer(true)
                 repository.setDrawerShown(true)
+            }
+            if (!eventsRepository.isAuthenticated()) {
+                disposable.add(eventsRepository.getAndSaveToken().subscribeOn(schedulerProvider.io()).observeOn(schedulerProvider.ui())
+                        .subscribeBy(onError = { Log.e("MainPresenter", it.toString()) }, onSuccess = {}))
             }
             analytics.sendScreenView(Screen.MAIN)
             viewWeak.get()?.moveToNext(BuyNSellFragment.getInstance(), true)

@@ -9,6 +9,7 @@ import com.bariski.cryptoniffler.data.api.models.BestExchangeResponse
 import com.bariski.cryptoniffler.data.api.models.CoinsAndExchanges
 import com.bariski.cryptoniffler.data.storage.KeyValueStore
 import com.bariski.cryptoniffler.data.utils.getAssetFromDevice
+import com.bariski.cryptoniffler.domain.model.Arbitrage
 import com.bariski.cryptoniffler.domain.model.Coin
 import com.bariski.cryptoniffler.domain.model.Exchange
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
@@ -29,7 +30,8 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
     private val mapOfExchanges = HashMap<String, Exchange>()
     private val KEY_TIMESTAMP_COINSNEXCHANGES = "timestamp_coinsnexchanges"
     private val KEY_DATA_COINSNEXCHANGES = "data_coinsnexchanges"
-    private val KEY_FLAG_NAV_DRAWER_SHOWN = "flag_nav_drawer_shown"
+    private val KEY_FLAG_NAV_DRAWER_SHOWN = "flag_nav_drawer_shown_v2"
+    private val KEY_ARB_SHOWN = "flag_arb_shown"
     private val CACHE_EXPIRATION = AlarmManager.INTERVAL_HOUR * 2
 
 
@@ -38,8 +40,13 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
         remoteConfig.fetch(cacheExpiration).addOnCompleteListener({
             if (it.isSuccessful) {
                 remoteConfig.activateFetched()
+                //interceptor.setHost(remoteConfig.getString(BASE_URL))
             }
         })
+    }
+
+    override fun getArbitrage(): Single<Arbitrage> {
+        return api.getArbitrage()
     }
 
     override fun getCoins(): Single<ArrayList<Coin>> {
@@ -51,10 +58,10 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
                 keyValueStore.storeString(KEY_DATA_COINSNEXCHANGES, moshi.adapter<CoinsAndExchanges>(CoinsAndExchanges::class.java).toJson(it))
                 ArrayList(it.coins)
             }.onErrorReturn {
-                        val cNe = getCachedData()
-                        updateMaps(cNe)
-                        ArrayList(cNe.coins)
-                    }
+                val cNe = getCachedData()
+                updateMaps(cNe)
+                ArrayList(cNe.coins)
+            }
 
 
         } else {
@@ -96,10 +103,10 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
                 keyValueStore.storeString(KEY_DATA_COINSNEXCHANGES, moshi.adapter<CoinsAndExchanges>(CoinsAndExchanges::class.java).toJson(it))
                 ArrayList(it.exchanges)
             }.onErrorReturn {
-                        val cNe = getCachedData()
-                        updateMaps(cNe)
-                        ArrayList(cNe.exchanges)
-                    }
+                val cNe = getCachedData()
+                updateMaps(cNe)
+                ArrayList(cNe.exchanges)
+            }
         } else {
             return Single.just(1).map {
                 if (mapOfCoins.size == 0) {
@@ -138,6 +145,11 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
     override fun hasDrawerBeenShown() = keyValueStore.getBoolean(KEY_FLAG_NAV_DRAWER_SHOWN)
     override fun setDrawerShown(b: Boolean) {
         keyValueStore.storeBoolean(KEY_FLAG_NAV_DRAWER_SHOWN, b)
+    }
+
+    override fun hasArbDialogBeenShown() = keyValueStore.getBoolean(KEY_ARB_SHOWN)
+    override fun setArbDialogBeenShown(b: Boolean) {
+        keyValueStore.storeBoolean(KEY_ARB_SHOWN, b)
     }
 
 }

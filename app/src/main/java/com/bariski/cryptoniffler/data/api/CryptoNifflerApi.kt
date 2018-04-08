@@ -3,6 +3,7 @@ package com.bariski.cryptoniffler.data.api
 import com.bariski.cryptoniffler.data.api.models.BestCoinResponse
 import com.bariski.cryptoniffler.data.api.models.BestExchangeResponse
 import com.bariski.cryptoniffler.data.api.models.CoinsAndExchanges
+import com.bariski.cryptoniffler.domain.model.Arbitrage
 import com.bariski.cryptoniffler.domain.model.CoinRate
 import io.reactivex.Single
 import retrofit2.http.GET
@@ -22,4 +23,8 @@ interface CryptoNifflerApi {
 
     @GET("/getCoinsAndExchanges")
     fun getCoinsAndExchanges(): Single<CoinsAndExchanges>
+
+    @GET("/arbitrage")
+    fun getArbitrage(): Single<Arbitrage>
+
 }

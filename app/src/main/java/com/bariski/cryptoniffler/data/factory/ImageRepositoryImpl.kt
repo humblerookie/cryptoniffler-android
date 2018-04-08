@@ -3,10 +3,12 @@ package com.bariski.cryptoniffler.data.factory
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.drawable.Drawable
 import android.support.v4.content.ContextCompat
 import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.presentation.common.models.ImageRequest
 import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 
@@ -26,18 +28,26 @@ class ImageRepositoryImpl(val context: Context) : ImageLoader {
         request.errorImage?.let {
             requestOptions.error(it)
         }
+
         if (request.activity != null && !request.activity.isDestroyed) {
 
-            Glide.with(request.activity)
+            var builder: RequestBuilder<Drawable> = Glide.with(request.activity)
                     .setDefaultRequestOptions(requestOptions)
                     .load(request.url)
-                    .into(request.target)
+            if (request.makeCircular) {
+                builder = builder.apply(RequestOptions.circleCropTransform())
+            }
+            builder.into(request.target)
+
 
         } else if (request.fragment != null && !request.fragment.isDetached) {
-            Glide.with(request.fragment)
+            var builder: RequestBuilder<Drawable> = Glide.with(request.fragment)
                     .setDefaultRequestOptions(requestOptions)
                     .load(request.url)
-                    .into(request.target)
+            if (request.makeCircular) {
+                builder = builder.apply(RequestOptions.circleCropTransform())
+            }
+            builder.into(request.target)
 
         }
     }

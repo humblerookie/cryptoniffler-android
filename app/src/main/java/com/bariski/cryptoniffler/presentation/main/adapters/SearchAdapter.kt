@@ -45,9 +45,9 @@ class SearchAdapter constructor(val loader: ImageLoader, private val itemClickLi
             name.text = item.getItemName()
             symbol.text = item.symbol
             if (item.getItemImage() != null) {
-                imageRepository.loadImage(ImageRequest(icon, R.drawable.placeholder, item.getItemImage().toString(), null, name.context as Activity, R.drawable.select_all))
+                imageRepository.loadImage(ImageRequest(icon, R.drawable.placeholder, item.getItemImage().toString(), null, name.context as Activity, R.drawable.select_all, false))
             } else {
-                imageRepository.loadImage(ImageRequest(icon, R.drawable.placeholder, "", null, name.context as Activity, R.drawable.select_all))
+                imageRepository.loadImage(ImageRequest(icon, R.drawable.placeholder, "", null, name.context as Activity, R.drawable.select_all, false))
             }
 
         }

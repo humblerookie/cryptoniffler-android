@@ -37,9 +37,9 @@ class GridItemAdapter @Inject constructor(private val imageRepository: ImageLoad
             this.item = item
             name.text = item.getItemName()
             if (item.getItemImage() != null) {
-                imageRepository.loadImage(ImageRequest(icon, R.drawable.placeholder, item.getItemImage().toString(), null, name.context as Activity, R.drawable.select_all))
+                imageRepository.loadImage(ImageRequest(icon, R.drawable.placeholder, item.getItemImage().toString(), null, name.context as Activity, R.drawable.select_all, false))
             } else {
-                imageRepository.loadImage(ImageRequest(icon, R.drawable.placeholder, "", null, name.context as Activity, R.drawable.select_all))
+                imageRepository.loadImage(ImageRequest(icon, R.drawable.placeholder, "", null, name.context as Activity, R.drawable.select_all, false))
             }
 
         }

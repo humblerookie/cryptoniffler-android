@@ -11,6 +11,14 @@
 
     <entry>
         <key>eventsBaseUrl</key>
-        <value>https://coinmarketcal.com/api</value>
+        <value>https://api.coinmarketcal.com</value>
+    </entry>
+    <entry>
+        <key>event_client</key>
+        <value>192_6bi7jlgzgpc8ggsc0088s0ow0okk0okkc0c4844oc4gkcc88gw</value>
+    </entry>
+    <entry>
+        <key>event_secret</key>
+        <value>1nesruz5qxno4wosccs4o0kwgko88w4kcskw00gs04owok8ogw</value>
     </entry>
 </defaultsMap><!-- END xml_defaults -->

@@ -17,4 +17,5 @@ interface MainView : BaseView {
     fun getCommonPresenter(): MainPresenter
     fun toggleDrawer(b: Boolean)
     fun requestStoragePermission()
+    fun toggleInfo(b: Boolean)
 }

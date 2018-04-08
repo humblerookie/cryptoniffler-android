@@ -10,9 +10,14 @@
             android:title="@string/drawer.title.home" />
 
         <item
+            android:id="@+id/arbitrage"
+            android:icon="@drawable/ic_arbitrage"
+            android:title="@string/drawer.title.arbitrage" />
+        <item
             android:id="@+id/calendar"
             android:icon="@drawable/ic_event"
             android:title="@string/drawer.title.events" />
+
         <item
             android:id="@+id/share"
             android:icon="@drawable/ic_menu_share"

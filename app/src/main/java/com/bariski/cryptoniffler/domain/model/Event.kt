@@ -1,14 +1,15 @@
 package com.bariski.cryptoniffler.domain.model
 
-import android.os.Parcel
 import android.os.Parcelable
 import android.support.annotation.Keep
 import com.bariski.cryptoniffler.presentation.calendar.models.CalendarItem
 import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 import java.lang.StringBuilder
 import java.text.SimpleDateFormat
 
 @Keep
+@Parcelize
 data class Event(@Json(name = "id") val id: String,
                  @Json(name = "title") val eventTitle: String?,
                  @Json(name = "coins") val coins: List<CalendarCoin>?,
@@ -21,25 +22,8 @@ data class Event(@Json(name = "id") val id: String,
                  @Json(name = "vote_count") val voteCount: Int,
                  @Json(name = "positive_vote_count") val positiveCount: Int,
                  @Json(name = "percentage") val percentage: Float,
-                 @Json(name = "categories") val categories: List<String>,
+                 @Json(name = "categories") val categories: List<CalendarCategory>,
                  @Json(name = "can_occur_before") val canOccurPrior: Boolean) : CalendarItem, Parcelable {
-
-
-    constructor(parcel: Parcel) : this(
-            parcel.readString(),
-            parcel.readString(),
-            parcel.createTypedArrayList(CalendarCoin),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readByte() != 0.toByte(),
-            parcel.readInt(),
-            parcel.readInt(),
-            parcel.readFloat(),
-            parcel.createStringArrayList(),
-            parcel.readByte() != 0.toByte())
 
     override fun getTitle(): String {
         val sb = StringBuilder()
@@ -80,39 +64,10 @@ data class Event(@Json(name = "id") val id: String,
 
     override fun getEventTimeInMillis() = dateFormatInput.parse(date).time
 
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(id)
-        parcel.writeString(eventTitle)
-        parcel.writeTypedList(coins)
-        parcel.writeString(date)
-        parcel.writeString(created)
-        parcel.writeString(desc)
-        parcel.writeString(proof)
-        parcel.writeString(source)
-        parcel.writeByte(if (isHot) 1 else 0)
-        parcel.writeInt(voteCount)
-        parcel.writeInt(positiveCount)
-        parcel.writeFloat(percentage)
-        parcel.writeStringList(categories)
-        parcel.writeByte(if (canOccurPrior) 1 else 0)
-    }
-
-    override fun describeContents(): Int {
-        return 0
-    }
-
-    companion object CREATOR : Parcelable.Creator<Event> {
+    companion object {
 
         val dateFormatInput = SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ssZ")
         val dateFormatOutput = SimpleDateFormat("dd MMM yyyy")
-
-        override fun createFromParcel(parcel: Parcel): Event {
-            return Event(parcel)
-        }
-
-        override fun newArray(size: Int): Array<Event?> {
-            return arrayOfNulls(size)
-        }
     }
 
 }

@@ -6,7 +6,10 @@ import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.analytics.Analytics
 import com.bariski.cryptoniffler.data.factory.HttpStatus
 import com.bariski.cryptoniffler.domain.common.Schedulers
+import com.bariski.cryptoniffler.domain.model.CalendarCategory
+import com.bariski.cryptoniffler.domain.model.CalendarCoin
 import com.bariski.cryptoniffler.domain.model.Event
+import com.bariski.cryptoniffler.domain.model.FilterItem
 import com.bariski.cryptoniffler.domain.repository.EventsRepository
 import io.reactivex.Single
 import io.reactivex.rxkotlin.subscribeBy
@@ -29,8 +32,8 @@ class CalendarPresenterImpl(repository: EventsRepository, schedulers: Schedulers
         outState?.apply {
             putString("startDate", startDate)
             putString("endDate", endDate)
-            putStringArrayList("coins", ArrayList<String>(selectedCoins))
-            putStringArrayList("categories", ArrayList(selectedCategories))
+            putParcelableArrayList("coins", ArrayList(selectedCoins))
+            putParcelableArrayList("categories", ArrayList(selectedCategories))
             putParcelableArrayList("events", events)
         }
     }
@@ -50,9 +53,21 @@ class CalendarPresenterImpl(repository: EventsRepository, schedulers: Schedulers
                             .observeOn(schedulers.io())
                             .subscribeOn(schedulers.io())
                             .flatMap {
-                                val coinsString = selectedCoins.joinToString(",")
-                                val catString = selectedCategories.joinToString(",")
-                                repository.getEvents(coinsString, catString, startDate, endDate, initPage, MAX)
+                                val selCoins = java.util.ArrayList<String>()
+                                val selCats = java.util.ArrayList<String>()
+                                for (k in selectedCoins) {
+                                    selCoins.add(k.getIdentifier())
+                                }
+                                for (k in selectedCategories) {
+                                    selCats.add(k.getIdentifier())
+                                }
+                                val coinsString = selCoins.joinToString(",")
+                                val catString = selCats.joinToString(",")
+                                if (repository.isAuthenticated()) {
+                                    repository.getEvents(coinsString, catString, startDate, endDate, initPage, MAX)
+                                } else {
+                                    repository.getAndSaveToken().flatMap { repository.getEvents(coinsString, catString, startDate, endDate, initPage, MAX) }
+                                }
 
                             }
                             .observeOn(schedulers.ui())
@@ -112,16 +127,16 @@ class CalendarPresenterImpl(repository: EventsRepository, schedulers: Schedulers
         endDate = null
         page = 1
         isLoadCompleted = false
-        selectedCoins.clear()
-        selectedCategories.clear()
+        (selectedCoins as HashSet).clear()
+        (selectedCategories as HashSet).clear()
         loadNextPage()
     }
 
-    override fun onFilterApply(coins: HashSet<String>?, categories: HashSet<String>?, from: Array<Int>?, to: Array<Int>?) {
+    override fun onFilterApply(coins: Set<FilterItem>?, categories: Set<FilterItem>?, from: Array<Int>?, to: Array<Int>?) {
         page = 1
         isLoadCompleted = false
-        coins?.let { selectedCoins.addAll(it) }
-        categories?.let { selectedCategories.addAll(it) }
+        coins?.let { (selectedCoins as HashSet).addAll(it) }
+        categories?.let { (selectedCategories as HashSet).addAll(it) }
         from?.let {
             it[1]++
             val sb = StringBuilder()
@@ -175,8 +190,8 @@ class CalendarPresenterImpl(repository: EventsRepository, schedulers: Schedulers
             state.apply {
                 startDate = getString("startDate")
                 endDate = getString("endDate")
-                selectedCoins.addAll(getStringArrayList("coins"))
-                selectedCategories.addAll(getStringArrayList("categories"))
+                (selectedCoins as HashSet).addAll(getParcelableArrayList<CalendarCoin>("coins"))
+                (selectedCategories as HashSet).addAll(getParcelableArrayList<CalendarCategory>("categories"))
                 val list: ArrayList<Event>? = getParcelableArrayList<Event>("events")
                 if (list == null || list.isEmpty()) {
                     loadNextPage()

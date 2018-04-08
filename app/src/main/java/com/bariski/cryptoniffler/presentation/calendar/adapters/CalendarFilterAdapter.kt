@@ -7,8 +7,11 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.CompoundButton
 import com.bariski.cryptoniffler.R
+import com.bariski.cryptoniffler.domain.model.FilterItem
+import java.util.HashSet
+import kotlin.collections.ArrayList
 
-class CalendarFilterAdapter(private val data: List<String>, private var selected: HashSet<String>) : RecyclerView.Adapter<CalendarFilterAdapter.ViewHolder>() {
+class CalendarFilterAdapter(private val data: List<FilterItem>, private var selected: Set<FilterItem>) : RecyclerView.Adapter<CalendarFilterAdapter.ViewHolder>() {
 
     private val filteredData = ArrayList(data)
 
@@ -19,7 +22,7 @@ class CalendarFilterAdapter(private val data: List<String>, private var selected
     fun filterDataSet(s: String) {
         filteredData.clear()
         if (s.isNotEmpty()) {
-            data.filterTo(filteredData) { it.toLowerCase().contains(s) }
+            data.filterTo(filteredData) { it.getDisplayTitle().toLowerCase().contains(s) }
         } else {
             filteredData.addAll(data)
 
@@ -27,7 +30,7 @@ class CalendarFilterAdapter(private val data: List<String>, private var selected
         notifyDataSetChanged()
     }
 
-    fun getSelected(): HashSet<String> {
+    fun getSelected(): Set<FilterItem> {
         return selected
     }
 
@@ -35,17 +38,17 @@ class CalendarFilterAdapter(private val data: List<String>, private var selected
         holder?.setData(filteredData[position], selected.contains(filteredData[position]))
     }
 
-    class ViewHolder(view: View, val selected: HashSet<String>) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, val selected: Set<FilterItem>) : RecyclerView.ViewHolder(view) {
         val item: CheckBox = view as CheckBox
-        fun setData(s: String, isChecked: Boolean) {
-            item.text = s
+        fun setData(s: FilterItem, isChecked: Boolean) {
+            item.text = s.getDisplayTitle()
             item.tag = s
             item.isChecked = isChecked
             item.setOnCheckedChangeListener({ button: CompoundButton, _ ->
                 if (button.isChecked) {
-                    selected.add(button.tag.toString())
+                    (selected as HashSet).add(button.tag as FilterItem)
                 } else {
-                    selected.remove(button.tag.toString())
+                    (selected as HashSet).remove(button.tag as FilterItem)
                 }
             })
         }

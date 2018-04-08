@@ -95,7 +95,7 @@ class ItemDetailAdapter @Inject constructor(private val loader: ImageLoader) : R
             price.text = context.getString(R.string.common_label_price, formatter.format(d.price))
             summary.text = d.summary
             loader.loadImage(ImageRequest(icon, R.drawable.placeholder, d.image
-                    ?: "", null, context as Activity?, R.drawable.placeholder))
+                    ?: "", null, context as Activity?, R.drawable.placeholder, false))
 
         }
 

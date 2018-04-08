@@ -2,6 +2,7 @@ package com.bariski.cryptoniffler.presentation.calendar
 
 import android.util.Log
 import com.bariski.cryptoniffler.domain.common.Schedulers
+import com.bariski.cryptoniffler.domain.model.FilterItem
 import com.bariski.cryptoniffler.domain.repository.EventsRepository
 import com.bariski.cryptoniffler.presentation.common.BasePresenter
 import io.reactivex.disposables.CompositeDisposable
@@ -10,8 +11,8 @@ import java.lang.ref.WeakReference
 
 abstract class CalendarFilterPresenter(val repository: EventsRepository, val schedulers: Schedulers) : BasePresenter<CalendarView>, CalendarPresenter {
 
-    val selectedCoins = HashSet<String>()
-    val selectedCategories = HashSet<String>()
+    val selectedCoins: Set<FilterItem> = HashSet<FilterItem>()
+    val selectedCategories: Set<FilterItem> = HashSet<FilterItem>()
 
     var view = WeakReference<CalendarView>(null)
     var disposable = CompositeDisposable()
@@ -19,33 +20,61 @@ abstract class CalendarFilterPresenter(val repository: EventsRepository, val sch
     override fun onFilterCoinSelected() {
         view.get()?.toggleFilterMode(0)
         disposable.add(
-                repository.getCoins()
-                        .subscribeOn(schedulers.io())
-                        .observeOn(schedulers.ui())
-                        .subscribeBy(
-                                onSuccess = {
-                                    view.get()?.toggleFilterMode(1)
-                                    view.get()?.setFilterCoinData(it, HashSet(selectedCoins))
-                                }
-                                , onError = { Log.e("Filter Coins", it.toString()) }
-                        )
+                if (repository.isAuthenticated()) {
+                    repository.getCoins()
+                            .subscribeOn(schedulers.io())
+                            .observeOn(schedulers.ui())
+                            .subscribeBy(
+                                    onSuccess = {
+                                        view.get()?.toggleFilterMode(1)
+                                        view.get()?.setFilterCoinData(it, HashSet(selectedCoins))
+                                    }
+                                    , onError = { Log.e("Filter Coins", it.toString()) }
+                            )
+                } else {
+                    repository.getAndSaveToken().flatMap { repository.getCoins() }
+                            .subscribeOn(schedulers.io())
+                            .observeOn(schedulers.ui())
+                            .subscribeBy(
+                                    onSuccess = {
+                                        view.get()?.toggleFilterMode(1)
+                                        view.get()?.setFilterCoinData(it, HashSet(selectedCoins))
+                                    }
+                                    , onError = { Log.e("Filter Coins", it.toString()) }
+                            )
+                }
         )
     }
 
     override fun onFilterCategorySelected() {
         view.get()?.toggleFilterMode(0)
         disposable.add(
-                repository.getCategories()
-                        .subscribeOn(schedulers.io())
-                        .observeOn(schedulers.ui())
-                        .subscribeBy(
-                                onSuccess = {
-                                    view.get()?.toggleFilterMode(1)
-                                    view.get()?.setFilterCategoryData(it, HashSet(selectedCategories))
-                                }
-                                , onError = { Log.e("Filter Coins", it.toString()) }
-                        )
-        )
-    }
+                if (repository.isAuthenticated()) {
+                    repository.getCategories()
+                            .subscribeOn(schedulers.io())
+                            .observeOn(schedulers.ui())
+                            .subscribeBy(
+                                    onSuccess = {
+                                        view.get()?.toggleFilterMode(1)
+                                        view.get()?.setFilterCategoryData(it, HashSet(selectedCategories))
+                                    }
+                                    , onError = { Log.e("Filter Coins", it.toString()) }
+                            )
+                } else {
+                    repository.getAndSaveToken().flatMap {
+                        repository.getCategories()
+                    }.subscribeOn(schedulers.io())
+                            .observeOn(schedulers.ui())
+                            .subscribeBy(
+                                    onSuccess = {
+                                        view.get()?.toggleFilterMode(1)
+                                        view.get()?.setFilterCategoryData(it, HashSet(selectedCategories))
+                                    }
+                                    , onError = {
+                                Log.e("Filter Coins", it.toString())
+                            })
 
+
+                })
+    }
 }

@@ -1,6 +1,8 @@
 package com.bariski.cryptoniffler.presentation.injection
 
+import com.bariski.cryptoniffler.presentation.arbitrage.ArbitrageFragment
 import com.bariski.cryptoniffler.presentation.calendar.CalendarFragment
+import com.bariski.cryptoniffler.presentation.calendar.inject.ArbitrageModule
 import com.bariski.cryptoniffler.presentation.calendar.inject.CalendarModule
 import com.bariski.cryptoniffler.presentation.common.BaseInjectFragment
 import com.bariski.cryptoniffler.presentation.injection.scopes.PerFragment
@@ -16,6 +18,10 @@ abstract class FragmentBindingModule {
     @PerFragment
     @ContributesAndroidInjector(modules = [CalendarModule::class])
     abstract fun calendarFragment(): CalendarFragment
+
+    @PerFragment
+    @ContributesAndroidInjector(modules = [ArbitrageModule::class])
+    abstract fun arbitrageFragment(): ArbitrageFragment
 
     @PerFragment
     @ContributesAndroidInjector(modules = [GridSelectModule::class])

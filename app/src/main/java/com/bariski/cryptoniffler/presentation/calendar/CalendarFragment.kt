@@ -19,6 +19,7 @@ import android.widget.EditText
 import android.widget.TextView
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.model.Event
+import com.bariski.cryptoniffler.domain.model.FilterItem
 import com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter
 import com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarFilterAdapter
 import com.bariski.cryptoniffler.presentation.common.BaseInjectFragment
@@ -195,9 +196,9 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
                 clearFilter.setOnClickListener({
                     dismiss()
                     presenter?.onFilterClear()
-                    coinAdapter?.getSelected()?.clear()
+                    coinAdapter?.getSelected()?.let { (it as HashSet).clear() }
                     coinAdapter?.notifyDataSetChanged()
-                    categoryAdapter?.getSelected()?.clear()
+                    categoryAdapter?.getSelected()?.let { (it as HashSet).clear() }
                     categoryAdapter?.notifyDataSetChanged()
                     fromDate.text = formatter.format(Calendar.getInstance().time)
                     val cal = Calendar.getInstance()
@@ -276,7 +277,7 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
         lastSelected = view
     }
 
-    override fun setFilterCoinData(data: List<String>, selected: HashSet<String>) {
+    override fun setFilterCoinData(data: List<FilterItem>, selected: Set<FilterItem>) {
         if (isAlive()) {
             coinAdapter = CalendarFilterAdapter(data, selected)
             listFilter.adapter = coinAdapter
@@ -285,7 +286,7 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
         }
     }
 
-    override fun setFilterCategoryData(data: List<String>, selected: HashSet<String>) {
+    override fun setFilterCategoryData(data: List<FilterItem>, selected: Set<FilterItem>) {
         if (isAlive()) {
             categoryAdapter = CalendarFilterAdapter(data, selected)
             listFilter.adapter = categoryAdapter

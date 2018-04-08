@@ -30,6 +30,7 @@ import javax.inject.Inject
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, MainView {
 
+
     @Inject
     lateinit var presenter: MainPresenter
 
@@ -54,6 +55,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
 
         filter.setOnClickListener({
+            val f = fragmentManager.findFragmentById(R.id.container)
+            if (f != null && f is View.OnClickListener) {
+                f.onClick(it)
+            }
+        })
+        info.setOnClickListener({
             val f = fragmentManager.findFragmentById(R.id.container)
             if (f != null && f is View.OnClickListener) {
                 f.onClick(it)
@@ -112,7 +119,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             startActivity(goToMarket)
         } catch (e: ActivityNotFoundException) {
             startActivity(Intent(Intent.ACTION_VIEW,
-                    Uri.parse("http://play.google.com/store/apps/details?id=" + packageName)))
+                    Uri.parse("http://play.google.com/store/apps/details?id=$packageName")))
         }
 
     }
@@ -197,6 +204,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                     })
                     .show()
         }
+    }
+
+    override fun toggleInfo(b: Boolean) {
+        info.visibility = if (b) View.VISIBLE else View.GONE
     }
 
     override fun getCommonPresenter() = presenter

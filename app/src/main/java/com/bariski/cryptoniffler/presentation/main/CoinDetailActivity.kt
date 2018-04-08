@@ -51,9 +51,9 @@ class CoinDetailActivity : BaseActivity(), CoinDetailView {
             toolbar.title = gridDetailWrapper.name
             title = gridDetailWrapper.name.substring(0, 1).toUpperCase() + gridDetailWrapper.name.substring(1).toLowerCase()
             if (gridDetailWrapper.img != null) {
-                loader.loadImage(ImageRequest(mainImg, R.drawable.placeholder, gridDetailWrapper.img, null, this, R.drawable.placeholder))
+                loader.loadImage(ImageRequest(mainImg, R.drawable.placeholder, gridDetailWrapper.img, null, this, R.drawable.placeholder, false))
             } else {
-                loader.loadImage(ImageRequest(mainImg, R.drawable.placeholder, "", null, this, R.drawable.placeholder))
+                loader.loadImage(ImageRequest(mainImg, R.drawable.placeholder, "", null, this, R.drawable.placeholder, false))
             }
         }
     }
@@ -64,7 +64,7 @@ class CoinDetailActivity : BaseActivity(), CoinDetailView {
             val exchange = intent.getStringExtra("exchange")
             title = if (exchange == null || exchange.isEmpty()) intent.getStringExtra("coin") else exchange
             toolbar.title = if (exchange == null || exchange.isEmpty()) intent.getStringExtra("coin") else exchange
-            loader.loadImage(ImageRequest(mainImg, R.drawable.placeholder, "", null, this, R.drawable.placeholder))
+            loader.loadImage(ImageRequest(mainImg, R.drawable.placeholder, "", null, this, R.drawable.placeholder, false))
             adapter.showLoadingCards = visible
             adapter.notifyDataSetChanged()
         }
