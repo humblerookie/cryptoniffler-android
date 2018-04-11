@@ -16,7 +16,11 @@ import kotlinx.android.synthetic.main.item_direct_arbitrage.view.*
 
 class DirectAdapter(private val data: List<DirectArbitrage>, private val imageLoader: ImageLoader) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return DirectViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_direct_arbitrage, parent, false), imageLoader)
+        return if (viewType == 0) {
+            DirectViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_direct_arbitrage, parent, false), imageLoader)
+        } else {
+            TextHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_text, parent, false))
+        }
     }
 
     override fun getItemCount() = if (data.isEmpty()) 1 else data.size
