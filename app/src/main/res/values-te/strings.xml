@@ -129,4 +129,25 @@
         ట్రయాంగిల్ ఆర్బిట్రేజ్ తరచుగా ప్రత్యక్ష ఆర్బిట్రేజ్ కంటే రివార్డుల అధిక సంభావ్యతను కలిగి ఉంటుంది.</string>
 
     <string name="arbitrage.disclaimer">-సంబంధిత ఎక్స్ఛేంజ్లలో ఆర్బిట్రేజ్ నాణెం పర్సులు పని చేస్తున్నాయని నిర్ధారించుకోండి.\n-ఆర్బిట్రేజ్లో పాల్గొనే ముందు అమ్మకం ధరలో తగినంత వాల్యూమ్ ఉంది</string>
+
+
+    <string name="common.label.filter_from"> ఎక్కడ </string>
+        
+    <string name="common.label.filter_to"> అని అన్నారు </string>
+        
+    <string name="error.common.request_progress_wait"> దయచేసి వేచి ఉండండి అభ్యర్థన ప్రోగ్రెస్లో ఉంది. </string>
+        
+    <string name="rating.title.spread_the_word"> ప్రచారం </string>
+        
+    <string name="rating.title.lets_be_honest"> మాకు తెలుసు </string>
+        
+    <string name="rating.title.work_together"> వారికి చెప్పండి. </string>
+        
+    <string name="rating.title.like_money"> - మీరు డబ్బు చేయాలనుకుంటున్నారా. </string>
+        
+    <string name="rating.title.weve_targets"> - మీ స్నేహితులకు సహాయపడండి. </string>
+        
+    <string name="rating.title.rate"> రేటింగ్ </string>
+        
+    <string name="rating.title.share"> భాగస్వామ్యం </string>
 </resources>

@@ -132,4 +132,15 @@
         முக்கோணத் தணிக்கை பெரும்பாலும் நேரடியான இடைவெளியை விட வெகுமதிகளை அதிக நிகழ்தகவைக் கொண்டிருக்கிறது.</string>
     <string name="arbitrage.disclaimer">-தொடர்புடைய பரிமாற்றங்கள் மீது நடுவர் நாணய பணப்பைகள் வேலை செய்கின்றன என்பதை உறுதி செய்யவும்\n- நடுவழியில் ஈடுபடுவதற்கு முன், விற்கப்பட்ட விலையில் போதுமான அளவு உள்ளது</string>
 
+
+    <string name="common.label.filter_from"> எங்கே</string>
+    <string name="common.label.filter_to">என்று கூறினார்</string>
+    <string name="error.common.request_progress_wait"> காத்திருக்கவும் கோரிக்கை செயல்பாட்டில் உள்ளது.</string>
+    <string name="rating.title.spread_the_word"> விளம்பரப்படுத்து </string>
+    <string name="rating.title.lets_be_honest"> எங்களுக்கு தெரியும் </string>
+    <string name="rating.title.work_together"> அவர்களுக்கு சொல்லவும். </string>
+    <string name="rating.title.like_money"> - நீங்கள் பணம் சம்பாதிக்க வேண்டும் </string>
+    <string name="rating.title.weve_targets"> - உங்கள் நண்பர்களுக்கு உதவ விரும்புகிறேன். </string>
+    <string name="rating.title.rate"> மதிப்பீடு</string>
+    <string name="rating.title.share"> பகிர் </string>
 </resources>

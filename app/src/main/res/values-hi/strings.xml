@@ -105,4 +105,15 @@
         त्रिभुज अंतरपणन में अक्सर प्रत्यक्ष मध्यस्थता की तुलना में पुरस्कार की अधिक संभावना होती है।</string>
 
     <string name="arbitrage.disclaimer">-सुनिश्चित करें कि संबंधित एक्सचेंजों पर आर्बिट्रेज सिक्का पर्स काम कर रहे हैं।\n-मध्यस्थता में संलग्न होने से पहले बिक्री मूल्य पर पर्याप्त मात्रा में है</string>
+
+    <string name="common.label.filter_from">कहाँ से</string>
+    <string name="common.label.filter_to">कहा को</string>
+    <string name="error.common.request_progress_wait">कृपया प्रतीक्षा करें। अनुरोध प्रगति पर है.</string>
+    <string name="rating.title.spread_the_word">प्रचार कीजिये</string>
+    <string name="rating.title.lets_be_honest">हम जानते है</string>
+    <string name="rating.title.work_together">उन्हें बताओ.</string>
+    <string name="rating.title.like_money">-आप पैसा बनाना चाहते हैं.</string>
+    <string name="rating.title.weve_targets">- अपने दोस्तों की मदद करना चाहते हैं.</string>
+    <string name="rating.title.rate">रेटिंग दें</string>
+    <string name="rating.title.share">शेयर करें</string>
 </resources>

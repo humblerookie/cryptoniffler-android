@@ -130,4 +130,15 @@
         ত্রিভুজ মধ্যস্থতাগুলি প্রায়ই সরাসরি সালিসের চেয়ে পুরষ্কারের উচ্চতর সম্ভাবনা থাকে।</string>
 
     <string name="arbitrage.disclaimer">-সংশ্লিষ্ট বিনিময়গুলির উপর সালিস মুদ্রা wallets কাজ করছে তা নিশ্চিত করুন।\n-সালিসি মধ্যে জড়িত আগে বিক্রি মূল্য যথেষ্ট পরিমাণে আছে</string>
+
+    <string name="common.label.filter_from">কোথা থেকে</string>
+    <string name="common.label.filter_to">বলেছিলেন</string>
+    <string name="error.common.request_progress_wait">দয়া করে অপেক্ষা করুন অনুরোধ অগ্রগতি হয়েছে</string>
+    <string name="rating.title.spread_the_word">প্রোমোশনাল ফর্ম</string>
+    <string name="rating.title.lets_be_honest">আমরা জানি</string>
+    <string name="rating.title.work_together">তাদের বলো</string>
+    <string name="rating.title.like_money">- আপনি অর্থ উপার্জন করতে চান.</string>
+    <string name="rating.title.weve_targets">- আপনার বন্ধুদের সাহায্য করতে চান.</string>
+    <string name="rating.title.rate">রেটিং অনুমতি দিন</string>
+    <string name="rating.title.share">ভাগ</string>
 </resources>

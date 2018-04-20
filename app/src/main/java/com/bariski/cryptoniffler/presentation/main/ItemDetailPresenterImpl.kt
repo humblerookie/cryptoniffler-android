@@ -240,7 +240,7 @@ class ItemDetailPresenterImpl(val repository: NifflerRepository, private val sch
     override fun initView(view: CoinDetailView, savedState: Bundle?, args: Bundle?) {
         this.view = WeakReference(view)
         val state = savedState ?: args!!
-        state?.apply {
+        state.apply {
             ignoreFees = getBoolean("ignoreFees")
             coin = getString("coin")
             exchange = getString("exchange")

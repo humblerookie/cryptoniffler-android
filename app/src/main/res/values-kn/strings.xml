@@ -132,4 +132,25 @@
         ತ್ರಿಕೋಣದ ಮಧ್ಯಸ್ಥಿಕೆ ಸಾಮಾನ್ಯವಾಗಿ ನೇರ ಮಧ್ಯಸ್ಥಿಕೆಗಿಂತ ಹೆಚ್ಚಿನ ಪ್ರತಿಫಲವನ್ನು ಹೊಂದಿದೆ.</string>
     <string name="arbitrage.disclaimer">-ಅನುಗುಣವಾದ ಎಕ್ಸ್ಚೇಂಜ್ಗಳಲ್ಲಿ ಆರ್ಬಿಟ್ರೇಜ್ ನಾಣ್ಯ ತೊಗಲಿನ ಚೀಲಗಳು ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿವೆ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ.\n-ಮಧ್ಯಸ್ಥಿಕೆಗೆ ಮುಂಚಿತವಾಗಿ ಮಾರಾಟ ಬೆಲೆಗೆ ಸಾಕಷ್ಟು ಪರಿಮಾಣವಿದೆ</string>
 
+    <string name="common.label.filter_from"> ಎಲ್ಲಿ ಗೆ</ string>
+
+        
+    <string name="common.label.filter_to">ಹೇಳಲಾಗಿದೆ ಗೆ</string>
+        
+    <string name="error.common.request_progress_wait"> ದಯವಿಟ್ಟು ನಿರೀಕ್ಷಿಸಿ ವಿನಂತಿಯು ಪ್ರಗತಿಯಲ್ಲಿದೆ.</string>
+        
+    <string name="rating.title.spread_the_word">ಉತ್ತೇಜಿಸಿ</string>
+        
+    <string name="rating.title.lets_be_honest"> ನಮಗೆ ತಿಳಿದಿದೆ </string>
+        
+    <string name="rating.title.work_together"> ಅವರಿಗೆ ತಿಳಿಸಿ. </string>
+        
+    <string name="rating.title.like_money"> - ನೀವು ಹಣವನ್ನು ಮಾಡಲು ಬಯಸುತ್ತೀರಿ.</string>
+        
+    <string name="rating.title.weve_targets"> - ನಿಮ್ಮ ಸ್ನೇಹಿತರಿಗೆ ಸಹಾಯ ಮಾಡಲು.</string>
+        
+    <string name="rating.title.rate">ರೇಟಿಂಗ್</string>
+        
+    <string name="rating.title.share">ಹಂಚಿಕೊಳ್ಳಿ</string>
+
 </resources>

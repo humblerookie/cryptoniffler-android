@@ -49,6 +49,7 @@ class CoinDetailActivity : BaseActivity(), CoinDetailView {
             list.adapter = adapter
             adapter.setItems(gridDetailWrapper.items)
             toolbar.title = gridDetailWrapper.name
+            toolbar_layout.title = gridDetailWrapper.name
             title = gridDetailWrapper.name.substring(0, 1).toUpperCase() + gridDetailWrapper.name.substring(1).toLowerCase()
             if (gridDetailWrapper.img != null) {
                 loader.loadImage(ImageRequest(mainImg, R.drawable.placeholder, gridDetailWrapper.img, null, this, R.drawable.placeholder, false))
@@ -96,7 +97,7 @@ class CoinDetailActivity : BaseActivity(), CoinDetailView {
                 if (snackbar == null) {
                     snackbar = Snackbar.make(container, error!!, Snackbar.LENGTH_LONG)
                             .setAction(getString(R.string.common_label_retry)) {
-                                presenter?.onRetry()
+                                presenter.onRetry()
                             }
                             .setDuration(Snackbar.LENGTH_INDEFINITE)
                             .setActionTextColor(ContextCompat.getColor(this, R.color.colorAccent))

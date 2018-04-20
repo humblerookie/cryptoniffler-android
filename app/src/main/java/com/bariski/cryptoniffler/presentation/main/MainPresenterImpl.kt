@@ -74,8 +74,8 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
     private fun navigateToEvents() {
         viewWeak.get()?.let {
             it.toggleSearch(false)
-            it.toggleFilter(true)
             it.toggleInfo(false)
+            it.toggleFilter(true)
             state = -1
             it.moveToNext(CalendarFragment.getInstance(), true)
         }
@@ -263,7 +263,8 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
                 when (state) {
                     1 -> view.toggleSearch(true)
                     -1 -> view.toggleFilter(true)
-                    -2 ->view.toggleInfo(true)
+                    -2 -> view.toggleInfo(true)
+
                 }
             }
         } else {

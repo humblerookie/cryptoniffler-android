@@ -11,7 +11,7 @@ import com.bariski.cryptoniffler.domain.model.FilterItem
 import java.util.HashSet
 import kotlin.collections.ArrayList
 
-class CalendarFilterAdapter(private val data: List<FilterItem>, private var selected: Set<FilterItem>) : RecyclerView.Adapter<CalendarFilterAdapter.ViewHolder>() {
+class FilterItemAdapter(private val data: List<FilterItem>, private var selected: Set<FilterItem>) : RecyclerView.Adapter<FilterItemAdapter.ViewHolder>() {
 
     private val filteredData = ArrayList(data)
 

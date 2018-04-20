@@ -41,12 +41,12 @@ class AmountFragment : BaseFragment() {
             presenter.infoClicked()
             showInfo()
         })
-        view.findViewById<CheckBox>(R.id.includeFees).setOnCheckedChangeListener({ _, b -> presenter?.onIncludeFeeChanged(b) })
+        view.findViewById<CheckBox>(R.id.includeFees).setOnCheckedChangeListener({ _, b -> presenter.onIncludeFeeChanged(b) })
 
         next.setOnClickListener {
             val s = inrInput.text.toString()
             if (!s.isEmpty() && s.toLong() >= 1000) {
-                presenter?.onNext()
+                presenter.onNext()
             } else {
                 Toast.makeText(activity, R.string.error_input_minamount, Toast.LENGTH_SHORT).show()
             }
@@ -59,8 +59,9 @@ class AmountFragment : BaseFragment() {
             if (id == EditorInfo.IME_ACTION_DONE) {
                 next.performClick()
                 true
+            } else {
+                false
             }
-            false
         })
         inrInput.requestFocus()
         return view
@@ -97,7 +98,7 @@ class AmountFragment : BaseFragment() {
             val imgr: InputMethodManager = activity.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imgr.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY)
         }
-        presenter?.onAmountScreenRefresh()
+        presenter.onAmountScreenRefresh()
     }
 
     override fun onPause() {

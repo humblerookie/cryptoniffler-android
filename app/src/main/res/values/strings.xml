@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">Crypto Niffler</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="common.label.permission_settings">Settings</string>
@@ -40,7 +39,7 @@
     <string name="common.hint.type_a_coin_name">type a coin name like BTC..</string>
     <string name="calendar.suffix.votes">of %s votes</string>
 
-    <string name="common_share_text">I found this app that tells you about the best buy/sell coins, check it out! \nhttps://play.google.com/store/apps/details?id=com.bariski.cryptoniffler</string>
+    <string name="common_share_text">I made easy money using this crypto arbitrage app, check it out! \nhttps://play.google.com/store/apps/details?id=com.bariski.cryptoniffler</string>
     <string name="common.label.filter_by">Filter By</string>
     <string name="common.label.clear_all">Clear All</string>
     <string name="common.label.close">Close</string>
@@ -84,5 +83,16 @@
     <string name="error.arbitrage.empty">No profitable arbitrages at the moment. Check back in some time.</string>
     <string name="arbitrage.description">Arbitrage is the way to make money based on price differences among different exchanges. If an exchange allows buying a coin at \u20b910 and another exchange lets you sell this coin at  \u20b912. You could make money by buying at the lower priced exchange and selling at higher.\n\nTypically there are two kinds of arbitrages Direct and Triangle.\nWhereas direct arbitrage involves the same coin, Triangle  arbitrage involves two or more coins.\n\nTriangle arbitrage often has higher probability of rewards than direct arbitrage.</string>
     <string name="arbitrage.disclaimer">- Ensure the arbitrage coin wallets on the corresponding exchanges are working.\n- There is enough volume at your final sell price before engaging in arbitrage</string>
+
+    <string name="common.label.filter_from">From</string>
+    <string name="common.label.filter_to">To</string>
+    <string name="error.common.request_progress_wait">Please wait. Request is in progress.</string>
+    <string name="rating.title.spread_the_word">Spread The Word</string>
+    <string name="rating.title.lets_be_honest">Lets be honest</string>
+    <string name="rating.title.work_together">Lets work together.</string>
+    <string name="rating.title.like_money">- You like making money.</string>
+    <string name="rating.title.weve_targets">- We\’ve got download targets.</string>
+    <string name="rating.title.rate">Rate Us</string>
+    <string name="rating.title.share">Share</string>
 
 </resources>

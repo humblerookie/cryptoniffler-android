@@ -17,29 +17,33 @@ class ArbitrageAdapter(val arbitrage: Arbitrage, val imageLoader: ImageLoader) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return when (viewType) {
-            0 -> TitleViewHolder(inflater.inflate(R.layout.item_label_arbitrage, parent, false))
-            1 -> DirectViewHolder(inflater.inflate(R.layout.item_list, parent, false), imageLoader)
+            0 -> DisclaimerViewHolder(inflater.inflate(R.layout.item_disclaimer, parent, false))
+            1 -> TitleViewHolder(inflater.inflate(R.layout.item_label_arbitrage, parent, false))
+            2 -> DirectViewHolder(inflater.inflate(R.layout.item_list, parent, false), imageLoader)
             else -> TriangleViewHolder(inflater.inflate(R.layout.item_list, parent, false), imageLoader)
         }
     }
 
-    override fun getItemCount(): Int = 4
+    override fun getItemCount(): Int = 5
 
     override fun getItemViewType(position: Int): Int {
         return when (position) {
-            0, 2 -> 0
-            1 -> 1
-            else -> 2
+            0 -> 0
+            1, 3 -> 1
+            2 -> 2
+            else -> 3
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         when (getItemViewType(position)) {
             0 -> {
-                val context = (holder as TitleViewHolder).label.context
-                holder.bindData(context.getString(if (position == 0) R.string.arbitrage_label_direct else R.string.arbitrage_label_triangle))
             }
-            1 -> (holder as DirectViewHolder).bindData(arbitrage.direct)
+            1 -> {
+                val context = (holder as TitleViewHolder).label.context
+                holder.bindData(context.getString(if (position == 1) R.string.arbitrage_label_direct else R.string.arbitrage_label_triangle))
+            }
+            2 -> (holder as DirectViewHolder).bindData(arbitrage.direct)
             else -> (holder as TriangleViewHolder).bindData(arbitrage.triangle)
         }
     }
@@ -51,6 +55,8 @@ class ArbitrageAdapter(val arbitrage: Arbitrage, val imageLoader: ImageLoader) :
             label.text = data
         }
     }
+
+    private class DisclaimerViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     private class DirectViewHolder(view: View, val imageLoader: ImageLoader) : RecyclerView.ViewHolder(view) {
         val list: RecyclerView = view as RecyclerView

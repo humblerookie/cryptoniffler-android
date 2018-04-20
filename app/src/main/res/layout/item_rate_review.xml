@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_normal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/calendarHeader"
+            style="@style/PaddingNormal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_teal"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/margin_normal"
+            android:paddingRight="@dimen/margin_normal">
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/TextMedium"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_small"
+                android:drawableLeft="@drawable/ic_volume"
+                android:drawablePadding="@dimen/margin_atomic"
+                android:gravity="center_vertical"
+                android:text="@string/rating.title.spread_the_word"
+                android:textColor="@color/white_87"
+                android:textSize="@dimen/font_medium" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/regular"
+            android:paddingEnd="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_small"
+            android:paddingTop="@dimen/margin_normal"
+            android:text="@string/rating.title.lets_be_honest"
+            android:textColor="@color/black_54"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_huge"
+            android:fontFamily="@font/regular"
+            android:paddingEnd="@dimen/margin_small"
+            android:paddingTop="@dimen/margin_normal"
+            android:text="@string/rating.title.like_money"
+            android:textColor="@color/black_87"
+            android:textSize="@dimen/font_small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_huge"
+            android:fontFamily="@font/regular"
+            android:paddingEnd="@dimen/margin_small"
+            android:paddingTop="@dimen/margin_small"
+            android:text="@string/rating.title.weve_targets"
+            android:textColor="@color/black_87"
+            android:textSize="@dimen/font_small" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:fontFamily="@font/regular"
+            android:paddingEnd="@dimen/margin_small"
+            android:paddingStart="@dimen/margin_small"
+            android:paddingTop="@dimen/margin_normal"
+            android:text="@string/rating.title.work_together"
+            android:textColor="@color/black_54"
+            android:textSize="@dimen/font_normal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/review"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/button_grey"
+                android:fontFamily="@font/medium"
+                android:gravity="center"
+                android:padding="@dimen/margin_normal"
+                android:text="@string/rating.title.rate"
+                android:textAllCaps="true"
+                android:textColor="@color/white_87"
+                android:textSize="@dimen/font_normal" />
+
+            <TextView
+                android:id="@+id/share"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@color/button_yellow"
+                android:fontFamily="@font/medium"
+                android:gravity="center"
+                android:padding="@dimen/margin_normal"
+                android:text="@string/rating.title.share"
+                android:textAllCaps="true"
+                android:textColor="@color/black_54"
+                android:textSize="@dimen/font_normal" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.v7.widget.CardView>
