@@ -132,7 +132,7 @@
         ತ್ರಿಕೋಣದ ಮಧ್ಯಸ್ಥಿಕೆ ಸಾಮಾನ್ಯವಾಗಿ ನೇರ ಮಧ್ಯಸ್ಥಿಕೆಗಿಂತ ಹೆಚ್ಚಿನ ಪ್ರತಿಫಲವನ್ನು ಹೊಂದಿದೆ.</string>
     <string name="arbitrage.disclaimer">-ಅನುಗುಣವಾದ ಎಕ್ಸ್ಚೇಂಜ್ಗಳಲ್ಲಿ ಆರ್ಬಿಟ್ರೇಜ್ ನಾಣ್ಯ ತೊಗಲಿನ ಚೀಲಗಳು ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿವೆ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಿ.\n-ಮಧ್ಯಸ್ಥಿಕೆಗೆ ಮುಂಚಿತವಾಗಿ ಮಾರಾಟ ಬೆಲೆಗೆ ಸಾಕಷ್ಟು ಪರಿಮಾಣವಿದೆ</string>
 
-    <string name="common.label.filter_from"> ಎಲ್ಲಿ ಗೆ</ string>
+    <string name="common.label.filter_from"> ಎಲ್ಲಿ ಗೆ</string>
 
         
     <string name="common.label.filter_to">ಹೇಳಲಾಗಿದೆ ಗೆ</string>
