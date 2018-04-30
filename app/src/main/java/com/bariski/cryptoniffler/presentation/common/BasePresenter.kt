@@ -4,7 +4,7 @@ import android.os.Bundle
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.util.*
 
-open interface BasePresenter<T> {
+interface BasePresenter<T> {
 
     fun initView(view: T, savedState: Bundle?, args: Bundle?)
 

@@ -31,9 +31,9 @@ class DirectAdapter(private val data: List<DirectArbitrage>, private val imageLo
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         if (getItemViewType(position) == 0) {
-            (holder as DirectViewHolder)?.bind(data[position])
+            (holder as DirectViewHolder).bind(data[position])
         } else {
-            (holder as TextHolder)?.bindData(holder.view.context.getString(R.string.error_arbitrage_empty))
+            (holder as TextHolder).bindData(holder.view.context.getString(R.string.error_arbitrage_empty))
         }
     }
 
@@ -47,21 +47,24 @@ class DirectAdapter(private val data: List<DirectArbitrage>, private val imageLo
         val profit = view.profit
         val seed = view.amount
         val fees = view.fees
+        val res = view.context.resources
+        val bigIconSize = ((res.getDimension(R.dimen.width_exchange) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
+        val smallIconSize = ((res.getDimension(R.dimen.dp20) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
 
         fun bind(data: DirectArbitrage) {
             profit.text = data.amount.toInt().toString()
             fees.text = data.fees.toInt().toString()
             seed.text = data.seed.toInt().toString()
 
-            data.coin.imageUrl?.let {
-                imageLoader.loadImage(ImageRequest(srcCoinImage, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true))
-                imageLoader.loadImage(ImageRequest(destCoinImage, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true))
+            data.coin.imageUrl.let {
+                imageLoader.loadImage(ImageRequest(srcCoinImage, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, smallIconSize))
+                imageLoader.loadImage(ImageRequest(destCoinImage, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, smallIconSize))
             }
             data.from.imageUrl.let {
-                imageLoader.loadImage(ImageRequest(srcImage, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true))
+                imageLoader.loadImage(ImageRequest(srcImage, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, bigIconSize))
             }
             data.to.imageUrl.let {
-                imageLoader.loadImage(ImageRequest(destImage, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true))
+                imageLoader.loadImage(ImageRequest(destImage, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, bigIconSize))
             }
             summarySource.text = Html.fromHtml(data.from.summary)
             summaryDest.text = Html.fromHtml(data.to.summary)

@@ -33,8 +33,8 @@
     <color name="primary_87">#DE1E88E5</color>
     <color name="solid_grey">#666666</color>
     <color name="background_dark">#ff333333</color>
-    <color name="white">@android:color/white</color>
-    <color name="black">@android:color/black</color>
+    <color name="white">#FFF</color>
+    <color name="black">#000</color>
     <color name="background_super_dark">#ff292929</color>
     <color name="peach">#f4786f</color>
     <color name="red_400">#ef5350</color>
@@ -47,7 +47,8 @@
     <color name="green_900">#1B5E20</color>
     <color name="scrim">#99323232</color>
     <color name="calendar_strip">#FFAB00</color>
-
+    <color name="button_yellow">#E9A802</color>
+    <color name="button_grey">#7D7D7D</color>
     <color name="amber_500">#FFC107</color>
     <color name="amber_700">#FFA000</color>
     <color name="color_teal">#3E6C9A</color>

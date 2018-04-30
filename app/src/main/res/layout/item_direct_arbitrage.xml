@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:orientation="vertical">
 
         <LinearLayout
@@ -110,7 +111,7 @@
             android:paddingRight="8dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
@@ -122,10 +123,10 @@
 
                     <android.support.v7.widget.AppCompatImageView
                         android:id="@+id/srcExchange"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
+                        android:layout_width="@dimen/width_exchange"
+                        android:layout_height="@dimen/width_exchange"
                         android:background="@drawable/circle_strip_grey"
-                        android:padding="1dp" />
+                        android:padding="@dimen/dp1" />
 
                     <android.support.v7.widget.AppCompatImageView
                         android:id="@+id/srcCoin"
@@ -134,7 +135,7 @@
                         android:layout_alignBottom="@id/srcExchange"
                         android:layout_alignRight="@id/srcExchange"
                         android:background="@drawable/circle_strip_grey"
-                        android:padding="1dp" />
+                        android:padding="@dimen/dp1" />
                 </RelativeLayout>
 
                 <TextView
@@ -161,9 +162,10 @@
 
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:gravity="center"
                 android:orientation="vertical">
 
                 <RelativeLayout
@@ -172,10 +174,10 @@
 
                     <android.support.v7.widget.AppCompatImageView
                         android:id="@+id/destExchange"
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
+                        android:layout_width="@dimen/width_exchange"
+                        android:layout_height="@dimen/width_exchange"
                         android:background="@drawable/circle_strip_grey"
-                        android:padding="1dp" />
+                        android:padding="@dimen/dp1" />
 
                     <android.support.v7.widget.AppCompatImageView
                         android:id="@+id/destCoin"
@@ -184,7 +186,7 @@
                         android:layout_alignBottom="@id/destExchange"
                         android:layout_alignRight="@id/destExchange"
                         android:background="@drawable/circle_strip_grey"
-                        android:padding="1dp" />
+                        android:padding="@dimen/dp1" />
                 </RelativeLayout>
 
                 <TextView

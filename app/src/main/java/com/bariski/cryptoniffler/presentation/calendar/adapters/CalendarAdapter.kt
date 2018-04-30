@@ -82,10 +82,8 @@ class CalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                             val delegateArea = Rect()
                             val myButton = calendarIcon
                             myButton.getHitRect(delegateArea)
-                            delegateArea.top -= 200
-                            delegateArea.left -= 200
-                            delegateArea.right += 200
-                            delegateArea.bottom += 200
+                            delegateArea.top -= 100
+                            delegateArea.bottom += 100
                             val touchDelegate = TouchDelegate(delegateArea,
                                     myButton)
                             if (View::class.java.isInstance(myButton.parent)) {

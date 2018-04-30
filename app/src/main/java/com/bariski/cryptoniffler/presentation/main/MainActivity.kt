@@ -28,7 +28,7 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
 
 
-class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, MainView {
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, MainView, View.OnClickListener {
 
 
     @Inject
@@ -208,7 +208,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun toggleInfo(b: Boolean) {
         info.visibility = if (b) View.VISIBLE else View.GONE
+        toggleFilter(b)
     }
+
+    override fun onClick(v: View) {
+        presenter.onDrawerItemSelected(v.id)
+    }
+
 
     override fun getCommonPresenter() = presenter
 }

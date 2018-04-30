@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/disclaimer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/margin_normal"
+    android:fontFamily="@font/regular"
+    android:paddingLeft="@dimen/margin_normal"
+    android:paddingRight="@dimen/margin_normal"
+    android:paddingTop="@dimen/margin_normal"
+    android:text="@string/arbitrage.disclaimer"
+    android:textColor="@color/colorAccent"
+    android:textSize="12sp" />

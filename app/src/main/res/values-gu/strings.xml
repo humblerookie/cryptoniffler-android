@@ -124,4 +124,16 @@
         <string name="arbitrage.disclaimer">-सસુનિશ્ચિત કરો કે આર્બિટ્રેજનો સિક્કો અનુરૂપ એક્સચેન્જો પર કામ કરી રહ્યું છે.\n-આર્બિટ્રેજમાં સામેલ થતાં પહેલાં વેચાણ કિંમત પર પૂરતી વોલ્યુમ છે</string>
 
 સીમાંત આર્બિટ્રેજની સરખામણીમાં ત્રિકોણના આર્બિટ્રેજની ઘણી વાર પારિતોષિકોની સંભાવના વધારે હોય છે.</string>
+
+
+    <string name="common.label.filter_from"> જ્યાં છે</string>
+    <string name="common.label.filter_to"> એ ને કહ્યું</string>
+    <string name="error.common.request_progress_wait"> કૃપા કરીને રાહ જુઓ વિનંતી ચાલુ છે. </string>
+    <string name="rating.title.spread_the_word"> પ્રમોટ કરો </string>
+    <string name="rating.title.lets_be_honest"> આપણે જાણીએ છીએ </string>
+    <string name="rating.title.work_together"> તેમને કહો. </string>
+    <string name="rating.title.like_money"> - તમે પૈસા બનાવવા માંગો છો. </string>
+    <string name="rating.title.weve_targets"> - તમારા મિત્રોને સહાય કરવા માગો. </string>
+    <string name="rating.title.rate"> રેટિંગ </string>
+    <string name="rating.title.share"> શેર કરો </string>
 </resources>

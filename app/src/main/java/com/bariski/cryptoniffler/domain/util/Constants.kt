@@ -52,6 +52,9 @@ class Screen {
         val PICK_EXCHANGE = "pick_exchange"
         val SEARCH_COIN = "search_coin"
         val ITEM_DETAIL = "item_detail"
+        val RATE_REVIEW = "rate_n_review"
+        val ARBITRAGE = "arbitrage"
+        val CALENDAR = "calendar"
 
     }
 }
@@ -67,5 +70,6 @@ class Event {
         val PROCEED = "proceed_detail"
         val BTC_VAL = "btc_val"
         val INCLUDE_FEE = "include_fee"
+        val RATE_REVIEW = "rate_n_review"
     }
 }

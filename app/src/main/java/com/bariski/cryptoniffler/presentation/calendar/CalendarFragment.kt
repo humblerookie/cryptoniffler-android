@@ -21,7 +21,7 @@ import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.model.Event
 import com.bariski.cryptoniffler.domain.model.FilterItem
 import com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter
-import com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarFilterAdapter
+import com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter
 import com.bariski.cryptoniffler.presentation.common.BaseInjectFragment
 import me.toptas.fancyshowcase.FancyShowCaseView
 import java.text.SimpleDateFormat
@@ -58,8 +58,8 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
     var dialog: Dialog? = null
     var lastSelected: View? = null
     var isLoadingFilters = false
-    var coinAdapter: CalendarFilterAdapter? = null
-    var categoryAdapter: CalendarFilterAdapter? = null
+    var coinAdapter: FilterItemAdapter? = null
+    var categoryAdapter: FilterItemAdapter? = null
     var fromPicker: DatePickerDialog? = null
     var toPicker: DatePickerDialog? = null
     val formatter = SimpleDateFormat("dd/MM/yyyy")
@@ -89,10 +89,10 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
     override fun toggleError(error: String?) {
         if (isAlive()) {
             if (error != null) {
-                snackbar = Snackbar.make(container, error!!, Snackbar.LENGTH_LONG)
+                snackbar = Snackbar.make(container, error, Snackbar.LENGTH_LONG)
                         .setAction(getString(R.string.common_label_retry)) {
                             snackbar?.dismiss()
-                            presenter?.onRetry()
+                            presenter.onRetry()
                         }
                         .setDuration(Snackbar.LENGTH_INDEFINITE)
                         .setActionTextColor(ContextCompat.getColor(activity, R.color.colorAccent))
@@ -115,7 +115,7 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
     fun showDialog() {
         if (dialog == null) {
             dialog = Dialog(activity)
-            dialog!!.apply {
+            dialog?.apply {
                 requestWindowFeature(Window.FEATURE_NO_TITLE)
                 val view = activity.layoutInflater.inflate(R.layout.segment_filter, null)
                 fromDate = view.findViewById(R.id.fromDate)
@@ -127,7 +127,7 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
 
                     if (fromPicker == null) {
                         val calendar = Calendar.getInstance()
-                        fromPicker = DatePickerDialog(activity, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                        fromPicker = DatePickerDialog(activity, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
                             fromDate.text = dayOfMonth.toString() + "/" + (month + 1).toString() + "/" + year
                             val newDate = Calendar.getInstance()
                             newDate.set(year, month, dayOfMonth)
@@ -142,7 +142,7 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
 
                     if (toPicker == null) {
                         val calendar = Calendar.getInstance()
-                        toPicker = DatePickerDialog(activity, DatePickerDialog.OnDateSetListener { view, year, month, dayOfMonth ->
+                        toPicker = DatePickerDialog(activity, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
                             toDate.text = dayOfMonth.toString() + "/" + (month + 1).toString() + "/" + year
                             val newDate = Calendar.getInstance()
                             newDate.set(year, month, dayOfMonth)
@@ -163,7 +163,7 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
                 search = view.findViewById(R.id.search)
                 search.addTextChangedListener(object : TextWatcher {
                     override fun afterTextChanged(s: Editable?) {
-                        val currentAdapter: CalendarFilterAdapter? = if (listFilter.adapter != null) listFilter.adapter as CalendarFilterAdapter else null
+                        val currentAdapter: FilterItemAdapter? = if (listFilter.adapter != null) listFilter.adapter as FilterItemAdapter else null
                         currentAdapter?.filterDataSet(s.toString().trim().toLowerCase())
                     }
 
@@ -279,7 +279,7 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
 
     override fun setFilterCoinData(data: List<FilterItem>, selected: Set<FilterItem>) {
         if (isAlive()) {
-            coinAdapter = CalendarFilterAdapter(data, selected)
+            coinAdapter = FilterItemAdapter(data, selected)
             listFilter.adapter = coinAdapter
             isLoadingFilters = false
             search.setText("")
@@ -288,7 +288,7 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
 
     override fun setFilterCategoryData(data: List<FilterItem>, selected: Set<FilterItem>) {
         if (isAlive()) {
-            categoryAdapter = CalendarFilterAdapter(data, selected)
+            categoryAdapter = FilterItemAdapter(data, selected)
             listFilter.adapter = categoryAdapter
             isLoadingFilters = false
             search.setText("")

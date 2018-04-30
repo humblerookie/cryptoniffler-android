@@ -25,6 +25,6 @@ interface CryptoNifflerApi {
     fun getCoinsAndExchanges(): Single<CoinsAndExchanges>
 
     @GET("/arbitrage")
-    fun getArbitrage(): Single<Arbitrage>
+    fun getArbitrage(@Query("src") source: String?, @Query("dest") dest: String?): Single<Arbitrage>
 
 }

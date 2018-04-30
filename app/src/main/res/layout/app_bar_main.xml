@@ -36,6 +36,7 @@
                     android:id="@+id/search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
                     android:paddingBottom="@dimen/margin_small"
                     android:paddingLeft="@dimen/margin_small"
                     android:paddingTop="@dimen/margin_small"
@@ -43,23 +44,25 @@
                     android:visibility="gone" />
 
                 <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="@dimen/margin_small"
-                    android:paddingLeft="@dimen/margin_small"
-                    android:paddingTop="@dimen/margin_small"
-                    android:src="@drawable/ic_filter"
-                    android:visibility="gone" />
-
-                <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="?android:attr/selectableItemBackground"
                     android:paddingBottom="@dimen/margin_small"
                     android:paddingLeft="@dimen/margin_small"
                     android:paddingTop="@dimen/margin_small"
                     android:src="@drawable/ic_info"
+                    android:visibility="gone" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/filter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:paddingBottom="@dimen/margin_small"
+                    android:paddingTop="@dimen/margin_small"
+                    android:src="@drawable/ic_filter"
                     android:visibility="gone" />
             </LinearLayout>
         </android.support.v7.widget.Toolbar>

@@ -32,9 +32,9 @@ class TriangleAdapter(val data: List<TriangleArbitrage>, val imageLoader: ImageL
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         if (getItemViewType(position) == 0) {
-            (holder as TriangleViewHolder)?.bind(data[position])
+            (holder as TriangleViewHolder).bind(data[position])
         } else {
-            (holder as TextHolder)?.bindData(holder.view.context.getString(R.string.error_arbitrage_empty))
+            (holder as TextHolder).bindData(holder.view.context.getString(R.string.error_arbitrage_empty))
         }
     }
 
@@ -52,25 +52,28 @@ class TriangleAdapter(val data: List<TriangleArbitrage>, val imageLoader: ImageL
         val profit = view.profit
         val seed = view.amount
         val fees = view.fees
-
+        val res = view.context.resources
+        val bigIconSize = ((res.getDimension(R.dimen.width_exchange) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
+        val smallIconSize = ((res.getDimension(R.dimen.dp20) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
         fun bind(data: TriangleArbitrage) {
+
             val a1 = data.actions[0]
             val a2 = data.actions[1]
             val a3 = data.actions[2]
             summary1.text = Html.fromHtml(a1.summary)
             summary2.text = Html.fromHtml(a2.summary)
             summary3.text = Html.fromHtml(a3.summary)
-            a1.mainImage?.let { imageLoader.loadImage(ImageRequest(ex1, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true)) }
-            a2.mainImage?.let { imageLoader.loadImage(ImageRequest(ex2, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true)) }
-            a3.mainImage?.let { imageLoader.loadImage(ImageRequest(ex3, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true)) }
-            a1.rightImage?.let { imageLoader.loadImage(ImageRequest(coin1, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true)) }
-            a2.rightImage?.let { imageLoader.loadImage(ImageRequest(coin2_2, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true)) }
-            a3.rightImage?.let { imageLoader.loadImage(ImageRequest(coin3, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true)) }
+            a1.mainImage?.let { imageLoader.loadImage(ImageRequest(ex1, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, bigIconSize)) }
+            a2.mainImage?.let { imageLoader.loadImage(ImageRequest(ex2, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, bigIconSize)) }
+            a3.mainImage?.let { imageLoader.loadImage(ImageRequest(ex3, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, bigIconSize)) }
+            a1.rightImage?.let { imageLoader.loadImage(ImageRequest(coin1, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, smallIconSize)) }
+            a2.rightImage?.let { imageLoader.loadImage(ImageRequest(coin2_2, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, smallIconSize)) }
+            a3.rightImage?.let { imageLoader.loadImage(ImageRequest(coin3, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, smallIconSize)) }
             if (a2.leftImage == null) {
                 coin2_1.visibility = View.GONE
             } else {
                 coin2_1.visibility = View.VISIBLE
-                a2.leftImage?.let { imageLoader.loadImage(ImageRequest(coin2_1, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true)) }
+                a2.leftImage?.let { imageLoader.loadImage(ImageRequest(coin2_1, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, smallIconSize)) }
             }
 
             profit.text = data.amount.toInt().toString()

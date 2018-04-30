@@ -9,16 +9,16 @@ import com.bariski.cryptoniffler.data.api.models.BestExchangeResponse
 import com.bariski.cryptoniffler.data.api.models.CoinsAndExchanges
 import com.bariski.cryptoniffler.data.storage.KeyValueStore
 import com.bariski.cryptoniffler.data.utils.getAssetFromDevice
-import com.bariski.cryptoniffler.domain.model.Arbitrage
-import com.bariski.cryptoniffler.domain.model.Coin
-import com.bariski.cryptoniffler.domain.model.Exchange
+import com.bariski.cryptoniffler.domain.model.*
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
 import com.bariski.cryptoniffler.domain.util.BTC_INR_API
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import io.reactivex.Single
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.collections.HashSet
 
 //http://jsoneditoronline.org/?id=296639de32b80b0cf4aa48aeeb343d43
 //http://jsoneditoronline.org/?id=ba02e037b8700a258d14f50f6b462dfc
@@ -30,8 +30,14 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
     private val mapOfExchanges = HashMap<String, Exchange>()
     private val KEY_TIMESTAMP_COINSNEXCHANGES = "timestamp_coinsnexchanges"
     private val KEY_DATA_COINSNEXCHANGES = "data_coinsnexchanges"
+    private val KEY_DATA_ARB_FILTERS = "data_arb_filters"
+    private val KEY_DATA_SRC_EXCHANGES = "data_src_exchanges"
+    private val KEY_DATA_DEST_EXCHANGES = "data_dest_exchanges"
     private val KEY_FLAG_NAV_DRAWER_SHOWN = "flag_nav_drawer_shown_v2"
     private val KEY_ARB_SHOWN = "flag_arb_shown"
+    private val KEY_RATE_SHARE_SHOWN = "flag_rate_share_shown"
+    private val KEY_ARB_COUNT = "flag_arb_count"
+    private val KEY_ARB_FILTER_SHOWN = "flag_arb_filter_shown"
     private val CACHE_EXPIRATION = AlarmManager.INTERVAL_HOUR * 2
 
 
@@ -45,8 +51,8 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
         })
     }
 
-    override fun getArbitrage(): Single<Arbitrage> {
-        return api.getArbitrage()
+    override fun getArbitrage(source: Set<FilterItem>, dest: Set<FilterItem>): Single<Arbitrage> {
+        return api.getArbitrage(source.joinToString(",", transform = { it.getIdentifier() }), dest.joinToString(",", transform = { it.getIdentifier() }))
     }
 
     override fun getCoins(): Single<ArrayList<Coin>> {
@@ -150,6 +156,59 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
     override fun hasArbDialogBeenShown() = keyValueStore.getBoolean(KEY_ARB_SHOWN)
     override fun setArbDialogBeenShown(b: Boolean) {
         keyValueStore.storeBoolean(KEY_ARB_SHOWN, b)
+    }
+
+    override fun getFiltersList(): Single<ArbitrageFilter>? {
+        keyValueStore.getString(KEY_DATA_ARB_FILTERS)?.let { str ->
+            return Single.just(1).map { moshi.adapter<ArbitrageFilter>(ArbitrageFilter::class.java).fromJson(str)!! }
+        }
+        return null
+    }
+
+    override fun setFiltersList(filter: ArbitrageFilter) {
+        keyValueStore.storeString(KEY_DATA_ARB_FILTERS, moshi.adapter<ArbitrageFilter>(ArbitrageFilter::class.java).toJson(filter))
+    }
+
+    override fun getSourceList(): Set<ArbitrageExchange> {
+        keyValueStore.getString(KEY_DATA_SRC_EXCHANGES)?.let {
+            return HashSet(moshi.adapter<Set<ArbitrageExchange>>(Types.newParameterizedType(Set::class.java, ArbitrageExchange::class.java)).fromJson(it))
+        }
+        return HashSet()
+
+    }
+
+    override fun setSourceList(filter: Set<ArbitrageExchange>) {
+        keyValueStore.storeString(KEY_DATA_SRC_EXCHANGES, moshi.adapter<Set<ArbitrageExchange>>(Types.newParameterizedType(Set::class.java, ArbitrageExchange::class.java)).toJson(filter))
+    }
+
+    override fun getDestList(): Set<ArbitrageExchange> {
+        keyValueStore.getString(KEY_DATA_DEST_EXCHANGES)?.let {
+            return HashSet(moshi.adapter<Set<ArbitrageExchange>>(Types.newParameterizedType(Set::class.java, ArbitrageExchange::class.java)).fromJson(it))
+        }
+        return HashSet()
+
+    }
+
+    override fun setDestList(filter: Set<ArbitrageExchange>) {
+        keyValueStore.storeString(KEY_DATA_DEST_EXCHANGES, moshi.adapter<Set<ArbitrageExchange>>(Types.newParameterizedType(Set::class.java, ArbitrageExchange::class.java)).toJson(filter))
+    }
+
+    override fun isArbFilterTutorialShown() = keyValueStore.getBoolean(KEY_ARB_FILTER_SHOWN)
+
+    override fun setArbFilterTutorialShown(b: Boolean) {
+        keyValueStore.storeBoolean(KEY_ARB_FILTER_SHOWN, b)
+    }
+
+    override fun isRateNShareShown() = keyValueStore.getBoolean(KEY_RATE_SHARE_SHOWN)
+
+    override fun setRateNShareShown(b: Boolean) {
+        keyValueStore.storeBoolean(KEY_RATE_SHARE_SHOWN, b)
+    }
+
+    override fun getArbitrageUsedCount() = keyValueStore.getLong(KEY_ARB_COUNT)
+
+    override fun setArbitrageUsedCount(b: Long) {
+        keyValueStore.storeLong(KEY_ARB_COUNT, b)
     }
 
 }

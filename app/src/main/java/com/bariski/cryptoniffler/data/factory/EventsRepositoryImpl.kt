@@ -97,8 +97,8 @@ class EventsRepositoryImpl(private val api: EventsApi, private val remoteConfig:
         }
         startDate?.let { builder.appendQueryParameter("dateRangeStart", it) }
         endDate?.let { builder.appendQueryParameter("dateRangeEnd", it) }
-        page?.let { builder.appendQueryParameter("page", it.toString()) }
-        max?.let { builder.appendQueryParameter("max", it.toString()) }
+        page.let { builder.appendQueryParameter("page", it.toString()) }
+        max.let { builder.appendQueryParameter("max", it.toString()) }
 
         return api.getEvents(builder.build().toString())
                 .observeOn(scheduler.io())

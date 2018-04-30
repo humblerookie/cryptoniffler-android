@@ -21,4 +21,5 @@ interface Analytics {
     fun logBtcValEvent(b: Boolean, error: String?)
     fun itemDetailEvent(success: Boolean, error: String?, type: String, value: String, amount: Long,ignoreFees:Boolean)
     fun logIncludeFeeChanged(b: Boolean)
+    fun logRnREvent(event: String)
 }

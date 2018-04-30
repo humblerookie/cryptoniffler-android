@@ -107,10 +107,10 @@
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/ex1"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
+                android:layout_width="@dimen/width_exchange"
+                android:layout_height="@dimen/width_exchange"
                 android:background="@drawable/circle_strip_grey"
-                android:padding="1dp" />
+                android:padding="@dimen/dp1" />
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/coin1"
@@ -119,7 +119,7 @@
                 android:layout_alignBottom="@id/ex1"
                 android:layout_alignRight="@id/ex1"
                 android:background="@drawable/circle_strip_grey"
-                android:padding="1dp" />
+                android:padding="@dimen/dp1" />
 
             <TextView
                 android:id="@+id/summary1"
@@ -148,10 +148,10 @@
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/ex2"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
+                android:layout_width="@dimen/width_exchange"
+                android:layout_height="@dimen/width_exchange"
                 android:background="@drawable/circle_strip_grey"
-                android:padding="1dp" />
+                android:padding="@dimen/dp1" />
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/coin2_2"
@@ -160,7 +160,7 @@
                 android:layout_alignBottom="@id/ex2"
                 android:layout_alignRight="@id/ex2"
                 android:background="@drawable/circle_strip_grey"
-                android:padding="1dp" />
+                android:padding="@dimen/dp1" />
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/coin2_1"
@@ -169,7 +169,7 @@
                 android:layout_alignBottom="@id/ex2"
                 android:layout_alignLeft="@id/ex2"
                 android:background="@drawable/circle_strip_grey"
-                android:padding="1dp" />
+                android:padding="@dimen/dp1" />
 
             <TextView
                 android:id="@+id/summary2"
@@ -198,10 +198,10 @@
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/ex3"
-                android:layout_width="52dp"
-                android:layout_height="52dp"
+                android:layout_width="@dimen/width_exchange"
+                android:layout_height="@dimen/width_exchange"
                 android:background="@drawable/circle_strip_grey"
-                android:padding="1dp" />
+                android:padding="@dimen/dp1" />
 
             <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/coin3"
@@ -210,7 +210,7 @@
                 android:layout_alignBottom="@id/ex3"
                 android:layout_alignRight="@id/ex3"
                 android:background="@drawable/circle_strip_grey"
-                android:padding="1dp" />
+                android:padding="@dimen/dp1" />
 
             <TextView
                 android:id="@+id/summary3"

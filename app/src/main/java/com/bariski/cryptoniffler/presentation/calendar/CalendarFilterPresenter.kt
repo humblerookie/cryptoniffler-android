@@ -11,8 +11,8 @@ import java.lang.ref.WeakReference
 
 abstract class CalendarFilterPresenter(val repository: EventsRepository, val schedulers: Schedulers) : BasePresenter<CalendarView>, CalendarPresenter {
 
-    val selectedCoins: Set<FilterItem> = HashSet<FilterItem>()
-    val selectedCategories: Set<FilterItem> = HashSet<FilterItem>()
+    val selectedCoins: Set<FilterItem> = HashSet()
+    val selectedCategories: Set<FilterItem> = HashSet()
 
     var view = WeakReference<CalendarView>(null)
     var disposable = CompositeDisposable()

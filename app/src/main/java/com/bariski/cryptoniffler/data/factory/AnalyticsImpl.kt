@@ -7,6 +7,12 @@ import com.bariski.cryptoniffler.domain.util.Key
 import com.google.firebase.analytics.FirebaseAnalytics
 
 class AnalyticsImpl(context: Context) : Analytics {
+    override fun logRnREvent(event: String) {
+        val bundle = Bundle()
+        bundle.putString("type", event)
+        analytics.logEvent(Event.RATE_REVIEW, bundle)
+    }
+
     override fun logIncludeFeeChanged(b: Boolean) {
         val bundle = Bundle()
         bundle.putInt("includeFee", if (b) 1 else 0)
