@@ -11,6 +11,7 @@ import com.bariski.cryptoniffler.domain.model.CalendarCoin
 import com.bariski.cryptoniffler.domain.model.Event
 import com.bariski.cryptoniffler.domain.model.FilterItem
 import com.bariski.cryptoniffler.domain.repository.EventsRepository
+import com.bariski.cryptoniffler.domain.util.Screen
 import io.reactivex.Single
 import io.reactivex.rxkotlin.subscribeBy
 import retrofit2.HttpException
@@ -202,6 +203,7 @@ class CalendarPresenterImpl(repository: EventsRepository, schedulers: Schedulers
             }
 
         } else {
+            analytics.sendScreenView(Screen.CALENDAR)
             loadNextPage()
         }
     }

@@ -19,6 +19,7 @@ import com.bariski.cryptoniffler.presentation.common.models.GridItemDetail
 import com.bariski.cryptoniffler.presentation.common.utils.ALL
 import com.bariski.cryptoniffler.presentation.common.utils.PERCENTAGE
 import com.bariski.cryptoniffler.presentation.main.model.GridDetailWrapper
+import com.crashlytics.android.Crashlytics
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -239,6 +240,9 @@ class ItemDetailPresenterImpl(val repository: NifflerRepository, private val sch
 
     override fun initView(view: CoinDetailView, savedState: Bundle?, args: Bundle?) {
         this.view = WeakReference(view)
+        Crashlytics.setBool("saved", savedState != null)
+        Crashlytics.setBool("args", args != null)
+
         val state = savedState ?: args!!
         state.apply {
             ignoreFees = getBoolean("ignoreFees")

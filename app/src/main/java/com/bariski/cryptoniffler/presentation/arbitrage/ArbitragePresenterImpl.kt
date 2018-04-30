@@ -9,6 +9,7 @@ import com.bariski.cryptoniffler.domain.model.Arbitrage
 import com.bariski.cryptoniffler.domain.model.ArbitrageFilter
 import com.bariski.cryptoniffler.domain.model.FilterItem
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
+import com.bariski.cryptoniffler.domain.util.Screen
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -35,6 +36,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
             selectedDest = HashSet(savedState.getParcelableArrayList("selectedDest"))
             fetchData(savedState.getParcelable("data"))
         } else {
+            analytics.sendScreenView(Screen.ARBITRAGE)
             fetchData(null)
         }
 
@@ -112,9 +114,16 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                                         }
                                         repository.setArbitrageUsedCount(used)
                                         var maxProfit = 0.0f
-                                        arbitrage?.let { maxProfit = it.triangle[0].profit }
+                                        arbitrage?.let {
+                                            if (it.triangle.isNotEmpty()) {
+                                                maxProfit = it.triangle[0].profit
+                                            }
+                                        }
                                         if (used % 10L == 0L || maxProfit > 15) {
-                                            view.get()?.let { it.showRateDialog() }
+                                            view.get()?.let {
+                                                analytics.sendScreenView(Screen.RATE_REVIEW)
+                                                it.showRateDialog()
+                                            }
                                         }
                                     }
                                     repository.setFiltersList(data.filters)
@@ -142,6 +151,10 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
     }
 
     override fun onButtonClicked(id: Int) {
+        analytics.logRnREvent(when (id) {
+            R.id.review -> "review"
+            else -> "rate"
+        })
         repository.setRateNShareShown(true)
     }
 
