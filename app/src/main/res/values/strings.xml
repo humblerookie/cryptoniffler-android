@@ -75,9 +75,13 @@
     <string name="calendar.suffix.percentage" translatable="false">%s %%</string>
     <string name="common.label.price" translatable="false">\u20b9 %s</string>
     <string name="common.suffix.percentage" translatable="false">%s %% </string>
-    <string name="arbitrage.label.trade_amount">Trade Amount</string>
-    <string name="arbitrage.label.total_fees">Total Fees</string>
-    <string name="arbitrage.label.profit">Profit</string>
+    <string name="arbitrage.label.trade_amount">Amount(\u20b9)</string>
+    <string name="arbitrage.label.total_fees">Total Fees(\u20b9)</string>
+    <string name="arbitrage.label.profit">Profit(\u20b9)</string>
+    <string name="arbitrage.label.trade_amount_btc">Amount(BTC)</string>
+    <string name="arbitrage.label.total_fees_btc">Total Fees(BTC)</string>
+    <string name="arbitrage.label.profit_percent_btc">Profit(%)</string>
+    <string name="arbitrage.label.profit_btc">Profit(BTC)</string>
     <string name="arbitrage.label.triangle">Triangle</string>
     <string name="arbitrage.label.direct">Direct</string>
     <string name="error.arbitrage.empty">No profitable arbitrages at the moment. Check back in some time.</string>
@@ -94,5 +98,8 @@
     <string name="rating.title.weve_targets">- We\’ve got download targets.</string>
     <string name="rating.title.rate">Rate Us</string>
     <string name="rating.title.share">Share</string>
+    <string name="arbitrage.currency.international">International\nExchanges only(BTC)</string>
+    <string name="arbitrage.currency.domestic">Indian\nExchanges(\u20B9)</string>
+    <string name="error.arbitrage.international_no_filter">Filters are currently unavailable in international mode.</string>
 
 </resources>

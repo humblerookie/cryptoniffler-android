@@ -116,4 +116,5 @@
     <string name="rating.title.weve_targets">- अपने दोस्तों की मदद करना चाहते हैं.</string>
     <string name="rating.title.rate">रेटिंग दें</string>
     <string name="rating.title.share">शेयर करें</string>
+    <string name="error.arbitrage.international_no_filter">फिलहाल अंतरराष्ट्रीय मोड में फ़िल्टर अनुपलब्ध हैं।</string>
 </resources>

@@ -7,7 +7,7 @@ import com.bariski.cryptoniffler.presentation.common.BaseView
 
 interface ArbitrageView : BaseView {
     fun toggleProgress(visible: Boolean)
-    fun setData(arbitrage: Arbitrage)
+    fun setData(arbitrage: Arbitrage, isInternational: Boolean)
     fun toggleError(message: String?)
     fun showInfo()
     fun showFilters(src: List<ArbitrageExchange>, srcSelect: Set<FilterItem>, destSelect: Set<FilterItem>)

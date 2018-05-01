@@ -136,4 +136,5 @@
     <string name="rating.title.weve_targets"> - તમારા મિત્રોને સહાય કરવા માગો. </string>
     <string name="rating.title.rate"> રેટિંગ </string>
     <string name="rating.title.share"> શેર કરો </string>
+    <string name="error.arbitrage.international_no_filter">ફિલ્ટર હાલમાં આંતરરાષ્ટ્રીય મોડમાં અનુપલબ્ધ છે</string>
 </resources>

@@ -12,12 +12,13 @@ import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.model.DirectArbitrage
 import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.presentation.common.models.ImageRequest
+import com.bariski.cryptoniffler.presentation.common.utils.PERCENTAGE
 import kotlinx.android.synthetic.main.item_direct_arbitrage.view.*
 
-class DirectAdapter(private val data: List<DirectArbitrage>, private val imageLoader: ImageLoader) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DirectAdapter(private val data: List<DirectArbitrage>, val isInternational: Boolean, private val imageLoader: ImageLoader) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == 0) {
-            DirectViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_direct_arbitrage, parent, false), imageLoader)
+            DirectViewHolder(LayoutInflater.from(parent.context).inflate(if (isInternational) R.layout.item_direct_btc_arbitrage else R.layout.item_direct_arbitrage, parent, false), imageLoader)
         } else {
             TextHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_text, parent, false))
         }
@@ -31,7 +32,7 @@ class DirectAdapter(private val data: List<DirectArbitrage>, private val imageLo
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         if (getItemViewType(position) == 0) {
-            (holder as DirectViewHolder).bind(data[position])
+            (holder as DirectViewHolder).bind(data[position],!isInternational)
         } else {
             (holder as TextHolder).bindData(holder.view.context.getString(R.string.error_arbitrage_empty))
         }
@@ -50,13 +51,14 @@ class DirectAdapter(private val data: List<DirectArbitrage>, private val imageLo
         val res = view.context.resources
         val bigIconSize = ((res.getDimension(R.dimen.width_exchange) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
         val smallIconSize = ((res.getDimension(R.dimen.dp20) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
+        val profitPercent: TextView? = view.findViewById(R.id.percentProfit)
 
-        fun bind(data: DirectArbitrage) {
-            profit.text = data.amount.toInt().toString()
-            fees.text = data.fees.toInt().toString()
-            seed.text = data.seed.toInt().toString()
-
-            data.coin.imageUrl.let {
+        fun bind(data: DirectArbitrage,roundOff: Boolean) {
+            profit.text = getString(data.amount, roundOff)
+            fees.text = getString(data.fees, roundOff)
+            seed.text = getString(data.seed, roundOff)
+            profitPercent?.text = data.profit.toInt().toString() + PERCENTAGE
+            data.coin.imageUrl?.let {
                 imageLoader.loadImage(ImageRequest(srcCoinImage, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, smallIconSize))
                 imageLoader.loadImage(ImageRequest(destCoinImage, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, smallIconSize))
             }
@@ -68,8 +70,27 @@ class DirectAdapter(private val data: List<DirectArbitrage>, private val imageLo
             }
             summarySource.text = Html.fromHtml(data.from.summary)
             summaryDest.text = Html.fromHtml(data.to.summary)
+        }
 
-
+        fun getString(f: Float, roundOff: Boolean): String {
+            return if (roundOff) {
+                f.toInt().toString()
+            } else {
+                var s = "%.8f".format(f)
+                if (s.indexOf(".") < 0) {
+                    s
+                } else {
+                    var significantDigitReached = false
+                    val sb = StringBuilder()
+                    s.reversed().forEach {
+                        if (it != '0' || significantDigitReached) {
+                            significantDigitReached = true
+                            sb.append(it)
+                        }
+                    }
+                    sb.toString().reversed()
+                }
+            }
         }
     }
 

@@ -1,13 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/disclaimer"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/margin_normal"
-    android:fontFamily="@font/regular"
-    android:paddingLeft="@dimen/margin_normal"
-    android:paddingRight="@dimen/margin_normal"
-    android:paddingTop="@dimen/margin_normal"
-    android:text="@string/arbitrage.disclaimer"
-    android:textColor="@color/colorAccent"
-    android:textSize="12sp" />
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_normal"
+        android:layout_marginStart="@dimen/margin_normal"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_weight="1"
+            android:fontFamily="@font/medium"
+            android:text="@string/arbitrage.currency.domestic"
+            android:textColor="@color/white_87"
+            android:textSize="@dimen/font_normal" />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:id="@+id/mode"
+            android:padding="@dimen/margin_normal"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/font_normal" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_weight="1"
+            android:fontFamily="@font/medium"
+            android:text="@string/arbitrage.currency.international"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/font_normal" />
+
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/disclaimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_normal"
+        android:fontFamily="@font/regular"
+        android:paddingLeft="@dimen/margin_normal"
+        android:paddingRight="@dimen/margin_normal"
+        android:paddingTop="@dimen/margin_normal"
+        android:text="@string/arbitrage.disclaimer"
+        android:textColor="@color/white_54"
+        android:textSize="12sp" />
+</LinearLayout>

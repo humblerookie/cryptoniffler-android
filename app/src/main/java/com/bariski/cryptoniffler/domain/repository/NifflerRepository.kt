@@ -30,4 +30,6 @@ interface NifflerRepository {
     fun setRateNShareShown(b: Boolean)
     fun getArbitrageUsedCount(): Long
     fun setArbitrageUsedCount(b: Long)
+    fun isInternationalArbitrage(): Boolean
+    fun setInternationalArbitrage(b: Boolean)
 }
