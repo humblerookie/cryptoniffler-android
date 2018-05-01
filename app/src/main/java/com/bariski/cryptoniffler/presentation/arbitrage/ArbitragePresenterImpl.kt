@@ -110,9 +110,6 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                             .observeOn(schedulers.ui())
                             .subscribeBy(onSuccess = { data ->
                                 arbitrage = data
-                                arbitrage?.btcArbitrage?.forEach {
-                                    it.roundOff = false
-                                }
                                 if (dat == null) {
                                     if (!repository.isRateNShareShown()) {
                                         var used = repository.getArbitrageUsedCount()

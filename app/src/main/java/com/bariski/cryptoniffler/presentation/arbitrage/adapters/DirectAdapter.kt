@@ -32,7 +32,7 @@ class DirectAdapter(private val data: List<DirectArbitrage>, val isInternational
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         if (getItemViewType(position) == 0) {
-            (holder as DirectViewHolder).bind(data[position])
+            (holder as DirectViewHolder).bind(data[position],!isInternational)
         } else {
             (holder as TextHolder).bindData(holder.view.context.getString(R.string.error_arbitrage_empty))
         }
@@ -53,12 +53,12 @@ class DirectAdapter(private val data: List<DirectArbitrage>, val isInternational
         val smallIconSize = ((res.getDimension(R.dimen.dp20) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
         val profitPercent: TextView? = view.findViewById(R.id.percentProfit)
 
-        fun bind(data: DirectArbitrage) {
-            profit.text = getString(data.amount, data.roundOff)
-            fees.text = getString(data.fees, data.roundOff)
-            seed.text = getString(data.seed, data.roundOff)
+        fun bind(data: DirectArbitrage,roundOff: Boolean) {
+            profit.text = getString(data.amount, roundOff)
+            fees.text = getString(data.fees, roundOff)
+            seed.text = getString(data.seed, roundOff)
             profitPercent?.text = data.profit.toInt().toString() + PERCENTAGE
-            data.coin.imageUrl.let {
+            data.coin.imageUrl?.let {
                 imageLoader.loadImage(ImageRequest(srcCoinImage, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, smallIconSize))
                 imageLoader.loadImage(ImageRequest(destCoinImage, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, smallIconSize))
             }

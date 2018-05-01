@@ -23183,11 +23183,9 @@ com.bariski.cryptoniffler.domain.model.DirectArbitrage -> com.bariski.cryptoniff
     float seed -> seed
     float fees -> fees
     float profit -> profit
-    java.lang.Float withdrawalFees -> withdrawalFees
     com.bariski.cryptoniffler.domain.model.ArbCoin coin -> coin
     com.bariski.cryptoniffler.domain.model.DirectArbitrageItem from -> from
     com.bariski.cryptoniffler.domain.model.DirectArbitrageItem to -> to
-    boolean roundOff -> roundOff
     com.bariski.cryptoniffler.domain.model.DirectArbitrage$Creator CREATOR -> CREATOR
     10:10:float getSell() -> getSell
     11:11:float getBuy() -> getBuy
@@ -23195,27 +23193,21 @@ com.bariski.cryptoniffler.domain.model.DirectArbitrage -> com.bariski.cryptoniff
     13:13:float getSeed() -> getSeed
     14:14:float getFees() -> getFees
     15:15:float getProfit() -> getProfit
-    16:16:java.lang.Float getWithdrawalFees() -> getWithdrawalFees
-    17:17:com.bariski.cryptoniffler.domain.model.ArbCoin getCoin() -> getCoin
-    18:18:com.bariski.cryptoniffler.domain.model.DirectArbitrageItem getFrom() -> getFrom
-    19:19:com.bariski.cryptoniffler.domain.model.DirectArbitrageItem getTo() -> getTo
-    20:20:boolean getRoundOff() -> getRoundOff
-    20:20:void setRoundOff(boolean) -> setRoundOff
-    10:10:void <init>(float,float,float,float,float,float,java.lang.Float,com.bariski.cryptoniffler.domain.model.ArbCoin,com.bariski.cryptoniffler.domain.model.DirectArbitrageItem,com.bariski.cryptoniffler.domain.model.DirectArbitrageItem,boolean) -> <init>
-    20:20:void <init>(float,float,float,float,float,float,java.lang.Float,com.bariski.cryptoniffler.domain.model.ArbCoin,com.bariski.cryptoniffler.domain.model.DirectArbitrageItem,com.bariski.cryptoniffler.domain.model.DirectArbitrageItem,boolean,int,kotlin.jvm.internal.DefaultConstructorMarker) -> <init>
+    16:16:com.bariski.cryptoniffler.domain.model.ArbCoin getCoin() -> getCoin
+    17:17:com.bariski.cryptoniffler.domain.model.DirectArbitrageItem getFrom() -> getFrom
+    18:18:com.bariski.cryptoniffler.domain.model.DirectArbitrageItem getTo() -> getTo
+    10:10:void <init>(float,float,float,float,float,float,com.bariski.cryptoniffler.domain.model.ArbCoin,com.bariski.cryptoniffler.domain.model.DirectArbitrageItem,com.bariski.cryptoniffler.domain.model.DirectArbitrageItem) -> <init>
     float component1() -> component1
     float component2() -> component2
     float component3() -> component3
     float component4() -> component4
     float component5() -> component5
     float component6() -> component6
-    java.lang.Float component7() -> component7
-    com.bariski.cryptoniffler.domain.model.ArbCoin component8() -> component8
+    com.bariski.cryptoniffler.domain.model.ArbCoin component7() -> component7
+    com.bariski.cryptoniffler.domain.model.DirectArbitrageItem component8() -> component8
     com.bariski.cryptoniffler.domain.model.DirectArbitrageItem component9() -> component9
-    com.bariski.cryptoniffler.domain.model.DirectArbitrageItem component10() -> component10
-    boolean component11() -> component11
-    com.bariski.cryptoniffler.domain.model.DirectArbitrage copy(float,float,float,float,float,float,java.lang.Float,com.bariski.cryptoniffler.domain.model.ArbCoin,com.bariski.cryptoniffler.domain.model.DirectArbitrageItem,com.bariski.cryptoniffler.domain.model.DirectArbitrageItem,boolean) -> copy
-    com.bariski.cryptoniffler.domain.model.DirectArbitrage copy$default(com.bariski.cryptoniffler.domain.model.DirectArbitrage,float,float,float,float,float,float,java.lang.Float,com.bariski.cryptoniffler.domain.model.ArbCoin,com.bariski.cryptoniffler.domain.model.DirectArbitrageItem,com.bariski.cryptoniffler.domain.model.DirectArbitrageItem,boolean,int,java.lang.Object) -> copy$default
+    com.bariski.cryptoniffler.domain.model.DirectArbitrage copy(float,float,float,float,float,float,com.bariski.cryptoniffler.domain.model.ArbCoin,com.bariski.cryptoniffler.domain.model.DirectArbitrageItem,com.bariski.cryptoniffler.domain.model.DirectArbitrageItem) -> copy
+    com.bariski.cryptoniffler.domain.model.DirectArbitrage copy$default(com.bariski.cryptoniffler.domain.model.DirectArbitrage,float,float,float,float,float,float,com.bariski.cryptoniffler.domain.model.ArbCoin,com.bariski.cryptoniffler.domain.model.DirectArbitrageItem,com.bariski.cryptoniffler.domain.model.DirectArbitrageItem,int,java.lang.Object) -> copy$default
     java.lang.String toString() -> toString
     int hashCode() -> hashCode
     boolean equals(java.lang.Object) -> equals
@@ -23767,13 +23759,13 @@ com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl -> nq:
     51:80:void onFilterClicked() -> b
     83:86:void onFilterApply(java.util.Set,java.util.Set) -> a
     89:92:void onFilterClear() -> c
-    95:158:void fetchData(com.bariski.cryptoniffler.domain.model.Arbitrage) -> b
-    161:166:void onButtonClicked(int) -> a
-    169:170:void releaseView() -> i
-    174:174:void onRefresh() -> j
-    177:180:void onModeChanged(boolean) -> a
-    183:188:void saveState(android.os.Bundle) -> a
-    190:190:boolean isModeInternational() -> d
+    95:155:void fetchData(com.bariski.cryptoniffler.domain.model.Arbitrage) -> b
+    158:163:void onButtonClicked(int) -> a
+    166:167:void releaseView() -> i
+    171:171:void onRefresh() -> j
+    174:177:void onModeChanged(boolean) -> a
+    180:185:void saveState(android.os.Bundle) -> a
+    187:187:boolean isModeInternational() -> d
     18:18:com.bariski.cryptoniffler.domain.repository.NifflerRepository getRepository() -> k
     18:18:com.bariski.cryptoniffler.analytics.Analytics getAnalytics() -> l
     18:26:void <init>(com.bariski.cryptoniffler.domain.repository.NifflerRepository,com.bariski.cryptoniffler.domain.common.Schedulers,com.bariski.cryptoniffler.analytics.Analytics) -> <init>
@@ -23781,12 +23773,12 @@ com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl$fetchDat
     com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl this$0 -> a
     com.bariski.cryptoniffler.domain.model.Arbitrage $dat -> b
     18:18:java.lang.Object invoke(java.lang.Object) -> a
-    112:194:void invoke(com.bariski.cryptoniffler.domain.model.Arbitrage) -> a
+    112:146:void invoke(com.bariski.cryptoniffler.domain.model.Arbitrage) -> a
     void <init>(com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl,com.bariski.cryptoniffler.domain.model.Arbitrage) -> <init>
 com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl$fetchData$3 -> nq$b:
     com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl this$0 -> a
     18:18:java.lang.Object invoke(java.lang.Object) -> a
-    150:155:void invoke(java.lang.Throwable) -> a
+    147:152:void invoke(java.lang.Throwable) -> a
     void <init>(com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl) -> <init>
 com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl$onFilterClicked$$inlined$apply$lambda$1 -> nq$c:
     com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl this$0 -> a
@@ -23870,7 +23862,7 @@ com.bariski.cryptoniffler.presentation.arbitrage.adapters.DirectAdapter$DirectVi
     android.widget.TextView profitPercent -> m
     android.view.View view -> n
     com.bariski.cryptoniffler.domain.repository.ImageLoader imageLoader -> o
-    57:73:void bind(com.bariski.cryptoniffler.domain.model.DirectArbitrage) -> a
+    57:73:void bind(com.bariski.cryptoniffler.domain.model.DirectArbitrage,boolean) -> a
     76:105:java.lang.String getString(float,boolean) -> a
     41:54:void <init>(android.view.View,com.bariski.cryptoniffler.domain.repository.ImageLoader) -> <init>
 com.bariski.cryptoniffler.presentation.arbitrage.adapters.DirectAdapter$TextHolder -> nt$b:
