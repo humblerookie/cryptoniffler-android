@@ -53,7 +53,11 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                 showMessage(getMessage(R.string.error_common_request_progress_wait))
             }
 
-        } else {
+        }  else if(isModeInternational()){
+            view.get()?.apply {
+                showMessage(getMessage(R.string.error_arbitrage_international_no_filter))
+            }
+        }else {
             if (arbitrage != null) {
                 view.get()?.apply {
                     showFilters(arbitrage!!.filters.exchanges, selectedSrc, selectedDest)
@@ -106,6 +110,9 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                             .observeOn(schedulers.ui())
                             .subscribeBy(onSuccess = { data ->
                                 arbitrage = data
+                                arbitrage?.btcArbitrage?.forEach {
+                                    it.roundOff = false
+                                }
                                 if (dat == null) {
                                     if (!repository.isRateNShareShown()) {
                                         var used = repository.getArbitrageUsedCount()
@@ -136,7 +143,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                                         }
                                     }
                                     it.toggleProgress(false)
-                                    it.setData(data)
+                                    it.setData(data, repository.isInternationalArbitrage())
                                 }
                                 isRequestInProgress = false
                             }, onError = {
@@ -166,6 +173,12 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
 
     }
 
+    override fun onModeChanged(isOn: Boolean) {
+        repository.setInternationalArbitrage(isOn)
+        analytics.logModeChanged(isOn)
+        view.get()?.apply { arbitrage?.let { setData(it, repository.isInternationalArbitrage()) } }
+    }
+
     override fun saveState(outState: Bundle?) {
         outState?.apply {
             putParcelable("data", arbitrage)
@@ -173,5 +186,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
             putParcelableArrayList("selectedDest", ArrayList(selectedDest))
         }
     }
+
+    override fun isModeInternational() = repository.isInternationalArbitrage()
 
 }

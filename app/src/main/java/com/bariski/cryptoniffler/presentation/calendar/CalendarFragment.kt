@@ -15,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.TextView
 import com.bariski.cryptoniffler.R
@@ -104,7 +105,12 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
     }
 
     override fun setData(events: List<Event>, isAppend: Boolean) {
+        val controller = AnimationUtils.loadLayoutAnimation(list.context, R.anim.layout_animation_fall_down)
+        list.layoutAnimation = controller
         adapter.setData(events, isAppend)
+        if (!isAppend) {
+            list.scheduleLayoutAnimation()
+        }
     }
 
     override fun getMessage(resourceId: Int): String {

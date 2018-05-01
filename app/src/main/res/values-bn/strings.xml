@@ -141,4 +141,5 @@
     <string name="rating.title.weve_targets">- আপনার বন্ধুদের সাহায্য করতে চান.</string>
     <string name="rating.title.rate">রেটিং অনুমতি দিন</string>
     <string name="rating.title.share">ভাগ</string>
+    <string name="error.arbitrage.international_no_filter">ফিল্টার বর্তমানে আন্তর্জাতিক মোডে অনুপলব্ধ।</string>
 </resources>

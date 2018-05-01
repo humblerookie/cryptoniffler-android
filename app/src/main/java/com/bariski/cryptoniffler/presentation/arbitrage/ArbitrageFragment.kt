@@ -66,9 +66,9 @@ class ArbitrageFragment : BaseInjectFragment(), ArbitrageView, View.OnClickListe
         return view
     }
 
-    override fun setData(arbitrage: Arbitrage) {
+    override fun setData(arbitrage: Arbitrage, isInternational: Boolean) {
         if (isAlive()) {
-            list.adapter = ArbitrageAdapter(arbitrage, imageLoader)
+            list.adapter = ArbitrageAdapter(arbitrage, isInternational, imageLoader, presenter)
             swipeRefresh.isRefreshing = false
         }
     }

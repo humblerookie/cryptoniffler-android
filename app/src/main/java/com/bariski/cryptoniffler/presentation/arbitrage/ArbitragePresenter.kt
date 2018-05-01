@@ -9,4 +9,6 @@ interface ArbitragePresenter : BasePresenter<ArbitrageView> {
     fun onFilterApply(selectedFrom: Set<FilterItem>, selectedTo: Set<FilterItem>)
     fun onFilterClear()
     fun onButtonClicked(id: Int)
+    fun onModeChanged(isOn:Boolean)
+    fun isModeInternational():Boolean
 }

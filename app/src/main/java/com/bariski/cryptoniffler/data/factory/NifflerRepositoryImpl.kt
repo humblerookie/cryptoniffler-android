@@ -38,6 +38,7 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
     private val KEY_RATE_SHARE_SHOWN = "flag_rate_share_shown"
     private val KEY_ARB_COUNT = "flag_arb_count"
     private val KEY_ARB_FILTER_SHOWN = "flag_arb_filter_shown"
+    private val KEY_ARB_INTERNATIONAL = "flag_arb_international"
     private val CACHE_EXPIRATION = AlarmManager.INTERVAL_HOUR * 2
 
 
@@ -211,4 +212,9 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
         keyValueStore.storeLong(KEY_ARB_COUNT, b)
     }
 
+    override fun isInternationalArbitrage() = keyValueStore.getBoolean(KEY_ARB_INTERNATIONAL)
+
+    override fun setInternationalArbitrage(b: Boolean) {
+        keyValueStore.storeBoolean(KEY_ARB_INTERNATIONAL, b)
+    }
 }

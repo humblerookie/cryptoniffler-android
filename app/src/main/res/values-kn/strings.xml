@@ -152,5 +152,6 @@
     <string name="rating.title.rate">ರೇಟಿಂಗ್</string>
         
     <string name="rating.title.share">ಹಂಚಿಕೊಳ್ಳಿ</string>
+    <string name="error.arbitrage.international_no_filter">ಶೋಧಕಗಳು ಪ್ರಸ್ತುತ ಅಂತರರಾಷ್ಟ್ರೀಯ ಮೋಡ್ನಲ್ಲಿ ಲಭ್ಯವಿಲ್ಲ.</string>
 
 </resources>

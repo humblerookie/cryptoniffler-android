@@ -10,7 +10,7 @@ interface Analytics {
 
     fun logDonateEvent()
 
-    fun logQueryEvent(query:String)
+    fun logQueryEvent(query: String)
 
     fun logDonateCopiedEvent(coin: String)
 
@@ -19,7 +19,8 @@ interface Analytics {
     fun sendScreenView(name: String)
 
     fun logBtcValEvent(b: Boolean, error: String?)
-    fun itemDetailEvent(success: Boolean, error: String?, type: String, value: String, amount: Long,ignoreFees:Boolean)
+    fun itemDetailEvent(success: Boolean, error: String?, type: String, value: String, amount: Long, ignoreFees: Boolean)
     fun logIncludeFeeChanged(b: Boolean)
     fun logRnREvent(event: String)
+    fun logModeChanged(isInternational: Boolean)
 }

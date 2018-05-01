@@ -7,6 +7,8 @@ import com.bariski.cryptoniffler.domain.util.Key
 import com.google.firebase.analytics.FirebaseAnalytics
 
 class AnalyticsImpl(context: Context) : Analytics {
+
+
     override fun logRnREvent(event: String) {
         val bundle = Bundle()
         bundle.putString("type", event)
@@ -77,6 +79,12 @@ class AnalyticsImpl(context: Context) : Analytics {
 
     override fun logEvent(name: String, values: Bundle) {
         analytics.logEvent(name, values)
+    }
+
+    override fun logModeChanged(isInternational: Boolean) {
+        val bundle = Bundle()
+        bundle.putInt("type", if (isInternational) 1 else 0)
+        analytics.logEvent(Event.MODE_CHANGED, bundle)
     }
 
     private val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)
