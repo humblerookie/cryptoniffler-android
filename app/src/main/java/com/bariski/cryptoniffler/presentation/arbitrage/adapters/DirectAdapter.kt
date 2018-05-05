@@ -11,14 +11,15 @@ import android.widget.TextView
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.model.DirectArbitrage
 import com.bariski.cryptoniffler.domain.repository.ImageLoader
+import com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter
 import com.bariski.cryptoniffler.presentation.common.models.ImageRequest
 import com.bariski.cryptoniffler.presentation.common.utils.PERCENTAGE
 import kotlinx.android.synthetic.main.item_direct_arbitrage.view.*
 
-class DirectAdapter(private val data: List<DirectArbitrage>, val isInternational: Boolean, private val imageLoader: ImageLoader) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class DirectAdapter(private val data: List<DirectArbitrage>, val isInternational: Boolean, private val imageLoader: ImageLoader, val presenter: ArbitragePresenter) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == 0) {
-            DirectViewHolder(LayoutInflater.from(parent.context).inflate(if (isInternational) R.layout.item_direct_btc_arbitrage else R.layout.item_direct_arbitrage, parent, false), imageLoader)
+            DirectViewHolder(LayoutInflater.from(parent.context).inflate(if (isInternational) R.layout.item_direct_btc_arbitrage else R.layout.item_direct_arbitrage, parent, false), imageLoader, presenter)
         } else {
             TextHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_text, parent, false))
         }
@@ -32,13 +33,13 @@ class DirectAdapter(private val data: List<DirectArbitrage>, val isInternational
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         if (getItemViewType(position) == 0) {
-            (holder as DirectViewHolder).bind(data[position],!isInternational)
+            (holder as DirectViewHolder).bind(data[position], !isInternational)
         } else {
             (holder as TextHolder).bindData(holder.view.context.getString(R.string.error_arbitrage_empty))
         }
     }
 
-    class DirectViewHolder(val view: View, val imageLoader: ImageLoader) : RecyclerView.ViewHolder(view) {
+    class DirectViewHolder(val view: View, val imageLoader: ImageLoader, val presenter: ArbitragePresenter) : RecyclerView.ViewHolder(view) {
         val srcImage = view.srcExchange
         val destImage = view.destExchange
         val srcCoinImage = view.srcCoin
@@ -52,8 +53,16 @@ class DirectAdapter(private val data: List<DirectArbitrage>, val isInternational
         val bigIconSize = ((res.getDimension(R.dimen.width_exchange) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
         val smallIconSize = ((res.getDimension(R.dimen.dp20) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
         val profitPercent: TextView? = view.findViewById(R.id.percentProfit)
+        lateinit var data: DirectArbitrage
 
-        fun bind(data: DirectArbitrage,roundOff: Boolean) {
+        init {
+            view.setOnClickListener {
+                presenter.onDirectArbitrageClick(data)
+            }
+        }
+
+        fun bind(data: DirectArbitrage, roundOff: Boolean) {
+            this.data = data
             profit.text = getString(data.amount, roundOff)
             fees.text = getString(data.fees, roundOff)
             seed.text = getString(data.seed, roundOff)

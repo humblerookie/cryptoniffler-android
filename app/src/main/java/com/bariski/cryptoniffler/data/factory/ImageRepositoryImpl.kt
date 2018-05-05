@@ -10,16 +10,17 @@ import com.bariski.cryptoniffler.data.utils.CircleTransform
 import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.presentation.common.models.ImageRequest
 import com.jakewharton.picasso.OkHttp3Downloader
-import com.squareup.picasso.Callback
-import com.squareup.picasso.NetworkPolicy
-import com.squareup.picasso.Picasso
-import com.squareup.picasso.RequestCreator
+import com.squareup.picasso.*
 
 
 class ImageRepositoryImpl(val context: Context) : ImageLoader {
 
+    val cache: Cache
+
     init {
         val builder = Picasso.Builder(context)
+        cache = LruCache(context)
+        builder.memoryCache(LruCache(context))
         builder.downloader(OkHttp3Downloader(context, Integer.MAX_VALUE.toLong()))
         val built = builder.build()
         // built.setIndicatorsEnabled(BuildConfig.DEBUG)
@@ -71,5 +72,9 @@ class ImageRepositoryImpl(val context: Context) : ImageLoader {
             creator.error(it)
         }
         return creator
+    }
+
+    override fun clearCache() {
+        cache.clear()
     }
 }

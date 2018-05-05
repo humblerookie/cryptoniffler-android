@@ -23,8 +23,8 @@ class ArbitrageAdapter(val arbitrage: Arbitrage, val isInternational: Boolean, v
         return when (viewType) {
             0 -> DisclaimerViewHolder(inflater.inflate(R.layout.item_disclaimer, parent, false), presenter)
             1 -> TitleViewHolder(inflater.inflate(R.layout.item_label_arbitrage, parent, false))
-            2 -> DirectViewHolder(inflater.inflate(R.layout.item_list, parent, false), isInternational, imageLoader)
-            else -> TriangleViewHolder(inflater.inflate(R.layout.item_list, parent, false), imageLoader)
+            2 -> DirectViewHolder(inflater.inflate(R.layout.item_list, parent, false), isInternational, imageLoader, presenter)
+            else -> TriangleViewHolder(inflater.inflate(R.layout.item_list, parent, false), imageLoader, presenter)
         }
     }
 
@@ -73,26 +73,26 @@ class ArbitrageAdapter(val arbitrage: Arbitrage, val isInternational: Boolean, v
         }
     }
 
-    private class DirectViewHolder(view: View, val isInternational: Boolean, val imageLoader: ImageLoader) : RecyclerView.ViewHolder(view) {
+    private class DirectViewHolder(view: View, val isInternational: Boolean, val imageLoader: ImageLoader, val presenter: ArbitragePresenter) : RecyclerView.ViewHolder(view) {
         val list: RecyclerView = view as RecyclerView
 
         fun bindData(data: List<DirectArbitrage>) {
             val controller = AnimationUtils.loadLayoutAnimation(list.context, R.anim.layout_animation_fall_right)
             list.layoutAnimation = controller
             list.layoutManager = LinearLayoutManager(list.context, LinearLayoutManager.HORIZONTAL, false)
-            list.adapter = DirectAdapter(data, isInternational, imageLoader)
+            list.adapter = DirectAdapter(data, isInternational, imageLoader, presenter)
             list.scheduleLayoutAnimation()
         }
     }
 
-    private class TriangleViewHolder(view: View, val imageLoader: ImageLoader) : RecyclerView.ViewHolder(view) {
+    private class TriangleViewHolder(view: View, val imageLoader: ImageLoader, val presenter: ArbitragePresenter) : RecyclerView.ViewHolder(view) {
         val list: RecyclerView = view as RecyclerView
 
         fun bindData(data: List<TriangleArbitrage>) {
             val controller = AnimationUtils.loadLayoutAnimation(list.context, R.anim.layout_animation_fall_right)
             list.layoutAnimation = controller
             list.layoutManager = LinearLayoutManager(list.context, LinearLayoutManager.HORIZONTAL, false)
-            list.adapter = TriangleAdapter(data, imageLoader)
+            list.adapter = TriangleAdapter(data, imageLoader, presenter)
             list.scheduleLayoutAnimation()
         }
     }
