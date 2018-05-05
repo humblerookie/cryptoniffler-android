@@ -1,6 +1,5 @@
 package com.bariski.cryptoniffler.domain.model
 
-import android.os.Parcelable
 import android.support.annotation.Keep
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
@@ -16,4 +15,9 @@ data class DirectArbitrage(@Json(name = "sell") val sell: Float,
                            @Json(name = "coin") val coin: ArbCoin,
                            @Json(name = "from") val from: DirectArbitrageItem,
                            @Json(name = "to") val to: DirectArbitrageItem
-) : Parcelable
+) : ArbitragePresentable {
+    override fun getLaunchCoin() = coin.symbol
+
+    override fun getLaunchExchange() = from.symbol
+
+}

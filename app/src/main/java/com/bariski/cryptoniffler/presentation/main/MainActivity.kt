@@ -21,8 +21,6 @@ import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.presentation.common.BaseActivity
 import com.bariski.cryptoniffler.presentation.common.BasePresenter
 import com.bariski.cryptoniffler.presentation.common.BaseView
-import com.crashlytics.android.Crashlytics
-import io.fabric.sdk.android.Fabric
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
@@ -43,7 +41,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setSupportActionBar(toolbar)
-        Fabric.with(this, Crashlytics())
         title = null
         val toggle = ActionBarDrawerToggle(
                 this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)

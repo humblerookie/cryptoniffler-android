@@ -5,17 +5,16 @@ import android.util.Log
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.analytics.Analytics
 import com.bariski.cryptoniffler.domain.common.Schedulers
-import com.bariski.cryptoniffler.domain.model.Arbitrage
-import com.bariski.cryptoniffler.domain.model.ArbitrageFilter
-import com.bariski.cryptoniffler.domain.model.FilterItem
+import com.bariski.cryptoniffler.domain.model.*
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
 import com.bariski.cryptoniffler.domain.util.Screen
+import com.bariski.cryptoniffler.presentation.common.utils.DeviceInfo
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import java.lang.ref.WeakReference
 
-class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: Schedulers, val analytics: Analytics) : ArbitragePresenter {
+class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: Schedulers, val analytics: Analytics, val deviceInfo: DeviceInfo) : ArbitragePresenter {
 
 
     var arbitrage: Arbitrage? = null
@@ -24,6 +23,9 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
     var isRequestInProgress: Boolean = false
     var selectedSrc: Set<FilterItem> = HashSet()
     var selectedDest: Set<FilterItem> = HashSet()
+    val mapExchange = HashMap<String, Exchange>()
+
+    val TAG = "ArbitragePresenter"
 
     override fun onRetry() {
         fetchData(null)
@@ -53,11 +55,11 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                 showMessage(getMessage(R.string.error_common_request_progress_wait))
             }
 
-        }  else if(isModeInternational()){
+        } else if (isModeInternational()) {
             view.get()?.apply {
                 showMessage(getMessage(R.string.error_arbitrage_international_no_filter))
             }
-        }else {
+        } else {
             if (arbitrage != null) {
                 view.get()?.apply {
                     showFilters(arbitrage!!.filters.exchanges, selectedSrc, selectedDest)
@@ -152,6 +154,51 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                             })
             )
         }
+    }
+
+    override fun onDirectArbitrageClick(arbitrage: DirectArbitrage) {
+        navigateToExchange(arbitrage)
+    }
+
+    private fun navigateToExchange(arbitrage: ArbitragePresentable) {
+        if (mapExchange.size > 0 && mapExchange.containsKey(arbitrage.getLaunchExchange())) {
+            mapExchange[arbitrage.getLaunchExchange()]?.let { ex ->
+                if (ex.appIdentifier?.android != null && deviceInfo.hasAppInstalled(ex.appIdentifier.android)) {
+                    view.get()?.navigateToApp(deviceInfo.getLaunchIntent(ex.appIdentifier.android))
+                } else {
+                    ex.tradeUrlPattern?.let {
+                        view.get()?.launchUrl(String.format(it, arbitrage.getLaunchCoin()))
+                    }
+                }
+            }
+
+        } else {
+            disposable.add(repository.getExchanges()
+                    .subscribeOn(schedulers.io())
+                    .observeOn(schedulers.ui())
+                    .subscribeBy(onSuccess = { data ->
+                        data.forEach {
+                            mapExchange[it.symbol] = it
+                        }
+                        mapExchange[arbitrage.getLaunchExchange()]?.let { ex ->
+                            if (ex.appIdentifier?.android != null && deviceInfo.hasAppInstalled(ex.appIdentifier.android)) {
+                                view.get()?.navigateToApp(deviceInfo.getLaunchIntent(ex.appIdentifier.android))
+                            } else {
+                                ex.tradeUrlPattern?.let {
+                                    view.get()?.launchUrl(String.format(it, arbitrage.getLaunchCoin()))
+                                }
+                            }
+                        }
+                    }, onError = {
+                        Log.e(TAG, it.toString())
+                    }))
+        }
+
+
+    }
+
+    override fun onTriangleArbitrageClick(arbitrage: TriangleArbitrage) {
+        navigateToExchange(arbitrage)
     }
 
     override fun onButtonClicked(id: Int) {

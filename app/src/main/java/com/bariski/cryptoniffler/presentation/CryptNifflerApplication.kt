@@ -5,8 +5,10 @@ import android.os.StrictMode
 import android.support.multidex.MultiDexApplication
 import com.bariski.cryptoniffler.BuildConfig
 import com.bariski.cryptoniffler.R
+import com.bariski.cryptoniffler.data.cache.DataCache
 import com.bariski.cryptoniffler.domain.injection.AppComponent
 import com.bariski.cryptoniffler.domain.injection.DaggerAppComponent
+import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.domain.util.LogTree
 import com.google.firebase.FirebaseApp
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
@@ -23,6 +25,13 @@ class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
 
 
     lateinit var appComponent: AppComponent
+
+    @Inject
+    lateinit var cache: DataCache
+
+    @Inject
+    lateinit var imageLoader: ImageLoader
+
 
     @Inject
     lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
@@ -79,4 +88,10 @@ class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
 
     }
 
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        cache.clearAll()
+        imageLoader.clearCache()
+    }
 }

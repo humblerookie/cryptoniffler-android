@@ -7,6 +7,7 @@ import com.bariski.cryptoniffler.data.api.models.BestCoin
 import com.bariski.cryptoniffler.data.api.models.BestCoinResponse
 import com.bariski.cryptoniffler.data.api.models.BestExchangeResponse
 import com.bariski.cryptoniffler.data.api.models.CoinsAndExchanges
+import com.bariski.cryptoniffler.data.cache.DataCache
 import com.bariski.cryptoniffler.data.storage.KeyValueStore
 import com.bariski.cryptoniffler.data.utils.getAssetFromDevice
 import com.bariski.cryptoniffler.domain.model.*
@@ -20,26 +21,10 @@ import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashSet
 
-//http://jsoneditoronline.org/?id=296639de32b80b0cf4aa48aeeb343d43
-//http://jsoneditoronline.org/?id=ba02e037b8700a258d14f50f6b462dfc
 
-class NifflerRepositoryImpl(val context: Context, private val api: CryptoNifflerApi, private val remoteConfig: FirebaseRemoteConfig, private val keyValueStore: KeyValueStore, private val moshi: Moshi) : NifflerRepository {
-
-
-    private var mapOfCoins = HashMap<String, Coin>()
-    private val mapOfExchanges = HashMap<String, Exchange>()
-    private val KEY_TIMESTAMP_COINSNEXCHANGES = "timestamp_coinsnexchanges"
-    private val KEY_DATA_COINSNEXCHANGES = "data_coinsnexchanges"
-    private val KEY_DATA_ARB_FILTERS = "data_arb_filters"
-    private val KEY_DATA_SRC_EXCHANGES = "data_src_exchanges"
-    private val KEY_DATA_DEST_EXCHANGES = "data_dest_exchanges"
-    private val KEY_FLAG_NAV_DRAWER_SHOWN = "flag_nav_drawer_shown_v2"
-    private val KEY_ARB_SHOWN = "flag_arb_shown"
-    private val KEY_RATE_SHARE_SHOWN = "flag_rate_share_shown"
-    private val KEY_ARB_COUNT = "flag_arb_count"
-    private val KEY_ARB_FILTER_SHOWN = "flag_arb_filter_shown"
-    private val KEY_ARB_INTERNATIONAL = "flag_arb_international"
-    private val CACHE_EXPIRATION = AlarmManager.INTERVAL_HOUR * 2
+class NifflerRepositoryImpl(val context: Context, private val api: CryptoNifflerApi,
+                            private val remoteConfig: FirebaseRemoteConfig, private val keyValueStore: KeyValueStore,
+                            private val moshi: Moshi, private val cache: DataCache) : NifflerRepository {
 
 
     override fun fetchLatestConfig() {
@@ -47,7 +32,6 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
         remoteConfig.fetch(cacheExpiration).addOnCompleteListener({
             if (it.isSuccessful) {
                 remoteConfig.activateFetched()
-                //interceptor.setHost(remoteConfig.getString(BASE_URL))
             }
         })
     }
@@ -65,7 +49,7 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
                 keyValueStore.storeString(KEY_DATA_COINSNEXCHANGES, moshi.adapter<CoinsAndExchanges>(CoinsAndExchanges::class.java).toJson(it))
                 ArrayList(it.coins)
             }.onErrorReturn {
-                val cNe = getCachedData()
+                val cNe = getDiskCachedData()
                 updateMaps(cNe)
                 ArrayList(cNe.coins)
             }
@@ -73,24 +57,24 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
 
         } else {
             return Single.just(1).map {
-                if (mapOfCoins.size == 0) {
-                    updateMaps(getCachedData())
+                if (cache.getCoins().size == 0) {
+                    updateMaps(getDiskCachedData())
                 }
-                ArrayList(mapOfCoins.values)
+                ArrayList(cache.getCoins().values)
             }.map { it.sortByDescending { it.priority }; it }
         }
     }
 
     private fun updateMaps(it: CoinsAndExchanges) {
         for (c in it.coins) {
-            mapOfCoins[c.symbol.toUpperCase()] = c
+            cache.getCoins()[c.symbol.toUpperCase()] = c
         }
         for (e in it.exchanges) {
-            mapOfExchanges[e.symbol.toUpperCase()] = e
+            cache.getExchanges()[e.symbol.toUpperCase()] = e
         }
     }
 
-    private fun getCachedData(): CoinsAndExchanges {
+    private fun getDiskCachedData(): CoinsAndExchanges {
         val adapter = moshi.adapter<CoinsAndExchanges>(CoinsAndExchanges::class.java)
         var pref: String? = keyValueStore.getString(KEY_DATA_COINSNEXCHANGES)
         if (pref == null) {
@@ -110,16 +94,16 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
                 keyValueStore.storeString(KEY_DATA_COINSNEXCHANGES, moshi.adapter<CoinsAndExchanges>(CoinsAndExchanges::class.java).toJson(it))
                 ArrayList(it.exchanges)
             }.onErrorReturn {
-                val cNe = getCachedData()
+                val cNe = getDiskCachedData()
                 updateMaps(cNe)
                 ArrayList(cNe.exchanges)
             }
         } else {
             return Single.just(1).map {
-                if (mapOfCoins.size == 0) {
-                    updateMaps(getCachedData())
+                if (cache.getExchanges().size == 0) {
+                    updateMaps(getDiskCachedData())
                 }
-                ArrayList(mapOfExchanges.values)
+                ArrayList(cache.getExchanges().values)
             }.map { it.sortByDescending { it.priority }; it }
         }
     }
@@ -131,8 +115,8 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
                 .map { it ->
                     getExchanges().blockingGet()
                     val list = ArrayList<BestCoin>()
-                    it.values.mapTo(list) { it.copy(imgUrl = mapOfExchanges[it.symbol.toUpperCase()]?.imgUrl) }
-                    val response = it.copy(values = list, imgUrl = mapOfCoins[it.symbol.toUpperCase()]?.imgUrl)
+                    it.values.mapTo(list) { it.copy(imgUrl = cache.getExchanges()[it.symbol.toUpperCase()]?.imgUrl) }
+                    val response = it.copy(values = list, imgUrl = cache.getCoins()[it.symbol.toUpperCase()]?.imgUrl)
                     response
                 }
     }
@@ -143,8 +127,8 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
 
                     getCoins().blockingGet() //updates Map
                     val list = ArrayList<BestCoin>()
-                    it.coins.mapTo(list) { it.copy(imgUrl = mapOfCoins[it.symbol.toUpperCase()]?.imgUrl) }
-                    val response = it.copy(coins = list, imgUrl = mapOfExchanges[it.exchangeSymbol.toUpperCase()]?.imgUrl)
+                    it.coins.mapTo(list) { it.copy(imgUrl = cache.getCoins()[it.symbol.toUpperCase()]?.imgUrl) }
+                    val response = it.copy(coins = list, imgUrl = cache.getExchanges()[it.exchangeSymbol.toUpperCase()]?.imgUrl)
                     response
                 }
     }
@@ -217,4 +201,18 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
     override fun setInternationalArbitrage(b: Boolean) {
         keyValueStore.storeBoolean(KEY_ARB_INTERNATIONAL, b)
     }
+
+
+    private val KEY_TIMESTAMP_COINSNEXCHANGES = "timestamp_coinsnexchanges"
+    private val KEY_DATA_COINSNEXCHANGES = "data_coinsnexchanges"
+    private val KEY_DATA_ARB_FILTERS = "data_arb_filters"
+    private val KEY_DATA_SRC_EXCHANGES = "data_src_exchanges"
+    private val KEY_DATA_DEST_EXCHANGES = "data_dest_exchanges"
+    private val KEY_FLAG_NAV_DRAWER_SHOWN = "flag_nav_drawer_shown_v2"
+    private val KEY_ARB_SHOWN = "flag_arb_shown"
+    private val KEY_RATE_SHARE_SHOWN = "flag_rate_share_shown"
+    private val KEY_ARB_COUNT = "flag_arb_count"
+    private val KEY_ARB_FILTER_SHOWN = "flag_arb_filter_shown"
+    private val KEY_ARB_INTERNATIONAL = "flag_arb_international"
+    private val CACHE_EXPIRATION = AlarmManager.INTERVAL_HOUR * 2
 }

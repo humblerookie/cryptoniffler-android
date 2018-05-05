@@ -210,6 +210,7 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
         disposable.add(repository.getExchanges()
                 .observeOn(schedulerProvider.io())
                 .subscribeOn(schedulerProvider.io())
+                .map { it.filter { it.isHidden == null || !it.isHidden } }
                 .observeOn(schedulerProvider.ui())
                 .doOnSubscribe {
                     viewWeak.get()?.toggleProgress(true)

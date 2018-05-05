@@ -21,7 +21,9 @@ import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.repository.AndroidDataStore
 import com.bariski.cryptoniffler.presentation.common.extensions.makeInvisible
 import com.bariski.cryptoniffler.presentation.common.extensions.makeVisible
+import com.crashlytics.android.Crashlytics
 import dagger.android.support.DaggerAppCompatActivity
+import io.fabric.sdk.android.Fabric
 import javax.inject.Inject
 
 
@@ -50,6 +52,9 @@ abstract class BaseActivity : DaggerAppCompatActivity(), BaseView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        if (!Fabric.isInitialized()) {
+            Fabric.with(this, Crashlytics())
+        }
         setContentView(layoutResId)
         rootLayout = findViewById<View>(android.R.id.content)
         if (savedInstanceState == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&

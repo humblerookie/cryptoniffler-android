@@ -1,6 +1,8 @@
 package com.bariski.cryptoniffler.presentation.arbitrage
 
 import android.app.Dialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
@@ -28,6 +30,7 @@ import javax.inject.Inject
 
 
 class ArbitrageFragment : BaseInjectFragment(), ArbitrageView, View.OnClickListener {
+
 
     @Inject
     lateinit var presenter: ArbitragePresenter
@@ -209,6 +212,19 @@ class ArbitrageFragment : BaseInjectFragment(), ArbitrageView, View.OnClickListe
         }
     }
 
+
+    override fun navigateToApp(intent: Intent) {
+        if (isAlive()) {
+            startActivity(intent)
+        }
+    }
+
+    override fun launchUrl(url: String) {
+        if (isAlive()) {
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(browserIntent)
+        }
+    }
 
     override fun getMessage(resourceId: Int) = getString(resourceId)
 

@@ -1,5 +1,6 @@
 package com.bariski.cryptoniffler.presentation.arbitrage
 
+import android.content.Intent
 import com.bariski.cryptoniffler.domain.model.Arbitrage
 import com.bariski.cryptoniffler.domain.model.ArbitrageExchange
 import com.bariski.cryptoniffler.domain.model.FilterItem
@@ -14,4 +15,6 @@ interface ArbitrageView : BaseView {
     fun showMessage(message: String)
     fun showFilterTutorial()
     fun showRateDialog()
+    fun navigateToApp(intent: Intent)
+    fun launchUrl(url: String)
 }

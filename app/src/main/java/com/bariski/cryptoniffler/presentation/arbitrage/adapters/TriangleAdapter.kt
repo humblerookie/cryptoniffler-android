@@ -11,14 +11,15 @@ import android.widget.TextView
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.model.TriangleArbitrage
 import com.bariski.cryptoniffler.domain.repository.ImageLoader
+import com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter
 import com.bariski.cryptoniffler.presentation.common.models.ImageRequest
 import kotlinx.android.synthetic.main.item_triangle_timeline.view.*
 
-class TriangleAdapter(val data: List<TriangleArbitrage>, val imageLoader: ImageLoader) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TriangleAdapter(val data: List<TriangleArbitrage>, val imageLoader: ImageLoader, val presenter: ArbitragePresenter) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == 0) {
-            TriangleViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_triangle_timeline, parent, false), imageLoader)
+            TriangleViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_triangle_timeline, parent, false), imageLoader, presenter)
         } else {
             TextHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_text, parent, false))
         }
@@ -38,7 +39,7 @@ class TriangleAdapter(val data: List<TriangleArbitrage>, val imageLoader: ImageL
         }
     }
 
-    class TriangleViewHolder(view: View, val imageLoader: ImageLoader) : RecyclerView.ViewHolder(view) {
+    class TriangleViewHolder(val view: View, val imageLoader: ImageLoader, val presenter: ArbitragePresenter) : RecyclerView.ViewHolder(view) {
         val summary1 = view.summary1
         val summary2 = view.summary2
         val summary3 = view.summary3
@@ -52,11 +53,19 @@ class TriangleAdapter(val data: List<TriangleArbitrage>, val imageLoader: ImageL
         val profit = view.profit
         val seed = view.amount
         val fees = view.fees
+        lateinit var data: TriangleArbitrage
         val res = view.context.resources
         val bigIconSize = ((res.getDimension(R.dimen.width_exchange) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
         val smallIconSize = ((res.getDimension(R.dimen.dp20) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
-        fun bind(data: TriangleArbitrage) {
 
+        init {
+            view.setOnClickListener {
+                presenter.onTriangleArbitrageClick(data)
+            }
+        }
+
+        fun bind(data: TriangleArbitrage) {
+            this.data = data
             val a1 = data.actions[0]
             val a2 = data.actions[1]
             val a3 = data.actions[2]

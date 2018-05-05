@@ -24,6 +24,7 @@ interface CryptoNifflerApi {
     fun getBestRates(@Query("coin") coin: String?, @Query("amount") amount: Long, @Query("ignoreFees") ignoreFees: Boolean): Single<BestExchangeResponse>
 
     @GET("/getCoinsAndExchanges")
+    @Headers(HEADER_VERSION_2)
     fun getCoinsAndExchanges(): Single<CoinsAndExchanges>
 
     @GET("/arbitrage")
