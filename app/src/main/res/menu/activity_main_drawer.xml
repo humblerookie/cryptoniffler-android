@@ -17,6 +17,10 @@
             android:id="@+id/calendar"
             android:icon="@drawable/ic_event"
             android:title="@string/drawer.title.events" />
+        <item
+            android:id="@+id/report"
+            android:icon="@drawable/ic_help"
+            android:title="@string/drawer.title.report" />
 
         <item
             android:id="@+id/share"

@@ -190,6 +190,12 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
         keyValueStore.storeBoolean(KEY_RATE_SHARE_SHOWN, b)
     }
 
+    override fun isDefaultLocaleSetOnce() = keyValueStore.getBoolean(KEY_DEFAULT_ARBITRAGE_SET)
+
+    override fun setDefaultLocaleOnce(b: Boolean) {
+        keyValueStore.storeBoolean(KEY_DEFAULT_ARBITRAGE_SET, b)
+    }
+
     override fun getArbitrageUsedCount() = keyValueStore.getLong(KEY_ARB_COUNT)
 
     override fun setArbitrageUsedCount(b: Long) {
@@ -214,5 +220,6 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
     private val KEY_ARB_COUNT = "flag_arb_count"
     private val KEY_ARB_FILTER_SHOWN = "flag_arb_filter_shown"
     private val KEY_ARB_INTERNATIONAL = "flag_arb_international"
+    private val KEY_DEFAULT_ARBITRAGE_SET = "flag_default_arbitrage_set"
     private val CACHE_EXPIRATION = AlarmManager.INTERVAL_HOUR * 2
 }

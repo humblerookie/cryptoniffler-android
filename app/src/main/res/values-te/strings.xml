@@ -27,6 +27,8 @@
     <string name="common.label.buynsell_cryptocurrency"> <![CDATA[క్రిప్టోకోర్యురిని కొనుగోలు చేయండి]]></string>
         
     <string name="common.label.view_exchanges"> ఎక్స్ఛేంజ్ బ్రౌజ్ </string>
+
+    <string name="common.label.view_arbitrages">ఆర్బిట్రేజెస్ చూడండి</string>
         
     <string name="common.label.i_like_to_buy"> నేను \ "కొనుగోలు / విక్రయించాలనుకుంటున్నాను </string>
         
@@ -119,7 +121,7 @@
     <string name="drawer.title.home"> ప్రారంభించండి</string>
         
     <string name="drawer.title.share">స్నేహితులతో భాగస్వామ్యం చేయండి</string>
-        
+    <string name="drawer.title.report">చూడు</string>    
     <string name="drawer.title.review">సమీక్షించండి</string>
     <string name="drawer.title.arbitrage">మధ్యవర్తిత్వపు</string>
     <string name="arbitrage.description">ఆర్బిట్రేజ్ అనేది వేర్వేరు ఎక్స్ఛేంజ్ల మధ్య ధర వ్యత్యాసాల ఆధారంగా డబ్బు సంపాదించడానికి మార్గం. ఒక ఎక్స్చేంజ్ ₹ 10 లో ఒక నాణెం కొనుగోలు మరియు మరొక మార్పిడి మీరు ₹ 12 వద్ద ఈ నాణెం అమ్మే అనుమతిస్తుంది. మీరు తక్కువ ధరల మార్పిడి వద్ద కొనడం మరియు అధిక ధర వద్ద అమ్మడం ద్వారా డబ్బు సంపాదించవచ్చు.

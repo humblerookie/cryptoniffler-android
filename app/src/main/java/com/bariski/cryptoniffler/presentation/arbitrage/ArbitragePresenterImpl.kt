@@ -9,17 +9,19 @@ import com.bariski.cryptoniffler.domain.model.*
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
 import com.bariski.cryptoniffler.domain.util.Screen
 import com.bariski.cryptoniffler.presentation.common.utils.DeviceInfo
+import com.bariski.cryptoniffler.presentation.common.utils.INDIAN_TIMEZONE
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
 import java.lang.ref.WeakReference
+import java.util.*
 
 class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: Schedulers, val analytics: Analytics, val deviceInfo: DeviceInfo) : ArbitragePresenter {
 
 
     var arbitrage: Arbitrage? = null
     var disposable = CompositeDisposable()
-    var view: WeakReference<ArbitrageView> = WeakReference<ArbitrageView>(null)
+    private var view: WeakReference<ArbitrageView> = WeakReference<ArbitrageView>(null)
     var isRequestInProgress: Boolean = false
     var selectedSrc: Set<FilterItem> = HashSet()
     var selectedDest: Set<FilterItem> = HashSet()
@@ -33,6 +35,14 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
 
     override fun initView(v: ArbitrageView, savedState: Bundle?, args: Bundle?) {
         this.view = WeakReference(v)
+        if (!repository.isDefaultLocaleSetOnce()) {
+            try {
+                repository.setInternationalArbitrage(Calendar.getInstance().timeZone.id != INDIAN_TIMEZONE)
+                repository.setDefaultLocaleOnce(true)
+            } catch (e: Exception) {
+                Log.e(TAG, "Could not set default arbitrage, cause" + e.toString())
+            }
+        }
         if (savedState?.containsKey("data") != null) {
             selectedSrc = HashSet(savedState.getParcelableArrayList("selectedSrc"))
             selectedDest = HashSet(savedState.getParcelableArrayList("selectedDest"))

@@ -1,13 +1,13 @@
 package com.bariski.cryptoniffler.presentation.arbitrage.adapters
 
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationUtils
-import android.widget.CompoundButton
-import android.widget.Switch
+import android.widget.TextView
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.model.Arbitrage
 import com.bariski.cryptoniffler.domain.model.DirectArbitrage
@@ -62,14 +62,45 @@ class ArbitrageAdapter(val arbitrage: Arbitrage, val isInternational: Boolean, v
     }
 
     private class DisclaimerViewHolder(view: View, val presenter: ArbitragePresenter) : RecyclerView.ViewHolder(view) {
-        val switch: Switch = view.findViewById(R.id.mode)
+        val indian: TextView = view.findViewById(R.id.indian)
+        val international: TextView = view.findViewById(R.id.international)
+        var isSelected = false
+        var selectedView: View? = null
+        val listener: View.OnClickListener = View.OnClickListener { view ->
+            if (!isSelected && (selectedView == null || view != selectedView)) {
+                isSelected = true
+                changeSelectedUi(view)
+                presenter.onModeChanged(view == international)
+                view.postDelayed({
+                    isSelected = false
+                }, 300)
+            }
+        }
 
-        val listener: CompoundButton.OnCheckedChangeListener = CompoundButton.OnCheckedChangeListener { _, isChecked -> presenter.onModeChanged(isChecked) }
+        init {
+            indian.setOnClickListener(listener)
+            international.setOnClickListener(listener)
+        }
+
+        private fun changeSelectedUi(view: View) {
+            var selected = indian
+            var unSelected = international
+            if (view == international) {
+                selected = international
+                unSelected = indian
+            }
+            val context = selected.context
+            selected.setBackgroundColor(ContextCompat.getColor(context, R.color.gold_900))
+            selected.setTextColor(ContextCompat.getColor(context, R.color.white_87))
+            unSelected.setBackgroundColor(ContextCompat.getColor(context, R.color.black_24))
+            unSelected.setTextColor(ContextCompat.getColor(context, R.color.white_38))
+
+        }
 
         fun bindData(isInternational: Boolean) {
-            switch.setOnCheckedChangeListener(null)
-            switch.isChecked = isInternational
-            switch.setOnCheckedChangeListener(listener)
+            val view = if (isInternational) international else indian
+            changeSelectedUi(view)
+            selectedView = view
         }
     }
 

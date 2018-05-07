@@ -27,7 +27,9 @@
         
     <string name="common.label.buynsell_cryptocurrency"> <![CDATA[கொள்முதல் மற்றும் விற்பனை Cryptocurrency]]> </string>
         
-    <string name="common.label.view_exchanges"> Exchange உலாவுக </string>
+    <string name="common.label.view_exchanges">பரிமாற்றங்களைக் காண்க </string>
+
+    <string name="common.label.view_arbitrages">காப்பகங்களைப் பார்க்கவும்</string>
         
     <string name="common.label.i_like_to_buy">நான் வாங்க மற்றும் விற்க விரும்புகிறேன்</string>
         
@@ -125,6 +127,7 @@
 
     <string name="drawer.title.arbitrage">முதலீடற்ற</string>
 
+    <string name="drawer.title.report">பின்னூட்டம்</string>
     <string name="arbitrage.description">வேறு பரிமாற்றங்களிடையே விலை வேறுபாடுகளின் அடிப்படையில் பணம் சம்பாதிப்பதற்கான அர்பிட்ரேஜ் ஆகும். ஒரு பரிமாற்றம் ₹ 10 இல் ஒரு நாணயத்தை வாங்குவதற்கு அனுமதித்தால், மற்றொரு பரிமாற்றம் ₹ 12 இல் இந்த நாணயத்தை விற்க அனுமதிக்கிறது. நீங்கள் குறைந்த விலையில் பரிமாற்றம் மற்றும் அதிக விற்பனைக்கு வாங்குவதன் மூலம் பணம் சம்பாதிக்க முடியும்.
 
 நேரடி மற்றும் நடுநிலையான இரண்டு வகையான நடுவண்மைகள் உள்ளன. நேரடியாக நடுவர் அதே நாணயத்தை உள்ளடக்கியது, முக்கோண நடுவர் இரண்டு அல்லது அதற்கு மேற்பட்ட நாணயங்களை உள்ளடக்கியது.

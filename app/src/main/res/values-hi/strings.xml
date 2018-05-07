@@ -28,6 +28,8 @@
     <string name="common.label.buynsell_cryptocurrency"> <![CDATA[खरीदें और बेचना क्रिप्टो मुद्रा]]> </string>
         
     <string name="common.label.view_exchanges"> एक्सचेंज ब्राउज़ करें </string>
+
+    <string name="common.label.view_arbitrages">मध्यस्थता देखें</string>
         
     <string name="common.label.i_like_to_buy"> मैं खरीदना / बेचना चाहता हूं </string>
         
@@ -97,6 +99,8 @@
     <string name="drawer.title.review">समीक्षा करें </string>
 
     <string name="drawer.title.arbitrage">अंतरपणन</string>
+
+    <string name="drawer.title.report">प्रतिक्रिया भेजें</string>
 
     <string name="arbitrage.description">आर्बिट्रेज विभिन्न एक्सचेंजों में मूल्य अंतर के आधार पर पैसा बनाने का तरीका है। यदि कोई एक्सचेंज ₹ 10 पर एक सिक्का खरीदने की अनुमति देता है और दूसरा एक्सचेंज आपको ₹ 12 पर इस सिक्के को बेचने देता है। आप कम कीमत वाले एक्सचेंज पर खरीदारी करके और अधिक बिक्री कर सकते हैं।
 

@@ -32,4 +32,6 @@ interface NifflerRepository {
     fun setArbitrageUsedCount(b: Long)
     fun isInternationalArbitrage(): Boolean
     fun setInternationalArbitrage(b: Boolean)
+    fun isDefaultLocaleSetOnce(): Boolean
+    fun setDefaultLocaleOnce(b: Boolean)
 }

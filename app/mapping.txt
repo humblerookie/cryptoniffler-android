@@ -21847,8 +21847,10 @@ com.bariski.cryptoniffler.R$id -> ln$a:
     int ifRoom -> ifRoom
     int image -> image
     int includeFees -> includeFees
+    int indian -> indian
     int info -> info
     int inrAmount -> inrAmount
+    int international -> international
     int italic -> italic
     int itemIcon -> itemIcon
     int itemName -> itemName
@@ -21872,7 +21874,6 @@ com.bariski.cryptoniffler.R$id -> ln$a:
     int message -> message
     int middle -> middle
     int mini -> mini
-    int mode -> mode
     int multiply -> multiply
     int name -> name
     int nav_view -> nav_view
@@ -21900,6 +21901,7 @@ com.bariski.cryptoniffler.R$id -> ln$a:
     int progress_horizontal -> progress_horizontal
     int radial -> radial
     int radio -> radio
+    int report -> report
     int restart -> restart
     int reverse -> reverse
     int review -> review
@@ -21985,6 +21987,7 @@ com.bariski.cryptoniffler.R$id -> ln$a:
     int uniform -> uniform
     int up -> up
     int useLogo -> useLogo
+    int viewArbitrages -> viewArbitrages
     int viewExchanges -> viewExchanges
     int view_offset_helper -> view_offset_helper
     int visible -> visible
@@ -22308,18 +22311,19 @@ com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl -> ly:
     java.lang.String KEY_ARB_COUNT -> i
     java.lang.String KEY_ARB_FILTER_SHOWN -> j
     java.lang.String KEY_ARB_INTERNATIONAL -> k
-    long CACHE_EXPIRATION -> l
-    android.content.Context context -> m
-    com.bariski.cryptoniffler.data.api.CryptoNifflerApi api -> n
-    com.google.firebase.remoteconfig.FirebaseRemoteConfig remoteConfig -> o
-    com.bariski.cryptoniffler.data.storage.KeyValueStore keyValueStore -> p
-    com.squareup.moshi.Moshi moshi -> q
-    com.bariski.cryptoniffler.data.cache.DataCache cache -> r
+    java.lang.String KEY_DEFAULT_ARBITRAGE_SET -> l
+    long CACHE_EXPIRATION -> m
+    android.content.Context context -> n
+    com.bariski.cryptoniffler.data.api.CryptoNifflerApi api -> o
+    com.google.firebase.remoteconfig.FirebaseRemoteConfig remoteConfig -> p
+    com.bariski.cryptoniffler.data.storage.KeyValueStore keyValueStore -> q
+    com.squareup.moshi.Moshi moshi -> r
+    com.bariski.cryptoniffler.data.cache.DataCache cache -> s
     31:37:void fetchLatestConfig() -> a
     40:40:io.reactivex.Single getArbitrage(java.util.Set,java.util.Set) -> a
     44:64:io.reactivex.Single getCoins() -> b
     69:75:void updateMaps(com.bariski.cryptoniffler.data.api.models.CoinsAndExchanges) -> a
-    78:83:com.bariski.cryptoniffler.data.api.models.CoinsAndExchanges getDiskCachedData() -> l
+    78:83:com.bariski.cryptoniffler.data.api.models.CoinsAndExchanges getDiskCachedData() -> m
     89:107:io.reactivex.Single getExchanges() -> c
     111:111:io.reactivex.Single getBtcInrRates() -> d
     114:115:io.reactivex.Single getBestRates(java.lang.String,long,boolean) -> a
@@ -22334,11 +22338,13 @@ com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl -> ly:
     184:185:void setArbFilterTutorialShown(boolean) -> c
     187:187:boolean isRateNShareShown() -> i
     190:191:void setRateNShareShown(boolean) -> d
-    193:193:long getArbitrageUsedCount() -> j
-    196:197:void setArbitrageUsedCount(long) -> a
-    199:199:boolean isInternationalArbitrage() -> k
-    202:203:void setInternationalArbitrage(boolean) -> e
-    25:217:void <init>(android.content.Context,com.bariski.cryptoniffler.data.api.CryptoNifflerApi,com.google.firebase.remoteconfig.FirebaseRemoteConfig,com.bariski.cryptoniffler.data.storage.KeyValueStore,com.squareup.moshi.Moshi,com.bariski.cryptoniffler.data.cache.DataCache) -> <init>
+    193:193:boolean isDefaultLocaleSetOnce() -> j
+    196:197:void setDefaultLocaleOnce(boolean) -> e
+    199:199:long getArbitrageUsedCount() -> k
+    202:203:void setArbitrageUsedCount(long) -> a
+    205:205:boolean isInternationalArbitrage() -> l
+    208:209:void setInternationalArbitrage(boolean) -> f
+    25:224:void <init>(android.content.Context,com.bariski.cryptoniffler.data.api.CryptoNifflerApi,com.google.firebase.remoteconfig.FirebaseRemoteConfig,com.bariski.cryptoniffler.data.storage.KeyValueStore,com.squareup.moshi.Moshi,com.bariski.cryptoniffler.data.cache.DataCache) -> <init>
     25:25:com.google.firebase.remoteconfig.FirebaseRemoteConfig access$getRemoteConfig$p(com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl) -> a
     25:25:void access$updateMaps(com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl,com.bariski.cryptoniffler.data.api.models.CoinsAndExchanges) -> a
     25:25:com.bariski.cryptoniffler.data.storage.KeyValueStore access$getKeyValueStore$p(com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl) -> b
@@ -22366,12 +22372,12 @@ com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$2 -> l
 com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getBestCoin$1 -> ly$d:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl this$0 -> a
     25:25:java.lang.Object apply(java.lang.Object) -> a
-    128:221:com.bariski.cryptoniffler.data.api.models.BestCoinResponse apply(com.bariski.cryptoniffler.data.api.models.BestCoinResponse) -> a
+    128:228:com.bariski.cryptoniffler.data.api.models.BestCoinResponse apply(com.bariski.cryptoniffler.data.api.models.BestCoinResponse) -> a
     void <init>(com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl) -> <init>
 com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getBestRates$1 -> ly$e:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl this$0 -> a
     25:25:java.lang.Object apply(java.lang.Object) -> a
-    116:221:com.bariski.cryptoniffler.data.api.models.BestExchangeResponse apply(com.bariski.cryptoniffler.data.api.models.BestExchangeResponse) -> a
+    116:228:com.bariski.cryptoniffler.data.api.models.BestExchangeResponse apply(com.bariski.cryptoniffler.data.api.models.BestExchangeResponse) -> a
     void <init>(com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl) -> <init>
 com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$1 -> ly$f:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl this$0 -> a
@@ -22391,7 +22397,7 @@ com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$3 -> ly$h:
 com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$4 -> ly$i:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$4 INSTANCE -> a
     25:25:java.lang.Object apply(java.lang.Object) -> a
-    64:220:java.util.ArrayList apply(java.util.ArrayList) -> a
+    64:227:java.util.ArrayList apply(java.util.ArrayList) -> a
     void <init>() -> <init>
     void <clinit>() -> <clinit>
 com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$4$$special$$inlined$sortByDescending$1 -> ly$i$a:
@@ -22415,7 +22421,7 @@ com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$3 -> l
 com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$4 -> ly$m:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$4 INSTANCE -> a
     25:25:java.lang.Object apply(java.lang.Object) -> a
-    107:220:java.util.ArrayList apply(java.util.ArrayList) -> a
+    107:227:java.util.ArrayList apply(java.util.ArrayList) -> a
     void <init>() -> <init>
     void <clinit>() -> <clinit>
 com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$4$$special$$inlined$sortByDescending$1 -> ly$m$a:
@@ -23584,10 +23590,12 @@ com.bariski.cryptoniffler.domain.repository.NifflerRepository -> nl:
     void setArbFilterTutorialShown(boolean) -> c
     boolean isRateNShareShown() -> i
     void setRateNShareShown(boolean) -> d
-    long getArbitrageUsedCount() -> j
+    long getArbitrageUsedCount() -> k
     void setArbitrageUsedCount(long) -> a
-    boolean isInternationalArbitrage() -> k
-    void setInternationalArbitrage(boolean) -> e
+    boolean isInternationalArbitrage() -> l
+    void setInternationalArbitrage(boolean) -> f
+    boolean isDefaultLocaleSetOnce() -> j
+    void setDefaultLocaleOnce(boolean) -> e
 com.bariski.cryptoniffler.domain.util.Event -> nm:
     java.lang.String SCREEN_VIEW -> b
     java.lang.String INFO_CLICK -> c
@@ -23818,65 +23826,65 @@ com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl -> nt:
     com.bariski.cryptoniffler.domain.common.Schedulers schedulers -> k
     com.bariski.cryptoniffler.analytics.Analytics analytics -> l
     com.bariski.cryptoniffler.presentation.common.utils.DeviceInfo deviceInfo -> m
-    20:20:com.bariski.cryptoniffler.domain.model.Arbitrage getArbitrage() -> e
-    20:20:void setArbitrage(com.bariski.cryptoniffler.domain.model.Arbitrage) -> a
-    22:22:java.lang.ref.WeakReference getView() -> f
-    23:23:void setRequestInProgress(boolean) -> b
-    24:24:java.util.Set getSelectedSrc() -> g
-    25:25:java.util.Set getSelectedDest() -> h
-    26:26:java.util.HashMap getMapExchange() -> i
-    28:28:java.lang.String getTAG() -> j
-    31:32:void onRetry() -> a
-    35:50:void initView(com.bariski.cryptoniffler.presentation.arbitrage.ArbitrageView,android.os.Bundle,android.os.Bundle) -> a
-    17:17:void initView(java.lang.Object,android.os.Bundle,android.os.Bundle) -> a
-    53:82:void onFilterClicked() -> b
-    85:88:void onFilterApply(java.util.Set,java.util.Set) -> a
-    91:94:void onFilterClear() -> c
-    97:157:void fetchData(com.bariski.cryptoniffler.domain.model.Arbitrage) -> b
-    160:161:void onDirectArbitrageClick(com.bariski.cryptoniffler.domain.model.DirectArbitrage) -> a
-    164:198:void navigateToExchange(com.bariski.cryptoniffler.domain.model.ArbitragePresentable) -> a
-    201:202:void onTriangleArbitrageClick(com.bariski.cryptoniffler.domain.model.TriangleArbitrage) -> a
-    205:210:void onButtonClicked(int) -> a
-    213:214:void releaseView() -> k
-    218:218:void onRefresh() -> l
-    221:224:void onModeChanged(boolean) -> a
-    227:232:void saveState(android.os.Bundle) -> a
-    234:234:boolean isModeInternational() -> d
-    17:17:com.bariski.cryptoniffler.domain.repository.NifflerRepository getRepository() -> m
-    17:17:com.bariski.cryptoniffler.analytics.Analytics getAnalytics() -> n
-    17:17:com.bariski.cryptoniffler.presentation.common.utils.DeviceInfo getDeviceInfo() -> o
-    17:28:void <init>(com.bariski.cryptoniffler.domain.repository.NifflerRepository,com.bariski.cryptoniffler.domain.common.Schedulers,com.bariski.cryptoniffler.analytics.Analytics,com.bariski.cryptoniffler.presentation.common.utils.DeviceInfo) -> <init>
+    22:22:com.bariski.cryptoniffler.domain.model.Arbitrage getArbitrage() -> e
+    22:22:void setArbitrage(com.bariski.cryptoniffler.domain.model.Arbitrage) -> a
+    25:25:void setRequestInProgress(boolean) -> b
+    26:26:java.util.Set getSelectedSrc() -> f
+    27:27:java.util.Set getSelectedDest() -> g
+    28:28:java.util.HashMap getMapExchange() -> h
+    30:30:java.lang.String getTAG() -> i
+    33:34:void onRetry() -> a
+    37:60:void initView(com.bariski.cryptoniffler.presentation.arbitrage.ArbitrageView,android.os.Bundle,android.os.Bundle) -> a
+    19:19:void initView(java.lang.Object,android.os.Bundle,android.os.Bundle) -> a
+    63:92:void onFilterClicked() -> b
+    95:98:void onFilterApply(java.util.Set,java.util.Set) -> a
+    101:104:void onFilterClear() -> c
+    107:167:void fetchData(com.bariski.cryptoniffler.domain.model.Arbitrage) -> b
+    170:171:void onDirectArbitrageClick(com.bariski.cryptoniffler.domain.model.DirectArbitrage) -> a
+    174:208:void navigateToExchange(com.bariski.cryptoniffler.domain.model.ArbitragePresentable) -> a
+    211:212:void onTriangleArbitrageClick(com.bariski.cryptoniffler.domain.model.TriangleArbitrage) -> a
+    215:220:void onButtonClicked(int) -> a
+    223:224:void releaseView() -> j
+    228:228:void onRefresh() -> k
+    231:234:void onModeChanged(boolean) -> a
+    237:242:void saveState(android.os.Bundle) -> a
+    244:244:boolean isModeInternational() -> d
+    19:19:com.bariski.cryptoniffler.domain.repository.NifflerRepository getRepository() -> l
+    19:19:com.bariski.cryptoniffler.analytics.Analytics getAnalytics() -> m
+    19:19:com.bariski.cryptoniffler.presentation.common.utils.DeviceInfo getDeviceInfo() -> n
+    19:30:void <init>(com.bariski.cryptoniffler.domain.repository.NifflerRepository,com.bariski.cryptoniffler.domain.common.Schedulers,com.bariski.cryptoniffler.analytics.Analytics,com.bariski.cryptoniffler.presentation.common.utils.DeviceInfo) -> <init>
+    19:19:java.lang.ref.WeakReference access$getView$p(com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl) -> a
 com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl$fetchData$2 -> nt$a:
     com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl this$0 -> a
     com.bariski.cryptoniffler.domain.model.Arbitrage $dat -> b
-    17:17:java.lang.Object invoke(java.lang.Object) -> a
-    114:148:void invoke(com.bariski.cryptoniffler.domain.model.Arbitrage) -> a
+    19:19:java.lang.Object invoke(java.lang.Object) -> a
+    124:158:void invoke(com.bariski.cryptoniffler.domain.model.Arbitrage) -> a
     void <init>(com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl,com.bariski.cryptoniffler.domain.model.Arbitrage) -> <init>
 com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl$fetchData$3 -> nt$b:
     com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl this$0 -> a
-    17:17:java.lang.Object invoke(java.lang.Object) -> a
-    149:154:void invoke(java.lang.Throwable) -> a
+    19:19:java.lang.Object invoke(java.lang.Object) -> a
+    159:164:void invoke(java.lang.Throwable) -> a
     void <init>(com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl) -> <init>
 com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl$navigateToExchange$2 -> nt$c:
     com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl this$0 -> a
     com.bariski.cryptoniffler.domain.model.ArbitragePresentable $arbitrage -> b
-    17:17:java.lang.Object invoke(java.lang.Object) -> a
-    180:238:void invoke(java.util.ArrayList) -> a
+    19:19:java.lang.Object invoke(java.lang.Object) -> a
+    190:248:void invoke(java.util.ArrayList) -> a
     void <init>(com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl,com.bariski.cryptoniffler.domain.model.ArbitragePresentable) -> <init>
 com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl$navigateToExchange$3 -> nt$d:
     com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl this$0 -> a
-    17:17:java.lang.Object invoke(java.lang.Object) -> a
-    193:194:void invoke(java.lang.Throwable) -> a
+    19:19:java.lang.Object invoke(java.lang.Object) -> a
+    203:204:void invoke(java.lang.Throwable) -> a
     void <init>(com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl) -> <init>
 com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl$onFilterClicked$$inlined$apply$lambda$1 -> nt$e:
     com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl this$0 -> a
     void <init>(com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl) -> <init>
-    17:17:java.lang.Object invoke(java.lang.Object) -> a
-    72:75:void invoke(com.bariski.cryptoniffler.domain.model.ArbitrageFilter) -> a
+    19:19:java.lang.Object invoke(java.lang.Object) -> a
+    82:85:void invoke(com.bariski.cryptoniffler.domain.model.ArbitrageFilter) -> a
 com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl$onFilterClicked$4$2 -> nt$f:
     com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenterImpl$onFilterClicked$4$2 INSTANCE -> a
-    17:17:java.lang.Object invoke(java.lang.Object) -> a
-    76:77:void invoke(java.lang.Throwable) -> a
+    19:19:java.lang.Object invoke(java.lang.Object) -> a
+    86:87:void invoke(java.lang.Throwable) -> a
     void <init>() -> <init>
     void <clinit>() -> <clinit>
 com.bariski.cryptoniffler.presentation.arbitrage.ArbitrageView -> nu:
@@ -23905,19 +23913,32 @@ com.bariski.cryptoniffler.presentation.arbitrage.adapters.ArbitrageAdapter$Direc
     boolean isInternational -> b
     com.bariski.cryptoniffler.domain.repository.ImageLoader imageLoader -> c
     com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter presenter -> d
-    80:85:void bindData(java.util.List) -> a
-    76:77:void <init>(android.view.View,boolean,com.bariski.cryptoniffler.domain.repository.ImageLoader,com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter) -> <init>
+    111:116:void bindData(java.util.List) -> a
+    107:108:void <init>(android.view.View,boolean,com.bariski.cryptoniffler.domain.repository.ImageLoader,com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter) -> <init>
 com.bariski.cryptoniffler.presentation.arbitrage.adapters.ArbitrageAdapter$DisclaimerViewHolder -> nv$b:
-    android.widget.Switch switch -> a
-    android.widget.CompoundButton$OnCheckedChangeListener listener -> b
-    com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter presenter -> c
-    70:73:void bindData(boolean) -> a
-    64:64:com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter getPresenter() -> a
-    64:67:void <init>(android.view.View,com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter) -> <init>
+    android.widget.TextView indian -> a
+    android.widget.TextView international -> b
+    boolean isSelected -> c
+    android.view.View selectedView -> d
+    android.view.View$OnClickListener listener -> e
+    com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter presenter -> f
+    66:66:android.widget.TextView getInternational() -> a
+    67:67:boolean isSelected() -> b
+    67:67:void setSelected(boolean) -> a
+    68:68:android.view.View getSelectedView() -> c
+    86:98:void changeSelectedUi(android.view.View) -> a
+    101:104:void bindData(boolean) -> b
+    64:64:com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter getPresenter() -> d
+    64:82:void <init>(android.view.View,com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter) -> <init>
+    64:64:void access$changeSelectedUi(com.bariski.cryptoniffler.presentation.arbitrage.adapters.ArbitrageAdapter$DisclaimerViewHolder,android.view.View) -> a
 com.bariski.cryptoniffler.presentation.arbitrage.adapters.ArbitrageAdapter$DisclaimerViewHolder$listener$1 -> nv$b$a:
     com.bariski.cryptoniffler.presentation.arbitrage.adapters.ArbitrageAdapter$DisclaimerViewHolder this$0 -> a
-    67:67:void onCheckedChanged(android.widget.CompoundButton,boolean) -> onCheckedChanged
+    70:78:void onClick(android.view.View) -> onClick
     void <init>(com.bariski.cryptoniffler.presentation.arbitrage.adapters.ArbitrageAdapter$DisclaimerViewHolder) -> <init>
+com.bariski.cryptoniffler.presentation.arbitrage.adapters.ArbitrageAdapter$DisclaimerViewHolder$listener$1$1 -> nv$b$a$1:
+    com.bariski.cryptoniffler.presentation.arbitrage.adapters.ArbitrageAdapter$DisclaimerViewHolder$listener$1 this$0 -> a
+    75:76:void run() -> run
+    void <init>(com.bariski.cryptoniffler.presentation.arbitrage.adapters.ArbitrageAdapter$DisclaimerViewHolder$listener$1) -> <init>
 com.bariski.cryptoniffler.presentation.arbitrage.adapters.ArbitrageAdapter$TitleViewHolder -> nv$c:
     android.widget.TextView label -> a
     57:57:android.widget.TextView getLabel() -> a
@@ -23927,8 +23948,8 @@ com.bariski.cryptoniffler.presentation.arbitrage.adapters.ArbitrageAdapter$Trian
     android.support.v7.widget.RecyclerView list -> a
     com.bariski.cryptoniffler.domain.repository.ImageLoader imageLoader -> b
     com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter presenter -> c
-    92:97:void bindData(java.util.List) -> a
-    88:89:void <init>(android.view.View,com.bariski.cryptoniffler.domain.repository.ImageLoader,com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter) -> <init>
+    123:128:void bindData(java.util.List) -> a
+    119:120:void <init>(android.view.View,com.bariski.cryptoniffler.domain.repository.ImageLoader,com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter) -> <init>
 com.bariski.cryptoniffler.presentation.arbitrage.adapters.DirectAdapter -> nw:
     java.util.List data -> a
     boolean isInternational -> b
@@ -24235,7 +24256,7 @@ com.bariski.cryptoniffler.presentation.calendar.CalendarFragment_MembersInjector
 com.bariski.cryptoniffler.presentation.calendar.CalendarPresenter -> ob:
     void loadNextPage() -> i
     void onFilterApply(java.util.Set,java.util.Set,java.lang.Integer[],java.lang.Integer[]) -> a
-    void onFilterClear() -> j
+    void onFilterClear() -> l
     void onRetry() -> m
     void onFilterCoinSelected() -> e
     void onFilterCategorySelected() -> f
@@ -24259,13 +24280,13 @@ com.bariski.cryptoniffler.presentation.calendar.CalendarPresenterImpl -> oc:
     29:29:java.util.ArrayList getEvents() -> r
     33:40:void saveState(android.os.Bundle) -> a
     43:123:void loadNextPage() -> i
-    127:134:void onFilterClear() -> j
+    127:134:void onFilterClear() -> l
     137:178:void onFilterApply(java.util.Set,java.util.Set,java.lang.Integer[],java.lang.Integer[]) -> a
     181:182:void onRetry() -> m
     185:209:void initView(com.bariski.cryptoniffler.presentation.calendar.CalendarView,android.os.Bundle,android.os.Bundle) -> a
     21:21:void initView(java.lang.Object,android.os.Bundle,android.os.Bundle) -> a
-    212:214:void releaseView() -> k
-    218:218:void onRefresh() -> l
+    212:214:void releaseView() -> j
+    218:218:void onRefresh() -> k
     21:30:void <init>(com.bariski.cryptoniffler.domain.repository.EventsRepository,com.bariski.cryptoniffler.domain.common.Schedulers,com.bariski.cryptoniffler.analytics.Analytics) -> <init>
 com.bariski.cryptoniffler.presentation.calendar.CalendarPresenterImpl$loadNextPage$2 -> oc$a:
     com.bariski.cryptoniffler.presentation.calendar.CalendarPresenterImpl this$0 -> a
@@ -24491,8 +24512,8 @@ com.bariski.cryptoniffler.presentation.common.BaseInjectFragment_MembersInjector
 com.bariski.cryptoniffler.presentation.common.BasePresenter -> on:
     com.bariski.cryptoniffler.presentation.common.BasePresenter$Companion Companion -> a
     void initView(java.lang.Object,android.os.Bundle,android.os.Bundle) -> a
-    void releaseView() -> k
-    void onRefresh() -> l
+    void releaseView() -> j
+    void onRefresh() -> k
     void saveState(android.os.Bundle) -> a
     void <clinit>() -> <clinit>
 com.bariski.cryptoniffler.presentation.common.BasePresenter$Companion -> on$a:
@@ -24801,8 +24822,8 @@ com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl -> ph:
     44:45:void onRetry() -> a
     48:160:void loadData(boolean,java.lang.String,java.lang.String,long) -> a
     163:223:android.text.SpannableString getDisplayString(java.lang.String,float,java.lang.String,boolean) -> a
-    234:235:void releaseView() -> k
-    238:239:void onRefresh() -> l
+    234:235:void releaseView() -> j
+    238:239:void onRefresh() -> k
     242:254:void initView(com.bariski.cryptoniffler.presentation.main.CoinDetailView,android.os.Bundle,android.os.Bundle) -> a
     33:33:void initView(java.lang.Object,android.os.Bundle,android.os.Bundle) -> a
     257:263:void saveState(android.os.Bundle) -> a
@@ -24892,48 +24913,49 @@ com.bariski.cryptoniffler.presentation.main.MainActivity -> com.bariski.cryptoni
     com.bariski.cryptoniffler.presentation.main.MainPresenter presenter -> p
     android.app.Dialog permissionDialog -> q
     java.util.HashMap _$_findViewCache -> r
-    33:33:com.bariski.cryptoniffler.presentation.main.MainPresenter getPresenter() -> s
-    35:35:android.app.Dialog getPermissionDialog() -> t
-    39:39:int getLayoutResId() -> k
-    42:66:void onCreate(android.os.Bundle) -> onCreate
-    69:76:void moveToNext(android.app.Fragment,boolean) -> a
-    79:81:void onResume() -> onResume
-    84:86:void onSaveInstanceState(android.os.Bundle) -> onSaveInstanceState
-    90:96:void onBackPressed() -> onBackPressed
-    100:103:boolean onNavigationItemSelected(android.view.MenuItem) -> a
-    108:122:void reviewApp() -> u
-    125:127:void onDestroy() -> onDestroy
-    130:131:void exit() -> v
-    135:141:void moveToDetailsScreen(boolean,java.lang.String,java.lang.String,long) -> a
-    144:145:void toggleSearch(boolean) -> b
-    148:152:void onActivityResult(int,int,android.content.Intent) -> onActivityResult
-    155:156:void openSearch() -> w
-    160:165:void shareApp() -> c_
-    168:168:com.bariski.cryptoniffler.presentation.common.BasePresenter getBasePresenter() -> l
-    172:173:void toggleFilter(boolean) -> c
-    176:180:void toggleProgress(boolean) -> d
-    183:189:void toggleDrawer(boolean) -> e
-    192:204:void requestStoragePermission() -> y
-    207:209:void toggleInfo(boolean) -> f
-    212:213:void onClick(android.view.View) -> onClick
-    216:216:com.bariski.cryptoniffler.presentation.main.MainPresenter getCommonPresenter() -> z
-    29:29:void <init>() -> <init>
+    34:34:com.bariski.cryptoniffler.presentation.main.MainPresenter getPresenter() -> s
+    40:40:int getLayoutResId() -> k
+    43:67:void onCreate(android.os.Bundle) -> onCreate
+    70:77:void moveToNext(android.app.Fragment,boolean) -> a
+    80:82:void onResume() -> onResume
+    85:87:void onSaveInstanceState(android.os.Bundle) -> onSaveInstanceState
+    91:97:void onBackPressed() -> onBackPressed
+    101:104:boolean onNavigationItemSelected(android.view.MenuItem) -> a
+    109:123:void reviewApp() -> t
+    126:128:void onDestroy() -> onDestroy
+    131:132:void exit() -> u
+    136:142:void moveToDetailsScreen(boolean,java.lang.String,java.lang.String,long) -> a
+    145:146:void toggleSearch(boolean) -> b
+    149:153:void onActivityResult(int,int,android.content.Intent) -> onActivityResult
+    156:157:void openSearch() -> v
+    161:166:void shareApp() -> w
+    169:178:void sendFeedback() -> c_
+    181:181:com.bariski.cryptoniffler.presentation.common.BasePresenter getBasePresenter() -> l
+    185:186:void toggleFilter(boolean) -> c
+    189:193:void toggleProgress(boolean) -> d
+    196:202:void toggleDrawer(boolean) -> e
+    205:217:void requestStoragePermission() -> y
+    220:222:void toggleInfo(boolean) -> f
+    225:226:void onClick(android.view.View) -> onClick
+    229:229:com.bariski.cryptoniffler.presentation.main.MainPresenter getCommonPresenter() -> z
+    30:30:void <init>() -> <init>
+    30:30:android.app.Dialog access$getPermissionDialog$p(com.bariski.cryptoniffler.presentation.main.MainActivity) -> a
     android.view.View _$_findCachedViewById(int) -> c
 com.bariski.cryptoniffler.presentation.main.MainActivity$onCreate$1 -> com.bariski.cryptoniffler.presentation.main.MainActivity$a:
     com.bariski.cryptoniffler.presentation.main.MainActivity this$0 -> a
-    50:50:void onClick(android.view.View) -> onClick
+    51:51:void onClick(android.view.View) -> onClick
     void <init>(com.bariski.cryptoniffler.presentation.main.MainActivity) -> <init>
 com.bariski.cryptoniffler.presentation.main.MainActivity$onCreate$2 -> com.bariski.cryptoniffler.presentation.main.MainActivity$b:
     com.bariski.cryptoniffler.presentation.main.MainActivity this$0 -> a
-    55:59:void onClick(android.view.View) -> onClick
+    56:60:void onClick(android.view.View) -> onClick
     void <init>(com.bariski.cryptoniffler.presentation.main.MainActivity) -> <init>
 com.bariski.cryptoniffler.presentation.main.MainActivity$onCreate$3 -> com.bariski.cryptoniffler.presentation.main.MainActivity$c:
     com.bariski.cryptoniffler.presentation.main.MainActivity this$0 -> a
-    61:65:void onClick(android.view.View) -> onClick
+    62:66:void onClick(android.view.View) -> onClick
     void <init>(com.bariski.cryptoniffler.presentation.main.MainActivity) -> <init>
 com.bariski.cryptoniffler.presentation.main.MainActivity$requestStoragePermission$1 -> com.bariski.cryptoniffler.presentation.main.MainActivity$d:
     com.bariski.cryptoniffler.presentation.main.MainActivity this$0 -> a
-    197:201:void onClick(android.content.DialogInterface,int) -> onClick
+    210:214:void onClick(android.content.DialogInterface,int) -> onClick
     void <init>(com.bariski.cryptoniffler.presentation.main.MainActivity) -> <init>
 com.bariski.cryptoniffler.presentation.main.MainActivity_MembersInjector -> pi:
     javax.inject.Provider supportFragmentInjectorProvider -> b
@@ -24980,116 +25002,118 @@ com.bariski.cryptoniffler.presentation.main.MainPresenterImpl -> pk:
     37:37:void setBtcRate(float) -> a
     38:38:io.reactivex.processors.PublishProcessor getAmountSubscriber() -> i
     39:39:void setState(int) -> c
-    40:40:long getAmount() -> j
+    40:40:long getAmount() -> l
     40:40:void setAmount(long) -> a
-    47:56:void onItemClicked(int) -> b
-    59:60:void releaseView() -> k
-    63:72:void onDrawerItemSelected(int) -> a
-    75:83:void navigateToEvents() -> n
-    86:94:void navigateToArbitrage() -> o
-    97:112:void onClick(com.bariski.cryptoniffler.presentation.common.models.GridItem) -> a
-    116:129:void onNext() -> d
-    133:134:void onRefresh() -> l
-    137:152:void onAmountScreenRefresh() -> a
-    155:171:void onAmountScreenCreated(io.reactivex.Observable,io.reactivex.Observer) -> a
-    174:187:void onBackPressed() -> c
-    190:197:void navigateToMain(boolean) -> b
-    200:206:void navigateToAmountInput(boolean) -> c
-    210:230:void navigateToExchangeSelection(boolean) -> d
-    233:251:void navigateToCoinSelection(boolean) -> e
-    254:284:void initView(com.bariski.cryptoniffler.presentation.main.MainView,android.os.Bundle,android.os.Bundle) -> a
+    47:58:void onItemClicked(int) -> b
+    61:62:void releaseView() -> j
+    65:75:void onDrawerItemSelected(int) -> a
+    78:82:void navigateToFeedback() -> n
+    85:93:void navigateToEvents() -> o
+    96:104:void navigateToArbitrage() -> p
+    107:122:void onClick(com.bariski.cryptoniffler.presentation.common.models.GridItem) -> a
+    126:139:void onNext() -> d
+    143:144:void onRefresh() -> k
+    147:162:void onAmountScreenRefresh() -> a
+    165:181:void onAmountScreenCreated(io.reactivex.Observable,io.reactivex.Observer) -> a
+    184:197:void onBackPressed() -> c
+    200:207:void navigateToMain(boolean) -> b
+    210:216:void navigateToAmountInput(boolean) -> c
+    220:240:void navigateToExchangeSelection(boolean) -> d
+    243:261:void navigateToCoinSelection(boolean) -> e
+    264:294:void initView(com.bariski.cryptoniffler.presentation.main.MainView,android.os.Bundle,android.os.Bundle) -> a
     31:31:void initView(java.lang.Object,android.os.Bundle,android.os.Bundle) -> a
-    287:295:void saveState(android.os.Bundle) -> a
-    298:299:void onAmountScreenDestroyed() -> b
-    302:303:void onSearchClicked() -> e
-    306:309:void onSearchResult(com.bariski.cryptoniffler.domain.model.Coin) -> a
-    312:314:void onIncludeFeeChanged(boolean) -> a
-    317:318:void infoClicked() -> f
-    321:326:void onMainViewResumed() -> g
+    297:305:void saveState(android.os.Bundle) -> a
+    308:309:void onAmountScreenDestroyed() -> b
+    312:313:void onSearchClicked() -> e
+    316:319:void onSearchResult(com.bariski.cryptoniffler.domain.model.Coin) -> a
+    322:324:void onIncludeFeeChanged(boolean) -> a
+    327:328:void infoClicked() -> f
+    331:336:void onMainViewResumed() -> g
     31:31:com.bariski.cryptoniffler.analytics.Analytics getAnalytics() -> m
     31:42:void <init>(com.bariski.cryptoniffler.domain.repository.NifflerRepository,com.bariski.cryptoniffler.domain.repository.EventsRepository,com.bariski.cryptoniffler.domain.repository.DeviceDataStore,com.bariski.cryptoniffler.presentation.main.adapters.GridItemAdapter,com.bariski.cryptoniffler.domain.common.Schedulers,com.bariski.cryptoniffler.analytics.Analytics) -> <init>
     31:31:java.lang.ref.WeakReference access$getViewWeak$p(com.bariski.cryptoniffler.presentation.main.MainPresenterImpl) -> a
 com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$initView$2 -> pk$a:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$initView$2 INSTANCE -> a
     31:31:java.lang.Object invoke(java.lang.Object) -> a
-    278:278:void invoke(java.lang.Throwable) -> a
+    288:288:void invoke(java.lang.Throwable) -> a
     void <init>() -> <init>
     void <clinit>() -> <clinit>
 com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$initView$3 -> pk$b:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$initView$3 INSTANCE -> a
     31:31:java.lang.Object invoke(java.lang.Object) -> a
-    278:278:void invoke(com.bariski.cryptoniffler.data.api.models.AuthTokenResponse) -> a
+    288:288:void invoke(com.bariski.cryptoniffler.data.api.models.AuthTokenResponse) -> a
     void <init>() -> <init>
     void <clinit>() -> <clinit>
 com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToCoinSelection$1 -> pk$c:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl this$0 -> a
     31:31:void accept(java.lang.Object) -> a
-    237:238:void accept(io.reactivex.disposables.Disposable) -> a
+    247:248:void accept(io.reactivex.disposables.Disposable) -> a
     void <init>(com.bariski.cryptoniffler.presentation.main.MainPresenterImpl) -> <init>
 com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToCoinSelection$2 -> pk$d:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl this$0 -> a
     boolean $isForward -> b
     31:31:java.lang.Object invoke(java.lang.Object) -> a
-    241:248:void invoke(java.util.ArrayList) -> a
+    251:258:void invoke(java.util.ArrayList) -> a
     void <init>(com.bariski.cryptoniffler.presentation.main.MainPresenterImpl,boolean) -> <init>
 com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToCoinSelection$3 -> pk$e:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToCoinSelection$3 INSTANCE -> a
     31:31:java.lang.Object invoke(java.lang.Object) -> a
-    248:248:void invoke(java.lang.Throwable) -> a
+    258:258:void invoke(java.lang.Throwable) -> a
     void <init>() -> <init>
     void <clinit>() -> <clinit>
 com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToExchangeSelection$1 -> pk$f:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToExchangeSelection$1 INSTANCE -> a
     31:31:java.lang.Object apply(java.lang.Object) -> a
-    213:332:java.util.List apply(java.util.ArrayList) -> a
+    223:342:java.util.List apply(java.util.ArrayList) -> a
     void <init>() -> <init>
     void <clinit>() -> <clinit>
 com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToExchangeSelection$2 -> pk$g:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl this$0 -> a
     31:31:void accept(java.lang.Object) -> a
-    216:217:void accept(io.reactivex.disposables.Disposable) -> a
+    226:227:void accept(io.reactivex.disposables.Disposable) -> a
     void <init>(com.bariski.cryptoniffler.presentation.main.MainPresenterImpl) -> <init>
 com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToExchangeSelection$3 -> pk$h:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl this$0 -> a
     boolean $isForward -> b
     31:31:java.lang.Object invoke(java.lang.Object) -> a
-    220:227:void invoke(java.util.List) -> a
+    230:237:void invoke(java.util.List) -> a
     void <init>(com.bariski.cryptoniffler.presentation.main.MainPresenterImpl,boolean) -> <init>
 com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToExchangeSelection$4 -> pk$i:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToExchangeSelection$4 INSTANCE -> a
     31:31:java.lang.Object invoke(java.lang.Object) -> a
-    227:227:void invoke(java.lang.Throwable) -> a
+    237:237:void invoke(java.lang.Throwable) -> a
     void <init>() -> <init>
     void <clinit>() -> <clinit>
 com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$onAmountScreenCreated$1 -> pk$j:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl this$0 -> a
     31:31:java.lang.Object invoke(java.lang.Object) -> a
-    160:164:void invoke(java.lang.CharSequence) -> a
+    170:174:void invoke(java.lang.CharSequence) -> a
     void <init>(com.bariski.cryptoniffler.presentation.main.MainPresenterImpl) -> <init>
 com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$onAmountScreenRefresh$1 -> pk$k:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl this$0 -> a
     31:31:java.lang.Object invoke(java.lang.Object) -> a
-    142:145:void invoke(java.util.List) -> a
+    152:155:void invoke(java.util.List) -> a
     void <init>(com.bariski.cryptoniffler.presentation.main.MainPresenterImpl) -> <init>
 com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$onAmountScreenRefresh$2 -> pk$l:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl this$0 -> a
     31:31:java.lang.Object invoke(java.lang.Object) -> a
-    146:148:void invoke(java.lang.Throwable) -> a
+    156:158:void invoke(java.lang.Throwable) -> a
     void <init>(com.bariski.cryptoniffler.presentation.main.MainPresenterImpl) -> <init>
 com.bariski.cryptoniffler.presentation.main.MainView -> pl:
     void moveToNext(android.app.Fragment,boolean) -> a
     void toggleSearch(boolean) -> b
-    void exit() -> v
+    void exit() -> u
     void moveToDetailsScreen(boolean,java.lang.String,java.lang.String,long) -> a
-    void openSearch() -> w
-    void reviewApp() -> u
-    void shareApp() -> c_
+    void openSearch() -> v
+    void reviewApp() -> t
+    void shareApp() -> w
     void toggleFilter(boolean) -> c
     void toggleProgress(boolean) -> d
     com.bariski.cryptoniffler.presentation.main.MainPresenter getCommonPresenter() -> z
     void toggleDrawer(boolean) -> e
     void requestStoragePermission() -> y
     void toggleInfo(boolean) -> f
+    void sendFeedback() -> c_
 com.bariski.cryptoniffler.presentation.main.SearchActivity -> com.bariski.cryptoniffler.presentation.main.SearchActivity:
     int layoutResId -> u
     com.bariski.cryptoniffler.presentation.main.SearchPresenter presenter -> p
@@ -25133,8 +25157,8 @@ com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl -> po:
     23:23:java.lang.ref.WeakReference getView() -> a
     26:63:void initView(com.bariski.cryptoniffler.presentation.main.SearchView,android.os.Bundle,android.os.Bundle) -> a
     15:15:void initView(java.lang.Object,android.os.Bundle,android.os.Bundle) -> a
-    66:67:void releaseView() -> k
-    70:71:void onRefresh() -> l
+    66:67:void releaseView() -> j
+    70:71:void onRefresh() -> k
     75:75:void saveState(android.os.Bundle) -> a
     15:15:com.bariski.cryptoniffler.domain.repository.NifflerRepository getRepository() -> b
     15:15:com.bariski.cryptoniffler.analytics.Analytics getAnalytics() -> c

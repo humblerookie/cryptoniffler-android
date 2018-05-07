@@ -21,6 +21,7 @@ import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.presentation.common.BaseActivity
 import com.bariski.cryptoniffler.presentation.common.BasePresenter
 import com.bariski.cryptoniffler.presentation.common.BaseView
+import com.bariski.cryptoniffler.presentation.common.utils.FEEDBACK_EMAIL
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
@@ -32,7 +33,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     @Inject
     lateinit var presenter: MainPresenter
 
-    lateinit var permissionDialog: Dialog
+    private lateinit var permissionDialog: Dialog
 
 
     override val layoutResId: Int
@@ -105,7 +106,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
 
     override fun reviewApp() {
-        val uri = Uri.parse("market://details?id=" + packageName)
+        val uri = Uri.parse("market://details?id=$packageName")
         val goToMarket = Intent(Intent.ACTION_VIEW, uri)
         // To count with Play market backstack, After pressing back button,
         // to taken back to our application, we need to add following flags to intent.
@@ -162,6 +163,18 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.common_share_text))
         sendIntent.type = "text/plain"
         startActivity(sendIntent)
+    }
+
+    override fun sendFeedback() {
+        if (isAlive()) {
+            val intent = Intent(Intent.ACTION_SENDTO)
+            intent.data = Uri.parse("mailto:") // only email apps should handle this
+            intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(FEEDBACK_EMAIL))
+            intent.putExtra(Intent.EXTRA_SUBJECT, "")
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivity(intent)
+            }
+        }
     }
 
     override fun <T : BaseView> getBasePresenter(): BasePresenter<T> {

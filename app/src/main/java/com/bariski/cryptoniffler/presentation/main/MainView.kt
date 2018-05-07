@@ -18,4 +18,5 @@ interface MainView : BaseView {
     fun toggleDrawer(b: Boolean)
     fun requestStoragePermission()
     fun toggleInfo(b: Boolean)
+    fun sendFeedback()
 }

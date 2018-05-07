@@ -27,6 +27,7 @@
     <string name="common.label.buynsell_cryptocurrency"> <![CDATA[ખરીદો અને વેચો ક્રિપ્ટોક્રુર્જેન્સ]]> </string>
         
     <string name="common.label.view_exchanges"> એક્સ્ચેન્જ બ્રાઉઝ કરો </string>
+    <string name="common.label.view_arbitrages">જુઓ આર્બિટ્રેજિસ</string>
         
     <string name="common.label.i_like_to_buy"> હું ખરીદવા / વેચવા માંગું છું </string>
         
@@ -117,6 +118,7 @@
     <string name="drawer.title.share">મિત્રો સાથે વહેંચવું</string>
     <string name="drawer.title.review">સમીક્ષા</string>
     <string name="drawer.title.arbitrage">આર્બિટ્રેજ</string>
+    <string name="drawer.title.report">પ્રતિસાદ મોકલ</string>
 
     <string name="arbitrage.description">આર્બિટ્રેજ એ વિવિધ એક્સચેન્જો વચ્ચે ભાવ તફાવત પર આધારિત નાણાં બનાવવાનો માર્ગ છે. જો કોઈ એક્સચેન્જ ₹ 10 ના રોજ સિક્કો ખરીદવા માટે પરવાનગી આપે છે અને અન્ય એક્સચેન્જ તમને ₹ 12 પર આ સિક્કો વેચવા દે છે. તમે ઓછી કિંમતે વિનિમયથી ખરીદી કરીને અને વધુ કિંમતે વેચાણ કરી શકો છો.
 

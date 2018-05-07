@@ -31,7 +31,7 @@ class BuyNSellFragment : BaseFragment(), View.OnClickListener {
         val view = inflater.inflate(R.layout.fragment_buynsell, container, false)
         view.findViewById<View>(R.id.buyAndSellCrypto).setOnClickListener(this)
         view.findViewById<View>(R.id.viewExchanges).setOnClickListener(this)
-
+        view.findViewById<View>(R.id.viewArbitrages).setOnClickListener(this)
         return view
     }
 

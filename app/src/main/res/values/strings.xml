@@ -12,6 +12,7 @@
     <string name="common.label.sell_cryptocurrency">Sell Cryptocurrency</string>
     <string name="common.label.buynsell_cryptocurrency"><![CDATA[Buy & Sell Cryptocurrency]]></string>
     <string name="common.label.view_exchanges">Browse Exchange</string>
+    <string name="common.label.view_arbitrages">View Arbitrages</string>
     <string name="common.label.i_like_to_buy">I\'d like to buy/sell</string>
     <string name="common_label_buy_at">I\'d like to buy at</string>
     <string name="common.label.amount">I\'d like to buy for</string>
@@ -54,10 +55,6 @@
     <string name="common.tutorial.events">\n\n\nTap here to view \ncrypto events.</string>
 
     <string name="default.channel_id" translatable="false">fcm_default_channel</string>
-    <!--
-        This is the name that users will see when interacting with this channel.
-        It should describe the category of notifications that will be sent through this channel
-     -->
     <string name="default.channel_name" translatable="false">News</string>
 
     <string name="common.permission.storage_rationale">Cryptoniffler needs storage permission to improve your experience</string>
@@ -71,6 +68,7 @@
     <string name="drawer.title.share">Share</string>
     <string name="drawer.title.review">Review</string>
     <string name="drawer.title.arbitrage">Arbitrage</string>
+    <string name="drawer.title.report">Send Feedback</string>
 
     <string name="calendar.suffix.percentage" translatable="false">%s %%</string>
     <string name="common.label.price" translatable="false">\u20b9 %s</string>
@@ -98,8 +96,9 @@
     <string name="rating.title.weve_targets">- We\’ve got download targets.</string>
     <string name="rating.title.rate">Rate Us</string>
     <string name="rating.title.share">Share</string>
-    <string name="arbitrage.currency.international">International\nExchanges only(BTC)</string>
-    <string name="arbitrage.currency.domestic">Indian\nExchanges(\u20B9)</string>
+    <string name="arbitrage.currency.international">International(BTC)</string>
+    <string name="arbitrage.currency.domestic">Indian(\u20B9)</string>
     <string name="error.arbitrage.international_no_filter">Filters are currently unavailable in international mode.</string>
+
 
 </resources>

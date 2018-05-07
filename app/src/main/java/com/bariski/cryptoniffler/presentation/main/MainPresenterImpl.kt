@@ -51,7 +51,9 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
             R.id.viewExchanges -> {
                 navigateToExchangeSelection(true)
             }
-
+            R.id.viewArbitrages -> {
+                navigateToArbitrage()
+            }
         }
     }
 
@@ -67,8 +69,16 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
                 R.id.calendar -> navigateToEvents()
                 R.id.arbitrage -> navigateToArbitrage()
                 R.id.home -> navigateToMain(true)
+                R.id.report -> navigateToFeedback()
             }
         }
+    }
+
+    private fun navigateToFeedback() {
+        viewWeak.get()?.let {
+            it.sendFeedback()
+        }
+
     }
 
     private fun navigateToEvents() {

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="navigation_drawer_open"> Abrir el cajón de navegación </string>
+        
+    <string name="navigation_drawer_close"> Cerrar el cajón de navegación </string>
+        
+    <string name="common.label.permission_settings"> Configuraciones </string>
+        
+    <string name="common.label.ok"> Aceptar </string>
+        
+    <string name="error.common.network"> La red no está disponible. Por favor, compruebe su conexión de red. </string>
+        
+    <string name="error.common.something_wrong"> ¡Vaya! Algo está apagado, por favor intente después de algún tiempo. </string>
+        
+    <string name="error.common.request_invalid"> ¡Vaya! ¡Hemos hecho un booboo !, arreglando esto mientras hablamos. Por favor, inténtalo alguna vez. </string>
+        
+    <string name="error.common.unreachable"> No se pudo conectar a nuestros servidores. \ nPor favor intente después de algún tiempo. </string>
+        
+    <string name="common.label.i_am_looking"> Estoy buscando </string>
+        
+    <string name="common.label.buy_cryptocurrency"> Comprar Cryptocurrency </string>
+        
+    <string name="common.label.sell_cryptocurrency"> Sell Cryptocurrency </string>
+        
+    <string name="common.label.buynsell_cryptocurrency"> <![CDATA[Buy & Sell Cryptocurrency]]> </string>
+        
+    <string name="common.label.view_exchanges"> Examinar Exchange </string>
+        
+    <string name="common.label.view_arbitrages"> Ver arbitrajes </string>
+        
+    <string name="common.label.i_like_to_buy"> Me gustaría comprar/vender </string>
+        
+    <string name="common_label_buy_at"> Me gustaría comprar en </string>
+        
+    <string name="common.label.amount"> Me gustaría comprar para </string>
+        
+    <string name="common.label.equivalent_amount"> <![CDATA[equivalente BTC = <b>%s</b>]]></string>
+        
+    <string name="common.label.button_next"> Siguiente </string>
+        
+    <string name="detail.content.selling_above">%s se puede vender aquí a %s por encima de la tasa de mercado. </string>
+        
+    <string name="detail.content.selling_below">%s se puede vender aquí a %s por debajo de la tasa de mercado. </string>
+        
+    <string name="detail.content.selling_excately">%s se puede vender aquí exactamente a la tasa de mercado. </string>
+        
+    <string name="detail.content.buying_above">%s se pueden comprar aquí a %s por encima de la tasa de mercado. </string>
+        
+    <string name="detail.content.buying_below">%s se pueden comprar aquí a %s por debajo de la tasa de mercado. </string>
+        
+    <string name="detail.content.buying_exactamente">%s se pueden comprar aquí exactamente a la tasa de mercado. </string>
+        
+    <string name="detail.content.at"> en </string>
+        
+    <string name="detail.content.here"> aquí </string>
+        
+    <string name="detail.content.on_exchange"> en %s </string>
+        
+    <string name="common.label.best_buy"> Best Buy </string>
+        
+    <string name="common.label.best_sell"> Best Sell </string>
+        
+    <string name="error.input.minamount"> Ingrese una cantidad mínima de 1000. </string>
+        
+    <string name="common.label.transfer_to"> Transferir a otro intercambio. </string>
+        
+    <string name="common.label.trade_same"> Operar en el mismo intercambio. </string>
+        
+    <string name="common.label.retry"> REINTENTAR </string>
+        
+    <string name="common.label.fee_info"> Información de tarifa </string>
+        
+    <string name="common.info.fee_info"> Esto nos permite saber si incluimos la tarifa de red de una moneda criptográfica en nuestros cálculos. Cada cripto tiene una tarifa de red asociada cuando la transfiere fuera de un intercambio desde el que la compró. </string>
+        
+    <string name="search.label.oops_no_results"> ¡Vaya! No se encontraron resultados. </string>
+        
+    <string name="common.label.network_fees"> Incluir tarifas de red </string>
+        
+    <string name="common.hint.type_a_coin_name"> escriba un nombre de moneda como BTC .. </string>
+        
+    <string name="calendar.suffix.votes"> de %s votos </string>
+        
+    <string name="common_share_text"> Gané dinero fácilmente con esta aplicación de arbitraje criptográfico, ¡compruébalo! \nhttps://play.google.com/store/apps/details?id=com.bariski.cryptoniffler</string>
+        
+    <string name="common.label.filter_by"> Filtrar por </string>
+        
+    <string name="common.label.clear_all"> Borrar todo </string>
+        
+    <string name="common.label.close"> Cerrar </string>
+        
+    <string name="common.label.apply"> Aplicar </string>
+        
+    <string name="filter.label.coins"> Monedas </string>
+        
+    <string name="filter.label.category"> Categoría </string>
+        
+    <string name="filter.label.period"> Período </string>
+        
+    <string name="filter.label.period_from"> De </string>
+        
+    <string name="filter.label.to"> A </string>
+        
+    <string name="calendar.label.credits"> Desarrollado por coinmarketcal.com </string>
+        
+    <string name="calendar.error.empty"> ¡Vaya! No pudimos encontrar ningún evento.\n Trata de cambiar los filtros. </string>
+        
+    <string name="common.tutorial.events"> \n \n \n Toque aquí para ver \ncrypto events. </string>
+
+
+    <string name="common.permission.storage_rationale"> Cryptoniffler necesita permiso de almacenamiento para mejorar su experiencia </string>
+        
+    <string name="common.permission.storage"> Proporcione permiso de almacenamiento </string>
+        
+    <string name="common.label.permission"> Permiso </string>
+        
+    <string name="events.tutorial.filters">\nHaga clic aquí para \n aplicar filtros. </string>
+        
+    <string name="drawer.title.events"> Eventos </string>
+        
+    <string name="drawer.title.home"> Inicio </string>
+        
+    <string name="drawer.title.share"> Compartir </string>
+        
+    <string name="drawer.title.review"> Revisar </string>
+        
+    <string name="drawer.title.arbitrage"> Arbitraje </string>
+        
+    <string name="drawer.title.report"> Enviar comentarios </string>
+
+       
+        
+    <string name="arbitrage.label.trade_amount"> Importe (\u20b9) </string>
+        
+    <string name="arbitrage.label.total_fees"> Total de cargos (\u20b9) </string>
+        
+    <string name="arbitrage.label.profit"> Profit (\u20b9) </string>
+        
+    <string name="arbitrage.label.trade_amount_btc"> Cantidad (BTC) </string>
+        
+    <string name="arbitrage.label.total_fees_btc"> Total de tarifas (BTC)</string>
+        
+    <string name="arbitrage.label.profit_percent_btc"> Profit (%)</string>
+        
+    <string name="arbitrage.label.profit_btc"> Profit (BTC)</string>
+        
+    <string name="arbitrage.label.triangle"> Triangle</string>
+        
+    <string name="arbitrage.label.direct"> Direct</string>
+        
+    <string name="error.arbitrage.empty"> No hay arbitrajes rentables en este momento. Vuelve atrás en algún momento.</string>
+        
+    <string name="arbitrage.description"> El arbitraje es la forma de ganar dinero en función de las diferencias de precios entre los diferentes intercambios. Si un intercambio permite comprar una moneda en \u20b9 10 y otro intercambio le permite vender esta moneda en \u20b9 12. Puede ganar dinero comprando en el mercado de menor precio y vendiendo a mayor precio. \n\nTípicamente hay dos tipos de arbitraje Direct y Triangle.\nSi el arbitraje directo involucra la misma moneda, el arbitraje Triangle implica dos o más monedas.\n \n El arbitraje del triángulo a menudo tiene una mayor probabilidad de recompensas que el arbitraje directo.</string>
+        
+    <string name="arbitrage.disclaimer"> - Asegúrese de que las carteras de monedas de arbitraje en las bolsas correspondientes funcionen. \n- Hay suficiente volumen a su precio de venta final antes de participar en el arbitraje</string>
+        
+    <string name="common.label.filter_from"> De</string>
+        
+    <string name="common.label.filter_to"> A</string>
+        
+    <string name="error.common.request_progress_wait"> Espere. La solicitud está en progreso.</string>
+        
+    <string name="rating.title.spread_the_word"> Difundir la palabra</string>
+        
+    <string name="rating.title.lets_be_honest"> Seamos honestos</string>
+        
+    <string name="rating.title.work_together"> Permite trabajar juntos.</string>
+        
+    <string name="rating.title.like_money"> - Te gusta ganar dinero.</string>
+        
+    <string name="rating.title.weve_targets"> - Tenemos objetivos de descarga.</string>
+        
+    <string name="rating.title.rate"> Califíquenos</string>
+        
+    <string name="rating.title.share"> Compartir</string>
+        
+    <string name="arbitrage.currency.international"> Internacional (BTC)</string>
+        
+    <string name="arbitrage.currency.domestic"> Indio (\u20B9)</string>
+        
+    <string name="error.arbitrage.international_no_filter"> Los filtros no están disponibles actualmente en modo internacional.</string>
+</resources>
