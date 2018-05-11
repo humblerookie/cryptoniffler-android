@@ -180,7 +180,7 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
                     }
                 })
                 val decoration = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
-                decoration.setDrawable(ContextCompat.getDrawable(activity, R.drawable.dashed_border_bottom))
+                decoration.setDrawable(ContextCompat.getDrawable(activity, R.drawable.dashed_border_bottom)!!)
                 listFilter.addItemDecoration(decoration)
                 progress = view.findViewById(R.id.progress)
                 listFilter.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)

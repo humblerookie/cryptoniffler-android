@@ -123,25 +123,25 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                             .subscribeBy(onSuccess = { data ->
                                 arbitrage = data
                                 if (dat == null) {
-                                    if (!repository.isRateNShareShown()) {
-                                        var used = repository.getArbitrageUsedCount()
-                                        if (++used < 0) {
-                                            used = 1
-                                        }
-                                        repository.setArbitrageUsedCount(used)
-                                        var maxProfit = 0.0f
-                                        arbitrage?.let {
-                                            if (it.triangle.isNotEmpty()) {
-                                                maxProfit = it.triangle[0].profit
-                                            }
-                                        }
-                                        if (used % 10L == 0L || maxProfit > 15) {
-                                            view.get()?.let {
-                                                analytics.sendScreenView(Screen.RATE_REVIEW)
-                                                it.showRateDialog()
-                                            }
+                                    // if (!repository.isRateNShareShown()) {
+                                    var used = repository.getArbitrageUsedCount()
+                                    if (++used < 0) {
+                                        used = 1
+                                    }
+                                    repository.setArbitrageUsedCount(used)
+                                    var maxProfit = 0.0f
+                                    arbitrage?.let {
+                                        if (it.triangle.isNotEmpty()) {
+                                            maxProfit = it.triangle[0].profit
                                         }
                                     }
+                                    // if (used % 10L == 0L || maxProfit > 15) {
+                                    view.get()?.let {
+                                        analytics.sendScreenView(Screen.RATE_REVIEW)
+                                        it.showRateDialog()
+                                    }
+                                    //}
+                                    // }
                                     repository.setFiltersList(data.filters)
                                 }
                                 view.get()?.let {
@@ -214,7 +214,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
     override fun onButtonClicked(id: Int) {
         analytics.logRnREvent(when (id) {
             R.id.review -> "review"
-            else -> "rate"
+            else -> "share"
         })
         repository.setRateNShareShown(true)
     }

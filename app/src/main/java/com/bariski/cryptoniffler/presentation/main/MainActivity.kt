@@ -21,13 +21,14 @@ import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.presentation.common.BaseActivity
 import com.bariski.cryptoniffler.presentation.common.BasePresenter
 import com.bariski.cryptoniffler.presentation.common.BaseView
+import com.bariski.cryptoniffler.presentation.common.listeners.ItemIdClickListener
 import com.bariski.cryptoniffler.presentation.common.utils.FEEDBACK_EMAIL
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import javax.inject.Inject
 
 
-class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, MainView, View.OnClickListener {
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, MainView, View.OnClickListener, ItemIdClickListener {
 
 
     @Inject
@@ -222,7 +223,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
     override fun onClick(v: View) {
-        presenter.onDrawerItemSelected(v.id)
+        onItemClick(v.id)
+    }
+
+    override fun onItemClick(id: Int) {
+        presenter.onDrawerItemSelected(id)
     }
 
 
