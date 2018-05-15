@@ -2,12 +2,12 @@ package com.bariski.cryptoniffler.analytics
 
 import android.content.Context
 import android.os.Bundle
+import com.bariski.cryptoniffler.domain.model.ArbitragePresentable
 import com.bariski.cryptoniffler.domain.util.Event
 import com.bariski.cryptoniffler.domain.util.Key
 import com.google.firebase.analytics.FirebaseAnalytics
 
 class AnalyticsImpl(context: Context) : Analytics {
-
 
     override fun logRnREvent(event: String) {
         val bundle = Bundle()
@@ -85,6 +85,13 @@ class AnalyticsImpl(context: Context) : Analytics {
         val bundle = Bundle()
         bundle.putInt("type", if (isInternational) 1 else 0)
         analytics.logEvent(Event.MODE_CHANGED, bundle)
+    }
+
+    override fun logNavigatedToExchange(arbitrage: ArbitragePresentable) {
+        val bundle = Bundle()
+        bundle.putString("coin", arbitrage.getLaunchCoin())
+        bundle.putString("exchange", arbitrage.getLaunchExchange())
+        analytics.logEvent(Event.EXECUTED_ARBITRAGE, bundle)
     }
 
     private val analytics: FirebaseAnalytics = FirebaseAnalytics.getInstance(context)

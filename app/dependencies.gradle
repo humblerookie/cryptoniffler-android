@@ -14,7 +14,7 @@ ext {
             junit                : '4.12',
             timber               : '4.5.1',
             firebase             : '11.4.0',
-            constraint           : '1.0.2',
+            constraint           : '1.1.0',
             recyclerviewanimators: '2.2.7',
             picasso              : '2.5.2',
             picassoDownloader    : '1.1.0',
@@ -30,6 +30,7 @@ ext {
             flex                 : '0.3.1',
             inject               : "1",
             crashlytics          : "2.9.1",
+            firebase_work        : "1.0.0-alpha01",
 
             shimmer              : "0.1.0@aar",
             showcase             : "1.0.0",
@@ -43,7 +44,7 @@ ext {
     junit = [junit: "junit:junit:$versions.junit"]
 
     supportDeps = [
-            constraint       : "com.android.support.constraint:constraint-layout:$versions.constraint",
+            constraint       : "androidx.constraintlayout:constraintlayout:$versions.constraint",
             cardView         : "com.android.support:cardview-v7:$versions.support",
             appcompatV7      : "com.android.support:appcompat-v7:$versions.support",
             design           : "com.android.support:design:$versions.support",
@@ -61,7 +62,9 @@ ext {
     googlePlay = [
             firebaseCore  : "com.google.firebase:firebase-core:$versions.firebase",
             firebaseConfig: "com.google.firebase:firebase-config:$versions.firebase",
-            fcm           : "com.google.firebase:firebase-messaging:$versions.firebase"
+            fcm           : "com.google.firebase:firebase-messaging:$versions.firebase",
+            work          : "android.arch.work:work-runtime:$versions.firebase_work",
+            performance : "com.google.firebase:firebase-perf:$versions.firebase"
     ]
 
 

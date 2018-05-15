@@ -8,13 +8,13 @@ import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
 import android.support.v4.app.NotificationCompat
-import android.util.Log
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.data.storage.KeyValueStore
 import com.bariski.cryptoniffler.presentation.CryptNifflerApplication
 import com.bariski.cryptoniffler.presentation.main.MainActivity
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import timber.log.Timber
 import javax.inject.Inject
 
 
@@ -48,18 +48,17 @@ class FcmMessageListenerService : FirebaseMessagingService() {
 
         // TODO(developer): Handle FCM messages here.
         // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
-        Log.d(TAG, "From: " + remoteMessage.getFrom())
-
+        Timber.d("From: %s", remoteMessage.from)
         // Check if message contains a data payload.
         if (remoteMessage.data.isNotEmpty()) {
-            Log.d(TAG, "Message data payload: " + remoteMessage.data)
-            sendNotification(remoteMessage.data.get("body")!!, remoteMessage.data.get("title")!!)
+            Timber.d("Message data payload: %s", remoteMessage.data)
+            sendNotification(remoteMessage.data["body"]!!, remoteMessage.data["title"]!!)
 
         }
 
         // Check if message contains a notification payload.
         if (remoteMessage.notification != null) {
-            Log.d(TAG, "Message Notification Body: " + remoteMessage.notification.body)
+            Timber.d("Message Notification Body: %s", remoteMessage.notification.body)
         }
 
         // Also if you intend on generating your own notifications as a result of a received FCM

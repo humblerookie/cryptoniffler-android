@@ -7,4 +7,6 @@ interface DeviceInfo {
     fun hasAppInstalled(packageIdentifier: String): Boolean
 
     fun getLaunchIntent(packageIdentifier: String): Intent
+    fun getWidth(): Int
+    fun getHeight(): Int
 }

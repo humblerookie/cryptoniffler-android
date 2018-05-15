@@ -3,6 +3,8 @@ package com.bariski.cryptoniffler.data.factory
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.os.Environment
 import android.support.v4.content.ContextCompat
 import com.bariski.cryptoniffler.BuildConfig
 import com.bariski.cryptoniffler.R
@@ -11,11 +13,17 @@ import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.presentation.common.models.ImageRequest
 import com.jakewharton.picasso.OkHttp3Downloader
 import com.squareup.picasso.*
+import timber.log.Timber
+import java.io.File
+import java.io.FileOutputStream
 
 
 class ImageRepositoryImpl(val context: Context) : ImageLoader {
 
+    val TAG = "ImageRepository"
     val cache: Cache
+
+    val IMG_SCREENSHOT = "Cryptoniffler_screenshot.png"
 
     init {
         val builder = Picasso.Builder(context)
@@ -73,6 +81,25 @@ class ImageRepositoryImpl(val context: Context) : ImageLoader {
         }
         return creator
     }
+
+    override fun saveScreenshot(bitmap: Bitmap): File? {
+        val dirPath = Environment.getExternalStorageDirectory().absolutePath + "/Screenshots"
+        val dir = File(dirPath)
+        if (!dir.exists())
+            dir.mkdirs()
+        val file = File(dirPath, IMG_SCREENSHOT)
+        try {
+            val fOut = FileOutputStream(file)
+            bitmap.compress(Bitmap.CompressFormat.PNG, 85, fOut)
+            fOut.flush()
+            fOut.close()
+            return file
+        } catch (e: Exception) {
+            Timber.e(e)
+        }
+        return null
+    }
+
 
     override fun clearCache() {
         cache.clear()

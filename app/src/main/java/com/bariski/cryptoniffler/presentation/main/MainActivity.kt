@@ -11,20 +11,24 @@ import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.app.ActivityCompat
+import android.support.v4.content.FileProvider
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.presentation.common.BaseActivity
 import com.bariski.cryptoniffler.presentation.common.BasePresenter
 import com.bariski.cryptoniffler.presentation.common.BaseView
 import com.bariski.cryptoniffler.presentation.common.listeners.ItemIdClickListener
 import com.bariski.cryptoniffler.presentation.common.utils.FEEDBACK_EMAIL
+import com.bariski.cryptoniffler.presentation.common.utils.PLAY_STORE
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import java.io.File
 import javax.inject.Inject
 
 
@@ -118,7 +122,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             startActivity(goToMarket)
         } catch (e: ActivityNotFoundException) {
             startActivity(Intent(Intent.ACTION_VIEW,
-                    Uri.parse("http://play.google.com/store/apps/details?id=$packageName")))
+                    Uri.parse("https://play.google.com/store/apps/details?id=$packageName")))
         }
 
     }
@@ -161,7 +165,7 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun shareApp() {
         val sendIntent = Intent()
         sendIntent.action = Intent.ACTION_SEND
-        sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.common_share_text))
+        sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.common_share_text) + PLAY_STORE)
         sendIntent.type = "text/plain"
         startActivity(sendIntent)
     }
@@ -202,18 +206,22 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         }
     }
 
-    override fun requestStoragePermission() {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+    override fun requestStoragePermission(ignoreDialog: Boolean) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M && !ignoreDialog) {
             val builder = AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog)
             permissionDialog = builder.setTitle(R.string.common_label_permission)
                     .setMessage(R.string.common_permission_storage_rationale)
                     .setPositiveButton(android.R.string.ok, { _, _ ->
                         ActivityCompat.requestPermissions(this,
-                                arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
+                                arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
                                 1)
                         permissionDialog.dismiss()
                     })
                     .show()
+        } else if (ignoreDialog) {
+            ActivityCompat.requestPermissions(this,
+                    arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    1)
         }
     }
 
@@ -231,5 +239,31 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     }
 
 
+    override fun shareArbitrage(file: File) {
+        val uri = FileProvider.getUriForFile(this, this.applicationContext.packageName + ".provider", file)
+        val intent = Intent()
+        intent.action = Intent.ACTION_SEND
+        intent.type = "image/*"
+        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "")
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
+        intent.putExtra(android.content.Intent.EXTRA_TEXT, "Arbitrage opportunity on Crypto Niffler$PLAY_STORE");
+        intent.putExtra(Intent.EXTRA_STREAM, uri)
+        try {
+            startActivity(Intent.createChooser(intent, "Share Screenshot"))
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(this, "No App Available", Toast.LENGTH_SHORT).show()
+        }
+    }
+
     override fun getCommonPresenter() = presenter
+
+    override fun onPermissionGranted(permission: String) {
+        super.onPermissionGranted(permission)
+        presenter.onStorageGranted()
+    }
+
+    override fun onPermissionDenied(permission: String) {
+        super.onPermissionDenied(permission)
+        presenter.onStorageFailed()
+    }
 }

@@ -14,10 +14,12 @@ data class DirectArbitrage(@Json(name = "sell") val sell: Float,
                            @Json(name = "profit") val profit: Float,
                            @Json(name = "coin") val coin: ArbCoin,
                            @Json(name = "from") val from: DirectArbitrageItem,
-                           @Json(name = "to") val to: DirectArbitrageItem
+                           @Json(name = "to") val to: DirectArbitrageItem,
+                           @Json(name = "feesSplit") val feeSplit: List<String>
 ) : ArbitragePresentable {
+    override fun getType() = 1
+    override fun getFeeDetails() = feeSplit
     override fun getLaunchCoin() = coin.symbol
-
     override fun getLaunchExchange() = from.symbol
 
 }

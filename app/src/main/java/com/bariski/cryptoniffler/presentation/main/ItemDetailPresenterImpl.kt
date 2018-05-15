@@ -8,7 +8,6 @@ import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
-import android.util.Log
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.analytics.Analytics
 import com.bariski.cryptoniffler.domain.common.Schedulers
@@ -45,7 +44,6 @@ class ItemDetailPresenterImpl(val repository: NifflerRepository, private val sch
     }
 
     override fun loadData(ignoreFees: Boolean, coinName: String?, exchange: String?, amount: Long) {
-        Log.i("ItemDetail", "1")
         this.ignoreFees = ignoreFees
         this.coin = coinName
         this.exchange = exchange

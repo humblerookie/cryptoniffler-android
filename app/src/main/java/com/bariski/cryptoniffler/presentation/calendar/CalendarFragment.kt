@@ -105,10 +105,10 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
     }
 
     override fun setData(events: List<Event>, isAppend: Boolean) {
-        val controller = AnimationUtils.loadLayoutAnimation(list.context, R.anim.layout_animation_fall_down)
-        list.layoutAnimation = controller
         adapter.setData(events, isAppend)
         if (!isAppend) {
+            val controller = AnimationUtils.loadLayoutAnimation(list.context, R.anim.layout_animation_fall_down)
+            list.layoutAnimation = controller
             list.scheduleLayoutAnimation()
         }
     }

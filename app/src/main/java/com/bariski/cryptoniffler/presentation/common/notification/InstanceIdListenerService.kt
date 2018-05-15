@@ -9,9 +9,13 @@ package com.bariski.cryptoniffler.presentation.common.notification
  * Created by Admin on 9/12/2015.
  */
 
-import android.util.Log
+import android.app.job.JobInfo
+import android.app.job.JobScheduler
+import android.content.ComponentName
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.iid.FirebaseInstanceIdService
+import timber.log.Timber
+
 
 class InstanceIdListenerService : FirebaseInstanceIdService() {
 
@@ -24,12 +28,12 @@ class InstanceIdListenerService : FirebaseInstanceIdService() {
     override fun onTokenRefresh() {
         // Get updated InstanceID token.
         val refreshedToken = FirebaseInstanceId.getInstance().token
-        Log.d(TAG, "Refreshed token: " + refreshedToken!!)
+        Timber.d("Refreshed token:  %s", refreshedToken)
 
         // If you want to send messages to this application instance or
         // manage this apps subscriptions on the server side, send the
         // Instance ID token to your app server.
-        sendRegistrationToServer(refreshedToken)
+        sendRegistrationToServer(FirebaseInstanceId.getInstance().id, refreshedToken)
     }
     // [END refresh_token]
 
@@ -41,8 +45,14 @@ class InstanceIdListenerService : FirebaseInstanceIdService() {
      *
      * @param token The new token.
      */
-    private fun sendRegistrationToServer(token: String?) {
-        // TODO: Implement this method to send token to your app server.
+    private fun sendRegistrationToServer(id: String?, token: String?) {
+        val serviceComponent = ComponentName(this, UpdateTokenService::class.java)
+        val builder = JobInfo.Builder(0, serviceComponent)
+        builder.setMinimumLatency((1 * 1000).toLong()) // wait at least
+        builder.setOverrideDeadline((3 * 1000).toLong()) // maximum delay
+        builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
+        val jobScheduler = getSystemService(JOB_SCHEDULER_SERVICE) as JobScheduler
+        jobScheduler.schedule(builder.build())
     }
 
     companion object {

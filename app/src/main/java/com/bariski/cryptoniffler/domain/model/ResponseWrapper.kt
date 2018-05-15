@@ -1,6 +1,10 @@
 package com.bariski.cryptoniffler.domain.model
 
-data class ResponseWrapper(val code: Int, val data: Any? = null, val message: String? = null) {
+import android.support.annotation.Keep
+import com.squareup.moshi.Json
+
+@Keep
+data class ResponseWrapper(@Json(name = "code") val code: Int, @Json(name = "data") val data: Any? = null, @Json(name = "message") val message: String? = null) {
     companion object {
         val SUCCESS = com.bariski.cryptoniffler.domain.util.SUCCESS
         val ERROR_NETWORK = com.bariski.cryptoniffler.domain.util.ERROR_NETWORK

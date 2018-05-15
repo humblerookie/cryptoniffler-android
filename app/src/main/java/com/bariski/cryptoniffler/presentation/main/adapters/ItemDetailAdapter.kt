@@ -2,7 +2,6 @@ package com.bariski.cryptoniffler.presentation.main.adapters
 
 import android.app.Activity
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,7 @@ import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.presentation.common.models.GridItemDetail
 import com.bariski.cryptoniffler.presentation.common.models.ImageRequest
 import com.facebook.shimmer.ShimmerFrameLayout
+import timber.log.Timber
 import java.text.DecimalFormat
 import javax.inject.Inject
 
@@ -21,7 +21,7 @@ class ItemDetailAdapter @Inject constructor(private val loader: ImageLoader) : R
     @JvmField
     val data = ArrayList<GridItemDetail>()
 
-    val formatter = DecimalFormat("0.00")
+    private val formatter = DecimalFormat("0.00")
 
     var showLoadingCards = false
 
@@ -61,7 +61,7 @@ class ItemDetailAdapter @Inject constructor(private val loader: ImageLoader) : R
     }
 
     fun setItems(d: ArrayList<GridItemDetail>) {
-        Log.d("ItemDetail", "Items Set:${d.size}")
+        Timber.d("Items Set:${d.size}")
         data.clear()
         data.addAll(d)
         notifyDataSetChanged()

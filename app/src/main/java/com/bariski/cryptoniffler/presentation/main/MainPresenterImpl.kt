@@ -2,7 +2,6 @@ package com.bariski.cryptoniffler.presentation.main
 
 import android.Manifest
 import android.os.Bundle
-import android.util.Log
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.analytics.Analytics
 import com.bariski.cryptoniffler.domain.common.Schedulers
@@ -10,6 +9,7 @@ import com.bariski.cryptoniffler.domain.model.Coin
 import com.bariski.cryptoniffler.domain.model.Exchange
 import com.bariski.cryptoniffler.domain.repository.DeviceDataStore
 import com.bariski.cryptoniffler.domain.repository.EventsRepository
+import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
 import com.bariski.cryptoniffler.domain.util.COIN
 import com.bariski.cryptoniffler.domain.util.EXCHANGE
@@ -26,10 +26,10 @@ import io.reactivex.Observer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.processors.PublishProcessor
 import io.reactivex.rxkotlin.subscribeBy
+import timber.log.Timber
 import java.lang.ref.WeakReference
 
-class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository: EventsRepository, private val deviceStore: DeviceDataStore, val adapter: GridItemAdapter, private val schedulerProvider: Schedulers, val analytics: Analytics) : BasePresenter<MainView>, MainPresenter {
-
+class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository: EventsRepository, private val deviceStore: DeviceDataStore, val adapter: GridItemAdapter, private val schedulerProvider: Schedulers, val analytics: Analytics, val imageLoader: ImageLoader) : BasePresenter<MainView>, MainPresenter {
 
     private lateinit var viewWeak: WeakReference<MainView>
     val disposable = CompositeDisposable()
@@ -41,6 +41,7 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
     var coin = ""
     var exchange = ""
     var ignoreFees = false
+    var isShareScreenMode = false
 
     override fun onItemClicked(id: Int) {
 
@@ -70,8 +71,16 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
                 R.id.arbitrage -> navigateToArbitrage()
                 R.id.home -> navigateToMain(true)
                 R.id.report -> navigateToFeedback()
+                R.id.shareScreen -> {
+                    isShareScreenMode = true
+                    createScreenAndShare()
+                }
             }
         }
+    }
+
+    private fun createScreenAndShare() {
+        viewWeak.get()?.requestStoragePermission(true)
     }
 
     private fun navigateToFeedback() {
@@ -154,7 +163,7 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
 
                         }, onError = {
                     analytics.logBtcValEvent(true, it.toString())
-                    Log.e("MainPresenter", it.toString())
+                    Timber.e(it)
                 }
 
                 )
@@ -285,7 +294,7 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
             }
             if (!eventsRepository.isAuthenticated()) {
                 disposable.add(eventsRepository.getAndSaveToken().subscribeOn(schedulerProvider.io()).observeOn(schedulerProvider.ui())
-                        .subscribeBy(onError = { Log.e("MainPresenter", it.toString()) }, onSuccess = {}))
+                        .subscribeBy(onError = { Timber.e(it) }, onSuccess = {}))
             }
             analytics.sendScreenView(Screen.MAIN)
             viewWeak.get()?.moveToNext(BuyNSellFragment.getInstance(), true)
@@ -330,9 +339,25 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
     override fun onMainViewResumed() {
         if (!deviceStore.hasPermissionRationaleShown(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             deviceStore.setPermissionRationaleShown(Manifest.permission.WRITE_EXTERNAL_STORAGE, true)
-            viewWeak.get()?.requestStoragePermission()
+            viewWeak.get()?.requestStoragePermission(false)
         }
 
+    }
+
+    override fun onStorageGranted() {
+        if (isShareScreenMode) {
+            viewWeak.get()?.screenShot?.let {
+                imageLoader.saveScreenshot(it)?.let {
+                    viewWeak.get()?.shareArbitrage(it)
+                }
+            }
+        }
+
+        isShareScreenMode = false
+    }
+
+    override fun onStorageFailed() {
+        isShareScreenMode = false
     }
 
 

@@ -1,6 +1,9 @@
 package com.bariski.cryptoniffler.presentation
 
 import android.app.Activity
+import android.app.NotificationManager
+import android.content.Context
+import android.os.Build
 import android.os.StrictMode
 import android.support.multidex.MultiDexApplication
 import com.bariski.cryptoniffler.BuildConfig
@@ -10,6 +13,7 @@ import com.bariski.cryptoniffler.domain.injection.AppComponent
 import com.bariski.cryptoniffler.domain.injection.DaggerAppComponent
 import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.domain.util.LogTree
+import com.bariski.cryptoniffler.presentation.common.notification.NotificationUtils
 import com.google.firebase.FirebaseApp
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
@@ -57,7 +61,6 @@ class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
         if (BuildConfig.DEBUG) {
             Traceur.enableLogging()
         }
-
         initLogger()
         FirebaseApp.initializeApp(this)
         val configSettings = FirebaseRemoteConfigSettings.Builder()
@@ -68,8 +71,17 @@ class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
         appComponent = DaggerAppComponent.builder()
                 .application(this).build()
         appComponent.inject(this)
+        createNotificationChannels()
+    }
 
-
+    private fun createNotificationChannels() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            val channel = manager.getNotificationChannel(NotificationUtils.ARBITRAGE_ID)
+            if (channel == null) {
+                NotificationUtils(this).createChannels()
+            }
+        }
     }
 
 
