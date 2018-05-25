@@ -5,66 +5,67 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="220dp"
         android:background="?android:attr/selectableItemBackground"
-        android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/margin_small">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/itemIcon"
+            style="@style/IconGridNoBorder"
+            app:layout_constraintBottom_toBottomOf="@id/itemPrice"
+            app:layout_constraintTop_toTopOf="@id/itemName"
+            tools:src="@drawable/buy" />
 
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/itemIcon"
-                style="@style/IconGridNoBorder"
-                android:layout_centerVertical="true"
-                tools:src="@drawable/buy" />
+        <TextView
+            android:id="@+id/itemName"
+            style="@style/TextMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/black_87"
+            app:layout_constraintBottom_toTopOf="@+id/itemPrice"
+            app:layout_constraintStart_toEndOf="@id/itemIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="Bitcoin" />
 
-            <TextView
-                android:id="@+id/itemName"
-                style="@style/TextMedium"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
-                android:layout_toEndOf="@+id/itemIcon"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:textColor="@color/black_87"
-                tools:text="Bitcoin\nsdadaddasdjd" />
-
-            <TextView
-                android:id="@+id/itemPrice"
-                style="@style/TextNormal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/itemName"
-                android:layout_marginStart="@dimen/margin_small"
-                android:layout_marginTop="@dimen/margin_atomic"
-                android:layout_toEndOf="@+id/itemIcon"
-                android:ellipsize="end"
-                android:maxLines="2"
-                android:textColor="@color/black_54"
-                android:textSize="@dimen/font_small"
-                tools:text="Rs. 20000000000000000000000\n0000000000" />
-
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/itemPrice"
+            style="@style/TextNormal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/itemName"
+            android:layout_marginTop="@dimen/margin_atomic"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/black_54"
+            android:textSize="@dimen/font_small"
+            app:layout_constraintBottom_toTopOf="@+id/itemSummary"
+            app:layout_constraintStart_toEndOf="@id/itemIcon"
+            app:layout_constraintTop_toBottomOf="@+id/itemName"
+            tools:text="Rs. 2000" />
 
         <me.grantland.widget.AutofitTextView
             android:id="@+id/itemSummary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/regular"
             android:maxLines="4"
             android:textColor="@color/black_24"
             android:textSize="@dimen/font_normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/itemPrice"
             app:minTextSize="8sp"
             app:sizeToFit="true"
             tools:text="Selling 10% above market\n rate" />
 
-    </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>

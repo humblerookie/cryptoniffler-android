@@ -69,7 +69,7 @@
 
         <provider
             android:name=".presentation.common.utils.GenericFileProvider"
-            android:authorities="com.bariski.cryptoniffler.provider"
+            android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

@@ -9,11 +9,9 @@ package com.bariski.cryptoniffler.presentation.common.notification
  * Created by Admin on 9/12/2015.
  */
 
-import android.app.job.JobInfo
-import android.app.job.JobScheduler
-import android.content.ComponentName
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.iid.FirebaseInstanceIdService
+import com.google.firebase.messaging.FirebaseMessaging
 import timber.log.Timber
 
 
@@ -34,6 +32,9 @@ class InstanceIdListenerService : FirebaseInstanceIdService() {
         // manage this apps subscriptions on the server side, send the
         // Instance ID token to your app server.
         sendRegistrationToServer(FirebaseInstanceId.getInstance().id, refreshedToken)
+        FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.ARBITRAGE_ID)
+        FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.NEWS_ID)
+        FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.ICO_ID)
     }
     // [END refresh_token]
 
@@ -46,13 +47,7 @@ class InstanceIdListenerService : FirebaseInstanceIdService() {
      * @param token The new token.
      */
     private fun sendRegistrationToServer(id: String?, token: String?) {
-        val serviceComponent = ComponentName(this, UpdateTokenService::class.java)
-        val builder = JobInfo.Builder(0, serviceComponent)
-        builder.setMinimumLatency((1 * 1000).toLong()) // wait at least
-        builder.setOverrideDeadline((3 * 1000).toLong()) // maximum delay
-        builder.setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
-        val jobScheduler = getSystemService(JOB_SCHEDULER_SERVICE) as JobScheduler
-        jobScheduler.schedule(builder.build())
+
     }
 
     companion object {

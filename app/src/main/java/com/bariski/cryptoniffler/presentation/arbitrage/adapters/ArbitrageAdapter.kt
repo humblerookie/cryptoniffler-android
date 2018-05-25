@@ -39,7 +39,7 @@ class ArbitrageAdapter(val arbitrage: Arbitrage, val isInternational: Boolean, v
         }
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (getItemViewType(position)) {
             0 -> {
                 (holder as DisclaimerViewHolder).bindData(presenter.isModeInternational())

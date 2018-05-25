@@ -1,6 +1,5 @@
 package com.bariski.cryptoniffler.presentation.common.notification
 
-import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
@@ -52,14 +51,15 @@ class FcmMessageListenerService : FirebaseMessagingService() {
         // Check if message contains a data payload.
         if (remoteMessage.data.isNotEmpty()) {
             Timber.d("Message data payload: %s", remoteMessage.data)
-            sendNotification(remoteMessage.data["body"]!!, remoteMessage.data["title"]!!)
+            sendNotification(remoteMessage.data["body"], remoteMessage.data["title"], remoteMessage.data["channel"])
 
         }
 
         // Check if message contains a notification payload.
-        if (remoteMessage.notification != null) {
-            Timber.d("Message Notification Body: %s", remoteMessage.notification.body)
+        remoteMessage.notification?.body.let {
+            Timber.d("Message Notification Body: %s", it)
         }
+
 
         // Also if you intend on generating your own notifications as a result of a received FCM
         // message, here is where that should be initiated. See sendNotification method below.
@@ -72,7 +72,7 @@ class FcmMessageListenerService : FirebaseMessagingService() {
      *
      * @param messageBody FCM message body received.
      */
-    private fun sendNotification(messageBody: String, messageTitle: String) {
+    private fun sendNotification(messageBody: String?, messageTitle: String?, channel: String?) {
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -92,10 +92,11 @@ class FcmMessageListenerService : FirebaseMessagingService() {
 
         // Since android Oreo notification channel is needed.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel(channelId,
-                    "Channel human readable title",
-                    NotificationManager.IMPORTANCE_DEFAULT)
-            notificationManager.createNotificationChannel(channel)
+            if (channel != null) {
+                notificationBuilder.setChannelId(channel)
+            } else {
+                notificationBuilder.setChannelId(NotificationUtils.NEWS_ID)
+            }
         }
         val stored = keyStore.getInt(NOTIF_ID)
 

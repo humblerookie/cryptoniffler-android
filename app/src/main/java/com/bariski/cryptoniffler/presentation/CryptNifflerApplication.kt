@@ -15,6 +15,7 @@ import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.domain.util.LogTree
 import com.bariski.cryptoniffler.presentation.common.notification.NotificationUtils
 import com.google.firebase.FirebaseApp
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
 import com.tspoon.traceur.Traceur
@@ -75,6 +76,9 @@ class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
     }
 
     private fun createNotificationChannels() {
+        FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.ARBITRAGE_ID)
+        FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.NEWS_ID)
+        FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.ICO_ID)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
             val channel = manager.getNotificationChannel(NotificationUtils.ARBITRAGE_ID)

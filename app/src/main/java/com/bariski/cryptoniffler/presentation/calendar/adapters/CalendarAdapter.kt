@@ -34,9 +34,9 @@ class CalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemViewType(position: Int) = if (position != itemCount - 1) 0 else 1
     override fun getItemCount() = if (data.size > 0) data.size + 1 else 0
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (position != itemCount - 1) {
-            holder?.let { (it as ViewHolder).setData(data[position]) }
+            (holder as ViewHolder).setData(data[position])
         }
     }
 

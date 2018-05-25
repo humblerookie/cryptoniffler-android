@@ -131,7 +131,6 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
     }
 
     override fun onNext() {
-
         viewWeak.get()?.let {
             if (coin.trim().isNotEmpty()) {
                 analytics.logEvent(Event.PROCEED, Bundle())

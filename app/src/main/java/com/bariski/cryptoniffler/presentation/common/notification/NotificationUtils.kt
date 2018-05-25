@@ -42,7 +42,7 @@ class NotificationUtils(base: Context) : ContextWrapper(base) {
     }
 
     companion object {
-        private const val ANDROID_PREFIX = BuildConfig.APPLICATION_ID + ".android."
+        private const val ANDROID_PREFIX = "android_"+ BuildConfig.BUILD_PREFIX
         const val ARBITRAGE_ID = ANDROID_PREFIX + "arbitrage"
         const val ARBITRAGE_NAME = "Arbitrage Updates"
         const val NEWS_ID = ANDROID_PREFIX + "news"

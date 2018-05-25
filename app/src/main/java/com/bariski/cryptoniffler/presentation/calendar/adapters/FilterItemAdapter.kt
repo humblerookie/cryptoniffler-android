@@ -15,8 +15,8 @@ class FilterItemAdapter(private val data: List<FilterItem>, private var selected
 
     private val filteredData = ArrayList(data)
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent?.context).inflate(R.layout.item_filter, parent, false), selected)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_filter, parent, false), selected)
     }
 
     fun filterDataSet(s: String) {
@@ -34,8 +34,8 @@ class FilterItemAdapter(private val data: List<FilterItem>, private var selected
         return selected
     }
 
-    override fun onBindViewHolder(holder: ViewHolder?, position: Int) {
-        holder?.setData(filteredData[position], selected.contains(filteredData[position]))
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.setData(filteredData[position], selected.contains(filteredData[position]))
     }
 
     class ViewHolder(view: View, val selected: Set<FilterItem>) : RecyclerView.ViewHolder(view) {

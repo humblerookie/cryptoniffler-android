@@ -1,6 +1,6 @@
 ext {
     versions = [
-            support              : "26.0.1",
+            support              : "27.1.1",
             okHttp               : "3.8.1",
             espresso             : '3.0.0',
             espressoRunner       : '1.0.0',
@@ -44,7 +44,7 @@ ext {
     junit = [junit: "junit:junit:$versions.junit"]
 
     supportDeps = [
-            constraint       : "androidx.constraintlayout:constraintlayout:$versions.constraint",
+            constraint       : "com.android.support.constraint:constraint-layout:$versions.constraint",
             cardView         : "com.android.support:cardview-v7:$versions.support",
             appcompatV7      : "com.android.support:appcompat-v7:$versions.support",
             design           : "com.android.support:design:$versions.support",
@@ -63,7 +63,6 @@ ext {
             firebaseCore  : "com.google.firebase:firebase-core:$versions.firebase",
             firebaseConfig: "com.google.firebase:firebase-config:$versions.firebase",
             fcm           : "com.google.firebase:firebase-messaging:$versions.firebase",
-            work          : "android.arch.work:work-runtime:$versions.firebase_work",
             performance : "com.google.firebase:firebase-perf:$versions.firebase"
     ]
 

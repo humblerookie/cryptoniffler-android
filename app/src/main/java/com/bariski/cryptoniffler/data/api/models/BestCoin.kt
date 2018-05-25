@@ -1,7 +1,9 @@
 package com.bariski.cryptoniffler.data.api.models
 
+import android.support.annotation.Keep
 import com.squareup.moshi.Json
 
+@Keep
 data class BestCoin(@Json(name = "name") val name: String,
                     @Json(name = "symbol") val symbol: String,
                     @Json(name = "marketRate") val marketRate: Float,

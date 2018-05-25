@@ -25,16 +25,16 @@ class ItemDetailAdapter @Inject constructor(private val loader: ImageLoader) : R
 
     var showLoadingCards = false
 
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == 0) {
-            TextViewHolder(LayoutInflater.from(parent?.context).inflate(R.layout.item_title, parent, false))
+            TextViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_title, parent, false))
         } else {
-            ViewHolder(LayoutInflater.from(parent?.context).inflate(if (showLoadingCards) R.layout.item_detail_dummy else R.layout.item_detail_grid, parent, false))
+            ViewHolder(LayoutInflater.from(parent.context).inflate(if (showLoadingCards) R.layout.item_detail_dummy else R.layout.item_detail_grid, parent, false))
         }
 
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == 0) {
             (holder as TextViewHolder).setData(holder.name.context.getString(if (position == 0) R.string.common_label_best_buy else R.string.common_label_best_sell))
         } else {

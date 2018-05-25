@@ -2,9 +2,11 @@ package com.bariski.cryptoniffler.domain.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import android.support.annotation.Keep
 import com.bariski.cryptoniffler.presentation.common.models.GridItem
 import com.squareup.moshi.Json
 
+@Keep
 data class Coin(@Json(name = "id") val id: String,
                 @Json(name = "imageUrl") val imgUrl: String?,
                 @Json(name = "name") val name: String,
