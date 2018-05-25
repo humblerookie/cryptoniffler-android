@@ -4,6 +4,7 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -139,11 +140,11 @@ abstract class BaseActivity : DaggerAppCompatActivity(), BaseView {
         getBasePresenter<BaseView>().onRefresh()
     }
 
-    protected fun onPermissionGranted(permission: String) {
+    open protected fun onPermissionGranted(permission: String) {
 
     }
 
-    protected fun onPermissionDenied(permission: String) {
+    open protected fun onPermissionDenied(permission: String) {
 
     }
 
@@ -207,6 +208,15 @@ abstract class BaseActivity : DaggerAppCompatActivity(), BaseView {
 
         circularReveal.start()
 
+    }
+
+    override fun getScreenShot(): Bitmap {
+        val view = window.decorView.findViewById<View>(android.R.id.content)
+        val screenView = view.rootView
+        screenView.isDrawingCacheEnabled = true
+        val bitmap = Bitmap.createBitmap(screenView.drawingCache)
+        screenView.isDrawingCacheEnabled = false
+        return bitmap
     }
 
 }

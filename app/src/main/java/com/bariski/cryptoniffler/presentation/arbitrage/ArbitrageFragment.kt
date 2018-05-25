@@ -1,5 +1,6 @@
 package com.bariski.cryptoniffler.presentation.arbitrage
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.net.Uri
@@ -14,17 +15,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.view.animation.AnimationUtils
 import android.widget.Toast
+import com.afollestad.materialdialogs.MaterialDialog
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.domain.model.Arbitrage
 import com.bariski.cryptoniffler.domain.model.ArbitrageExchange
+import com.bariski.cryptoniffler.domain.model.ArbitragePresentable
 import com.bariski.cryptoniffler.domain.model.FilterItem
 import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.presentation.arbitrage.adapters.ArbitrageAdapter
 import com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter
 import com.bariski.cryptoniffler.presentation.common.BaseInjectFragment
+import com.bariski.cryptoniffler.presentation.common.listeners.ItemIdClickListener
+import com.bariski.cryptoniffler.presentation.common.utils.DeviceInfo
 import kotlinx.android.synthetic.main.fragment_arbitrage.view.*
+import me.toptas.fancyshowcase.FancyShowCaseQueue
 import me.toptas.fancyshowcase.FancyShowCaseView
+import java.lang.StringBuilder
 import java.util.*
 import javax.inject.Inject
 
@@ -36,6 +44,8 @@ class ArbitrageFragment : BaseInjectFragment(), ArbitrageView, View.OnClickListe
     lateinit var presenter: ArbitragePresenter
     @Inject
     lateinit var imageLoader: ImageLoader
+    @Inject
+    lateinit var deviceInfo: DeviceInfo
 
     lateinit var list: RecyclerView
     var snackbar: Snackbar? = null
@@ -43,6 +53,7 @@ class ArbitrageFragment : BaseInjectFragment(), ArbitrageView, View.OnClickListe
     lateinit var progress: View
     lateinit var swipeRefresh: SwipeRefreshLayout
     lateinit var applyFilter: View
+    lateinit var fabShare: View
     lateinit var from: RecyclerView
     lateinit var to: RecyclerView
     lateinit var clear: View
@@ -55,24 +66,43 @@ class ArbitrageFragment : BaseInjectFragment(), ArbitrageView, View.OnClickListe
     lateinit var toAdapter: FilterItemAdapter
 
 
+    override fun onAttach(activity: Activity?) {
+        super.onAttach(activity)
+        if (activity !is ItemIdClickListener) {
+            throw IllegalStateException("Parent activity must override ItemIdClickListener")
+        }
+
+    }
+
     override fun onCreateView(inflater: LayoutInflater, parent: ViewGroup?, savedInstanceState: Bundle?): View {
         val view = inflater.inflate(R.layout.fragment_arbitrage, parent, false)
         list = view.list
         list.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         progress = view.progress
         container = view.container
+        fabShare = view.shareScreen
         swipeRefresh = view.swipeRefresh
         presenter.initView(this, savedInstanceState, arguments)
         swipeRefresh.setOnRefreshListener {
             presenter.onRetry()
+        }
+
+        fabShare.setOnClickListener {
+            (activity as ItemIdClickListener).onItemClick(it.id)
         }
         return view
     }
 
     override fun setData(arbitrage: Arbitrage, isInternational: Boolean) {
         if (isAlive()) {
+            if (fabShare.visibility == View.GONE) {
+                val anim = AnimationUtils.loadAnimation(activity, R.anim.fab_reveal)
+                fabShare.visibility = View.VISIBLE
+                fabShare.startAnimation(anim)
+            }
             list.adapter = ArbitrageAdapter(arbitrage, isInternational, imageLoader, presenter)
             swipeRefresh.isRefreshing = false
+
         }
     }
 
@@ -163,7 +193,7 @@ class ArbitrageFragment : BaseInjectFragment(), ArbitrageView, View.OnClickListe
                     })
                     clear.setOnClickListener({
                         presenter.onFilterClear()
-                        fromAdapter.getSelected().let { (it as HashSet).clear() }
+                        fromAdapter.getSelected().let { (it as HashSet<*>).clear() }
                         fromAdapter.notifyDataSetChanged()
                         toAdapter.getSelected().let { (it as HashSet).clear() }
                         toAdapter.notifyDataSetChanged()
@@ -181,27 +211,51 @@ class ArbitrageFragment : BaseInjectFragment(), ArbitrageView, View.OnClickListe
 
     override fun showRateDialog() {
         if (isAlive()) {
+
             if (rateDialog == null) {
-                rateDialog = Dialog(activity)
-                rateDialog?.apply {
-                    requestWindowFeature(Window.FEATURE_NO_TITLE)
-                    val view = activity.layoutInflater.inflate(R.layout.item_rate_review, null)
-                    setContentView(view)
-                    val rateView = view.findViewById<View>(R.id.review)
-                    val reviewView = view.findViewById<View>(R.id.share)
-                    rateView.setOnClickListener {
-                        presenter.onButtonClicked(it.id)
-                        (activity as View.OnClickListener).onClick(it)
-                        dismiss()
-                    }
-                    reviewView.setOnClickListener {
-                        presenter.onButtonClicked(it.id)
-                        (activity as View.OnClickListener).onClick(it)
-                        dismiss()
-                    }
-                }
+                rateDialog =
+                        MaterialDialog.Builder(activity)
+                                .title(R.string.rating_title_spread_the_word)
+                                .content(getString(R.string.rating_title_lets_be_honest) + "\n\n" + getString(R.string.rating_title_like_money) + "\n" + getString(R.string.rating_title_weve_targets) + "\n\n" + getString(R.string.rating_title_work_together))
+                                .positiveText(R.string.rating_title_share)
+                                .neutralText(R.string.rating_title_rate)
+                                .iconRes(R.drawable.ic_volume)
+                                .onPositive({ _, _ ->
+                                    presenter.onButtonClicked(R.id.share)
+                                    (activity as ItemIdClickListener).onItemClick(R.id.share)
+                                    rateDialog?.dismiss()
+                                })
+                                .onNeutral({ _, _ ->
+                                    presenter.onButtonClicked(R.id.review)
+                                    (activity as ItemIdClickListener).onItemClick(R.id.review)
+                                    rateDialog?.dismiss()
+                                })
+                                .show()
+            } else {
+                rateDialog?.show()
             }
-            rateDialog?.show()
+        }
+
+    }
+
+
+    override fun showFeesDialog(arbitrage: ArbitragePresentable) {
+        if (isAlive()) {
+
+            val fees = StringBuilder()
+            for (s in arbitrage.getFeeDetails()) {
+                fees.append("- ")
+                fees.append(s)
+                fees.append("\n\n")
+            }
+            MaterialDialog.Builder(activity)
+                    .title(R.string.common_title_fees)
+                    .content(fees.toString())
+                    .positiveText(R.string.common_title_execute)
+                    .onPositive({ _, _ ->
+                        presenter.onArbitrageConfirmed(arbitrage)
+                    })
+                    .show()
         }
 
     }
@@ -237,12 +291,19 @@ class ArbitrageFragment : BaseInjectFragment(), ArbitrageView, View.OnClickListe
 
     override fun showFilterTutorial() {
         if (isAlive()) {
-            FancyShowCaseView.Builder(activity)
+            val f1 = FancyShowCaseView.Builder(activity)
+                    .focusRectAtPosition(deviceInfo.getWidth() / 2, deviceInfo.getHeight() / 2, 30, 30)
+                    .fitSystemWindows(true)
+                    .title(getString(R.string.common_tutorial_arbitrage))
+                    .build()
+            val f2 = FancyShowCaseView.Builder(activity)
                     .focusOn(activity.findViewById(R.id.filter))
                     .title(getString(R.string.events_tutorial_filters))
                     .build()
-                    .show()
+            FancyShowCaseQueue().add(f1).add(f2).show()
+
         }
     }
+
 
 }

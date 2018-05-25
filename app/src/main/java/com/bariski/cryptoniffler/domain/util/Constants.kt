@@ -72,5 +72,6 @@ class Event {
         val INCLUDE_FEE = "include_fee"
         val RATE_REVIEW = "rate_n_review"
         val MODE_CHANGED = "mode_changed"
+        val EXECUTED_ARBITRAGE = "executed_arbitrage"
     }
 }

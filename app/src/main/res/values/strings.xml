@@ -40,7 +40,7 @@
     <string name="common.hint.type_a_coin_name">type a coin name like BTC..</string>
     <string name="calendar.suffix.votes">of %s votes</string>
 
-    <string name="common_share_text">I made easy money using this crypto arbitrage app, check it out! \nhttps://play.google.com/store/apps/details?id=com.bariski.cryptoniffler</string>
+    <string name="common_share_text">I made easy money using this crypto arbitrage app, check it out!</string>
     <string name="common.label.filter_by">Filter By</string>
     <string name="common.label.clear_all">Clear All</string>
     <string name="common.label.close">Close</string>
@@ -57,7 +57,7 @@
     <string name="default.channel_id" translatable="false">fcm_default_channel</string>
     <string name="default.channel_name" translatable="false">News</string>
 
-    <string name="common.permission.storage_rationale">Cryptoniffler needs storage permission to improve your experience</string>
+    <string name="common.permission.storage_rationale">We need your permission to store images to improve your experience.</string>
     <string name="common.permission.storage">Please provide storage permission</string>
     <string name="common.label.permission">Permission</string>
     <string name="events.tutorial.filters">\nTap here to \n apply filters.</string>
@@ -69,7 +69,7 @@
     <string name="drawer.title.review">Review</string>
     <string name="drawer.title.arbitrage">Arbitrage</string>
     <string name="drawer.title.report">Send Feedback</string>
-
+    <string name="common.title.execute">Execute</string>
     <string name="calendar.suffix.percentage" translatable="false">%s %%</string>
     <string name="common.label.price" translatable="false">\u20b9 %s</string>
     <string name="common.suffix.percentage" translatable="false">%s %% </string>
@@ -99,6 +99,6 @@
     <string name="arbitrage.currency.international">International(BTC)</string>
     <string name="arbitrage.currency.domestic">Indian(\u20B9)</string>
     <string name="error.arbitrage.international_no_filter">Filters are currently unavailable in international mode.</string>
-
-
+    <string name="common_title_fees">Fee Details</string>
+    <string name="common.tutorial.arbitrage">Tap on card to view fee details.</string>
 </resources>

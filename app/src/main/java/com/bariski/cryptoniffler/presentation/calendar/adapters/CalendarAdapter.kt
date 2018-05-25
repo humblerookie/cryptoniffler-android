@@ -5,7 +5,6 @@ import android.graphics.Rect
 import android.net.Uri
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.TouchDelegate
 import android.view.View
@@ -16,6 +15,7 @@ import android.widget.TextView
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.presentation.calendar.models.CalendarItem
 import com.crashlytics.android.Crashlytics
+import timber.log.Timber
 import java.util.*
 
 
@@ -34,9 +34,9 @@ class CalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun getItemViewType(position: Int) = if (position != itemCount - 1) 0 else 1
     override fun getItemCount() = if (data.size > 0) data.size + 1 else 0
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (position != itemCount - 1) {
-            holder?.let { (it as ViewHolder).setData(data[position]) }
+            (holder as ViewHolder).setData(data[position])
         }
     }
 
@@ -121,7 +121,7 @@ class CalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                             intent.data = Uri.parse(it)
                             context.startActivity(intent)
                         } catch (e: Exception) {
-                            Log.e("Calendar Url", e.toString())
+                            Timber.e(it)
                             Crashlytics.logException(e)
                         }
                     }

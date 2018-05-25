@@ -1,7 +1,7 @@
 package com.bariski.cryptoniffler.data.utils
 
 import android.content.Context
-import android.util.Log
+import timber.log.Timber
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
@@ -22,13 +22,13 @@ fun getAssetFromDevice(fileName: String, context: Context): String? {
         }
         return sb.toString()
     } catch (e: IOException) {
-        Log.d("DeviceUtil", e.toString())
+        Timber.e(e)
     } finally {
         if (reader != null) {
             try {
                 reader.close()
             } catch (e: IOException) {
-                Log.d("DeviceUtil", e.toString())
+                Timber.e(e)
             }
         }
     }

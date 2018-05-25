@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/viewExchanges"
     android:layout_width="280dp"
@@ -8,200 +9,183 @@
     android:layout_marginRight="@dimen/margin_huge"
     android:layout_marginTop="@dimen/margin_normal">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?android:attr/selectableItemBackground"
         android:orientation="vertical">
 
-        <LinearLayout
+        <View
+            android:id="@+id/topstrip_background"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/black_08"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/margin_small"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingTop="@dimen/margin_small">
+            app:layout_constraintBottom_toBottomOf="@id/barrier_top_strip" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+        <TextView
+            android:id="@+id/labelAmount"
+            style="@style/TextLabelArbitrage"
+            android:text="@string/arbitrage.label.trade_amount"
+            android:textColor="@color/primary_54"
+            app:layout_constraintEnd_toStartOf="@id/labelFees"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/labelFees" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium"
-                    android:text="@string/arbitrage.label.trade_amount"
-                    android:textColor="@color/primary_54"
-                    android:textSize="10sp" />
+        <TextView
+            android:id="@+id/amount"
+            style="@style/TextContentArbitrage"
+            android:textColor="@color/primary_87"
+            app:layout_constraintBottom_toTopOf="@id/barrier_top_strip"
+            app:layout_constraintEnd_toEndOf="@id/labelAmount"
+            app:layout_constraintStart_toStartOf="@id/labelAmount"
+            app:layout_constraintTop_toBottomOf="@id/labelAmount"
+            tools:text="1000" />
 
-                <TextView
-                    android:id="@+id/amount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium"
-                    android:textColor="@color/primary_87"
-                    android:textSize="16sp"
-                    tools:text="10000" />
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+        <TextView
+            android:id="@+id/labelFees"
+            style="@style/TextLabelArbitrage"
+            android:text="@string/arbitrage.label.total_fees"
+            android:textColor="@color/red_400"
+            app:layout_constraintEnd_toStartOf="@id/labelProfit"
+            app:layout_constraintStart_toEndOf="@id/labelAmount"
+            app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium"
-                    android:text="@string/arbitrage.label.total_fees"
-                    android:textColor="@color/red_400"
-                    android:textSize="10sp" />
+        <TextView
+            android:id="@+id/fees"
+            style="@style/TextContentArbitrage"
+            android:textColor="@color/red_700"
+            app:layout_constraintBottom_toTopOf="@id/barrier_top_strip"
+            app:layout_constraintEnd_toEndOf="@id/labelFees"
+            app:layout_constraintStart_toStartOf="@id/labelFees"
+            app:layout_constraintTop_toBottomOf="@id/labelFees"
+            tools:text="1000" />
 
-                <TextView
-                    android:id="@+id/fees"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium"
-                    android:textColor="@color/red_700"
-                    android:textSize="16sp"
-                    tools:text="100" />
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+        <TextView
+            android:id="@+id/labelProfit"
+            style="@style/TextLabelArbitrage"
+            android:text="@string/arbitrage.label.profit"
+            android:textColor="@color/green_400"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/labelFees"
+            app:layout_constraintTop_toTopOf="@id/labelFees" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium"
-                    android:text="@string/arbitrage.label.profit"
-                    android:textColor="@color/green_400"
-                    android:textSize="10sp" />
+        <TextView
+            android:id="@+id/profit"
+            style="@style/TextContentArbitrage"
+            android:text="@string/arbitrage.label.trade_amount"
+            android:textColor="@color/green_700"
+            app:layout_constraintBottom_toTopOf="@id/barrier_top_strip"
+            app:layout_constraintEnd_toEndOf="@id/labelProfit"
+            app:layout_constraintStart_toStartOf="@id/labelProfit"
+            app:layout_constraintTop_toBottomOf="@id/labelProfit"
+            tools:text="10000" />
 
-                <TextView
-                    android:id="@+id/profit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium"
-                    android:text="@string/arbitrage.label.trade_amount"
-                    android:textColor="@color/green_700"
-                    android:textSize="16sp"
-                    tools:text="10000" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
+        <android.support.constraint.Barrier
+            android:id="@+id/barrier_top_strip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="fees, profit, amount" />
+
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/srcExchange"
+            android:layout_width="@dimen/width_exchange"
+            android:layout_height="@dimen/width_exchange"
+            android:background="@drawable/circle_strip_grey"
+            android:padding="@dimen/dp1"
+            app:layout_constraintBottom_toTopOf="@id/srcText"
+            app:layout_constraintEnd_toEndOf="@id/srcText"
+            app:layout_constraintStart_toStartOf="@id/srcText"
+            app:layout_constraintTop_toBottomOf="@id/barrier_top_strip"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/srcCoin"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:background="@drawable/circle_strip_grey"
+            android:padding="@dimen/dp1"
+            app:layout_constraintBottom_toBottomOf="@id/srcExchange"
+            app:layout_constraintEnd_toEndOf="@id/srcExchange" />
+
+        <TextView
+            android:id="@+id/srcText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:ellipsize="end"
+            android:fontFamily="@font/regular"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black_54"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/transfer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/srcExchange"
+            app:layout_constraintVertical_bias="0.5"
+            tools:text="Sell XRP at Bitbns for Rs.24 asdjajdkl" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/transfer"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:src="@drawable/transfer"
+            android:tint="#D7D7D7"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/destText"
+            app:layout_constraintStart_toEndOf="@id/srcText"
+            app:layout_constraintTop_toBottomOf="@id/barrier_top_strip" />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/destExchange"
+            android:layout_width="@dimen/width_exchange"
+            android:layout_height="@dimen/width_exchange"
+            android:layout_marginRight="@dimen/margin_small"
+            android:background="@drawable/circle_strip_grey"
+            android:padding="@dimen/dp1"
+            app:layout_constraintBottom_toTopOf="@id/destText"
+            app:layout_constraintEnd_toEndOf="@id/destText"
+            app:layout_constraintStart_toStartOf="@id/destText"
+            app:layout_constraintTop_toBottomOf="@id/barrier_top_strip"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintVertical_chainStyle="packed"
+
+            />
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/destCoin"
+            android:layout_width="@dimen/dp20"
+            android:layout_height="@dimen/dp20"
+            android:background="@drawable/circle_strip_grey"
+            android:padding="@dimen/dp1"
+            app:layout_constraintBottom_toBottomOf="@id/destExchange"
+            app:layout_constraintEnd_toEndOf="@id/destExchange" />
+
+        <TextView
+            android:id="@+id/destText"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_small"
+            android:ellipsize="end"
+            android:fontFamily="@font/regular"
             android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <android.support.v7.widget.AppCompatImageView
-                        android:id="@+id/srcExchange"
-                        android:layout_width="@dimen/width_exchange"
-                        android:layout_height="@dimen/width_exchange"
-                        android:background="@drawable/circle_strip_grey"
-                        android:padding="@dimen/dp1" />
-
-                    <android.support.v7.widget.AppCompatImageView
-                        android:id="@+id/srcCoin"
-                        android:layout_width="@dimen/dp20"
-                        android:layout_height="@dimen/dp20"
-                        android:layout_alignBottom="@id/srcExchange"
-                        android:layout_alignRight="@id/srcExchange"
-                        android:background="@drawable/circle_strip_grey"
-                        android:padding="@dimen/dp1" />
-                </RelativeLayout>
-
-                <TextView
-                    android:id="@+id/srcText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:fontFamily="@font/regular"
-                    android:gravity="center"
-                    android:textColor="@color/black_54"
-                    android:textSize="12sp"
-                    tools:text="Sell XRP at Bitbns for Rs.24" />
-
-            </LinearLayout>
-
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/transfer"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_marginLeft="@dimen/margin_normal"
-                android:layout_marginRight="@dimen/margin_normal"
-                android:src="@drawable/transfer"
-                android:tint="#D7D7D7" />
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <android.support.v7.widget.AppCompatImageView
-                        android:id="@+id/destExchange"
-                        android:layout_width="@dimen/width_exchange"
-                        android:layout_height="@dimen/width_exchange"
-                        android:background="@drawable/circle_strip_grey"
-                        android:padding="@dimen/dp1" />
-
-                    <android.support.v7.widget.AppCompatImageView
-                        android:id="@+id/destCoin"
-                        android:layout_width="@dimen/dp20"
-                        android:layout_height="@dimen/dp20"
-                        android:layout_alignBottom="@id/destExchange"
-                        android:layout_alignRight="@id/destExchange"
-                        android:background="@drawable/circle_strip_grey"
-                        android:padding="@dimen/dp1" />
-                </RelativeLayout>
-
-                <TextView
-                    android:id="@+id/destText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:fontFamily="@font/regular"
-                    android:gravity="center"
-                    android:textColor="@color/black_54"
-                    android:textSize="12sp"
-                    tools:text="Sell XRP at Koinex for Rs.25" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
+            android:maxLines="3"
+            android:textColor="@color/black_54"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/transfer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/destExchange"
+            app:layout_constraintVertical_bias="0.5"
+            tools:text="Sell XRP at Koinex for Rs.25 aadhkhdjakdhkahdkahdkjahdjkahdjsahdjadkahkdhadhjadkjhajkdhadjkahdkahdkjahdjkahdkjahdkjahdjkashdjahdjakhdjakdhjsakdhkajhdajdjkhas" />
+    </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.content.ContextCompat
 import android.support.v7.widget.GridLayoutManager
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import com.bariski.cryptoniffler.R
@@ -17,6 +16,7 @@ import com.bariski.cryptoniffler.presentation.main.adapters.ItemDetailAdapter
 import com.bariski.cryptoniffler.presentation.main.model.GridDetailWrapper
 import com.crashlytics.android.Crashlytics
 import kotlinx.android.synthetic.main.activity_coin_detail.*
+import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
@@ -48,7 +48,7 @@ class CoinDetailActivity : BaseActivity(), CoinDetailView {
             Crashlytics.setLong("l", intent.getLongExtra("amount", 0))
             Crashlytics.setLong("time", Calendar.getInstance().timeInMillis)
         } catch (e: Exception) {
-            Log.e("Setting Crashlytics", e.toString())
+            Timber.e(e)
         }
         presenter.initView(this, savedInstanceState, intent.extras)
     }

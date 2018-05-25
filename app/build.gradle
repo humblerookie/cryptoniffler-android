@@ -23,8 +23,8 @@ android {
         applicationId "com.bariski.cryptoniffler"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 21
-        versionName "2.1.2"
+        versionCode 24
+        versionName "2.2.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -40,11 +40,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             aaptOptions.cruncherEnabled = false
             applicationIdSuffix ".dev"
+            buildConfigField "String", "BUILD_PREFIX", "\"dev_\""
 
         }
         release {
+            debuggable false
             minifyEnabled true
             shrinkResources true
+            buildConfigField "String", "BUILD_PREFIX", "\"\""
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -105,7 +108,7 @@ apply from: 'dependencies.gradle'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation loggingLibs
     implementation supportLibs
     implementation rxJavaLibs
@@ -113,9 +116,6 @@ dependencies {
     implementation networkLibs
     implementation daggerLibs
     implementation uiLibs
-    implementation('com.crashlytics.sdk.android:crashlytics:2.9.0@aar') {
-        transitive = true
-    }
     testImplementation unitTestLibs
     androidTestImplementation androidTestsLibs
     kapt annotationProcLibs

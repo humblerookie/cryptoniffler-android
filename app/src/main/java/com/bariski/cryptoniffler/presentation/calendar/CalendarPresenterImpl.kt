@@ -1,7 +1,6 @@
 package com.bariski.cryptoniffler.presentation.calendar
 
 import android.os.Bundle
-import android.util.Log
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.analytics.Analytics
 import com.bariski.cryptoniffler.data.factory.HttpStatus
@@ -15,6 +14,7 @@ import com.bariski.cryptoniffler.domain.util.Screen
 import io.reactivex.Single
 import io.reactivex.rxkotlin.subscribeBy
 import retrofit2.HttpException
+import timber.log.Timber
 import java.io.IOException
 import java.lang.ref.WeakReference
 
@@ -80,7 +80,6 @@ class CalendarPresenterImpl(repository: EventsRepository, schedulers: Schedulers
                                     } else {
                                         it.toggleCenterProgress(false)
                                     }
-
                                     it.setData(data, initPage != 1)
                                     if (initPage == 1) {
                                         events.clear()
@@ -115,7 +114,7 @@ class CalendarPresenterImpl(repository: EventsRepository, schedulers: Schedulers
                                         view.get()?.toggleError(view.get()?.getMessage(if (it is IOException) R.string.error_common_network else R.string.error_common_something_wrong))
                                     }
                                 }
-                                Log.e("Calendar", it.toString())
+                                Timber.e(it)
                             }))
 
 

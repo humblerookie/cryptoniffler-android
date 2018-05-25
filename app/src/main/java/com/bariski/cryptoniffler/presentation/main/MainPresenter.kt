@@ -22,4 +22,7 @@ interface MainPresenter : BasePresenter<MainView>, GridItemAdapter.OnItemClickLi
     fun onIncludeFeeChanged(b: Boolean)
     fun infoClicked()
     fun onMainViewResumed()
+
+    fun onStorageGranted()
+    fun onStorageFailed()
 }

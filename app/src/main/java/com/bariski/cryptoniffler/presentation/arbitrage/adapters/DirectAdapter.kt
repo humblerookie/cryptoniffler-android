@@ -31,7 +31,7 @@ class DirectAdapter(private val data: List<DirectArbitrage>, val isInternational
         return if (data.isNotEmpty()) 0 else 1
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == 0) {
             (holder as DirectViewHolder).bind(data[position], !isInternational)
         } else {

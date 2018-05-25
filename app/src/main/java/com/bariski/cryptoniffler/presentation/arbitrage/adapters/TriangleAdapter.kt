@@ -31,7 +31,7 @@ class TriangleAdapter(val data: List<TriangleArbitrage>, val imageLoader: ImageL
         return if (data.isNotEmpty()) 0 else 1
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) == 0) {
             (holder as TriangleViewHolder).bind(data[position])
         } else {

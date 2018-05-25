@@ -3,6 +3,9 @@ package com.bariski.cryptoniffler.presentation.common.utils
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.util.DisplayMetrics
+import android.view.WindowManager
+
 
 class DeviceInfoImpl(val context: Context) : DeviceInfo {
     override fun getLaunchIntent(packageIdentifier: String): Intent {
@@ -18,5 +21,17 @@ class DeviceInfoImpl(val context: Context) : DeviceInfo {
             false
         }
 
+    }
+
+    override fun getHeight(): Int {
+        val displayMetrics = DisplayMetrics()
+        (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).getDefaultDisplay().getMetrics(displayMetrics)
+        return displayMetrics.heightPixels
+    }
+
+    override fun getWidth(): Int {
+        val displayMetrics = DisplayMetrics()
+        (context.getSystemService(Context.WINDOW_SERVICE) as WindowManager).getDefaultDisplay().getMetrics(displayMetrics)
+        return displayMetrics.widthPixels
     }
 }

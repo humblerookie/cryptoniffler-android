@@ -1,6 +1,7 @@
 package com.bariski.cryptoniffler.analytics
 
 import android.os.Bundle
+import com.bariski.cryptoniffler.domain.model.ArbitragePresentable
 
 interface Analytics {
 
@@ -23,4 +24,5 @@ interface Analytics {
     fun logIncludeFeeChanged(b: Boolean)
     fun logRnREvent(event: String)
     fun logModeChanged(isInternational: Boolean)
+    fun logNavigatedToExchange(arbitrage: ArbitragePresentable)
 }

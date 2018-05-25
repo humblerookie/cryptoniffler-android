@@ -12,7 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:padding="@dimen/dp16" />
+        android:padding="@dimen/dp16"
+        tools:listitem="@layout/item_calendar"
+        tools:visibility="visible" />
 
     <ProgressBar
         android:id="@+id/bottomProgress"
@@ -34,12 +36,13 @@
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/font_normal"
         android:visibility="gone"
-        tools:visibility="visible" />
+         />
 
     <FrameLayout
         android:id="@+id/centerProgress"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:visibility="gone">
 
         <ProgressBar
             android:layout_width="@dimen/dp62"

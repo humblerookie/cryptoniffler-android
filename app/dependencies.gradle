@@ -1,6 +1,6 @@
 ext {
     versions = [
-            support              : "26.0.1",
+            support              : "27.1.1",
             okHttp               : "3.8.1",
             espresso             : '3.0.0',
             espressoRunner       : '1.0.0',
@@ -14,10 +14,10 @@ ext {
             junit                : '4.12',
             timber               : '4.5.1',
             firebase             : '11.4.0',
-            constraint           : '1.0.2',
+            constraint           : '1.1.0',
             recyclerviewanimators: '2.2.7',
             picasso              : '2.5.2',
-            picassoDownloader: '1.1.0',
+            picassoDownloader    : '1.1.0',
             lifecycle            : '1.0.0-alpha9',
             retrofit             : '2.3.0',
             moshi                : '1.5.0',
@@ -29,7 +29,14 @@ ext {
             mockwebserver        : '3.9.0',
             flex                 : '0.3.1',
             inject               : "1",
-            shimmer              : "0.1.0@aar"
+            crashlytics          : "2.9.1",
+            firebase_work        : "1.0.0-alpha01",
+
+            shimmer              : "0.1.0@aar",
+            showcase             : "1.0.0",
+            autofit              : "0.2.1",
+            dialogs              : "0.9.6.0"
+
 
     ]
 
@@ -55,7 +62,8 @@ ext {
     googlePlay = [
             firebaseCore  : "com.google.firebase:firebase-core:$versions.firebase",
             firebaseConfig: "com.google.firebase:firebase-config:$versions.firebase",
-            fcm           : "com.google.firebase:firebase-messaging:$versions.firebase"
+            fcm           : "com.google.firebase:firebase-messaging:$versions.firebase",
+            performance : "com.google.firebase:firebase-perf:$versions.firebase"
     ]
 
 
@@ -80,16 +88,18 @@ ext {
     ] + mockito
 
     logging = [
-            timber: "com.jakewharton.timber:timber:$versions.timber"
+            timber     : "com.jakewharton.timber:timber:$versions.timber",
+            crashlytics: "com.crashlytics.sdk.android:crashlytics:$versions.crashlytics"
+
     ]
 
     network = [
-            retrofit   : "com.squareup.retrofit2:retrofit:$versions.retrofit",
-            moshi      : "com.squareup.moshi:moshi-kotlin:$versions.moshi",
-            picasso    : "com.squareup.picasso:picasso:$versions.picasso",
+            retrofit         : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+            moshi            : "com.squareup.moshi:moshi-kotlin:$versions.moshi",
+            picasso          : "com.squareup.picasso:picasso:$versions.picasso",
             picassoDownloader: "com.jakewharton.picasso:picasso2-okhttp3-downloader:$versions.picassoDownloader",
-            converter  : "com.squareup.retrofit2:converter-moshi:$versions.retrofit_converter",
-            callAdapter: "com.squareup.retrofit2:adapter-rxjava2:$versions.rxcall_adapter"
+            converter        : "com.squareup.retrofit2:converter-moshi:$versions.retrofit_converter",
+            callAdapter      : "com.squareup.retrofit2:adapter-rxjava2:$versions.rxcall_adapter"
     ]
 
     dagger = [
@@ -104,8 +114,9 @@ ext {
     ]
     ui = [
             shimmer : "com.facebook.shimmer:shimmer:$versions.shimmer",
-            showcase: "com.github.faruktoptas:FancyShowCaseView:1.0.0",
-            autofit : "me.grantland:autofittextview:0.2.1"
+            showcase: "com.github.faruktoptas:FancyShowCaseView:$versions.showcase",
+            autofit : "me.grantland:autofittextview:$versions.autofit",
+            dialogs : "com.afollestad.material-dialogs:commons:$versions.dialogs"
     ]
 
     daggerLibs = dagger.values()

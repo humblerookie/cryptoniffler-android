@@ -1,0 +1,94 @@
+{
+  "project_info": {
+    "project_number": "351919603138",
+    "firebase_url": "https://cryptoniffler.firebaseio.com",
+    "project_id": "cryptoniffler",
+    "storage_bucket": "cryptoniffler.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351919603138:android:cd082293b9b253f6",
+        "android_client_info": {
+          "package_name": "com.bariski.cryptoniffler"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "351919603138-pn5di35lc3o2kot1r11lbk838gl8qefg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bariski.cryptoniffler",
+            "certificate_hash": "473d398d0367a588c27ef14d1600f7d46b07f752"
+          }
+        },
+        {
+          "client_id": "351919603138-mi1jm6uai3t7f14nivgvp1f8dn4utf7s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bariski.cryptoniffler",
+            "certificate_hash": "80eda778fbc4b1216852e43c663f63fe35a10297"
+          }
+        },
+        {
+          "client_id": "351919603138-bi6cru4sgb8jkvf6jfb86qkegifchn4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe3w0lOTtb1CodAOjbC56smJTo-HWdJrg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "351919603138-bi6cru4sgb8jkvf6jfb86qkegifchn4f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351919603138:android:12758ba7c8b59458",
+        "android_client_info": {
+          "package_name": "com.bariski.cryptoniffler.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "351919603138-bi6cru4sgb8jkvf6jfb86qkegifchn4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDe3w0lOTtb1CodAOjbC56smJTo-HWdJrg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

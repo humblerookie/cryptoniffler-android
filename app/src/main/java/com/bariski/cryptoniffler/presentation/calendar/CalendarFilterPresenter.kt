@@ -1,12 +1,12 @@
 package com.bariski.cryptoniffler.presentation.calendar
 
-import android.util.Log
 import com.bariski.cryptoniffler.domain.common.Schedulers
 import com.bariski.cryptoniffler.domain.model.FilterItem
 import com.bariski.cryptoniffler.domain.repository.EventsRepository
 import com.bariski.cryptoniffler.presentation.common.BasePresenter
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
+import timber.log.Timber
 import java.lang.ref.WeakReference
 
 abstract class CalendarFilterPresenter(val repository: EventsRepository, val schedulers: Schedulers) : BasePresenter<CalendarView>, CalendarPresenter {
@@ -29,7 +29,7 @@ abstract class CalendarFilterPresenter(val repository: EventsRepository, val sch
                                         view.get()?.toggleFilterMode(1)
                                         view.get()?.setFilterCoinData(it, HashSet(selectedCoins))
                                     }
-                                    , onError = { Log.e("Filter Coins", it.toString()) }
+                                    , onError = { Timber.e(it) }
                             )
                 } else {
                     repository.getAndSaveToken().flatMap { repository.getCoins() }
@@ -40,7 +40,7 @@ abstract class CalendarFilterPresenter(val repository: EventsRepository, val sch
                                         view.get()?.toggleFilterMode(1)
                                         view.get()?.setFilterCoinData(it, HashSet(selectedCoins))
                                     }
-                                    , onError = { Log.e("Filter Coins", it.toString()) }
+                                    , onError = { Timber.e(it) }
                             )
                 }
         )
@@ -58,7 +58,7 @@ abstract class CalendarFilterPresenter(val repository: EventsRepository, val sch
                                         view.get()?.toggleFilterMode(1)
                                         view.get()?.setFilterCategoryData(it, HashSet(selectedCategories))
                                     }
-                                    , onError = { Log.e("Filter Coins", it.toString()) }
+                                    , onError = { Timber.e(it) }
                             )
                 } else {
                     repository.getAndSaveToken().flatMap {
@@ -71,7 +71,7 @@ abstract class CalendarFilterPresenter(val repository: EventsRepository, val sch
                                         view.get()?.setFilterCategoryData(it, HashSet(selectedCategories))
                                     }
                                     , onError = {
-                                Log.e("Filter Coins", it.toString())
+                                Timber.e(it)
                             })
 
 

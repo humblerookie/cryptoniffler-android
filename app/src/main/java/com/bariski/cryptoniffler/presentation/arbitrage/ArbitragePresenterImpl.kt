@@ -1,7 +1,6 @@
 package com.bariski.cryptoniffler.presentation.arbitrage
 
 import android.os.Bundle
-import android.util.Log
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.analytics.Analytics
 import com.bariski.cryptoniffler.domain.common.Schedulers
@@ -13,6 +12,7 @@ import com.bariski.cryptoniffler.presentation.common.utils.INDIAN_TIMEZONE
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
+import timber.log.Timber
 import java.lang.ref.WeakReference
 import java.util.*
 
@@ -40,7 +40,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                 repository.setInternationalArbitrage(Calendar.getInstance().timeZone.id != INDIAN_TIMEZONE)
                 repository.setDefaultLocaleOnce(true)
             } catch (e: Exception) {
-                Log.e(TAG, "Could not set default arbitrage, cause" + e.toString())
+                Timber.e(e)
             }
         }
         if (savedState?.containsKey("data") != null) {
@@ -82,8 +82,8 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                                 view.get()?.apply {
                                     data?.let { showFilters(it.exchanges, selectedSrc, selectedDest) }
                                 }
-                            }, onError = {
-                                Log.e("Arbitrage", it.toString())
+                            }, onError = {e->
+                                Timber.e(e)
                             })
                 }
 
@@ -145,7 +145,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                                     repository.setFiltersList(data.filters)
                                 }
                                 view.get()?.let {
-                                    arbitrage?.triangle?.let { list ->
+                                    arbitrage?.direct?.let { list ->
                                         if (!repository.isArbFilterTutorialShown() && list.isNotEmpty()) {
                                             repository.setArbFilterTutorialShown(true)
                                             it.showFilterTutorial()
@@ -167,7 +167,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
     }
 
     override fun onDirectArbitrageClick(arbitrage: DirectArbitrage) {
-        navigateToExchange(arbitrage)
+        view.get()?.showFeesDialog(arbitrage)
     }
 
     private fun navigateToExchange(arbitrage: ArbitragePresentable) {
@@ -199,8 +199,8 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                                 }
                             }
                         }
-                    }, onError = {
-                        Log.e(TAG, it.toString())
+                    }, onError = {e->
+                        Timber.e(e)
                     }))
         }
 
@@ -208,13 +208,13 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
     }
 
     override fun onTriangleArbitrageClick(arbitrage: TriangleArbitrage) {
-        navigateToExchange(arbitrage)
+        view.get()?.showFeesDialog(arbitrage)
     }
 
     override fun onButtonClicked(id: Int) {
         analytics.logRnREvent(when (id) {
             R.id.review -> "review"
-            else -> "rate"
+            else -> "share"
         })
         repository.setRateNShareShown(true)
     }
@@ -240,6 +240,12 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
             putParcelableArrayList("selectedDest", ArrayList(selectedDest))
         }
     }
+
+    override fun onArbitrageConfirmed(arbitrage: ArbitragePresentable) {
+        analytics.logNavigatedToExchange(arbitrage)
+        navigateToExchange(arbitrage)
+    }
+
 
     override fun isModeInternational() = repository.isInternationalArbitrage()
 

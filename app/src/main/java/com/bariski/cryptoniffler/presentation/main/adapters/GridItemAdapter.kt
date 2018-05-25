@@ -15,6 +15,20 @@ import java.util.*
 import javax.inject.Inject
 
 class GridItemAdapter @Inject constructor(private val imageRepository: ImageLoader) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (getItemViewType(position) == 0) {
+            holder.let { (it as ViewHolder).setData(items[position - 1]) }
+        }
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == 0) {
+            ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_image_text, parent, false), imageRepository, listener)
+        } else {
+            TextViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_text, parent, false), title)
+        }
+    }
+
 
     private var items: ArrayList<GridItem> = ArrayList()
     var title: String = ""
@@ -53,19 +67,6 @@ class GridItemAdapter @Inject constructor(private val imageRepository: ImageLoad
 
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
-        if (getItemViewType(position) == 0) {
-            holder?.let { (it as ViewHolder).setData(items[position - 1]) }
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-        return if (viewType == 0) {
-            ViewHolder(LayoutInflater.from(parent?.context).inflate(R.layout.item_image_text, parent, false), imageRepository, listener)
-        } else {
-            TextViewHolder(LayoutInflater.from(parent?.context).inflate(R.layout.item_text, parent, false), title)
-        }
-    }
 
     override fun getItemViewType(position: Int): Int {
         return if (position == 0) {

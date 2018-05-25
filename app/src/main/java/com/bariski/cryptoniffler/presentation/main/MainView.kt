@@ -2,6 +2,7 @@ package com.bariski.cryptoniffler.presentation.main
 
 import android.app.Fragment
 import com.bariski.cryptoniffler.presentation.common.BaseView
+import java.io.File
 
 interface MainView : BaseView {
 
@@ -16,7 +17,8 @@ interface MainView : BaseView {
     fun toggleProgress(b: Boolean)
     fun getCommonPresenter(): MainPresenter
     fun toggleDrawer(b: Boolean)
-    fun requestStoragePermission()
+    fun requestStoragePermission(ignoreDialog: Boolean)
     fun toggleInfo(b: Boolean)
     fun sendFeedback()
+    fun shareArbitrage(file: File)
 }

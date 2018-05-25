@@ -2,11 +2,12 @@ package com.bariski.cryptoniffler.domain.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import android.support.annotation.Keep
 import com.bariski.cryptoniffler.BuildConfig
 import com.bariski.cryptoniffler.domain.util.PLATFORM
 import com.bariski.cryptoniffler.domain.util.VERSION
 import com.squareup.moshi.Json
-
+@Keep
 data class Device(@Json(name = "firebaseInstanceId") val instanceId: String
                   , @Json(name = "fcmPushAddress") val fcmToken: String
                   , @Json(name = "appVersion") val version: String = BuildConfig.VERSION_NAME

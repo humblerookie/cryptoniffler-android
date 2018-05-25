@@ -82,7 +82,7 @@
 
     <string name="calendar.suffix.votes">%s வாக்குகள்</string>
         
-    <string name="common_share_text"> நான் இந்த பயன்பாட்டை கண்டுபிடித்தேன் சிறந்த வாங்க / விற்க நாணயங்கள், அதை பாருங்கள்! \nhttps: //play.google.com/store/apps/details? id = com.bariski.cryptoniffler </string>
+    <string name="common_share_text"> நான் இந்த பயன்பாட்டை கண்டுபிடித்தேன் சிறந்த வாங்க / விற்க நாணயங்கள், அதை பாருங்கள்!</string>
         
     <string name="common.label.filter_by"> வடிகட்டும் </string>
         

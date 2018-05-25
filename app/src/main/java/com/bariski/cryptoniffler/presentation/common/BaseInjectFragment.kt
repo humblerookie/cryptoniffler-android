@@ -6,7 +6,8 @@ import dagger.android.AndroidInjection
 import dagger.android.DaggerFragment
 import javax.inject.Inject
 
-open class BaseInjectFragment : DaggerFragment() {
+open class BaseInjectFragment : DaggerFragment(), BaseView {
+
 
     @Inject
     lateinit var storage: AndroidDataStore
@@ -22,4 +23,11 @@ open class BaseInjectFragment : DaggerFragment() {
         }
         super.onAttach(activity)
     }
+
+    override fun getMessage(resourceId: Int): String {
+        return getString(resourceId)
+    }
+
+    override fun getScreenShot() = (activity as BaseActivity).screenShot
+
 }

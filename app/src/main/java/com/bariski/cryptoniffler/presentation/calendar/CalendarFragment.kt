@@ -105,10 +105,10 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
     }
 
     override fun setData(events: List<Event>, isAppend: Boolean) {
-        val controller = AnimationUtils.loadLayoutAnimation(list.context, R.anim.layout_animation_fall_down)
-        list.layoutAnimation = controller
         adapter.setData(events, isAppend)
         if (!isAppend) {
+            val controller = AnimationUtils.loadLayoutAnimation(list.context, R.anim.layout_animation_fall_down)
+            list.layoutAnimation = controller
             list.scheduleLayoutAnimation()
         }
     }
@@ -180,7 +180,7 @@ class CalendarFragment : BaseInjectFragment(), CalendarView, View.OnClickListene
                     }
                 })
                 val decoration = DividerItemDecoration(activity, DividerItemDecoration.VERTICAL)
-                decoration.setDrawable(ContextCompat.getDrawable(activity, R.drawable.dashed_border_bottom))
+                decoration.setDrawable(ContextCompat.getDrawable(activity, R.drawable.dashed_border_bottom)!!)
                 listFilter.addItemDecoration(decoration)
                 progress = view.findViewById(R.id.progress)
                 listFilter.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)

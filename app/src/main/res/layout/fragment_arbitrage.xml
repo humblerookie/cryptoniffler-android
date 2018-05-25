@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="?android:attr/actionBarSize">
 
-    <RelativeLayout
+    <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,7 +22,18 @@
             android:id="@+id/progress"
             android:layout_width="@dimen/dp62"
             android:layout_height="@dimen/dp62"
-            android:layout_centerInParent="true"
             android:layout_gravity="center" />
-    </RelativeLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/shareScreen"
+            android:layout_width="@dimen/fab_size"
+            android:layout_height="@dimen/fab_size"
+            android:layout_gravity="bottom|right"
+            android:layout_marginBottom="@dimen/margin_normal"
+            android:layout_marginRight="@dimen/margin_normal"
+            android:src="@drawable/ic_menu_share"
+            android:tint="@color/black"
+            android:visibility="gone" />
+
+    </FrameLayout>
 </android.support.v4.widget.SwipeRefreshLayout>
