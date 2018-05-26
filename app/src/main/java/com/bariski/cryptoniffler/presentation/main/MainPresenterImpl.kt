@@ -295,8 +295,12 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
                 disposable.add(eventsRepository.getAndSaveToken().subscribeOn(schedulerProvider.io()).observeOn(schedulerProvider.ui())
                         .subscribeBy(onError = { Timber.e(it) }, onSuccess = {}))
             }
-            analytics.sendScreenView(Screen.MAIN)
-            viewWeak.get()?.moveToNext(BuyNSellFragment.getInstance(), true)
+            if (args?.getString("target") == Screen.ARBITRAGE) {
+                navigateToArbitrage()
+            } else {
+                analytics.sendScreenView(Screen.MAIN)
+                viewWeak.get()?.moveToNext(BuyNSellFragment.getInstance(), true)
+            }
         }
 
     }

@@ -221,5 +221,5 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
     private val KEY_ARB_FILTER_SHOWN = "flag_arb_filter_shown_v2"
     private val KEY_ARB_INTERNATIONAL = "flag_arb_international"
     private val KEY_DEFAULT_ARBITRAGE_SET = "flag_default_arbitrage_set"
-    private val CACHE_EXPIRATION = AlarmManager.INTERVAL_HOUR * 2
+    private val CACHE_EXPIRATION = AlarmManager.INTERVAL_HOUR * 6
 }

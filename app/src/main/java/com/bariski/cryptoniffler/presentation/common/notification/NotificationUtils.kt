@@ -49,6 +49,5 @@ class NotificationUtils(base: Context) : ContextWrapper(base) {
         const val NEWS_NAME = "Crypto News"
         const val ICO_ID = ANDROID_PREFIX + "ico"
         const val ICO_NAME = "ICO"
-
     }
 }

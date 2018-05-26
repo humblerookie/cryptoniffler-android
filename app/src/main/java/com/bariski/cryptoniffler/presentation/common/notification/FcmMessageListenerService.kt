@@ -9,6 +9,7 @@ import android.os.Build
 import android.support.v4.app.NotificationCompat
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.data.storage.KeyValueStore
+import com.bariski.cryptoniffler.domain.util.Screen
 import com.bariski.cryptoniffler.presentation.CryptNifflerApplication
 import com.bariski.cryptoniffler.presentation.main.MainActivity
 import com.google.firebase.messaging.FirebaseMessagingService
@@ -74,6 +75,7 @@ class FcmMessageListenerService : FirebaseMessagingService() {
      */
     private fun sendNotification(messageBody: String?, messageTitle: String?, channel: String?) {
         val intent = Intent(this, MainActivity::class.java)
+        intent.putExtra("target", Screen.ARBITRAGE)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT)
@@ -84,6 +86,7 @@ class FcmMessageListenerService : FirebaseMessagingService() {
                 .setSmallIcon(R.drawable.notification_icon)
                 .setContentTitle(messageTitle)
                 .setContentText(messageBody)
+                .setStyle(NotificationCompat.BigTextStyle().bigText(messageBody))
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)
