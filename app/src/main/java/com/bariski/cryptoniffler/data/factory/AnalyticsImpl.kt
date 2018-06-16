@@ -54,9 +54,9 @@ class AnalyticsImpl(context: Context) : Analytics {
         analytics.logEvent(Event.DONATE_CLICK, Bundle())
     }
 
-    override fun logDonateCopiedEvent(coin: String) {
+    override fun logDonateCopiedEvent(coin: Int) {
         val bundle = Bundle()
-        bundle.putString(Key.COIN, coin)
+        bundle.putInt(Key.COIN, coin)
         analytics.logEvent(Event.COPIED_ADDRESS, bundle)
     }
 

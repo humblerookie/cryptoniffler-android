@@ -138,4 +138,31 @@
         <item name="android:textSize">16sp</item>
         <item name="android:paddingBottom">@dimen/margin_small</item>
     </style>
+
+
+    <style name="TextViewHeader">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white_87</item>
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/font_huge</item>
+    </style>
+
+    <style name="TextViewHeaderSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white_87</item>
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
+
+    <style name="TextViewBody">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:textColor">@color/white_54</item>
+        <item name="android:fontFamily">@font/regular</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
 </resources>

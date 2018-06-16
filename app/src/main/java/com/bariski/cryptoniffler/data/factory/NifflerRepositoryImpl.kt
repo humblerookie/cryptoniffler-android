@@ -23,8 +23,8 @@ import kotlin.collections.HashSet
 
 
 class NifflerRepositoryImpl(val context: Context, private val api: CryptoNifflerApi,
-                            private val remoteConfig: FirebaseRemoteConfig, private val keyValueStore: KeyValueStore,
-                            private val moshi: Moshi, private val cache: DataCache) : NifflerRepository {
+                            remoteConfig: FirebaseRemoteConfig, private val keyValueStore: KeyValueStore,
+                            private val moshi: Moshi, private val cache: DataCache) : StaticContentRepositoryImpl(remoteConfig), NifflerRepository {
 
 
     override fun fetchLatestConfig() {
@@ -36,8 +36,8 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
         })
     }
 
-    override fun getArbitrage(source: Set<FilterItem>, dest: Set<FilterItem>): Single<Arbitrage> {
-        return api.getArbitrage(source.joinToString(",", transform = { it.getIdentifier() }), dest.joinToString(",", transform = { it.getIdentifier() }))
+    override fun getArbitrage(source: Set<FilterItem>, dest: Set<FilterItem>, sourceInternational: Set<FilterItem>, destInternational: Set<FilterItem>): Single<Arbitrage> {
+        return api.getArbitrage(source.joinToString(",", transform = { it.getIdentifier() }), dest.joinToString(",", transform = { it.getIdentifier() }), sourceInternational.joinToString(",", transform = { it.getIdentifier() }), destInternational.joinToString(",", transform = { it.getIdentifier() }))
     }
 
     override fun getCoins(): Single<ArrayList<Coin>> {

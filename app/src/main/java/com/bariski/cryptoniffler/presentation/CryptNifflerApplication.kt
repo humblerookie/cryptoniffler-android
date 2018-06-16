@@ -76,12 +76,14 @@ class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
     }
 
     private fun createNotificationChannels() {
-        FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.ARBITRAGE_ID)
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(NotificationUtils.ARBITRAGE_ID)
+        FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.ARBITRAGE_DOMESTIC_ID)
+        FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.ARBITRAGE_INTERNATIONAL_ID)
         FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.NEWS_ID)
         FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.ICO_ID)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            val channel = manager.getNotificationChannel(NotificationUtils.ARBITRAGE_ID)
+            val channel = manager.getNotificationChannel(NotificationUtils.ARBITRAGE_DOMESTIC_ID)
             if (channel == null) {
                 NotificationUtils(this).createChannels()
             }

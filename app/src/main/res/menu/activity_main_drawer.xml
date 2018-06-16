@@ -8,11 +8,6 @@
             android:id="@+id/home"
             android:icon="@drawable/ic_home"
             android:title="@string/drawer.title.home" />
-
-        <item
-            android:id="@+id/arbitrage"
-            android:icon="@drawable/ic_arbitrage"
-            android:title="@string/drawer.title.arbitrage" />
         <item
             android:id="@+id/calendar"
             android:icon="@drawable/ic_event"
@@ -21,15 +16,15 @@
             android:id="@+id/report"
             android:icon="@drawable/ic_help"
             android:title="@string/drawer.title.report" />
-
         <item
             android:id="@+id/share"
             android:icon="@drawable/ic_menu_share"
             android:title="@string/drawer.title.share" />
         <item
-            android:id="@+id/review"
-            android:icon="@drawable/ic_star"
-            android:title="@string/drawer.title.review" />
+            android:id="@+id/about"
+            android:icon="@drawable/ic_info"
+            android:iconTint="@color/black"
+            android:title="@string/drawer.title.about" />
     </group>
 
 </menu>

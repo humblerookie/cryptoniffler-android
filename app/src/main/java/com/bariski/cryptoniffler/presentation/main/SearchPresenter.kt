@@ -5,5 +5,4 @@ import com.bariski.cryptoniffler.presentation.main.adapters.GridItemAdapter
 
 interface SearchPresenter : BasePresenter<SearchView>, GridItemAdapter.OnItemClickListener {
 
-
 }

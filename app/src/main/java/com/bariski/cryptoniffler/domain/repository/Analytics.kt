@@ -13,7 +13,7 @@ interface Analytics {
 
     fun logQueryEvent(query: String)
 
-    fun logDonateCopiedEvent(coin: String)
+    fun logDonateCopiedEvent(coin: Int)
 
     fun logInfoClick(isBuy: Boolean)
 

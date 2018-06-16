@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="280dp"
-    android:layout_height="350dp"
+    android:layout_height="400dp"
     android:layout_marginBottom="@dimen/margin_huge"
     android:layout_marginRight="@dimen/margin_huge"
     android:layout_marginTop="@dimen/margin_small">
@@ -29,24 +29,24 @@
             android:background="@color/black_08"
             app:layout_constraintBottom_toBottomOf="@id/barrier_top_strip" />
 
-        <TextView
-            android:id="@+id/labelAmount"
+
+        <View
+            android:id="@+id/dummy1"
             style="@style/TextLabelArbitrage"
-            android:text="@string/arbitrage.label.trade_amount"
-            android:textColor="@color/primary_54"
             app:layout_constraintEnd_toStartOf="@id/labelFees"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/labelFees" />
 
-        <TextView
-            android:id="@+id/amount"
+
+        <View
+            android:id="@+id/dummy2"
             style="@style/TextContentArbitrage"
             android:textColor="@color/primary_87"
             app:layout_constraintBottom_toTopOf="@id/barrier_top_strip"
-            app:layout_constraintEnd_toEndOf="@id/labelAmount"
-            app:layout_constraintStart_toStartOf="@id/labelAmount"
-            app:layout_constraintTop_toBottomOf="@id/labelAmount"
+            app:layout_constraintEnd_toEndOf="@id/dummy1"
+            app:layout_constraintStart_toStartOf="@id/dummy1"
+            app:layout_constraintTop_toBottomOf="@id/dummy1"
             tools:text="1000" />
 
 
@@ -56,7 +56,7 @@
             android:text="@string/arbitrage.label.total_fees"
             android:textColor="@color/red_400"
             app:layout_constraintEnd_toStartOf="@id/labelProfit"
-            app:layout_constraintStart_toEndOf="@id/labelAmount"
+            app:layout_constraintStart_toEndOf="@id/dummy1"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -95,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-            app:constraint_referenced_ids="fees, profit, amount" />
+            app:constraint_referenced_ids="fees, profit, dummy2" />
 
 
         <android.support.v7.widget.AppCompatImageView
@@ -232,5 +232,70 @@
             app:layout_constraintStart_toEndOf="@id/ex3"
             app:layout_constraintTop_toTopOf="@id/ex3"
             tools:text="Buy XRP at Rs. 10 from Koinex. dashkdhakjdha hdkajsdhjkashdjkahjdhjakhjdakjhdkjhakdjakjhdhjkadkjhajhkdajkdhjkajhdajhkdaj" />
+
+        <TextView
+            android:id="@+id/percentProfit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_triangle"
+            android:fontFamily="@font/regular"
+            android:paddingLeft="10dp"
+            android:paddingTop="12dp"
+            android:textColor="@color/white_87"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="5%" />
+
+
+        <TextView
+            android:id="@+id/breakEvenNTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_atomic"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_tiny"
+            android:fontFamily="@font/regular"
+            android:gravity="left"
+            android:maxLines="3"
+            android:textColor="@color/black_54"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/labelAmount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ex3"
+            tools:text="Breakeven will beat the tio if teg" />
+
+        <View
+            android:id="@+id/topstrip_2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/black_08"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <TextView
+            android:id="@+id/labelAmount"
+            style="@style/TextLabelArbitrage"
+            android:layout_marginTop="@dimen/margin_small"
+            android:text="@string/arbitrage.label.trade_amount"
+            android:textColor="@color/primary_54"
+            app:layout_constraintBottom_toTopOf="@id/amount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/topstrip_2" />
+
+        <TextView
+            android:id="@+id/amount"
+            style="@style/TextContentArbitrage"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:textColor="@color/primary_87"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelAmount"
+            tools:text="1000" />
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

@@ -12,7 +12,7 @@ interface ArbitrageView : BaseView {
     fun setData(arbitrage: Arbitrage, isInternational: Boolean)
     fun toggleError(message: String?)
     fun showInfo()
-    fun showFilters(src: List<ArbitrageExchange>, srcSelect: Set<FilterItem>, destSelect: Set<FilterItem>)
+    fun showFilters(isInternational: Boolean,src: List<ArbitrageExchange>, srcSelect: Set<FilterItem>, destSelect: Set<FilterItem>)
     fun showMessage(message: String)
     fun showFilterTutorial()
     fun showRateDialog()
