@@ -25,6 +25,8 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
     var isRequestInProgress: Boolean = false
     var selectedSrc: Set<FilterItem> = HashSet()
     var selectedDest: Set<FilterItem> = HashSet()
+    var selectedSrcInternational: Set<FilterItem> = HashSet()
+    var selectedDestInternational: Set<FilterItem> = HashSet()
     val mapExchange = HashMap<String, Exchange>()
 
     val TAG = "ArbitragePresenter"
@@ -46,6 +48,8 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
         if (savedState?.containsKey("data") != null) {
             selectedSrc = HashSet(savedState.getParcelableArrayList("selectedSrc"))
             selectedDest = HashSet(savedState.getParcelableArrayList("selectedDest"))
+            selectedSrcInternational = HashSet(savedState.getParcelableArrayList("selectedSrcInternational"))
+            selectedDestInternational = HashSet(savedState.getParcelableArrayList("selectedDestInternational"))
             fetchData(savedState.getParcelable("data"))
         } else {
             analytics.sendScreenView(Screen.ARBITRAGE)
@@ -65,14 +69,16 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                 showMessage(getMessage(R.string.error_common_request_progress_wait))
             }
 
-        } else if (isModeInternational()) {
-            view.get()?.apply {
-                showMessage(getMessage(R.string.error_arbitrage_international_no_filter))
-            }
         } else {
             if (arbitrage != null) {
                 view.get()?.apply {
-                    showFilters(arbitrage!!.filters.exchanges, selectedSrc, selectedDest)
+                    arbitrage?.let {
+                        if (isModeInternational()) {
+                            showFilters(isModeInternational(), it.filters.internationalExchanges, selectedSrcInternational, selectedDestInternational)
+                        } else {
+                            showFilters(isModeInternational(), it.filters.exchanges, selectedSrc, selectedDest)
+                        }
+                    }
                 }
             } else {
                 repository.getFiltersList()?.apply {
@@ -80,9 +86,15 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                             .observeOn(schedulers.ui())
                             .subscribeBy(onSuccess = { data: ArbitrageFilter? ->
                                 view.get()?.apply {
-                                    data?.let { showFilters(it.exchanges, selectedSrc, selectedDest) }
+                                    data?.let {
+                                        if (isModeInternational()) {
+                                            showFilters(isModeInternational(), it.internationalExchanges, selectedSrcInternational, selectedDestInternational)
+                                        } else {
+                                            showFilters(isModeInternational(), it.exchanges, selectedSrc, selectedDest)
+                                        }
+                                    }
                                 }
-                            }, onError = {e->
+                            }, onError = { e ->
                                 Timber.e(e)
                             })
                 }
@@ -92,14 +104,25 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
     }
 
     override fun onFilterApply(selectedFrom: Set<FilterItem>, selectedTo: Set<FilterItem>) {
-        (selectedSrc as HashSet).addAll(selectedFrom)
-        (selectedDest as HashSet).addAll(selectedTo)
+        if (isModeInternational()) {
+            (selectedSrcInternational as HashSet).addAll(selectedFrom)
+            (selectedDestInternational as HashSet).addAll(selectedTo)
+        } else {
+            (selectedSrc as HashSet).addAll(selectedFrom)
+            (selectedDest as HashSet).addAll(selectedTo)
+        }
+
         fetchData(null)
     }
 
     override fun onFilterClear() {
-        (selectedSrc as HashSet).clear()
-        (selectedDest as HashSet).clear()
+        if (isModeInternational()) {
+            (selectedSrcInternational as HashSet).clear()
+            (selectedDestInternational as HashSet).clear()
+        } else {
+            (selectedSrc as HashSet).clear()
+            (selectedDest as HashSet).clear()
+        }
         fetchData(null)
     }
 
@@ -108,7 +131,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
             isRequestInProgress = true
 
             var observable = repository
-                    .getArbitrage(selectedSrc, selectedDest)
+                    .getArbitrage(selectedSrc, selectedDest, selectedSrcInternational, selectedDestInternational)
             view.get()?.let {
                 it.toggleProgress(true)
                 it.toggleError(null)
@@ -199,7 +222,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                                 }
                             }
                         }
-                    }, onError = {e->
+                    }, onError = { e ->
                         Timber.e(e)
                     }))
         }
@@ -238,6 +261,8 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
             putParcelable("data", arbitrage)
             putParcelableArrayList("selectedSrc", ArrayList(selectedSrc))
             putParcelableArrayList("selectedDest", ArrayList(selectedDest))
+            putParcelableArrayList("selectedSrcInternational", ArrayList(selectedSrcInternational))
+            putParcelableArrayList("selectedDestInternational", ArrayList(selectedDestInternational))
         }
     }
 

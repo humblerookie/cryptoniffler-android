@@ -7,4 +7,5 @@ import kotlinx.android.parcel.Parcelize
 
 @Keep
 @Parcelize
-data class ArbitrageFilter(@Json(name = "exchanges") val exchanges: List<ArbitrageExchange>) : Parcelable
+data class ArbitrageFilter(@Json(name = "exchanges") val exchanges: List<ArbitrageExchange>,
+                           @Json(name = "internationalExchanges") val internationalExchanges: List<ArbitrageExchange>) : Parcelable

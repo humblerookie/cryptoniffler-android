@@ -13,6 +13,7 @@ import com.bariski.cryptoniffler.domain.model.TriangleArbitrage
 import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter
 import com.bariski.cryptoniffler.presentation.common.models.ImageRequest
+import com.bariski.cryptoniffler.presentation.common.utils.PERCENTAGE
 import kotlinx.android.synthetic.main.item_triangle_timeline.view.*
 
 class TriangleAdapter(val data: List<TriangleArbitrage>, val imageLoader: ImageLoader, val presenter: ArbitragePresenter) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -53,10 +54,13 @@ class TriangleAdapter(val data: List<TriangleArbitrage>, val imageLoader: ImageL
         val profit = view.profit
         val seed = view.amount
         val fees = view.fees
+        val breakEvenNTransferTime = view.breakEvenNTime
+        val profitPercent = view.percentProfit
         lateinit var data: TriangleArbitrage
         val res = view.context.resources
         val bigIconSize = ((res.getDimension(R.dimen.width_exchange) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
         val smallIconSize = ((res.getDimension(R.dimen.dp20) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
+
 
         init {
             view.setOnClickListener {
@@ -69,9 +73,11 @@ class TriangleAdapter(val data: List<TriangleArbitrage>, val imageLoader: ImageL
             val a1 = data.actions[0]
             val a2 = data.actions[1]
             val a3 = data.actions[2]
+            val context = summary1.context
             summary1.text = Html.fromHtml(a1.summary)
             summary2.text = Html.fromHtml(a2.summary)
             summary3.text = Html.fromHtml(a3.summary)
+            profitPercent.text = data.profit.toInt().toString() + PERCENTAGE
             a1.mainImage?.let { imageLoader.loadImage(ImageRequest(ex1, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, bigIconSize)) }
             a2.mainImage?.let { imageLoader.loadImage(ImageRequest(ex2, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, bigIconSize)) }
             a3.mainImage?.let { imageLoader.loadImage(ImageRequest(ex3, R.drawable.placeholder, it, null, profit.context as Activity, R.drawable.placeholder, true, bigIconSize)) }
@@ -88,6 +94,26 @@ class TriangleAdapter(val data: List<TriangleArbitrage>, val imageLoader: ImageL
             profit.text = data.amount.toInt().toString()
             fees.text = data.fees.toInt().toString()
             seed.text = data.seed.toInt().toString()
+
+
+            if (data.transferTime != null && data.transferTime > 0) {
+                val hours = (data.transferTime / 60).toInt()
+                val mins = (data.transferTime - hours * 60).toInt()
+                val secs = ((data.transferTime - hours * 60 - mins) * 60).toInt()
+                val sb = StringBuilder()
+                if (hours > 0) {
+                    sb.append(hours.toString() + "h ")
+                }
+                if (mins > 0) {
+                    sb.append(mins.toString() + "m ")
+                }
+                if (secs > 0) {
+                    sb.append(secs.toString() + "s")
+                }
+                breakEvenNTransferTime.text = Html.fromHtml(context.getString(R.string.arbitrage_breakeven_arbitragetime, data.breakEven, sb.toString()))
+            } else {
+                breakEvenNTransferTime.text = Html.fromHtml(context.getString(R.string.arbitrage_breakeven, data.breakEven))
+            }
         }
 
 

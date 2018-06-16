@@ -29,6 +29,6 @@ interface CryptoNifflerApi {
 
     @GET("/arbitrage")
     @Headers(HEADER_VERSION_2)
-    fun getArbitrage(@Query("src") source: String?, @Query("dest") dest: String?): Single<Arbitrage>
+    fun getArbitrage(@Query("src") source: String?, @Query("dest") dest: String?, @Query("srcInternational") sourceInternational: String?, @Query("destInternational") destInternational: String?): Single<Arbitrage>
 
 }

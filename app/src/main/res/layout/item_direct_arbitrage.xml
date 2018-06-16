@@ -3,205 +3,253 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/viewExchanges"
     android:layout_width="280dp"
-    android:layout_height="220dp"
+    android:layout_height="280dp"
     android:layout_marginBottom="@dimen/margin_normal"
     android:layout_marginRight="@dimen/margin_huge"
     android:layout_marginTop="@dimen/margin_normal">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?android:attr/selectableItemBackground"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/black_08"
-            android:orientation="horizontal"
-            android:paddingBottom="@dimen/margin_small"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:paddingTop="@dimen/margin_small">
+            android:layout_height="match_parent"
+            android:background="?android:attr/selectableItemBackground"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:background="@color/black_08"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/margin_small"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="@dimen/margin_small">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium"
-                    android:text="@string/arbitrage.label.trade_amount"
-                    android:textColor="@color/primary_54"
-                    android:textSize="10sp" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
 
-                <TextView
-                    android:id="@+id/amount"
-                    android:layout_width="wrap_content"
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium"
-                    android:textColor="@color/primary_87"
-                    android:textSize="16sp"
-                    tools:text="10000" />
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/medium"
+                        android:text="@string/arbitrage.label.total_fees"
+                        android:textColor="@color/red_400"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/fees"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/medium"
+                        android:textColor="@color/red_700"
+                        android:textSize="16sp"
+                        tools:text="100" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/medium"
+                        android:text="@string/arbitrage.label.profit"
+                        android:textColor="@color/green_400"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/profit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/medium"
+                        android:text="@string/arbitrage.label.trade_amount"
+                        android:textColor="@color/green_700"
+                        android:textSize="16sp"
+                        tools:text="10000" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="horizontal"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium"
-                    android:text="@string/arbitrage.label.total_fees"
-                    android:textColor="@color/red_400"
-                    android:textSize="10sp" />
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/fees"
-                    android:layout_width="wrap_content"
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/srcExchange"
+                            android:layout_width="@dimen/width_exchange"
+                            android:layout_height="@dimen/width_exchange"
+                            android:background="@drawable/circle_strip_grey"
+                            android:padding="@dimen/dp1" />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/srcCoin"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp20"
+                            android:layout_alignBottom="@id/srcExchange"
+                            android:layout_alignRight="@id/srcExchange"
+                            android:background="@drawable/circle_strip_grey"
+                            android:padding="@dimen/dp1" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/srcText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:fontFamily="@font/regular"
+                        android:gravity="center"
+                        android:textColor="@color/black_54"
+                        android:textSize="12sp"
+                        tools:text="Sell XRP at Bitbns for Rs.24" />
+
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/transfer"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginLeft="@dimen/margin_normal"
+                    android:layout_marginRight="@dimen/margin_normal"
+                    android:src="@drawable/transfer"
+                    android:tint="#D7D7D7" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium"
-                    android:textColor="@color/red_700"
-                    android:textSize="16sp"
-                    tools:text="100" />
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/destExchange"
+                            android:layout_width="@dimen/width_exchange"
+                            android:layout_height="@dimen/width_exchange"
+                            android:background="@drawable/circle_strip_grey"
+                            android:padding="@dimen/dp1" />
+
+                        <android.support.v7.widget.AppCompatImageView
+                            android:id="@+id/destCoin"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp20"
+                            android:layout_alignBottom="@id/destExchange"
+                            android:layout_alignRight="@id/destExchange"
+                            android:background="@drawable/circle_strip_grey"
+                            android:padding="@dimen/dp1" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/destText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:fontFamily="@font/regular"
+                        android:gravity="center"
+                        android:textColor="@color/black_54"
+                        android:textSize="12sp"
+                        tools:text="Sell XRP at Koinex for Rs.25" />
+
+                </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/breakEvenNTime"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_marginBottom="@dimen/margin_atomic"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_tiny"
+                android:fontFamily="@font/regular"
+                android:textColor="@color/black_54"
+                android:textSize="12sp"
+                tools:text="@string/arbitrage.breakeven" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium"
-                    android:text="@string/arbitrage.label.profit"
-                    android:textColor="@color/green_400"
-                    android:textSize="10sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black_08"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/margin_small"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="@dimen/margin_small">
 
-                <TextView
-                    android:id="@+id/profit"
-                    android:layout_width="wrap_content"
+
+                <LinearLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/medium"
-                    android:text="@string/arbitrage.label.trade_amount"
-                    android:textColor="@color/green_700"
-                    android:textSize="16sp"
-                    tools:text="10000" />
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/medium"
+                        android:text="@string/arbitrage.label.trade_amount"
+                        android:textColor="@color/primary_54"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/medium"
+                        android:textColor="@color/primary_87"
+                        android:textSize="16sp"
+                        tools:text="10000" />
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/percentProfit"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <android.support.v7.widget.AppCompatImageView
-                        android:id="@+id/srcExchange"
-                        android:layout_width="@dimen/width_exchange"
-                        android:layout_height="@dimen/width_exchange"
-                        android:background="@drawable/circle_strip_grey"
-                        android:padding="@dimen/dp1" />
-
-                    <android.support.v7.widget.AppCompatImageView
-                        android:id="@+id/srcCoin"
-                        android:layout_width="@dimen/dp20"
-                        android:layout_height="@dimen/dp20"
-                        android:layout_alignBottom="@id/srcExchange"
-                        android:layout_alignRight="@id/srcExchange"
-                        android:background="@drawable/circle_strip_grey"
-                        android:padding="@dimen/dp1" />
-                </RelativeLayout>
-
-                <TextView
-                    android:id="@+id/srcText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:fontFamily="@font/regular"
-                    android:gravity="center"
-                    android:textColor="@color/black_54"
-                    android:textSize="12sp"
-                    tools:text="Sell XRP at Bitbns for Rs.24" />
-
-            </LinearLayout>
-
-            <android.support.v7.widget.AppCompatImageView
-                android:id="@+id/transfer"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_marginLeft="@dimen/margin_normal"
-                android:layout_marginRight="@dimen/margin_normal"
-                android:src="@drawable/transfer"
-                android:tint="#D7D7D7" />
-
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <android.support.v7.widget.AppCompatImageView
-                        android:id="@+id/destExchange"
-                        android:layout_width="@dimen/width_exchange"
-                        android:layout_height="@dimen/width_exchange"
-                        android:background="@drawable/circle_strip_grey"
-                        android:padding="@dimen/dp1" />
-
-                    <android.support.v7.widget.AppCompatImageView
-                        android:id="@+id/destCoin"
-                        android:layout_width="@dimen/dp20"
-                        android:layout_height="@dimen/dp20"
-                        android:layout_alignBottom="@id/destExchange"
-                        android:layout_alignRight="@id/destExchange"
-                        android:background="@drawable/circle_strip_grey"
-                        android:padding="@dimen/dp1" />
-                </RelativeLayout>
-
-                <TextView
-                    android:id="@+id/destText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:fontFamily="@font/regular"
-                    android:gravity="center"
-                    android:textColor="@color/black_54"
-                    android:textSize="12sp"
-                    tools:text="Sell XRP at Koinex for Rs.25" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-    </LinearLayout>
+            android:background="@drawable/ic_triangle"
+            android:fontFamily="@font/regular"
+            android:paddingLeft="10dp"
+            android:paddingTop="12dp"
+            android:textColor="@color/white_87"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="5%" />
+    </FrameLayout>
 </android.support.v7.widget.CardView>

@@ -32,7 +32,9 @@ class InstanceIdListenerService : FirebaseInstanceIdService() {
         // manage this apps subscriptions on the server side, send the
         // Instance ID token to your app server.
         sendRegistrationToServer(FirebaseInstanceId.getInstance().id, refreshedToken)
-        FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.ARBITRAGE_ID)
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(NotificationUtils.ARBITRAGE_ID)
+        FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.ARBITRAGE_INTERNATIONAL_ID)
+        FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.ARBITRAGE_DOMESTIC_ID)
         FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.NEWS_ID)
         FirebaseMessaging.getInstance().subscribeToTopic(NotificationUtils.ICO_ID)
     }

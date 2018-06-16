@@ -21,4 +21,18 @@
         <key>event_secret</key>
         <value>1nesruz5qxno4wosccs4o0kwgko88w4kcskw00gs04owok8ogw</value>
     </entry>
+    <entry>
+        <key>key_exchange_info</key>
+        <value>Bittrex, Binance, Cryptopia, Kucoin, Bitfinex, Okex, Cobinhood, Coinexchange&lt;br /&gt;&lt;br
+            /&gt; Koinex, Bitbns, Zebpay, Coindelta, WazirX, Coinome, Unocoin, Throughbit,
+            Pocketbits
+        </value>
+    </entry>
+    <entry>
+        <key>key_upcoming_features</key>
+        <value>-Best coin for transfer between exchanges.&lt;br /&gt;-Intra Exchange Arbitrage.&lt;br
+            /&gt;-Yobit
+            listing.
+        </value>
+    </entry>
 </defaultsMap><!-- END xml_defaults -->

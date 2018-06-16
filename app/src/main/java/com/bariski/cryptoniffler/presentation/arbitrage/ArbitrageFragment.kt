@@ -60,6 +60,8 @@ class ArbitrageFragment : BaseInjectFragment(), ArbitrageView, View.OnClickListe
 
     var alertDialog: AlertDialog? = null
     var filterDialog: Dialog? = null
+    var filterDialogDomestic: Dialog? = null
+    var filterDialogInternational: Dialog? = null
     var rateDialog: Dialog? = null
 
     lateinit var fromAdapter: FilterItemAdapter
@@ -168,10 +170,20 @@ class ArbitrageFragment : BaseInjectFragment(), ArbitrageView, View.OnClickListe
 
     }
 
-    override fun showFilters(src: List<ArbitrageExchange>, srcSelect: Set<FilterItem>, destSelect: Set<FilterItem>) {
+    override fun showFilters(isInternational: Boolean, src: List<ArbitrageExchange>, srcSelect: Set<FilterItem>, destSelect: Set<FilterItem>) {
         if (isAlive()) {
+            filterDialog = if (!isInternational) {
+                filterDialogDomestic
+            } else {
+                filterDialogInternational
+            }
             if (filterDialog == null) {
                 filterDialog = Dialog(activity)
+                if (!isInternational) {
+                    filterDialogDomestic = filterDialog
+                } else {
+                    filterDialogInternational = filterDialog
+                }
                 filterDialog?.apply {
                     requestWindowFeature(Window.FEATURE_NO_TITLE)
                     val view = activity.layoutInflater.inflate(R.layout.segment_filter_arbitrage, null)

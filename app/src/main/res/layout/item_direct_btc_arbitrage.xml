@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/viewExchanges"
     android:layout_width="280dp"
-    android:layout_height="270dp"
+    android:layout_height="300dp"
     android:layout_marginBottom="@dimen/margin_normal"
     android:layout_marginRight="@dimen/margin_huge"
     android:layout_marginTop="@dimen/margin_normal">
@@ -164,6 +164,18 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/breakEvenNTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_atomic"
+                android:layout_marginLeft="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_tiny"
+                android:fontFamily="@font/regular"
+                android:textColor="@color/black_54"
+                android:textSize="12sp"
+                tools:text="Trying this new stuf out jjust ti lean asdajkdja jasdkjasjdajkdjasdkjajkdajdkadkajdd" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -224,6 +236,7 @@
                         android:textSize="16sp"
                         tools:text="10000" />
                 </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
 

@@ -6,7 +6,9 @@ import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
+import android.support.annotation.RequiresApi
 import android.support.v4.app.NotificationCompat
+import android.util.Log
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.data.storage.KeyValueStore
 import com.bariski.cryptoniffler.domain.util.Screen
@@ -22,6 +24,8 @@ class FcmMessageListenerService : FirebaseMessagingService() {
 
     @Inject
     lateinit var keyStore: KeyValueStore
+
+    private val TAG = "FcmMessageListener"
 
     val NOTIF_ID = "key_notif_id"
     override fun onCreate() {
@@ -52,7 +56,7 @@ class FcmMessageListenerService : FirebaseMessagingService() {
         // Check if message contains a data payload.
         if (remoteMessage.data.isNotEmpty()) {
             Timber.d("Message data payload: %s", remoteMessage.data)
-            sendNotification(remoteMessage.data["body"], remoteMessage.data["title"], remoteMessage.data["channel"])
+            sendNotification(remoteMessage.data["body"], remoteMessage.data["title"], remoteMessage.data["channel"], remoteMessage.data["channels"])
 
         }
 
@@ -73,7 +77,7 @@ class FcmMessageListenerService : FirebaseMessagingService() {
      *
      * @param messageBody FCM message body received.
      */
-    private fun sendNotification(messageBody: String?, messageTitle: String?, channel: String?) {
+    private fun sendNotification(messageBody: String?, messageTitle: String?, channel: String?, channels: String?) {
         val intent = Intent(this, MainActivity::class.java)
         intent.putExtra("target", Screen.ARBITRAGE)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -95,16 +99,40 @@ class FcmMessageListenerService : FirebaseMessagingService() {
 
         // Since android Oreo notification channel is needed.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            if (channel != null) {
-                notificationBuilder.setChannelId(channel)
+            //Set default
+            var isSetChannelId = false
+            if (channels == null) {
+                if (channel != null) {
+                    notificationBuilder.setChannelId(channel)
+                    isSetChannelId = true
+                }
             } else {
-                notificationBuilder.setChannelId(NotificationUtils.NEWS_ID)
+                val channelItems = channels.split(",")
+                for (c in channelItems) {
+                    if (isChannelEnabled(c)) {
+                        notificationBuilder.setChannelId(c)
+                        isSetChannelId = true
+                        break
+                    }
+                }
+            }
+            if (!isSetChannelId) {
+                Log.e(TAG, "Notification ignored as couldn't find a matching channel")
+                return
             }
         }
         val stored = keyStore.getInt(NOTIF_ID)
 
         notificationManager.notify(stored + 1 /* ID of notification */, notificationBuilder.build())
         keyStore.storeInt(NOTIF_ID, stored + 1)
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun isChannelEnabled(channelId: String): Boolean {
+        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val channel = manager.getNotificationChannel(channelId)
+        return channel != null && channel.importance != NotificationManager.IMPORTANCE_NONE
     }
 
     companion object {

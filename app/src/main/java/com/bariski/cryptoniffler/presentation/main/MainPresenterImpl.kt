@@ -66,15 +66,14 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
         viewWeak.get()?.apply {
             when (id) {
                 R.id.share -> shareApp()
-                R.id.review -> reviewApp()
                 R.id.calendar -> navigateToEvents()
-                R.id.arbitrage -> navigateToArbitrage()
                 R.id.home -> navigateToMain(true)
                 R.id.report -> navigateToFeedback()
                 R.id.shareScreen -> {
                     isShareScreenMode = true
                     createScreenAndShare()
                 }
+                R.id.about -> navigateToInfo()
             }
         }
     }
@@ -108,6 +107,17 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
             state = -2
             it.toggleInfo(true)
             it.moveToNext(ArbitrageFragment.getInstance(), true)
+        }
+
+    }
+
+    private fun navigateToInfo() {
+        viewWeak.get()?.let {
+            it.toggleSearch(false)
+            it.toggleFilter(false)
+            state = -3
+            it.toggleInfo(false)
+            it.moveToNext(InfoFragment.getInstance(null), true)
         }
 
     }
@@ -197,7 +207,7 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
                     navigateToCoinSelection(false)
                 }
             }
-            0, -2, -3 -> {
+            0, -2, -3, -4 -> {
                 navigateToMain(false)
             }
             else -> viewWeak.get()?.exit()

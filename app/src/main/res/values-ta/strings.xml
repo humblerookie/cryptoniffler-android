@@ -147,4 +147,6 @@
     <string name="rating.title.rate"> மதிப்பீடு</string>
     <string name="rating.title.share"> பகிர் </string>
     <string name="error.arbitrage.international_no_filter">சர்வதேச முறையில் வடிப்பான்கள் தற்போது கிடைக்கவில்லை.</string>
+    <string name="drawer.title.about">தானம்</string>
+
 </resources>

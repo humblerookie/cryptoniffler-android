@@ -53,6 +53,7 @@ class DirectAdapter(private val data: List<DirectArbitrage>, val isInternational
         val bigIconSize = ((res.getDimension(R.dimen.width_exchange) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
         val smallIconSize = ((res.getDimension(R.dimen.dp20) - 2 * res.getDimension(R.dimen.dp1)) / 2).toInt()
         val profitPercent: TextView? = view.findViewById(R.id.percentProfit)
+        val breakEvenNTransferTime: TextView = view.breakEvenNTime
         lateinit var data: DirectArbitrage
 
         init {
@@ -63,6 +64,7 @@ class DirectAdapter(private val data: List<DirectArbitrage>, val isInternational
 
         fun bind(data: DirectArbitrage, roundOff: Boolean) {
             this.data = data
+            val context = profit.context
             profit.text = getString(data.amount, roundOff)
             fees.text = getString(data.fees, roundOff)
             seed.text = getString(data.seed, roundOff)
@@ -79,6 +81,26 @@ class DirectAdapter(private val data: List<DirectArbitrage>, val isInternational
             }
             summarySource.text = Html.fromHtml(data.from.summary)
             summaryDest.text = Html.fromHtml(data.to.summary)
+
+            if (data.transferTime != null && data.transferTime > 0) {
+                val hours = (data.transferTime / 60).toInt()
+                val mins = (data.transferTime - hours * 60).toInt()
+                val secs = ((data.transferTime - hours * 60 - mins) * 60).toInt()
+                val sb = StringBuilder()
+                if (hours > 0) {
+                    sb.append(hours.toString() + "h ")
+                }
+                if (mins > 0) {
+                    sb.append(mins.toString() + "m ")
+                }
+                if (secs > 0) {
+                    sb.append(secs.toString() + "s")
+                }
+                breakEvenNTransferTime.text = Html.fromHtml(context.getString(R.string.arbitrage_breakeven_arbitragetime, data.breakEven, sb.toString()))
+            } else {
+                breakEvenNTransferTime.text = Html.fromHtml(context.getString(R.string.arbitrage_breakeven, data.breakEven))
+            }
+
         }
 
         fun getString(f: Float, roundOff: Boolean): String {

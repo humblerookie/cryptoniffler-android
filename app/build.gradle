@@ -23,8 +23,8 @@ android {
         applicationId "com.bariski.cryptoniffler"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 25
-        versionName "2.2.1"
+        versionCode 26
+        versionName "2.2.3"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -41,6 +41,7 @@ android {
             aaptOptions.cruncherEnabled = false
             applicationIdSuffix ".dev"
             buildConfigField "String", "BUILD_PREFIX", "\"dev_\""
+            resValue "string", "app_version", "v${defaultConfig.versionName}"
 
         }
         release {
@@ -48,6 +49,7 @@ android {
             minifyEnabled true
             shrinkResources true
             buildConfigField "String", "BUILD_PREFIX", "\"\""
+            resValue "string", "app_version", "v${defaultConfig.versionName}"
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
