@@ -56,7 +56,11 @@ class FcmMessageListenerService : FirebaseMessagingService() {
         // Check if message contains a data payload.
         if (remoteMessage.data.isNotEmpty()) {
             Timber.d("Message data payload: %s", remoteMessage.data)
-            sendNotification(remoteMessage.data["body"], remoteMessage.data["title"], remoteMessage.data["channel"], remoteMessage.data["channels"])
+            sendNotification(remoteMessage.data["body"],
+                    remoteMessage.data["title"],
+                    remoteMessage.data["channel"],
+                    remoteMessage.data["channels"],
+                    remoteMessage.data["target"])
 
         }
 
@@ -77,9 +81,9 @@ class FcmMessageListenerService : FirebaseMessagingService() {
      *
      * @param messageBody FCM message body received.
      */
-    private fun sendNotification(messageBody: String?, messageTitle: String?, channel: String?, channels: String?) {
+    private fun sendNotification(messageBody: String?, messageTitle: String?, channel: String?, channels: String?, target: String?) {
         val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("target", Screen.ARBITRAGE)
+        intent.putExtra("target", target ?: Screen.ARBITRAGE)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
         val pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
                 PendingIntent.FLAG_ONE_SHOT)

@@ -55,6 +55,7 @@ class Screen {
         val RATE_REVIEW = "rate_n_review"
         val ARBITRAGE = "arbitrage"
         val CALENDAR = "calendar"
+        val ABOUT ="about"
 
     }
 }

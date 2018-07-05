@@ -3,7 +3,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="common.label.permission_settings">Settings</string>
     <string name="common.label.ok">OK</string>
-    <string name="error.common.network">Network is unavailable. Please check your network connection.</string>
+    <string name="error.common.network">Network is unavailable. Please check your network conneßction.</string>
     <string name="error.common.something_wrong">Oops! Something is off, Please try after sometime.</string>
     <string name="error.common.request_invalid">Oops! We\'ve made a booboo!, Fixing this as we speak. Please try in sometime.</string>
     <string name="error.common.unreachable">Could not connect to our servers.\nPlease try after sometime.</string>

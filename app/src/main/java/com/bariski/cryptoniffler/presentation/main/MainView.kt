@@ -21,4 +21,5 @@ interface MainView : BaseView {
     fun toggleInfo(b: Boolean)
     fun sendFeedback()
     fun shareArbitrage(file: File)
+    fun showInfo()
 }

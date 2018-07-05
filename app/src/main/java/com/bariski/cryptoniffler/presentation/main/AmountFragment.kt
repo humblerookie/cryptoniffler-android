@@ -1,6 +1,6 @@
 package com.bariski.cryptoniffler.presentation.main
 
-import android.app.AlertDialog
+import android.app.Activity
 import android.app.Fragment
 import android.content.Context
 import android.os.Bundle
@@ -31,16 +31,20 @@ class AmountFragment : BaseFragment() {
     lateinit var btcEquivalent: TextView
     lateinit var next: TextView
 
+    override fun onAttach(activity: Activity?) {
+        super.onAttach(activity)
+        if (activity !is View.OnClickListener) {
+            throw IllegalArgumentException("Activity must implement ${View.OnClickListener::class.java.canonicalName}")
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup, savedInstanceState: Bundle?): View {
         val view = inflater.inflate(R.layout.fragment_amount, container, false)
         inrInput = view.findViewById(R.id.inrAmount)
         btcEquivalent = view.findViewById(R.id.btcEquivalent)
         next = view.findViewById(R.id.next)
-        view.findViewById<View>(R.id.help).setOnClickListener({
-            presenter.infoClicked()
-            showInfo()
-        })
+        view.findViewById<View>(R.id.help).setOnClickListener(activity as View.OnClickListener)
+
         view.findViewById<CheckBox>(R.id.includeFees).setOnCheckedChangeListener({ _, b -> presenter.onIncludeFeeChanged(b) })
 
         next.setOnClickListener {
@@ -55,14 +59,14 @@ class AmountFragment : BaseFragment() {
         if (!arguments.getBoolean("showFees")) {
             includeFees.visibility = View.GONE
         }
-        inrInput.setOnEditorActionListener({ _, id, _ ->
+        inrInput.setOnEditorActionListener { _, id, _ ->
             if (id == EditorInfo.IME_ACTION_DONE) {
                 next.performClick()
                 true
             } else {
                 false
             }
-        })
+        }
         inrInput.requestFocus()
         return view
     }
@@ -116,14 +120,14 @@ class AmountFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         if (activity is MainView) {
             presenter = (activity as MainView).getCommonPresenter()
-            presenter.onAmountScreenCreated(RxTextView.textChanges(inrInput).map({
+            presenter.onAmountScreenCreated(RxTextView.textChanges(inrInput).map {
                 if (it.toString().isNotEmpty()) {
                     next.alpha = if (it.toString().toLong() >= 1000) 1.0f else 0.5f
                     it
                 } else {
                     "0"
                 }
-            }), getObserver())
+            }, getObserver())
         } else {
             throw RuntimeException("Parent activity needs to override MainView")
         }
@@ -140,15 +144,5 @@ class AmountFragment : BaseFragment() {
         }
     }
 
-    private fun showInfo() {
-        val builder: AlertDialog.Builder = AlertDialog.Builder(activity, R.style.Theme_AppCompat_Light_Dialog_Alert)
-        builder.setTitle(getString(R.string.common_label_fee_info))
-                .setMessage(getString(R.string.common_info_fee_info))
-                .setPositiveButton(android.R.string.ok, { dialog, _ ->
-                    dialog.dismiss()
-                })
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .show()
-    }
 
 }

@@ -2,6 +2,7 @@ package com.bariski.cryptoniffler.presentation.main
 
 import android.Manifest
 import android.os.Bundle
+import android.support.annotation.VisibleForTesting
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.analytics.Analytics
 import com.bariski.cryptoniffler.domain.common.Schedulers
@@ -23,11 +24,13 @@ import com.bariski.cryptoniffler.presentation.common.models.GridItem
 import com.bariski.cryptoniffler.presentation.main.adapters.GridItemAdapter
 import io.reactivex.Observable
 import io.reactivex.Observer
+import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.processors.PublishProcessor
 import io.reactivex.rxkotlin.subscribeBy
 import timber.log.Timber
 import java.lang.ref.WeakReference
+import java.util.*
 
 class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository: EventsRepository, private val deviceStore: DeviceDataStore, val adapter: GridItemAdapter, private val schedulerProvider: Schedulers, val analytics: Analytics, val imageLoader: ImageLoader) : BasePresenter<MainView>, MainPresenter {
 
@@ -36,21 +39,21 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
     val amountDisposable = CompositeDisposable()
     var btcRate: Float = 0f
     var amountSubscriber: PublishProcessor<AmountInput>? = null
-    var state = 0
     var amount = 0L
     var coin = ""
     var exchange = ""
     var ignoreFees = false
     var isShareScreenMode = false
+    var state = 0
 
     override fun onItemClicked(id: Int) {
 
         when (id) {
             R.id.buyAndSellCrypto -> {
-                navigateToCoinSelection(true)
+                navigateToCoinSelection(repository.getCoins(), getNavigateToCoinSelectionSuccessListener(true))
             }
             R.id.viewExchanges -> {
-                navigateToExchangeSelection(true)
+                navigateToExchangeSelection(repository.getExchanges(), getNavigateToExchangeSelectionSuccessReceiver(true))
             }
             R.id.viewArbitrages -> {
                 navigateToArbitrage()
@@ -74,6 +77,9 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
                     createScreenAndShare()
                 }
                 R.id.about -> navigateToInfo()
+                R.id.help -> {
+                    infoClicked()
+                }
             }
         }
     }
@@ -202,9 +208,9 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
         when (--state) {
             1 -> {
                 if (exchange.isNotEmpty()) {
-                    navigateToExchangeSelection(false)
+                    navigateToExchangeSelection(repository.getExchanges(), getNavigateToExchangeSelectionSuccessReceiver(false))
                 } else {
-                    navigateToCoinSelection(false)
+                    navigateToCoinSelection(repository.getCoins(), getNavigateToCoinSelectionSuccessListener(false))
                 }
             }
             0, -2, -3, -4 -> {
@@ -234,8 +240,8 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
     }
 
 
-    private fun navigateToExchangeSelection(isForward: Boolean) {
-        disposable.add(repository.getExchanges()
+    private fun navigateToExchangeSelection(dataSource: Single<ArrayList<Exchange>>, subscriber: (List<Exchange>) -> Unit) {
+        disposable.add(dataSource
                 .observeOn(schedulerProvider.io())
                 .subscribeOn(schedulerProvider.io())
                 .map { it.filter { it.isHidden == null || !it.isHidden } }
@@ -243,39 +249,54 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
                 .doOnSubscribe {
                     viewWeak.get()?.toggleProgress(true)
                 }
-                .subscribeBy(
-                        onSuccess = { data ->
-                            state = 1
-                            viewWeak.get()?.let {
-                                it.toggleProgress(false)
-                                analytics.sendScreenView(Screen.PICK_EXCHANGE)
-                                it.toggleSearch(false)
-                                it.moveToNext(GridSelectFragment.getInstance(ArrayList(data), it.getMessage(R.string.common_label_buy_at), 1), isForward)
-                            }
-                        }, onError = {})
+                .subscribeBy(onSuccess = subscriber, onError = {}
+                )
         )
 
     }
 
-    private fun navigateToCoinSelection(isForward: Boolean) {
-        disposable.add(repository.getCoins().observeOn(schedulerProvider.io())
+    @VisibleForTesting
+    fun getNavigateToExchangeSelectionSuccessReceiver(isForward: Boolean): (List<Exchange>) -> Unit {
+        return { data ->
+            state = 1
+            viewWeak.get()?.let {
+                it.toggleProgress(false)
+                analytics.sendScreenView(Screen.PICK_EXCHANGE)
+                it.toggleSearch(false)
+                it.moveToNext(GridSelectFragment.getInstance(ArrayList(data), it.getMessage(R.string.common_label_buy_at), 1), isForward)
+            }
+        }
+    }
+
+
+    @VisibleForTesting
+    private fun navigateToCoinSelection(source: Single<ArrayList<Coin>>, successSubscriber: (List<Coin>) -> Unit) {
+        disposable.add(source
+                .observeOn(schedulerProvider.io())
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
                 .doOnSubscribe {
                     viewWeak.get()?.toggleProgress(true)
                 }
                 .subscribeBy(
-                        onSuccess = { data ->
-                            state = 1
-                            viewWeak.get()?.let {
-                                it.toggleProgress(false)
-                                analytics.sendScreenView(Screen.PICK_COIN)
-                                it.toggleSearch(true)
-                                it.moveToNext(GridSelectFragment.getInstance(ArrayList(data), it.getMessage(R.string.common_label_i_like_to_buy), 0), isForward)
-                            }
-                        }, onError = {})
+                        onSuccess = successSubscriber, onError = {
+
+                })
         )
 
+    }
+
+    fun getNavigateToCoinSelectionSuccessListener(isForward: Boolean): (List<Coin>) -> Unit {
+        return { data ->
+            state = 1
+            viewWeak.get()?.let {
+                it.toggleProgress(false)
+                analytics.sendScreenView(Screen.PICK_COIN)
+                it.toggleSearch(true)
+                val fragment = GridSelectFragment.getInstance(ArrayList(data), it.getMessage(R.string.common_label_i_like_to_buy), 0)
+                it.moveToNext(fragment, isForward)
+            }
+        }
     }
 
     override fun initView(view: MainView, savedState: Bundle?, args: Bundle?) {
@@ -305,11 +326,13 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
                 disposable.add(eventsRepository.getAndSaveToken().subscribeOn(schedulerProvider.io()).observeOn(schedulerProvider.ui())
                         .subscribeBy(onError = { Timber.e(it) }, onSuccess = {}))
             }
-            if (args?.getString("target") == Screen.ARBITRAGE) {
-                navigateToArbitrage()
-            } else {
-                analytics.sendScreenView(Screen.MAIN)
-                viewWeak.get()?.moveToNext(BuyNSellFragment.getInstance(), true)
+            when {
+                args?.getString("target") == Screen.ARBITRAGE -> navigateToArbitrage()
+                args?.getString("target") == Screen.ABOUT -> navigateToInfo()
+                else -> {
+                    analytics.sendScreenView(Screen.MAIN)
+                    viewWeak.get()?.moveToNext(BuyNSellFragment.getInstance(), true)
+                }
             }
         }
 
@@ -346,6 +369,7 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
     }
 
     override fun infoClicked() {
+        viewWeak.get()?.showInfo()
         analytics.logInfoClick(false)
     }
 

@@ -23,8 +23,8 @@ android {
         applicationId "com.bariski.cryptoniffler"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 27
-        versionName "2.2.3"
+        versionCode 28
+        versionName "2.2.4"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -79,7 +79,6 @@ android {
         exclude 'META-INF/rxjava.properties'
         exclude 'META-INF/MANIFEST.MF'
     }
-
     testOptions {
         execution 'ANDROID_TEST_ORCHESTRATOR'
         unitTests {

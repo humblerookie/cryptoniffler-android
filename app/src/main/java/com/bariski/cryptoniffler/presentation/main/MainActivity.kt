@@ -53,22 +53,22 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
-        search.setOnClickListener({ presenter.onSearchClicked() })
+        search.setOnClickListener { presenter.onSearchClicked() }
         presenter.initView(this, savedInstanceState, intent.extras)
 
 
-        filter.setOnClickListener({
+        filter.setOnClickListener {
             val f = fragmentManager.findFragmentById(R.id.container)
             if (f != null && f is View.OnClickListener) {
                 f.onClick(it)
             }
-        })
-        info.setOnClickListener({
+        }
+        info.setOnClickListener {
             val f = fragmentManager.findFragmentById(R.id.container)
             if (f != null && f is View.OnClickListener) {
                 f.onClick(it)
             }
-        })
+        }
     }
 
     override fun moveToNext(fragment: Fragment, isForward: Boolean) {
@@ -211,12 +211,12 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             val builder = AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog)
             permissionDialog = builder.setTitle(R.string.common_label_permission)
                     .setMessage(R.string.common_permission_storage_rationale)
-                    .setPositiveButton(android.R.string.ok, { _, _ ->
+                    .setPositiveButton(android.R.string.ok) { _, _ ->
                         ActivityCompat.requestPermissions(this,
                                 arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
                                 1)
                         permissionDialog.dismiss()
-                    })
+                    }
                     .show()
         } else if (ignoreDialog) {
             ActivityCompat.requestPermissions(this,
@@ -265,5 +265,16 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
     override fun onPermissionDenied(permission: String) {
         super.onPermissionDenied(permission)
         presenter.onStorageFailed()
+    }
+
+    override fun showInfo() {
+        val builder: AlertDialog.Builder = AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert)
+        builder.setTitle(getString(R.string.common_label_fee_info))
+                .setMessage(getString(R.string.common_info_fee_info))
+                .setPositiveButton(android.R.string.ok) { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show()
     }
 }
