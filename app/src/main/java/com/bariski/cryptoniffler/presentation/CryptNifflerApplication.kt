@@ -70,7 +70,8 @@ class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
         FirebaseRemoteConfig.getInstance().setConfigSettings(configSettings)
         FirebaseRemoteConfig.getInstance().setDefaults(R.xml.defaults)
         appComponent = DaggerAppComponent.builder()
-                .application(this).build()
+                .application(this)
+                .build()
         appComponent.inject(this)
         createNotificationChannels()
     }
