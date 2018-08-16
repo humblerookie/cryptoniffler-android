@@ -29,15 +29,20 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
 
     override fun fetchLatestConfig() {
         var cacheExpiration = if (remoteConfig.info.configSettings.isDeveloperModeEnabled) 0 else AlarmManager.INTERVAL_DAY / 1000
-        remoteConfig.fetch(cacheExpiration).addOnCompleteListener({
+        remoteConfig.fetch(cacheExpiration).addOnCompleteListener {
             if (it.isSuccessful) {
                 remoteConfig.activateFetched()
             }
-        })
+        }
     }
 
-    override fun getArbitrage(source: Set<FilterItem>, dest: Set<FilterItem>, sourceInternational: Set<FilterItem>, destInternational: Set<FilterItem>): Single<Arbitrage> {
-        return api.getArbitrage(source.joinToString(",", transform = { it.getIdentifier() }), dest.joinToString(",", transform = { it.getIdentifier() }), sourceInternational.joinToString(",", transform = { it.getIdentifier() }), destInternational.joinToString(",", transform = { it.getIdentifier() }))
+    override fun getArbitrage(source: Set<FilterItem>, dest: Set<FilterItem>, sourceInternational: Set<FilterItem>, destInternational: Set<FilterItem>, intraExchanges: Set<FilterItem>): Single<Arbitrage> {
+        return api.getArbitrage(source.joinToString(",", transform = { it.getIdentifier() }),
+                dest.joinToString(",", transform = { it.getIdentifier() }),
+                sourceInternational.joinToString(",", transform = { it.getIdentifier() }),
+                destInternational.joinToString(",", transform = { it.getIdentifier() }),
+                intraExchanges.joinToString(",", transform = { it.getIdentifier() })
+        )
     }
 
     override fun getCoins(): Single<ArrayList<Coin>> {
@@ -202,10 +207,10 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
         keyValueStore.storeLong(KEY_ARB_COUNT, b)
     }
 
-    override fun isInternationalArbitrage() = keyValueStore.getBoolean(KEY_ARB_INTERNATIONAL)
+    override fun getArbitrageMode() = keyValueStore.getInt(KEY_ARB_MODE)
 
-    override fun setInternationalArbitrage(b: Boolean) {
-        keyValueStore.storeBoolean(KEY_ARB_INTERNATIONAL, b)
+    override fun setArbitrageMode(type: Int) {
+        keyValueStore.storeInt(KEY_ARB_MODE, type)
     }
 
 
@@ -219,7 +224,7 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
     private val KEY_RATE_SHARE_SHOWN = "flag_rate_share_shown"
     private val KEY_ARB_COUNT = "flag_arb_count"
     private val KEY_ARB_FILTER_SHOWN = "flag_arb_filter_shown_v2"
-    private val KEY_ARB_INTERNATIONAL = "flag_arb_international"
+    private val KEY_ARB_MODE = "flag_arb_mode"
     private val KEY_DEFAULT_ARBITRAGE_SET = "flag_default_arbitrage_set"
     private val CACHE_EXPIRATION = AlarmManager.INTERVAL_HOUR * 6
 }

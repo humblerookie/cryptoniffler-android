@@ -6,6 +6,7 @@ import com.bariski.cryptoniffler.analytics.Analytics
 import com.bariski.cryptoniffler.domain.common.Schedulers
 import com.bariski.cryptoniffler.domain.model.*
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
+import com.bariski.cryptoniffler.domain.util.ArbitrageMode
 import com.bariski.cryptoniffler.domain.util.Screen
 import com.bariski.cryptoniffler.presentation.common.utils.DeviceInfo
 import com.bariski.cryptoniffler.presentation.common.utils.INDIAN_TIMEZONE
@@ -27,6 +28,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
     var selectedDest: Set<FilterItem> = HashSet()
     var selectedSrcInternational: Set<FilterItem> = HashSet()
     var selectedDestInternational: Set<FilterItem> = HashSet()
+    var selectedIntraExchange: Set<FilterItem> = HashSet()
     val mapExchange = HashMap<String, Exchange>()
 
     val TAG = "ArbitragePresenter"
@@ -39,7 +41,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
         this.view = WeakReference(v)
         if (!repository.isDefaultLocaleSetOnce()) {
             try {
-                repository.setInternationalArbitrage(Calendar.getInstance().timeZone.id != INDIAN_TIMEZONE)
+                repository.setArbitrageMode(if (Calendar.getInstance().timeZone.id != INDIAN_TIMEZONE) ArbitrageMode.INTERNATIONAL else ArbitrageMode.INDIAN)
                 repository.setDefaultLocaleOnce(true)
             } catch (e: Exception) {
                 Timber.e(e)
@@ -50,6 +52,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
             selectedDest = HashSet(savedState.getParcelableArrayList("selectedDest"))
             selectedSrcInternational = HashSet(savedState.getParcelableArrayList("selectedSrcInternational"))
             selectedDestInternational = HashSet(savedState.getParcelableArrayList("selectedDestInternational"))
+            selectedIntraExchange = HashSet(savedState.getParcelableArrayList("selectedIntraExchange"))
             fetchData(savedState.getParcelable("data"))
         } else {
             analytics.sendScreenView(Screen.ARBITRAGE)
@@ -73,10 +76,12 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
             if (arbitrage != null) {
                 view.get()?.apply {
                     arbitrage?.let {
-                        if (isModeInternational()) {
-                            showFilters(isModeInternational(), it.filters.internationalExchanges, selectedSrcInternational, selectedDestInternational)
-                        } else {
-                            showFilters(isModeInternational(), it.filters.exchanges, selectedSrc, selectedDest)
+                        val mode = repository.getArbitrageMode()
+                        val filteredList = it.filters.exchanges.toMutableList().filter { it.modes != null && it.modes.contains(mode) }
+                        when (mode) {
+                            ArbitrageMode.INDIAN -> showFilters(repository.getArbitrageMode(), filteredList, selectedSrc, selectedDest)
+                            ArbitrageMode.INTERNATIONAL -> showFilters(repository.getArbitrageMode(), filteredList, selectedSrcInternational, selectedDestInternational)
+                            else -> showFilters(repository.getArbitrageMode(), filteredList, selectedIntraExchange, selectedIntraExchange)
                         }
                     }
                 }
@@ -87,10 +92,12 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                             .subscribeBy(onSuccess = { data: ArbitrageFilter? ->
                                 view.get()?.apply {
                                     data?.let {
-                                        if (isModeInternational()) {
-                                            showFilters(isModeInternational(), it.internationalExchanges, selectedSrcInternational, selectedDestInternational)
-                                        } else {
-                                            showFilters(isModeInternational(), it.exchanges, selectedSrc, selectedDest)
+                                        val mode = repository.getArbitrageMode()
+                                        val filteredList = it.exchanges.toMutableList().filter { it.modes != null && it.modes.contains(mode) }
+                                        when (mode) {
+                                            ArbitrageMode.INDIAN -> showFilters(repository.getArbitrageMode(), filteredList, selectedSrc, selectedDest)
+                                            ArbitrageMode.INTERNATIONAL -> showFilters(repository.getArbitrageMode(), filteredList, selectedSrcInternational, selectedDestInternational)
+                                            else -> showFilters(repository.getArbitrageMode(), filteredList, selectedIntraExchange, selectedIntraExchange)
                                         }
                                     }
                                 }
@@ -131,7 +138,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
             isRequestInProgress = true
 
             var observable = repository
-                    .getArbitrage(selectedSrc, selectedDest, selectedSrcInternational, selectedDestInternational)
+                    .getArbitrage(selectedSrc, selectedDest, selectedSrcInternational, selectedDestInternational, selectedIntraExchange)
             view.get()?.let {
                 it.toggleProgress(true)
                 it.toggleError(null)
@@ -175,7 +182,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
                                         }
                                     }
                                     it.toggleProgress(false)
-                                    it.setData(data, repository.isInternationalArbitrage())
+                                    it.setData(data, repository.getArbitrageMode())
                                 }
                                 isRequestInProgress = false
                             }, onError = {
@@ -234,6 +241,10 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
         view.get()?.showFeesDialog(arbitrage)
     }
 
+    override fun onIntraArbitrageClicked(data: IntraArbitrage) {
+        view.get()?.showFeesDialog(data)
+    }
+
     override fun onButtonClicked(id: Int) {
         analytics.logRnREvent(when (id) {
             R.id.review -> "review"
@@ -250,10 +261,10 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
 
     }
 
-    override fun onModeChanged(isOn: Boolean) {
-        repository.setInternationalArbitrage(isOn)
-        analytics.logModeChanged(isOn)
-        view.get()?.apply { arbitrage?.let { setData(it, repository.isInternationalArbitrage()) } }
+    override fun onModeChanged(type: Int) {
+        repository.setArbitrageMode(type)
+        analytics.logModeChanged(type)
+        view.get()?.apply { arbitrage?.let { setData(it, repository.getArbitrageMode()) } }
     }
 
     override fun saveState(outState: Bundle?) {
@@ -263,6 +274,7 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
             putParcelableArrayList("selectedDest", ArrayList(selectedDest))
             putParcelableArrayList("selectedSrcInternational", ArrayList(selectedSrcInternational))
             putParcelableArrayList("selectedDestInternational", ArrayList(selectedDestInternational))
+            putParcelableArrayList("selectedIntraExchange", ArrayList(selectedIntraExchange))
         }
     }
 
@@ -271,7 +283,10 @@ class ArbitragePresenterImpl(val repository: NifflerRepository, val schedulers: 
         navigateToExchange(arbitrage)
     }
 
+    override fun isModeIntra() = repository.getArbitrageMode() == ArbitrageMode.INTRA_EXCHANGE
 
-    override fun isModeInternational() = repository.isInternationalArbitrage()
+    override fun isModeIndian() = repository.getArbitrageMode() == ArbitrageMode.INDIAN
+
+    override fun isModeInternational() = repository.getArbitrageMode() == ArbitrageMode.INTERNATIONAL
 
 }

@@ -23,6 +23,6 @@ interface Analytics {
     fun itemDetailEvent(success: Boolean, error: String?, type: String, value: String, amount: Long, ignoreFees: Boolean)
     fun logIncludeFeeChanged(b: Boolean)
     fun logRnREvent(event: String)
-    fun logModeChanged(isInternational: Boolean)
+    fun logModeChanged(type: Int)
     fun logNavigatedToExchange(arbitrage: ArbitragePresentable)
 }

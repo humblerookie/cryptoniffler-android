@@ -34,6 +34,14 @@ const val TOKEN_SUFFIX_URL = "/oauth/v2/token"
 const val COIN_SUFFIX_URL = "/v1/coins"
 const val CATEGORIES_SUFFIX_URL = "/v1/categories"
 
+class ArbitrageMode {
+    companion object {
+        const val INDIAN: Int = 0
+        const val INTERNATIONAL: Int = 1
+        const val INTRA_EXCHANGE: Int = 2
+    }
+}
+
 class Key {
     companion object {
         val SCREEN = "screen"
@@ -55,7 +63,7 @@ class Screen {
         val RATE_REVIEW = "rate_n_review"
         val ARBITRAGE = "arbitrage"
         val CALENDAR = "calendar"
-        val ABOUT ="about"
+        val ABOUT = "about"
 
     }
 }

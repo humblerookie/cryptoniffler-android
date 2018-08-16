@@ -6,48 +6,6 @@
     android:orientation="vertical"
     tools:background="@color/colorPrimary">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/margin_normal"
-        android:layout_marginStart="@dimen/margin_huge"
-        android:layout_marginTop="@dimen/margin_huge"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/indian"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/black_38"
-            android:ellipsize="end"
-            android:fontFamily="@font/medium"
-            android:gravity="center"
-            android:maxLines="1"
-            android:paddingBottom="@dimen/margin_tiny"
-            android:paddingTop="@dimen/margin_tiny"
-            android:text="@string/arbitrage.currency.domestic"
-            android:textColor="@color/white_54"
-            android:textSize="@dimen/font_normal" />
-
-        <TextView
-            android:id="@+id/international"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:ellipsize="end"
-            android:fontFamily="@font/medium"
-            android:gravity="center"
-            android:maxLines="1"
-            android:paddingBottom="@dimen/margin_tiny"
-            android:paddingTop="@dimen/margin_tiny"
-            android:text="@string/arbitrage.currency.international"
-            android:textColor="@color/black_87"
-            android:textSize="@dimen/font_normal" />
-
-    </LinearLayout>
-
 
     <TextView
         android:id="@+id/disclaimer"
@@ -56,8 +14,8 @@
         android:layout_marginBottom="@dimen/margin_normal"
         android:fontFamily="@font/regular"
         android:paddingLeft="@dimen/margin_normal"
-        android:paddingRight="@dimen/margin_normal"
         android:paddingTop="@dimen/margin_normal"
+        android:paddingRight="@dimen/margin_normal"
         android:text="@string/arbitrage.disclaimer"
         android:textColor="@color/white_54"
         android:textSize="12sp" />

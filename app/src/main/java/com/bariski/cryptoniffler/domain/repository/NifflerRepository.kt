@@ -8,7 +8,7 @@ import io.reactivex.Single
 interface NifflerRepository : StaticContentRepository {
     fun getCoins(): Single<ArrayList<Coin>>
     fun getExchanges(): Single<ArrayList<Exchange>>
-    fun getArbitrage(src: Set<FilterItem>, dest: Set<FilterItem>, sourceInternational: Set<FilterItem>, destInternational: Set<FilterItem>): Single<Arbitrage>
+    fun getArbitrage(src: Set<FilterItem>, dest: Set<FilterItem>, sourceInternational: Set<FilterItem>, destInternational: Set<FilterItem>, intraExchange: Set<FilterItem>): Single<Arbitrage>
     fun getBtcInrRates(): Single<List<CoinRate>>
     fun getBestRates(coin: String?, amount: Long, ignoreFees: Boolean): Single<BestExchangeResponse>
     fun getBestCoin(exchange: String, amount: Long, ignoreFees: Boolean): Single<BestCoinResponse>
@@ -30,8 +30,8 @@ interface NifflerRepository : StaticContentRepository {
     fun setRateNShareShown(b: Boolean)
     fun getArbitrageUsedCount(): Long
     fun setArbitrageUsedCount(b: Long)
-    fun isInternationalArbitrage(): Boolean
-    fun setInternationalArbitrage(b: Boolean)
+    fun getArbitrageMode(): Int
+    fun setArbitrageMode(type: Int)
     fun isDefaultLocaleSetOnce(): Boolean
     fun setDefaultLocaleOnce(b: Boolean)
 }

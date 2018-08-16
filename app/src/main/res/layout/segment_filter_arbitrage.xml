@@ -9,12 +9,13 @@
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/margin_small"
         android:paddingLeft="@dimen/margin_normal"
+        android:paddingTop="@dimen/margin_small"
         android:paddingRight="@dimen/margin_normal"
-        android:paddingTop="@dimen/margin_small">
+        android:paddingBottom="@dimen/margin_small">
 
         <TextView
+            android:id="@+id/fromTitle"
             style="@style/TextMedium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -28,6 +29,7 @@
 
 
         <TextView
+            android:id="@+id/toTitle"
             style="@style/TextMedium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -53,9 +55,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:clipToPadding="false"
-            android:paddingBottom="@dimen/margin_normal"
+            android:paddingTop="@dimen/margin_normal"
             android:paddingRight="@dimen/margin_atomic"
-            android:paddingTop="@dimen/margin_normal" />
+            android:paddingBottom="@dimen/margin_normal" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/toList"
@@ -64,9 +66,9 @@
             android:layout_weight="1"
             android:background="@drawable/border_left"
             android:clipToPadding="false"
-            android:paddingBottom="@dimen/margin_normal"
             android:paddingLeft="@dimen/margin_atomic"
-            android:paddingTop="@dimen/margin_normal" />
+            android:paddingTop="@dimen/margin_normal"
+            android:paddingBottom="@dimen/margin_normal" />
     </LinearLayout>
 
     <LinearLayout
@@ -84,10 +86,10 @@
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="1"
-            android:paddingBottom="@dimen/margin_tiny"
             android:paddingLeft="@dimen/margin_small"
-            android:paddingRight="@dimen/margin_small"
             android:paddingTop="@dimen/margin_tiny"
+            android:paddingRight="@dimen/margin_small"
+            android:paddingBottom="@dimen/margin_tiny"
             android:text="@string/common.label.clear_all"
             android:textAllCaps="true"
             android:textColor="@color/white_87" />
@@ -102,8 +104,8 @@
             android:ellipsize="end"
             android:gravity="center"
             android:maxLines="1"
-            android:paddingBottom="@dimen/margin_tiny"
             android:paddingTop="@dimen/margin_tiny"
+            android:paddingBottom="@dimen/margin_tiny"
             android:text="@string/common.label.apply"
             android:textAllCaps="true"
             android:textColor="@color/white_87" />

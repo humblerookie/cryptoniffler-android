@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Keep
 @Parcelize
-data class ArbitrageExchange(@Json(name = "label") val name: String, @Json(name = "symbol") val id: String) : FilterItem {
+data class ArbitrageExchange(@Json(name = "label") val name: String, @Json(name = "symbol") val id: String, @Json(name = "mode") val modes: List<Int>?) : FilterItem {
     override fun getDisplayTitle() = name
     override fun getIdentifier() = id
 

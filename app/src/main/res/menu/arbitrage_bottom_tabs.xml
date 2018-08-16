@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_international"
+        android:icon="@drawable/ic_btc"
+        android:title="International" />
+
+    <item
+        android:id="@+id/navigation_intra"
+        android:icon="@drawable/ic_intra"
+        android:title="IntraExchange" />
+
+    <item
+        android:id="@+id/navigation_domestic"
+        android:icon="@drawable/ic_rupee"
+        android:title="Indian" />
+
+</menu>

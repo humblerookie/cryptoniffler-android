@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/swipeRefresh"
     android:layout_width="match_parent"
@@ -16,7 +17,8 @@
             android:id="@+id/list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false" />
+            android:clipToPadding="false"
+            android:paddingBottom="?attr/actionBarSize" />
 
         <ProgressBar
             android:id="@+id/progress"
@@ -29,11 +31,23 @@
             android:layout_width="@dimen/fab_size"
             android:layout_height="@dimen/fab_size"
             android:layout_gravity="bottom|right"
-            android:layout_marginBottom="@dimen/margin_normal"
             android:layout_marginRight="@dimen/margin_normal"
+            android:layout_marginBottom="64dp"
             android:src="@drawable/ic_menu_share"
             android:tint="@color/black"
             android:visibility="gone" />
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/navigationView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="@color/colorPrimary"
+            android:elevation="@dimen/margin_small"
+            app:itemBackground="@drawable/tab_selector"
+            app:itemIconTint="@color/white_70"
+            app:itemTextColor="@color/white_70"
+            app:menu="@menu/arbitrage_bottom_tabs" />
 
     </FrameLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

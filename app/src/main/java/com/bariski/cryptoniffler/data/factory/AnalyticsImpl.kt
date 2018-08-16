@@ -81,9 +81,9 @@ class AnalyticsImpl(context: Context) : Analytics {
         analytics.logEvent(name, values)
     }
 
-    override fun logModeChanged(isInternational: Boolean) {
+    override fun logModeChanged(type: Int) {
         val bundle = Bundle()
-        bundle.putInt("type", if (isInternational) 1 else 0)
+        bundle.putInt("type", type)
         analytics.logEvent(Event.MODE_CHANGED, bundle)
     }
 

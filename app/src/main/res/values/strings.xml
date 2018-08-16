@@ -106,6 +106,7 @@
     <string name="info.body.text">CryptoNiffler lets you track arbitrages opportunities from International and Indian exchanges.   Built for #TheLoveOfBlockchain</string>
     <string name="info.label.support_this_project">Support This Project</string>
     <string name="info.label.listed_exchanges">Listed Exchanges</string>
+    <string name="info.label.exchanges">Exchanges</string>
     <string name="info.donation.xrp_address">rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh</string>
     <string name="info.donation.xrp_tag">103799196</string>
     <string name="info.donation.doge_address">DHCEMEDcz947RcVLjxqsciQjQuqWdEBgsc</string>
@@ -113,5 +114,7 @@
     <string name="info.donation.ltc_address">LfXPhP9FfNUrxP8dS8tVrrVkBhENqzJjxa</string>
     <string name="info.donation.address_copied">Address was copied.</string>
     <string name="arbitrage.breakeven"><![CDATA[Breakeven at <b>%s<b>]]></string>
+    <string name="arbitrage.market_sell_placeholder">%s Market(Sell)</string>
+    <string name="arbitrage.market_buy_placeholder">%s Market(Buy)</string>
     <string name="arbitrage.breakeven_arbitragetime"><![CDATA[Breakeven at <b>%s</b>.<br/> Arbitrage time ~<b>%s</b>]]></string>
 </resources>
