@@ -27,6 +27,7 @@ import com.bariski.cryptoniffler.presentation.common.listeners.ItemIdClickListen
 import com.bariski.cryptoniffler.presentation.common.utils.FEEDBACK_EMAIL
 import com.bariski.cryptoniffler.presentation.common.utils.PLAY_STORE
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_bar.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import java.io.File
 import javax.inject.Inject

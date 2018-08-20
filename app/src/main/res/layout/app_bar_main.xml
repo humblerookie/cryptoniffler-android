@@ -8,62 +8,7 @@
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_small"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/medium"
-                    android:text="@string/app_name"
-                    android:textColor="@color/white_87"
-                    android:textSize="@dimen/font_medium" />
-
-                <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/search"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:paddingBottom="@dimen/margin_small"
-                    android:paddingLeft="@dimen/margin_small"
-                    android:paddingTop="@dimen/margin_small"
-                    android:src="@drawable/ic_search"
-                    android:visibility="gone" />
-
-                <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="?attr/selectableItemBackground"
-                    android:paddingBottom="@dimen/margin_small"
-                    android:paddingLeft="@dimen/margin_small"
-                    android:paddingTop="@dimen/margin_small"
-                    android:src="@drawable/ic_info"
-                    android:visibility="gone" />
-
-                <android.support.v7.widget.AppCompatImageView
-                    android:id="@+id/filter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_normal"
-                    android:background="?attr/selectableItemBackground"
-                    android:paddingBottom="@dimen/margin_small"
-                    android:paddingTop="@dimen/margin_small"
-                    android:src="@drawable/ic_filter"
-                    android:visibility="gone" />
-            </LinearLayout>
-        </android.support.v7.widget.Toolbar>
+        <include layout="@layout/app_bar" />
 
     </android.support.design.widget.AppBarLayout>
 

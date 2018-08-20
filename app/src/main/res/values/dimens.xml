@@ -33,6 +33,7 @@
     <dimen name="rating_bar_width">80dp</dimen>
     <dimen name="min_text_height">20dp</dimen>
     <dimen name="fab_size">56dp</dimen>
+    <dimen name="action_bar_size">56dp</dimen>
 
     <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html -->
@@ -47,5 +48,6 @@
     <dimen name="dp24">24dp</dimen>
     <dimen name="dp20">20dp</dimen>
     <dimen name="dp1">1dp</dimen>
+
 
 </resources>

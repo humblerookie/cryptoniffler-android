@@ -14,7 +14,7 @@
             style="@style/PaddingNormal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/color_teal"
+            android:background="@color/teal"
             android:orientation="horizontal"
             android:paddingLeft="@dimen/margin_normal"
             android:paddingRight="@dimen/margin_normal">

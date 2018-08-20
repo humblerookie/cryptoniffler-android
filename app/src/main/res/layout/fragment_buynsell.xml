@@ -15,10 +15,10 @@
         android:layout_marginTop="?android:attr/actionBarSize"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/dp8"
         android:paddingLeft="@dimen/dp16"
-        android:paddingRight="@dimen/dp16"
         android:paddingTop="@dimen/dp8"
+        android:paddingRight="@dimen/dp16"
+        android:paddingBottom="@dimen/dp8"
         tools:context="com.bariski.cryptoniffler.presentation.main.MainActivity">
 
         <TextView
@@ -37,7 +37,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="?android:attr/selectableItemBackground"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="@dimen/margin_normal">
@@ -67,7 +66,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="?android:attr/selectableItemBackground"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="@dimen/margin_normal">
@@ -97,7 +95,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="?android:attr/selectableItemBackground"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:padding="@dimen/margin_normal">

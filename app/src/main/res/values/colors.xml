@@ -5,7 +5,6 @@
     <color name="colorAccent">#F0C808</color>
     <color name="colorAccentLight">#FC5188</color>
     <color name="colorToolbar">#F0F0F0</color>
-    <color name="teal">#009688</color>
     <color name="deep_blue">#086787</color>
     <color name="deep_blue_87">#21586E</color>
     <color name="deep_blue_36">#ACBAC2</color>
@@ -53,5 +52,5 @@
     <color name="button_grey">#7D7D7D</color>
     <color name="amber_500">#FFC107</color>
     <color name="amber_700">#FFA000</color>
-    <color name="color_teal">#3E6C9A</color>
+    <color name="teal">#3E6C9A</color>
 </resources>
