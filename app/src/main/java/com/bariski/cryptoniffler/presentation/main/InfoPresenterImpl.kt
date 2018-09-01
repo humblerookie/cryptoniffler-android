@@ -54,36 +54,11 @@ class InfoPresenterImpl(val clipboardManager: ClipboardManager, val repository: 
     }
 
 
-    override fun onDonateClicked(id: Int) {
-        donateIndex[id]?.let {
-            donateAnalyticsMap[id]?.let { analytics.logDonateCopiedEvent(it) }
-            val clip = ClipData.newPlainText("Crypto Address", viewWeak.get()?.getMessage(it))
-            clipboardManager.primaryClip = clip
-            viewWeak.get()?.showAddressCopiedMessage()
-        }
-    }
-
     override fun saveState(outState: Bundle?) {
         outState?.apply {
             putParcelable("info", info)
         }
     }
 
-    companion object {
-        val donateIndex = mapOf(
-                R.id.btcTip to R.string.info_donation_btc_address,
-                R.id.dogeTip to R.string.info_donation_doge_address,
-                R.id.ltcTip to R.string.info_donation_ltc_address,
-                R.id.xrpTip to R.string.info_donation_xrp_address,
-                R.id.xrpTagTip to R.string.info_donation_xrp_tag
-        )
 
-        val donateAnalyticsMap = mapOf(
-                R.id.btcTip to 1,
-                R.id.dogeTip to 2,
-                R.id.ltcTip to 3,
-                R.id.xrpTip to 4,
-                R.id.xrpTagTip to 4
-        )
-    }
 }

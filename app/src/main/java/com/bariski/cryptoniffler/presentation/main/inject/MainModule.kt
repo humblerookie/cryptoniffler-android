@@ -14,7 +14,6 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-@PerActivity
 class MainModule {
 
     @Provides

@@ -13,13 +13,11 @@ import com.bariski.cryptoniffler.data.utils.getAssetFromDevice
 import com.bariski.cryptoniffler.domain.model.*
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
 import com.bariski.cryptoniffler.domain.util.BTC_INR_API
+import com.bariski.cryptoniffler.domain.util.INFO_VERSION
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import io.reactivex.Single
-import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.collections.HashSet
 
 
 class NifflerRepositoryImpl(val context: Context, private val api: CryptoNifflerApi,
@@ -46,11 +44,12 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
     }
 
     override fun getCoins(): Single<ArrayList<Coin>> {
-        val delta = Calendar.getInstance().timeInMillis - keyValueStore.getLong(KEY_TIMESTAMP_COINSNEXCHANGES)
-        if (delta >= CACHE_EXPIRATION) {
+        val storedVersion = keyValueStore.getLong(KEY_INFO_VERSION)
+        val updatedVersion = remoteConfig.getLong(INFO_VERSION)
+        if (updatedVersion > storedVersion) {
             return api.getCoinsAndExchanges().map {
                 updateMaps(it)
-                keyValueStore.storeLong(KEY_TIMESTAMP_COINSNEXCHANGES, Calendar.getInstance().timeInMillis)
+                keyValueStore.storeLong(KEY_INFO_VERSION, updatedVersion)
                 keyValueStore.storeString(KEY_DATA_COINSNEXCHANGES, moshi.adapter<CoinsAndExchanges>(CoinsAndExchanges::class.java).toJson(it))
                 ArrayList(it.coins)
             }.onErrorReturn {
@@ -91,11 +90,13 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
 
     override fun getExchanges(): Single<ArrayList<Exchange>> {
 
-        val delta = Calendar.getInstance().timeInMillis - keyValueStore.getLong(KEY_TIMESTAMP_COINSNEXCHANGES)
-        if (delta >= CACHE_EXPIRATION) {
+
+        val storedVersion = keyValueStore.getLong(KEY_INFO_VERSION)
+        val updatedVersion = remoteConfig.getLong(INFO_VERSION)
+        if (updatedVersion > storedVersion) {
             return api.getCoinsAndExchanges().map {
                 updateMaps(it)
-                keyValueStore.storeLong(KEY_TIMESTAMP_COINSNEXCHANGES, Calendar.getInstance().timeInMillis)
+                keyValueStore.storeLong(KEY_INFO_VERSION, updatedVersion)
                 keyValueStore.storeString(KEY_DATA_COINSNEXCHANGES, moshi.adapter<CoinsAndExchanges>(CoinsAndExchanges::class.java).toJson(it))
                 ArrayList(it.exchanges)
             }.onErrorReturn {
@@ -214,7 +215,7 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
     }
 
 
-    private val KEY_TIMESTAMP_COINSNEXCHANGES = "timestamp_coinsnexchanges"
+    private val KEY_INFO_VERSION = "key_info_version"
     private val KEY_DATA_COINSNEXCHANGES = "data_coinsnexchanges"
     private val KEY_DATA_ARB_FILTERS = "data_arb_filters"
     private val KEY_DATA_SRC_EXCHANGES = "data_src_exchanges"

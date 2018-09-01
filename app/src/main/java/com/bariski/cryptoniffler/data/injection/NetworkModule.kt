@@ -26,7 +26,7 @@ import javax.inject.Named
 import javax.inject.Singleton
 
 
-@Module(includes = arrayOf(AppModule::class))
+@Module(includes = [AppModule::class])
 class NetworkModule {
 
     @Provides

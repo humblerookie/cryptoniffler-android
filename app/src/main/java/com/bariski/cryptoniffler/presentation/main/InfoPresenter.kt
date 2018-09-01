@@ -4,5 +4,4 @@ import com.bariski.cryptoniffler.presentation.common.BasePresenter
 
 interface InfoPresenter : BasePresenter<InfoView> {
 
-    fun onDonateClicked(id: Int)
 }

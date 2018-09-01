@@ -43,123 +43,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/version" />
 
-        <TextView
-            android:id="@+id/labelSupport"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_huge"
-            android:drawableLeft="@drawable/ic_btctip"
-            android:drawablePadding="@dimen/margin_atomic"
-            android:drawableTint="@color/colorAccent"
-            android:fontFamily="@font/regular"
-            android:gravity="center_vertical"
-            android:text="@string/info.label.support_this_project"
-            android:textAllCaps="true"
-            android:textColor="@color/colorAccent"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/versionInfo" />
-
-        <TextView
-            android:id="@+id/labelSupportText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_atomic"
-            android:fontFamily="@font/regular"
-            android:gravity="center_vertical"
-            android:text="@string/info.donate.support_text"
-            android:textColor="@color/white_54"
-            android:textSize="@dimen/font_tiny"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelSupport" />
-
-
-        <TextView
-            android:id="@+id/btcTip"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:drawableRight="@drawable/ic_copy"
-            android:drawablePadding="@dimen/margin_small"
-            android:drawableTint="@color/colorAccent"
-            android:fontFamily="@font/regular"
-            android:gravity="center_vertical"
-            android:text="BTC\n14pHRnhRywZD2oQdxpq5iRUvUqTNPNtWem"
-            android:textColor="@color/white_87"
-            android:textSize="@dimen/font_tiny"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/labelSupportText" />
-
-        <TextView
-            android:id="@+id/ltcTip"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:drawableRight="@drawable/ic_copy"
-            android:drawablePadding="@dimen/margin_small"
-            android:drawableTint="@color/colorAccent"
-            android:fontFamily="@font/regular"
-            android:gravity="center_vertical"
-            android:text="LTC\nLfXPhP9FfNUrxP8dS8tVrrVkBhENqzJjxa"
-            android:textColor="@color/white_87"
-            android:textSize="@dimen/font_tiny"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btcTip" />
-
-        <TextView
-            android:id="@+id/dogeTip"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:drawableRight="@drawable/ic_copy"
-            android:drawablePadding="@dimen/margin_small"
-            android:drawableTint="@color/colorAccent"
-            android:fontFamily="@font/regular"
-            android:gravity="center_vertical"
-            android:text="DOGE\nDHCEMEDcz947RcVLjxqsciQjQuqWdEBgsc"
-            android:textColor="@color/white_87"
-            android:textSize="@dimen/font_tiny"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ltcTip" />
-
-        <TextView
-            android:id="@+id/xrpTip"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:drawableRight="@drawable/ic_copy"
-            android:drawablePadding="@dimen/margin_small"
-            android:drawableTint="@color/colorAccent"
-            android:fontFamily="@font/regular"
-            android:gravity="center_vertical"
-            android:text="XRP\n   Address:\n   rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh"
-            android:textColor="@color/white_87"
-            android:textSize="@dimen/font_tiny"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dogeTip" />
-
-        <TextView
-            android:id="@+id/xrpTagTip"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_copy"
-            android:drawablePadding="@dimen/margin_small"
-            android:drawableTint="@color/colorAccent"
-            android:fontFamily="@font/regular"
-            android:gravity="center_vertical"
-            android:text="   Tag:\n   103799196"
-            android:textColor="@color/white_87"
-            android:textSize="@dimen/font_tiny"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/xrpTip" />
 
         <android.support.v7.widget.AppCompatImageView
             android:id="@+id/exIcon"
@@ -169,7 +52,7 @@
             android:tint="@color/colorAccent"
             app:layout_constraintEnd_toStartOf="@id/labelExchanges"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/xrpTagTip"
+            app:layout_constraintTop_toBottomOf="@id/versionInfo"
             app:srcCompat="@drawable/exchange" />
 
         <TextView
@@ -236,7 +119,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/labelFeatures" />
-
 
     </android.support.constraint.ConstraintLayout>
 

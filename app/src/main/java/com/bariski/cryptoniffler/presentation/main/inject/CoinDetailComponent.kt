@@ -8,7 +8,7 @@ import dagger.android.AndroidInjector
 
 
 @PerActivity
-@Subcomponent(modules = arrayOf(DeviceModule::class, CoinDetailModule::class))
+@Subcomponent(modules = [DeviceModule::class, CoinDetailModule::class])
 interface CoinDetailComponent : AndroidInjector<CoinDetailActivity> {
     @Subcomponent.Builder
     abstract class Builder : AndroidInjector.Builder<CoinDetailActivity>()

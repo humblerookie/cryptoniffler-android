@@ -21,20 +21,10 @@ class InfoFragment : BaseInjectFragment(), InfoView {
     @Inject
     lateinit var presenter: InfoPresenter
 
-    val clickListener = View.OnClickListener { view ->
-        presenter.onDonateClicked(view.id)
-    }
-
-
     override fun onCreateView(inflater: LayoutInflater, parent: ViewGroup?, savedInstanceState: Bundle?): View {
         val view = inflater.inflate(R.layout.fragment_info, parent, false)
         container = view
         presenter.initView(this, arguments, null)
-        container.btcTip.setOnClickListener(clickListener)
-        container.ltcTip.setOnClickListener(clickListener)
-        container.dogeTip.setOnClickListener(clickListener)
-        container.xrpTagTip.setOnClickListener(clickListener)
-        container.xrpTip.setOnClickListener(clickListener)
         return view
     }
 
@@ -58,12 +48,6 @@ class InfoFragment : BaseInjectFragment(), InfoView {
             info?.let { b.putParcelable("info", it) }
             frag.arguments = b
             return frag
-        }
-    }
-
-    override fun showAddressCopiedMessage() {
-        if (isAlive()) {
-            Toast.makeText(activity, R.string.info_donation_address_copied, Toast.LENGTH_SHORT).show()
         }
     }
 

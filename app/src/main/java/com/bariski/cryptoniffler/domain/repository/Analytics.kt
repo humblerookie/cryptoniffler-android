@@ -9,11 +9,7 @@ interface Analytics {
 
     fun logShareEvent()
 
-    fun logDonateEvent()
-
     fun logQueryEvent(query: String)
-
-    fun logDonateCopiedEvent(coin: Int)
 
     fun logInfoClick(isBuy: Boolean)
 

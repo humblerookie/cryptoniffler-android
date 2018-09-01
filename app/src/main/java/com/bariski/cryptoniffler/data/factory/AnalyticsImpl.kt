@@ -50,15 +50,6 @@ class AnalyticsImpl(context: Context) : Analytics {
         analytics.logEvent(FirebaseAnalytics.Event.SEARCH, bundle)
     }
 
-    override fun logDonateEvent() {
-        analytics.logEvent(Event.DONATE_CLICK, Bundle())
-    }
-
-    override fun logDonateCopiedEvent(coin: Int) {
-        val bundle = Bundle()
-        bundle.putInt(Key.COIN, coin)
-        analytics.logEvent(Event.COPIED_ADDRESS, bundle)
-    }
 
     override fun logInfoClick(isBuy: Boolean) {
         val bundle = Bundle()

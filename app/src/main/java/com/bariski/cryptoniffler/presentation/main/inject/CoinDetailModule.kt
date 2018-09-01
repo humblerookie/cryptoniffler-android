@@ -11,7 +11,6 @@ import dagger.Module
 import dagger.Provides
 
 @Module
-@PerActivity
 class CoinDetailModule {
 
     @Provides

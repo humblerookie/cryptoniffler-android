@@ -6,6 +6,5 @@ import com.bariski.cryptoniffler.presentation.common.BaseView
 interface InfoView : BaseView {
 
     fun displayInfo(info: Info)
-    fun showAddressCopiedMessage()
 
 }

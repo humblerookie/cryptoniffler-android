@@ -69,7 +69,7 @@
     <string name="drawer.title.review">Review</string>
     <string name="drawer.title.arbitrage">Arbitrage</string>
     <string name="drawer.title.report">Send Feedback</string>
-    <string name="drawer.title.about">Donate</string>
+    <string name="drawer.title.about" translatable="false">About</string>
     <string name="common.title.execute">Execute</string>
     <string name="calendar.suffix.percentage" translatable="false">%s %%</string>
     <string name="common.label.price" translatable="false">\u20b9 %s</string>
@@ -102,17 +102,10 @@
     <string name="error.arbitrage.international_no_filter">Filters are currently unavailable in international mode.</string>
     <string name="common_title_fees">Fee Details</string>
     <string name="common.tutorial.arbitrage">Tap on card to view fee details.</string>
-    <string name="info.donate.support_text" translatable="false">This project incurs a recurring running cost of $25/month for the servers. If you drop a small tip, that would go a long way in supporting this project.</string>
     <string name="info.body.text">CryptoNiffler lets you track arbitrages opportunities from International and Indian exchanges.   Built for #TheLoveOfBlockchain</string>
     <string name="info.label.support_this_project">Support This Project</string>
     <string name="info.label.listed_exchanges">Listed Exchanges</string>
     <string name="info.label.exchanges">Exchanges</string>
-    <string name="info.donation.xrp_address">rEb8TK3gBgk5auZkwc6sHnwrGVJH8DuaLh</string>
-    <string name="info.donation.xrp_tag">103799196</string>
-    <string name="info.donation.doge_address">DHCEMEDcz947RcVLjxqsciQjQuqWdEBgsc</string>
-    <string name="info.donation.btc_address">14pHRnhRywZD2oQdxpq5iRUvUqTNPNtWem</string>
-    <string name="info.donation.ltc_address">LfXPhP9FfNUrxP8dS8tVrrVkBhENqzJjxa</string>
-    <string name="info.donation.address_copied">Address was copied.</string>
     <string name="arbitrage.breakeven"><![CDATA[Breakeven at <b>%s<b>]]></string>
     <string name="arbitrage.market_sell_placeholder">%s Market(Sell)</string>
     <string name="arbitrage.market_buy_placeholder">%s Market(Buy)</string>
