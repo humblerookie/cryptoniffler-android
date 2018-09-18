@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="SelectableText">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -234,11 +235,11 @@
         <EditText
             android:id="@+id/search"
             android:layout_width="match_parent"
-            android:hint="Search.."
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_atomic"
             android:layout_marginRight="@dimen/margin_atomic"
             android:layout_toRightOf="@id/left"
+            android:hint="Search.."
             android:visibility="gone" />
 
         <android.support.v7.widget.RecyclerView

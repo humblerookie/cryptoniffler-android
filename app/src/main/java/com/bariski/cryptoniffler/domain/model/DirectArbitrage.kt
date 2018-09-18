@@ -1,11 +1,12 @@
 package com.bariski.cryptoniffler.domain.model
 
+import android.annotation.SuppressLint
 import android.support.annotation.Keep
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 @Keep
-@Parcelize
+@Parcelize @SuppressLint("ParcelCreator")
 data class DirectArbitrage(@Json(name = "sell") val sell: Float,
                            @Json(name = "buy") val buy: Float,
                            @Json(name = "amount") val amount: Float,

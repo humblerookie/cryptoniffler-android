@@ -2,6 +2,7 @@ package com.bariski.cryptoniffler.data.injection
 
 import android.content.Context
 import com.bariski.cryptoniffler.data.api.EventsApi
+import com.bariski.cryptoniffler.data.cache.CNDao
 import com.bariski.cryptoniffler.data.factory.EventsRepositoryImpl
 import com.bariski.cryptoniffler.data.storage.KeyValueStore
 import com.bariski.cryptoniffler.domain.common.Schedulers
@@ -21,7 +22,7 @@ class EventModule {
     }
 
     @Provides
-    fun provideEventsRepository(api: EventsApi, remoteConfig: FirebaseRemoteConfig, keyValue: KeyValueStore, moshi: Moshi, context: Context, schedulers: Schedulers): EventsRepository {
-        return EventsRepositoryImpl(api, remoteConfig, keyValue, moshi, context, schedulers)
+    fun provideEventsRepository(api: EventsApi, remoteConfig: FirebaseRemoteConfig, keyValue: KeyValueStore, moshi: Moshi, context: Context, schedulers: Schedulers,cnDao: CNDao): EventsRepository {
+        return EventsRepositoryImpl(api, remoteConfig, keyValue, moshi, context, schedulers,cnDao)
     }
 }

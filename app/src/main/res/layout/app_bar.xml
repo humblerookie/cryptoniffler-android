@@ -2,8 +2,7 @@
 <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="?android:attr/actionBarSize"
-    android:background="@color/colorPrimary">
+    android:layout_height="?android:attr/actionBarSize">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +12,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/medium"
@@ -26,9 +25,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
+            android:paddingBottom="@dimen/margin_small"
             android:paddingLeft="@dimen/margin_small"
             android:paddingTop="@dimen/margin_small"
-            android:paddingBottom="@dimen/margin_small"
             android:src="@drawable/ic_search"
             android:visibility="gone" />
 
@@ -37,9 +36,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:attr/selectableItemBackground"
+            android:paddingBottom="@dimen/margin_small"
             android:paddingLeft="@dimen/margin_small"
             android:paddingTop="@dimen/margin_small"
-            android:paddingBottom="@dimen/margin_small"
             android:src="@drawable/ic_info"
             android:visibility="gone" />
 
@@ -49,8 +48,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_normal"
             android:background="?android:attr/selectableItemBackground"
-            android:paddingTop="@dimen/margin_small"
             android:paddingBottom="@dimen/margin_small"
+            android:paddingTop="@dimen/margin_small"
             android:src="@drawable/ic_filter"
             android:visibility="gone" />
     </LinearLayout>

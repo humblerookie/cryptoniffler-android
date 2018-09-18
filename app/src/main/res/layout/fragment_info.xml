@@ -120,6 +120,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/labelFeatures" />
 
+        <TextView
+            android:id="@+id/labelPrivacy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_huge"
+            android:drawablePadding="@dimen/margin_atomic"
+            android:fontFamily="@font/regular"
+            android:foregroundTint="@color/colorAccent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/margin_atomic"
+            android:text="@string/common.privacy_policy"
+            android:textAllCaps="true"
+            android:textColor="@color/colorAccent"
+            android:textColorLink="@color/colorAccent"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/featuresValue" />
+
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>

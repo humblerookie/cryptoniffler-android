@@ -77,9 +77,9 @@
         
     <string name="common.label.network_fees"> నెట్వర్క్ ఫీజులను చేర్చండి </string>
         
-    <string name="common.hint.type_a_coin_name"> BTC వంటి నాణెం పేరును టైప్ చేయండి. %s ఓట్ల</string>
+    <string name="common.hint.type_a_coin_name"> BTC వంటి నాణెం పేరును టైప్ చేయండి</string>
 
-    <string name="calendar.suffix.votes"> </string>
+    <string name="calendar.suffix.votes">%s ఓట్లు</string>
         
     <string name="common_share_text">నేను ఉత్తమ కొనుగోలు / అమ్మకపు నాణేల గురించి మీకు చెప్పే ఈ అనువర్తనాన్ని కనుగొన్నాను, దాన్ని తనిఖీ చేయండి! \n</string>
         

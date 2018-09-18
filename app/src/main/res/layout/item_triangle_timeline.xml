@@ -6,7 +6,8 @@
     android:layout_height="400dp"
     android:layout_marginBottom="@dimen/margin_huge"
     android:layout_marginRight="@dimen/margin_huge"
-    android:layout_marginTop="@dimen/margin_small">
+    android:layout_marginTop="@dimen/margin_small"
+    tools:ignore="SelectableText">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"

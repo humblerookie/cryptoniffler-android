@@ -2,6 +2,7 @@ package com.bariski.cryptoniffler.data.injection
 
 import android.content.Context
 import com.bariski.cryptoniffler.data.api.CryptoNifflerApi
+import com.bariski.cryptoniffler.data.cache.CNDao
 import com.bariski.cryptoniffler.data.cache.DataCache
 import com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl
 import com.bariski.cryptoniffler.data.storage.KeyValueStore
@@ -16,8 +17,8 @@ import retrofit2.Retrofit
 class CoinModule {
 
     @Provides
-    fun provideCoinRepository(context: Context, api: CryptoNifflerApi, firebaseRemoteConfig: FirebaseRemoteConfig, keyValueStore: KeyValueStore, moshi: Moshi, cache: DataCache): NifflerRepository {
-        return NifflerRepositoryImpl(context, api, firebaseRemoteConfig, keyValueStore, moshi, cache)
+    fun provideCoinRepository(context: Context, api: CryptoNifflerApi, firebaseRemoteConfig: FirebaseRemoteConfig, keyValueStore: KeyValueStore, moshi: Moshi, cache: DataCache, cnDao: CNDao): NifflerRepository {
+        return NifflerRepositoryImpl(context, api, firebaseRemoteConfig, keyValueStore, moshi, cache, cnDao)
     }
 
     @Provides

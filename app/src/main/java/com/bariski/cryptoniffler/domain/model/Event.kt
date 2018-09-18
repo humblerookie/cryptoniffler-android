@@ -1,5 +1,6 @@
 package com.bariski.cryptoniffler.domain.model
 
+import android.annotation.SuppressLint
 import android.os.Parcelable
 import android.support.annotation.Keep
 import com.bariski.cryptoniffler.presentation.calendar.models.CalendarItem
@@ -10,6 +11,7 @@ import java.text.SimpleDateFormat
 
 @Keep
 @Parcelize
+@SuppressLint("ParcelCreator", "SimpleDateFormat")
 data class Event(@Json(name = "id") val id: String,
                  @Json(name = "title") val eventTitle: String?,
                  @Json(name = "coins") val coins: List<CalendarCoin>?,

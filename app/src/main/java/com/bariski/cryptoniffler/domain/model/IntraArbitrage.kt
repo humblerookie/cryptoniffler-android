@@ -1,11 +1,12 @@
 package com.bariski.cryptoniffler.domain.model
 
+import android.annotation.SuppressLint
 import android.support.annotation.Keep
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 @Keep
-@Parcelize
+@Parcelize @SuppressLint("ParcelCreator")
 data class IntraArbitrage(@Json(name = "sell") val sell: String,
                           @Json(name = "buy") val buy: String,
                           @Json(name = "fees") val fees: List<String>,

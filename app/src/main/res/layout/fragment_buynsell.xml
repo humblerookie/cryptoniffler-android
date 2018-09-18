@@ -4,7 +4,6 @@
     android:id="@+id/scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     android:clipToPadding="false"
     android:fillViewport="true"
     android:paddingBottom="?android:attr/actionBarSize">
@@ -15,10 +14,10 @@
         android:layout_marginTop="?android:attr/actionBarSize"
         android:gravity="center"
         android:orientation="vertical"
-        android:paddingLeft="@dimen/dp16"
-        android:paddingTop="@dimen/dp8"
-        android:paddingRight="@dimen/dp16"
         android:paddingBottom="@dimen/dp8"
+        android:paddingLeft="@dimen/dp16"
+        android:paddingRight="@dimen/dp16"
+        android:paddingTop="@dimen/dp8"
         tools:context="com.bariski.cryptoniffler.presentation.main.MainActivity">
 
         <TextView

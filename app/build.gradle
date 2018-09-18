@@ -17,14 +17,13 @@ androidExtensions {
 apply from: 'scripts.gradle'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion Version.compile_sdk
     defaultConfig {
         applicationId "com.bariski.cryptoniffler"
-        minSdkVersion 21
-        targetSdkVersion 27
-        versionCode 33
-        versionName "2.2.8"
+        minSdkVersion Version.min_sdk
+        targetSdkVersion Version.target_sdk
+        versionCode Version.version_code
+        versionName Version.version_name
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -105,21 +104,25 @@ configurations.all {
     }
 }
 
-apply from: 'dependencies.gradle'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation loggingLibs
-    implementation supportLibs
-    implementation rxJavaLibs
-    implementation googlePlayLibs
-    implementation networkLibs
-    implementation daggerLibs
-    implementation uiLibs
-    testImplementation unitTestLibs
-    androidTestImplementation androidTestsLibs
-    kapt annotationProcLibs
+    implementation Deps.kotlin
+    implementation Deps.support
+    implementation Deps.rx
+    implementation Deps.firebase
+    implementation Deps.network
+    implementation Deps.custom_ui
+    implementation Deps.logging
+    implementation Deps.storage
+    implementation Deps.dagger
+    debugImplementation Deps.leakcanary_debug
+    releaseImplementation Deps.leakcanary_release
+    testImplementation Deps.junit
+    androidTestImplementation Deps.android_test_runner
+    androidTestImplementation Deps.espresso
+
+    kapt  Deps.annotation_procs
 }
 
 

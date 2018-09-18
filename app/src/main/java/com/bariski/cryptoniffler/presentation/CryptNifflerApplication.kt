@@ -18,6 +18,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings
+import com.squareup.leakcanary.LeakCanary
 import com.tspoon.traceur.Traceur
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -43,6 +44,12 @@ class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
 
 
     override fun onCreate() {
+        super.onCreate()
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            return
+        }
+        LeakCanary.install(this)
+        instance = this
         if (BuildConfig.DEBUG) {
             StrictMode.setThreadPolicy(StrictMode.ThreadPolicy.Builder()
                     .detectDiskReads()
@@ -56,10 +63,6 @@ class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
                     .penaltyLog()
                     .penaltyDeath()
                     .build())
-        }
-        super.onCreate()
-        instance = this
-        if (BuildConfig.DEBUG) {
             Traceur.enableLogging()
         }
         initLogger()

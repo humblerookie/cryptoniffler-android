@@ -43,13 +43,13 @@
         
     <string name="detail.content.selling_below">%s se puede vender aquí a %s por debajo de la tasa de mercado. </string>
         
-    <string name="detail.content.selling_excately">%s se puede vender aquí exactamente a la tasa de mercado. </string>
+    <string name="detail.content.selling_exactly">%s se puede vender aquí exactamente a la tasa de mercado. </string>
         
     <string name="detail.content.buying_above">%s se pueden comprar aquí a %s por encima de la tasa de mercado. </string>
         
     <string name="detail.content.buying_below">%s se pueden comprar aquí a %s por debajo de la tasa de mercado. </string>
         
-    <string name="detail.content.buying_exactamente">%s se pueden comprar aquí exactamente a la tasa de mercado. </string>
+    <string name="detail.content.buying_exactly">%s se pueden comprar aquí exactamente a la tasa de mercado. </string>
         
     <string name="detail.content.at"> en </string>
         

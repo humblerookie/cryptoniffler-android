@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <!-- Recommended so that CleverTap knows when to attempt a network call -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
@@ -12,21 +11,18 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
-    <!-- if using CleverTap SDK v3.0.0+ -->
     <application
         android:name=".presentation.CryptNifflerApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:targetSandboxVersion="2">
+        android:supportsRtl="true">
         <activity
             android:name=".presentation.main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -38,12 +34,16 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateVisible" />
 
-        <service android:name=".presentation.common.notification.FcmMessageListenerService">
+        <service
+            android:name=".presentation.common.notification.FcmMessageListenerService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <service android:name=".presentation.common.notification.InstanceIdListenerService">
+        <service
+            android:name=".presentation.common.notification.InstanceIdListenerService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>

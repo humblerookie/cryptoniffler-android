@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dev CryptoNiffler</string>
+    <string name="app_name" translatable="false">Dev CryptoNiffler</string>
 </resources>

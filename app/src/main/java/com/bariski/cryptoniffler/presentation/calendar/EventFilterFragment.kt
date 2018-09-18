@@ -1,5 +1,6 @@
 package com.bariski.cryptoniffler.presentation.calendar
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.graphics.Color
@@ -19,6 +20,7 @@ import com.bariski.cryptoniffler.presentation.common.BaseInjectFragment
 import java.text.SimpleDateFormat
 import java.util.*
 
+@SuppressLint("SimpleDateFormat")
 open abstract class EventFilterFragment : BaseInjectFragment() {
 
 
@@ -58,7 +60,7 @@ open abstract class EventFilterFragment : BaseInjectFragment() {
                 toDate = view.findViewById(R.id.toDate)
                 toDate.text = "-"
 
-                fromDate.setOnClickListener({
+                fromDate.setOnClickListener {
 
                     if (fromPicker == null) {
                         val calendar = Calendar.getInstance()
@@ -71,9 +73,9 @@ open abstract class EventFilterFragment : BaseInjectFragment() {
                         fromPicker?.let { it.datePicker.minDate = Calendar.getInstance().timeInMillis - 1000 }
                     }
                     fromPicker?.show()
-                })
+                }
 
-                toDate.setOnClickListener({
+                toDate.setOnClickListener {
 
                     if (toPicker == null) {
                         val calendar = Calendar.getInstance()
@@ -86,7 +88,7 @@ open abstract class EventFilterFragment : BaseInjectFragment() {
                         toPicker?.let { it.datePicker.minDate = Calendar.getInstance().timeInMillis - 1000 }
                     }
                     toPicker?.show()
-                })
+                }
                 filterCategory = view.findViewById(R.id.category)
                 filterCoin = view.findViewById(R.id.coins)
                 filterPeriod = view.findViewById(R.id.period)
@@ -124,11 +126,11 @@ open abstract class EventFilterFragment : BaseInjectFragment() {
                         switchContents(it)
                     }
                 }
-                close.setOnClickListener({
+                close.setOnClickListener {
                     dialog?.dismiss()
-                })
+                }
 
-                clearFilter.setOnClickListener({
+                clearFilter.setOnClickListener {
                     dismiss()
                     getCalendarPresenter()?.onFilterClear()
                     coinAdapter?.getSelected()?.let { (it as HashSet).clear() }
@@ -139,15 +141,15 @@ open abstract class EventFilterFragment : BaseInjectFragment() {
                     val cal = Calendar.getInstance()
                     fromPicker?.datePicker?.updateDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH))
                     toDate.text = "-"
-                })
+                }
 
-                applyFilter.setOnClickListener({
+                applyFilter.setOnClickListener {
 
                     val selectedCoins = coinAdapter?.getSelected()
                     val selectedCategory = categoryAdapter?.getSelected()
                     getCalendarPresenter().onFilterApply(selectedCoins, selectedCategory, from, to)
                     dismiss()
-                })
+                }
 
 
                 filterCategory.setOnClickListener(listener)

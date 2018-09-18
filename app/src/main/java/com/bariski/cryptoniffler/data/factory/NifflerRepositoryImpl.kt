@@ -7,9 +7,9 @@ import com.bariski.cryptoniffler.data.api.models.BestCoin
 import com.bariski.cryptoniffler.data.api.models.BestCoinResponse
 import com.bariski.cryptoniffler.data.api.models.BestExchangeResponse
 import com.bariski.cryptoniffler.data.api.models.CoinsAndExchanges
+import com.bariski.cryptoniffler.data.cache.CNDao
 import com.bariski.cryptoniffler.data.cache.DataCache
 import com.bariski.cryptoniffler.data.storage.KeyValueStore
-import com.bariski.cryptoniffler.data.utils.getAssetFromDevice
 import com.bariski.cryptoniffler.domain.model.*
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
 import com.bariski.cryptoniffler.domain.util.BTC_INR_API
@@ -20,9 +20,14 @@ import com.squareup.moshi.Types
 import io.reactivex.Single
 
 
-class NifflerRepositoryImpl(val context: Context, private val api: CryptoNifflerApi,
-                            remoteConfig: FirebaseRemoteConfig, private val keyValueStore: KeyValueStore,
-                            private val moshi: Moshi, private val cache: DataCache) : StaticContentRepositoryImpl(remoteConfig), NifflerRepository {
+class NifflerRepositoryImpl(val context: Context,
+                            private val api: CryptoNifflerApi,
+                            remoteConfig: FirebaseRemoteConfig,
+                            private val keyValueStore: KeyValueStore,
+                            private val moshi: Moshi,
+                            private val cache: DataCache,
+                            private val dao: CNDao
+) : StaticContentRepositoryImpl(remoteConfig), NifflerRepository {
 
 
     override fun fetchLatestConfig() {
@@ -50,7 +55,8 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
             return api.getCoinsAndExchanges().map {
                 updateMaps(it)
                 keyValueStore.storeLong(KEY_INFO_VERSION, updatedVersion)
-                keyValueStore.storeString(KEY_DATA_COINSNEXCHANGES, moshi.adapter<CoinsAndExchanges>(CoinsAndExchanges::class.java).toJson(it))
+                dao.insertCoins(it.coins)
+                dao.insertExchanges(it.exchanges)
                 ArrayList(it.coins)
             }.onErrorReturn {
                 val cNe = getDiskCachedData()
@@ -79,12 +85,7 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
     }
 
     private fun getDiskCachedData(): CoinsAndExchanges {
-        val adapter = moshi.adapter<CoinsAndExchanges>(CoinsAndExchanges::class.java)
-        var pref: String? = keyValueStore.getString(KEY_DATA_COINSNEXCHANGES)
-        if (pref == null) {
-            pref = getAssetFromDevice("exchanges_coins.json", context)
-        }
-        return adapter.fromJson(pref)!!
+        return CoinsAndExchanges(dao.loadAllExchanges(),dao.loadAllCoins())
     }
 
 
@@ -97,7 +98,8 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
             return api.getCoinsAndExchanges().map {
                 updateMaps(it)
                 keyValueStore.storeLong(KEY_INFO_VERSION, updatedVersion)
-                keyValueStore.storeString(KEY_DATA_COINSNEXCHANGES, moshi.adapter<CoinsAndExchanges>(CoinsAndExchanges::class.java).toJson(it))
+                dao.insertCoins(it.coins)
+                dao.insertExchanges(it.exchanges)
                 ArrayList(it.exchanges)
             }.onErrorReturn {
                 val cNe = getDiskCachedData()
@@ -216,7 +218,6 @@ class NifflerRepositoryImpl(val context: Context, private val api: CryptoNiffler
 
 
     private val KEY_INFO_VERSION = "key_info_version"
-    private val KEY_DATA_COINSNEXCHANGES = "data_coinsnexchanges"
     private val KEY_DATA_ARB_FILTERS = "data_arb_filters"
     private val KEY_DATA_SRC_EXCHANGES = "data_src_exchanges"
     private val KEY_DATA_DEST_EXCHANGES = "data_dest_exchanges"

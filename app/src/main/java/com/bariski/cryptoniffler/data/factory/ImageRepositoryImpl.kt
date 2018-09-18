@@ -31,7 +31,6 @@ class ImageRepositoryImpl(val context: Context) : ImageLoader {
         builder.memoryCache(LruCache(context))
         builder.downloader(OkHttp3Downloader(context, Integer.MAX_VALUE.toLong()))
         val built = builder.build()
-        // built.setIndicatorsEnabled(BuildConfig.DEBUG)
         built.isLoggingEnabled = BuildConfig.DEBUG
         Picasso.setSingletonInstance(built)
     }

@@ -5,8 +5,8 @@ import android.content.Context
 import android.net.Uri
 import com.bariski.cryptoniffler.data.api.EventsApi
 import com.bariski.cryptoniffler.data.api.models.AuthTokenResponse
+import com.bariski.cryptoniffler.data.cache.CNDao
 import com.bariski.cryptoniffler.data.storage.KeyValueStore
-import com.bariski.cryptoniffler.data.utils.getAssetFromDevice
 import com.bariski.cryptoniffler.domain.common.Schedulers
 import com.bariski.cryptoniffler.domain.model.CalendarCategory
 import com.bariski.cryptoniffler.domain.model.CalendarCoin
@@ -15,13 +15,12 @@ import com.bariski.cryptoniffler.domain.repository.EventsRepository
 import com.bariski.cryptoniffler.domain.util.*
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
 import io.reactivex.Single
 import retrofit2.HttpException
 import java.util.*
 import kotlin.collections.ArrayList
 
-class EventsRepositoryImpl(private val api: EventsApi, private val remoteConfig: FirebaseRemoteConfig, private val keyValue: KeyValueStore, private val moshi: Moshi, private val context: Context, private val scheduler: Schedulers) : EventsRepository {
+class EventsRepositoryImpl(private val api: EventsApi, private val remoteConfig: FirebaseRemoteConfig, private val keyValue: KeyValueStore, private val moshi: Moshi, private val context: Context, private val scheduler: Schedulers, val dao: CNDao) : EventsRepository {
 
     private val EVENT_FILTER_TIMESTAMP_COINS = "event_filter_timestamp_coins_v2"
     private val EVENT_FILTER_TIMESTAMP_CATEGORIES = "event_filter_timestamp_categories_v2"
@@ -70,7 +69,7 @@ class EventsRepositoryImpl(private val api: EventsApi, private val remoteConfig:
                         }
                     }
         } else {
-            Single.just(getCachedCoins())
+            Single.just(1).observeOn(scheduler.io()).map { getCachedCoins() }
         }
 
     }
@@ -135,37 +134,25 @@ class EventsRepositoryImpl(private val api: EventsApi, private val remoteConfig:
                         }
                     }
         } else {
-            Single.just(getCachedCategories())
+            Single.just(1).observeOn(scheduler.io()).map { getCachedCategories() }
         }
 
     }
 
     private fun getCachedCategories(): List<CalendarCategory> {
-        val adapter = moshi.adapter<List<CalendarCategory>>(Types.newParameterizedType(List::class.java, CalendarCategory::class.java))
-        var pref: String? = keyValue.getString(EVENT_FILTER_CATEGORY)
-        if (pref == null) {
-            pref = getAssetFromDevice("filter_categories.json", context)
-        }
-        return adapter.fromJson(pref)!!
+        return dao.loadAllCalendarCategories()
     }
 
     private fun getCachedCoins(): List<CalendarCoin> {
-        val adapter = moshi.adapter<List<CalendarCoin>>(Types.newParameterizedType(List::class.java, CalendarCoin::class.java))
-        var pref: String? = keyValue.getString(EVENT_FILTER_COINS)
-        if (pref == null) {
-            pref = getAssetFromDevice("filter_coins.json", context)
-        }
-        return adapter.fromJson(pref)!!
+        return dao.loadAllCalendarCoins()
     }
 
     private fun saveCategories(data: List<CalendarCategory>) {
-        val adapter = moshi.adapter<List<CalendarCategory>>(Types.newParameterizedType(List::class.java, CalendarCategory::class.java))
-        keyValue.storeString(EVENT_FILTER_CATEGORY, adapter.toJson(data))
+        dao.insertCalendarCategories(data)
     }
 
     private fun saveEventCoins(data: List<CalendarCoin>) {
-        val adapter = moshi.adapter<List<CalendarCoin>>(Types.newParameterizedType(List::class.java, CalendarCoin::class.java))
-        keyValue.storeString(EVENT_FILTER_COINS, adapter.toJson(data))
+        dao.insertCalendarCoins(data)
     }
 
     private fun saveToken(data: String) {
