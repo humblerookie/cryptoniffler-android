@@ -13,19 +13,19 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import com.bariski.cryptoniffler.R
+import com.bariski.cryptoniffler.data.factory.Logger
 import com.bariski.cryptoniffler.presentation.calendar.models.CalendarItem
-import com.crashlytics.android.Crashlytics
-import timber.log.Timber
 import java.util.*
+import javax.inject.Inject
 
 
-class CalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class CalendarAdapter @Inject constructor(val logger: Logger) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     val data = ArrayList<CalendarItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == 0) {
-            ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_calendar, parent, false))
+            ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_calendar, parent, false), logger)
         } else {
             CreditsViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_credits, parent, false))
         }
@@ -54,7 +54,7 @@ class CalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, logger: Logger) : RecyclerView.ViewHolder(view) {
         @JvmField
         val coinTitle: TextView = view.findViewById(R.id.coinTitle)
         @JvmField
@@ -78,7 +78,7 @@ class CalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                 item?.apply {
                     val calendarIcon = view.findViewById<View>(R.id.addReminder)
                     if (calendarIcon is ImageView) {
-                        (calendarIcon?.parent as View).post({
+                        (calendarIcon?.parent as View).post {
                             val delegateArea = Rect()
                             val myButton = calendarIcon
                             myButton.getHitRect(delegateArea)
@@ -89,9 +89,9 @@ class CalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                             if (View::class.java.isInstance(myButton.parent)) {
                                 (myButton.parent as View).touchDelegate = touchDelegate
                             }
-                        })
+                        }
                         val calendarHeader = view.findViewById<View>(R.id.calendarHeader)
-                        (calendarHeader?.parent as View).post({
+                        (calendarHeader?.parent as View).post {
                             val delegateArea = Rect()
                             val myButton = calendarHeader
                             myButton.getHitRect(delegateArea)
@@ -102,7 +102,7 @@ class CalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                             if (View::class.java.isInstance(myButton.parent)) {
                                 (myButton.parent as View).touchDelegate = touchDelegate
                             }
-                        })
+                        }
                     }
                     val listener = View.OnClickListener { view ->
                         val intent = Intent(Intent.ACTION_EDIT)
@@ -121,8 +121,7 @@ class CalendarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
                             intent.data = Uri.parse(it)
                             context.startActivity(intent)
                         } catch (e: Exception) {
-                            Timber.e(it)
-                            Crashlytics.logException(e)
+                            logger.logException(e)
                         }
                     }
                 }

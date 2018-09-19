@@ -1,6 +1,8 @@
 package com.bariski.cryptoniffler.presentation.main
 
 import android.app.Fragment
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.text.Html
 import android.text.method.LinkMovementMethod
@@ -33,6 +35,9 @@ class InfoFragment : BaseInjectFragment(), InfoView {
         if (isAlive()) {
             container.exchangesValue.text = Html.fromHtml(info.exchangeInfo)
             container.featuresValue.text = Html.fromHtml(info.upcomingFeatures)
+            container.labelPrivacy.setOnClickListener {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(info.privacyPolicyUrl)))
+            }
         }
     }
 

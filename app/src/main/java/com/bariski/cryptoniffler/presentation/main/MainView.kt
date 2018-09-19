@@ -22,4 +22,5 @@ interface MainView : BaseView {
     fun sendFeedback()
     fun shareArbitrage(file: File)
     fun showInfo()
+    fun showVersionChangeInfo()
 }

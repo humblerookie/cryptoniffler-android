@@ -14,9 +14,7 @@ import com.bariski.cryptoniffler.presentation.common.BaseView
 import com.bariski.cryptoniffler.presentation.common.models.ImageRequest
 import com.bariski.cryptoniffler.presentation.main.adapters.ItemDetailAdapter
 import com.bariski.cryptoniffler.presentation.main.model.GridDetailWrapper
-import com.crashlytics.android.Crashlytics
 import kotlinx.android.synthetic.main.activity_coin_detail.*
-import timber.log.Timber
 import java.util.*
 import javax.inject.Inject
 
@@ -43,12 +41,12 @@ class CoinDetailActivity : BaseActivity(), CoinDetailView {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         try {
-            Crashlytics.setString("c", intent.getStringExtra("coin"))
-            Crashlytics.setString("e", intent.getStringExtra("exchange"))
-            Crashlytics.setLong("l", intent.getLongExtra("amount", 0))
-            Crashlytics.setLong("time", Calendar.getInstance().timeInMillis)
+            logger.setString("c", intent.getStringExtra("coin"))
+            logger.setString("e", intent.getStringExtra("exchange"))
+            logger.setLong("l", intent.getLongExtra("amount", 0))
+            logger.setLong("time", Calendar.getInstance().timeInMillis)
         } catch (e: Exception) {
-            Timber.e(e)
+            logger.logException(e)
         }
         presenter.initView(this, savedInstanceState, intent.extras)
     }

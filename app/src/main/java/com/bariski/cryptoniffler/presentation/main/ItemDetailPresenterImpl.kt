@@ -10,6 +10,7 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.analytics.Analytics
+import com.bariski.cryptoniffler.data.factory.Logger
 import com.bariski.cryptoniffler.domain.common.Schedulers
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
 import com.bariski.cryptoniffler.domain.util.COIN
@@ -18,7 +19,6 @@ import com.bariski.cryptoniffler.presentation.common.models.GridItemDetail
 import com.bariski.cryptoniffler.presentation.common.utils.ALL
 import com.bariski.cryptoniffler.presentation.common.utils.PERCENTAGE
 import com.bariski.cryptoniffler.presentation.main.model.GridDetailWrapper
-import com.crashlytics.android.Crashlytics
 import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -29,7 +29,7 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 
 
-class ItemDetailPresenterImpl(val repository: NifflerRepository, private val schedulerProvider: Schedulers, private val context: Context, val analytics: Analytics) : ItemDetailPresenter {
+class ItemDetailPresenterImpl(val repository: NifflerRepository, private val schedulerProvider: Schedulers, private val context: Context, val analytics: Analytics, val logger: Logger) : ItemDetailPresenter {
 
 
     var ignoreFees = false
@@ -238,8 +238,8 @@ class ItemDetailPresenterImpl(val repository: NifflerRepository, private val sch
 
     override fun initView(view: CoinDetailView, savedState: Bundle?, args: Bundle?) {
         this.view = WeakReference(view)
-        Crashlytics.setBool("saved", savedState != null)
-        Crashlytics.setBool("args", args != null)
+        logger.setBool("saved", savedState != null)
+        logger.setBool("args", args != null)
 
         val state = savedState ?: args!!
         state.apply {

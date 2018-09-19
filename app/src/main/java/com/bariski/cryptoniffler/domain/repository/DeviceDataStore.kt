@@ -17,4 +17,8 @@ interface DeviceDataStore {
     fun hasPermissionRationaleShown(permission: String): Boolean
 
     fun setPermissionRationaleShown(permission: String, b: Boolean)
+
+    fun getLastAppVersion(): Int
+
+    fun setLastAppVersion(version: Int)
 }

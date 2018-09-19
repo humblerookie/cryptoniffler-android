@@ -19,12 +19,11 @@ import android.view.ViewAnimationUtils
 import android.view.ViewTreeObserver
 import android.view.animation.AccelerateInterpolator
 import com.bariski.cryptoniffler.R
+import com.bariski.cryptoniffler.data.factory.Logger
 import com.bariski.cryptoniffler.domain.repository.AndroidDataStore
 import com.bariski.cryptoniffler.presentation.common.extensions.makeInvisible
 import com.bariski.cryptoniffler.presentation.common.extensions.makeVisible
-import com.crashlytics.android.Crashlytics
 import dagger.android.support.DaggerAppCompatActivity
-import io.fabric.sdk.android.Fabric
 import javax.inject.Inject
 
 
@@ -44,6 +43,8 @@ abstract class BaseActivity : DaggerAppCompatActivity(), BaseView {
     private var permissionSnackbar: Snackbar? = null
     @Inject
     lateinit var storage: AndroidDataStore
+    @Inject
+    lateinit var logger: Logger
 
 
     abstract fun <T : BaseView> getBasePresenter(): BasePresenter<T>
@@ -53,9 +54,7 @@ abstract class BaseActivity : DaggerAppCompatActivity(), BaseView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (!Fabric.isInitialized()) {
-            Fabric.with(this, Crashlytics())
-        }
+        logger.initLogger(this)
         setContentView(layoutResId)
         rootLayout = findViewById<View>(android.R.id.content)
         if (savedInstanceState == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&
@@ -111,12 +110,12 @@ abstract class BaseActivity : DaggerAppCompatActivity(), BaseView {
         if (permissionSnackbar == null) {
             permissionSnackbar = Snackbar
                     .make(view, neverAskAgainResId, Snackbar.LENGTH_INDEFINITE)
-                    .setAction(R.string.common_label_permission_settings, {
+                    .setAction(R.string.common_label_permission_settings) {
                         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
                                 Uri.fromParts("package", packageName, null))
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(intent)
-                    })
+                    }
         }
         val snackbar = permissionSnackbar
         snackbar?.show()

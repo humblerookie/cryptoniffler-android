@@ -10,7 +10,10 @@ open class StaticContentRepositoryImpl(val remoteConfig: FirebaseRemoteConfig) :
     private val KEY_EXCHANGE_INFO = "key_exchange_info"
     private val KEY_UPCOMING_FEATURES = "key_upcoming_features"
 
+    private val PRIVACY_POLICY = "privacy_policy"
     override fun getStaticInfo(): Single<Info> {
-        return Single.just(Info(remoteConfig.getString(KEY_EXCHANGE_INFO), remoteConfig.getString(KEY_UPCOMING_FEATURES)))
+        return Single.just(Info(remoteConfig.getString(KEY_EXCHANGE_INFO), remoteConfig.getString(KEY_UPCOMING_FEATURES), remoteConfig.getString(PRIVACY_POLICY)))
     }
+
+
 }

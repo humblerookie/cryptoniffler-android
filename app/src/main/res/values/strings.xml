@@ -110,5 +110,7 @@
     <string name="arbitrage.market_sell_placeholder">%s Market(Sell)</string>
     <string name="arbitrage.market_buy_placeholder">%s Market(Buy)</string>
     <string name="arbitrage.breakeven_arbitragetime"><![CDATA[Breakeven at <b>%s</b>.<br/> Arbitrage time ~<b>%s</b>]]></string>
-    <string name="common.privacy_policy" translatable="false"><a href="https://docs.google.com/document/d/1zBRf4K7NEE98ZuPlm1YzdRdcCvMOjfY3R8oFDK5LNkc">Privacy Policy</a></string>
+    <string name="common.privacy_policy" translatable="false"><u>Privacy Policy</u></string>
+    <string name="changed.title" translatable="false">What\'s changed</string>
+    <string name="changed.content" translatable="false">- Privacy policy added</string>
 </resources>

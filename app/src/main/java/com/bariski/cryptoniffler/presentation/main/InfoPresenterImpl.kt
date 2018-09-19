@@ -1,10 +1,8 @@
 package com.bariski.cryptoniffler.presentation.main
 
-import android.content.ClipData
 import android.content.ClipboardManager
 import android.os.Bundle
 import android.util.Log
-import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.analytics.Analytics
 import com.bariski.cryptoniffler.domain.common.Schedulers
 import com.bariski.cryptoniffler.domain.model.Info
@@ -15,6 +13,7 @@ import java.lang.ref.WeakReference
 
 
 class InfoPresenterImpl(val clipboardManager: ClipboardManager, val repository: NifflerRepository, val schedulers: Schedulers, val analytics: Analytics) : InfoPresenter {
+
 
     private val TAG = "InfoPresenter"
     var info: Info? = null

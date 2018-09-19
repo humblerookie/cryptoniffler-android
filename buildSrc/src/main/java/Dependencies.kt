@@ -3,8 +3,8 @@ object Version {
     val target_sdk = 27
     val compile_sdk = 27
 
-    val version_code = 34
-    val version_name = "2.2.9"
+    val version_code = 35
+    val version_name = "2.2.10"
 
     val kotlin = "1.2.61"
     val support = "27.1.1"
@@ -18,7 +18,7 @@ object Version {
     val android_gradle = "3.3.0-alpha05"
     val rxbinding = "2.1.1"
     val firebase = "11.4.0"
-    val crashlytics = "2.9.1"
+    val crashlytics = "2.9.5"
     val retrofit = "2.3.0"
     val moshi = "1.5.0"
     val picasso = "2.5.2"

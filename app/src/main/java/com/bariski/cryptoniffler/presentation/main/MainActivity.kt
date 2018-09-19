@@ -19,6 +19,7 @@ import android.view.Gravity
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import com.afollestad.materialdialogs.MaterialDialog
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.presentation.common.BaseActivity
 import com.bariski.cryptoniffler.presentation.common.BasePresenter
@@ -276,6 +277,18 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                     dialog.dismiss()
                 }
                 .setIcon(android.R.drawable.ic_dialog_alert)
+                .show()
+    }
+
+    override fun showVersionChangeInfo() {
+        MaterialDialog.Builder(this)
+                .title(R.string.changed_title)
+                .content(getString(R.string.changed_content))
+                .positiveText(R.string.common_label_ok)
+                .iconRes(R.drawable.ic_volume)
+                .onPositive { dialog, _ ->
+                    dialog.dismiss()
+                }
                 .show()
     }
 }

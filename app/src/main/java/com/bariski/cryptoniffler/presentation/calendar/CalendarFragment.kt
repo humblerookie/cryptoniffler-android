@@ -25,6 +25,8 @@ class CalendarFragment : EventFilterFragment(), CalendarView, View.OnClickListen
     @Inject
     lateinit var presenter: CalendarPresenter
 
+    @Inject
+    lateinit var adapter: CalendarAdapter
 
     lateinit var list: RecyclerView
     lateinit var bottomProgress: View
@@ -33,9 +35,6 @@ class CalendarFragment : EventFilterFragment(), CalendarView, View.OnClickListen
     lateinit var container: View
 
     var snackbar: Snackbar? = null
-
-
-    lateinit var adapter: CalendarAdapter
 
 
     override fun toggleCenterProgress(visible: Boolean) {
@@ -153,7 +152,6 @@ class CalendarFragment : EventFilterFragment(), CalendarView, View.OnClickListen
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view = inflater.inflate(R.layout.fragment_calendar, container, false)
-        adapter = CalendarAdapter()
         list = view.findViewById(R.id.list)
         bottomProgress = view.findViewById(R.id.bottomProgress)
         centerProgress = view.findViewById(R.id.centerProgress)

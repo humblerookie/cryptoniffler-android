@@ -66,6 +66,7 @@ class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
             Traceur.enableLogging()
         }
         initLogger()
+
         FirebaseApp.initializeApp(this)
         val configSettings = FirebaseRemoteConfigSettings.Builder()
                 .setDeveloperModeEnabled(BuildConfig.DEBUG)

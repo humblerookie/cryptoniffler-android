@@ -70,7 +70,7 @@ android.arch.lifecycle.Lifecycle$State -> android.arch.lifecycle.a$b:
     boolean isAtLeast(android.arch.lifecycle.Lifecycle$State) -> a
 android.arch.lifecycle.LifecycleObserver -> android.arch.lifecycle.b:
 android.arch.lifecycle.LifecycleOwner -> android.arch.lifecycle.c:
-    android.arch.lifecycle.Lifecycle getLifecycle() -> k
+    android.arch.lifecycle.Lifecycle getLifecycle() -> l
 android.arch.lifecycle.LifecycleRegistry -> android.arch.lifecycle.e:
     android.arch.core.internal.FastSafeIterableMap mObserverMap -> a
     android.arch.lifecycle.Lifecycle$State mState -> b
@@ -98,7 +98,7 @@ android.arch.lifecycle.LifecycleRegistry$1 -> android.arch.lifecycle.d:
 android.arch.lifecycle.LifecycleRegistry$ObserverWithState -> android.arch.lifecycle.e$a:
     void dispatchEvent(android.arch.lifecycle.LifecycleOwner,android.arch.lifecycle.Lifecycle$Event) -> a
 android.arch.lifecycle.LifecycleRegistryOwner -> android.arch.lifecycle.f:
-    android.arch.lifecycle.LifecycleRegistry getLifecycle() -> j
+    android.arch.lifecycle.LifecycleRegistry getLifecycle() -> k
 android.arch.lifecycle.LiveData -> android.arch.lifecycle.LiveData:
     java.lang.Object NOT_SET -> a
 android.arch.lifecycle.LiveData$LifecycleBoundObserver -> android.arch.lifecycle.LiveData$LifecycleBoundObserver:
@@ -3296,7 +3296,7 @@ android.support.v4.app.Fragment -> android.support.v4.app.Fragment:
     void callStartTransitionListener() -> Z
     android.animation.Animator getAnimator() -> V
     android.animation.Animator onCreateAnimator(int,boolean,int) -> b
-    android.arch.lifecycle.Lifecycle getLifecycle() -> k
+    android.arch.lifecycle.Lifecycle getLifecycle() -> l
     android.content.Context getContext() -> c
     android.content.Context requireContext() -> d
     android.content.res.Resources getResources() -> f
@@ -3311,7 +3311,7 @@ android.support.v4.app.Fragment -> android.support.v4.app.Fragment:
     android.view.LayoutInflater onGetLayoutInflater(android.os.Bundle) -> c
     android.view.LayoutInflater performGetLayoutInflater(android.os.Bundle) -> d
     android.view.View getAnimatingAway() -> U
-    android.view.View getView() -> l
+    android.view.View getView() -> j
     android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
     android.view.View performCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> b
     android.view.animation.Animation onCreateAnimation(int,boolean,int) -> a
@@ -3451,18 +3451,18 @@ android.support.v4.app.FragmentActivity -> android.support.v4.app.o:
     int mNextCandidateRequestIndex -> o
     boolean markState(android.support.v4.app.FragmentManager,android.arch.lifecycle.Lifecycle$State) -> a
     int allocateRequestIndex(android.support.v4.app.Fragment) -> b
-    void markFragmentsCreated() -> u
-    android.arch.lifecycle.Lifecycle getLifecycle() -> k
-    android.support.v4.app.FragmentManager getSupportFragmentManager() -> t
+    void markFragmentsCreated() -> v
+    android.arch.lifecycle.Lifecycle getLifecycle() -> l
+    android.support.v4.app.FragmentManager getSupportFragmentManager() -> u
     android.view.View dispatchFragmentsOnCreateView(android.view.View,java.lang.String,android.content.Context,android.util.AttributeSet) -> a
     boolean onPrepareOptionsPanel(android.view.View,android.view.Menu) -> a
-    java.lang.Object onRetainCustomNonConfigurationInstance() -> q
+    java.lang.Object onRetainCustomNonConfigurationInstance() -> r
     void doReallyStop(boolean) -> k
     void onAttachFragment(android.support.v4.app.Fragment) -> a
-    void onReallyStop() -> s
-    void onResumeFragments() -> p
+    void onReallyStop() -> t
+    void onResumeFragments() -> q
     void startActivityFromFragment(android.support.v4.app.Fragment,android.content.Intent,int,android.os.Bundle) -> a
-    void supportInvalidateOptionsMenu() -> r
+    void supportInvalidateOptionsMenu() -> s
     void validateRequestPermissionsRequestCode(int) -> c
 android.support.v4.app.FragmentActivity$1 -> android.support.v4.app.n:
     android.support.v4.app.FragmentActivity this$0 -> a
@@ -4102,7 +4102,7 @@ android.support.v4.app.SuperNotCalledException -> android.support.v4.app.ea:
 android.support.v4.app.SupportActivity -> android.support.v4.app.fa:
     android.arch.lifecycle.LifecycleRegistry mLifecycleRegistry -> b
     android.support.v4.util.SimpleArrayMap mExtraDataMap -> a
-    android.arch.lifecycle.Lifecycle getLifecycle() -> k
+    android.arch.lifecycle.Lifecycle getLifecycle() -> l
 android.support.v4.app.TaskStackBuilder -> android.support.v4.app.ga:
     android.content.Context mSourceContext -> c
     java.util.ArrayList mIntents -> b
@@ -4114,7 +4114,7 @@ android.support.v4.app.TaskStackBuilder -> android.support.v4.app.ga:
     void startActivities() -> a
     void startActivities(android.os.Bundle) -> a
 android.support.v4.app.TaskStackBuilder$SupportParentable -> android.support.v4.app.ga$a:
-    android.content.Intent getSupportParentActivityIntent() -> m
+    android.content.Intent getSupportParentActivityIntent() -> n
 android.support.v4.app.TaskStackBuilder$TaskStackBuilderApi16Impl -> android.support.v4.app.ga$b:
 android.support.v4.app.TaskStackBuilder$TaskStackBuilderBaseImpl -> android.support.v4.app.ga$c:
 android.support.v4.content.ContextCompat -> a.b.f.a.a:
@@ -6229,7 +6229,7 @@ android.support.v7.app.ActionBarDrawerToggle$Delegate -> android.support.v7.app.
     void setActionBarDescription(int) -> a
     void setActionBarUpIndicator(android.graphics.drawable.Drawable,int) -> a
 android.support.v7.app.ActionBarDrawerToggle$DelegateProvider -> android.support.v7.app.c$b:
-    android.support.v7.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate() -> o
+    android.support.v7.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate() -> p
 android.support.v7.app.ActionBarDrawerToggle$IcsDelegate -> android.support.v7.app.c$c:
     android.app.Activity mActivity -> a
     android.support.v7.app.ActionBarDrawerToggleHoneycomb$SetIndicatorInfo mSetIndicatorInfo -> b
@@ -6443,20 +6443,20 @@ android.support.v7.app.AppCompatActivity -> android.support.v7.app.o:
     android.support.v7.app.AppCompatDelegate mDelegate -> q
     int mThemeId -> r
     boolean performMenuItemShortcut(int,android.view.KeyEvent) -> a
-    android.content.Intent getSupportParentActivityIntent() -> m
-    android.support.v7.app.ActionBar getSupportActionBar() -> u
-    android.support.v7.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate() -> o
-    android.support.v7.app.AppCompatDelegate getDelegate() -> x
+    android.content.Intent getSupportParentActivityIntent() -> n
+    android.support.v7.app.ActionBar getSupportActionBar() -> v
+    android.support.v7.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate() -> p
+    android.support.v7.app.AppCompatDelegate getDelegate() -> y
     android.support.v7.view.ActionMode onWindowStartingSupportActionMode(android.support.v7.view.ActionMode$Callback) -> a
-    boolean onSupportNavigateUp() -> v
+    boolean onSupportNavigateUp() -> w
     boolean supportShouldUpRecreateTask(android.content.Intent) -> b
     void onCreateSupportNavigateUpTaskStack(android.support.v4.app.TaskStackBuilder) -> a
     void onPrepareSupportNavigateUpTaskStack(android.support.v4.app.TaskStackBuilder) -> b
     void onSupportActionModeFinished(android.support.v7.view.ActionMode) -> b
     void onSupportActionModeStarted(android.support.v7.view.ActionMode) -> a
-    void onSupportContentChanged() -> w
+    void onSupportContentChanged() -> x
     void setSupportActionBar(android.support.v7.widget.Toolbar) -> a
-    void supportInvalidateOptionsMenu() -> r
+    void supportInvalidateOptionsMenu() -> s
     void supportNavigateUpTo(android.content.Intent) -> c
 android.support.v7.app.AppCompatCallback -> android.support.v7.app.p:
     android.support.v7.view.ActionMode onWindowStartingSupportActionMode(android.support.v7.view.ActionMode$Callback) -> a
@@ -11173,13 +11173,16 @@ com.bariski.cryptoniffler.data.cache.MemCache -> com.bariski.cryptoniffler.data.
     java.util.HashMap getExchanges() -> b
     void clearAll() -> a
 com.bariski.cryptoniffler.data.factory.DeviceDataStoreImpl -> b.b.a.b.b.a:
-    com.bariski.cryptoniffler.data.storage.KeyValueStore keyValue -> f
+    com.bariski.cryptoniffler.data.storage.KeyValueStore keyValue -> g
+    java.lang.String APP_VERSION -> d
     java.lang.String DEVICE_TOKEN -> c
     java.lang.String FCM_TOKEN -> a
     java.lang.String INSTANCE_ID -> b
-    java.lang.String IS_DEVICE_REGISTERED -> d
-    java.lang.String IS_PERMISSION_RATIONALE_SHOWN -> e
+    java.lang.String IS_DEVICE_REGISTERED -> e
+    java.lang.String IS_PERMISSION_RATIONALE_SHOWN -> f
     boolean hasPermissionRationaleShown(java.lang.String) -> a
+    int getLastAppVersion() -> a
+    void setLastAppVersion(int) -> a
     void setPermissionRationaleShown(java.lang.String,boolean) -> a
 com.bariski.cryptoniffler.data.factory.EventsRepositoryImpl -> b.b.a.b.b.k:
     android.content.Context context -> k
@@ -11274,25 +11277,34 @@ com.bariski.cryptoniffler.data.factory.ImageRepositoryImpl$loadImage$1 -> b.b.a.
     com.bariski.cryptoniffler.presentation.common.models.ImageRequest $request -> b
     kotlin.jvm.internal.Ref$ObjectRef $context -> c
     void onError() -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl -> b.b.a.b.b.H:
-    android.content.Context context -> p
-    com.bariski.cryptoniffler.data.api.CryptoNifflerApi api -> q
-    com.bariski.cryptoniffler.data.cache.CNDao dao -> u
-    com.bariski.cryptoniffler.data.cache.DataCache cache -> t
-    com.bariski.cryptoniffler.data.storage.KeyValueStore keyValueStore -> r
-    com.squareup.moshi.Moshi moshi -> s
-    java.lang.String KEY_ARB_COUNT -> k
-    java.lang.String KEY_ARB_FILTER_SHOWN -> l
-    java.lang.String KEY_ARB_MODE -> m
-    java.lang.String KEY_ARB_SHOWN -> i
-    java.lang.String KEY_DATA_ARB_FILTERS -> e
-    java.lang.String KEY_DATA_DEST_EXCHANGES -> g
-    java.lang.String KEY_DATA_SRC_EXCHANGES -> f
-    java.lang.String KEY_DEFAULT_ARBITRAGE_SET -> n
-    java.lang.String KEY_FLAG_NAV_DRAWER_SHOWN -> h
-    java.lang.String KEY_INFO_VERSION -> d
-    java.lang.String KEY_RATE_SHARE_SHOWN -> j
-    long CACHE_EXPIRATION -> o
+com.bariski.cryptoniffler.data.factory.Logger -> b.b.a.b.b.o:
+    void initLogger(android.app.Activity) -> a
+    void logException(java.lang.Throwable) -> a
+    void setBool(java.lang.String,boolean) -> a
+    void setLong(java.lang.String,long) -> a
+    void setString(java.lang.String,java.lang.String) -> a
+com.bariski.cryptoniffler.data.factory.Logger_Factory -> b.b.a.b.b.p:
+    com.bariski.cryptoniffler.data.factory.Logger_Factory INSTANCE -> a
+    dagger.internal.Factory create() -> a
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl -> b.b.a.b.b.J:
+    android.content.Context context -> q
+    com.bariski.cryptoniffler.data.api.CryptoNifflerApi api -> r
+    com.bariski.cryptoniffler.data.cache.CNDao dao -> v
+    com.bariski.cryptoniffler.data.cache.DataCache cache -> u
+    com.bariski.cryptoniffler.data.storage.KeyValueStore keyValueStore -> s
+    com.squareup.moshi.Moshi moshi -> t
+    java.lang.String KEY_ARB_COUNT -> l
+    java.lang.String KEY_ARB_FILTER_SHOWN -> m
+    java.lang.String KEY_ARB_MODE -> n
+    java.lang.String KEY_ARB_SHOWN -> j
+    java.lang.String KEY_DATA_ARB_FILTERS -> f
+    java.lang.String KEY_DATA_DEST_EXCHANGES -> h
+    java.lang.String KEY_DATA_SRC_EXCHANGES -> g
+    java.lang.String KEY_DEFAULT_ARBITRAGE_SET -> o
+    java.lang.String KEY_FLAG_NAV_DRAWER_SHOWN -> i
+    java.lang.String KEY_INFO_VERSION -> e
+    java.lang.String KEY_RATE_SHARE_SHOWN -> k
+    long CACHE_EXPIRATION -> p
     com.bariski.cryptoniffler.data.api.models.CoinsAndExchanges access$getDiskCachedData(com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl) -> d
     com.bariski.cryptoniffler.data.api.models.CoinsAndExchanges getDiskCachedData() -> o
     com.bariski.cryptoniffler.data.cache.CNDao access$getDao$p(com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl) -> c
@@ -11325,71 +11337,72 @@ com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl -> b.b.a.b.b.H:
     void setDrawerShown(boolean) -> c
     void setFiltersList(com.bariski.cryptoniffler.domain.model.ArbitrageFilter) -> a
     void setRateNShareShown(boolean) -> d
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$fetchLatestConfig$1 -> b.b.a.b.b.o:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$fetchLatestConfig$1 -> b.b.a.b.b.q:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl this$0 -> a
     void onComplete(com.google.android.gms.tasks.Task) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$1 -> b.b.a.b.b.p:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$1 -> b.b.a.b.b.r:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$1 INSTANCE -> b
     java.lang.Object invoke(java.lang.Object) -> a
     java.lang.String invoke(com.bariski.cryptoniffler.domain.model.FilterItem) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$2 -> b.b.a.b.b.q:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$2 -> b.b.a.b.b.s:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$2 INSTANCE -> b
     java.lang.Object invoke(java.lang.Object) -> a
     java.lang.String invoke(com.bariski.cryptoniffler.domain.model.FilterItem) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$3 -> b.b.a.b.b.r:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$3 -> b.b.a.b.b.t:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$3 INSTANCE -> b
     java.lang.Object invoke(java.lang.Object) -> a
     java.lang.String invoke(com.bariski.cryptoniffler.domain.model.FilterItem) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$4 -> b.b.a.b.b.s:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$4 -> b.b.a.b.b.u:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$4 INSTANCE -> b
     java.lang.Object invoke(java.lang.Object) -> a
     java.lang.String invoke(com.bariski.cryptoniffler.domain.model.FilterItem) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$5 -> b.b.a.b.b.t:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$5 -> b.b.a.b.b.v:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getArbitrage$5 INSTANCE -> b
     java.lang.Object invoke(java.lang.Object) -> a
     java.lang.String invoke(com.bariski.cryptoniffler.domain.model.FilterItem) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getBestCoin$1 -> b.b.a.b.b.u:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getBestCoin$1 -> b.b.a.b.b.w:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl this$0 -> a
     com.bariski.cryptoniffler.data.api.models.BestCoinResponse apply(com.bariski.cryptoniffler.data.api.models.BestCoinResponse) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getBestRates$1 -> b.b.a.b.b.v:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getBestRates$1 -> b.b.a.b.b.x:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl this$0 -> a
     com.bariski.cryptoniffler.data.api.models.BestExchangeResponse apply(com.bariski.cryptoniffler.data.api.models.BestExchangeResponse) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$1 -> b.b.a.b.b.w:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$1 -> b.b.a.b.b.y:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl this$0 -> a
     long $updatedVersion -> b
     java.util.ArrayList apply(com.bariski.cryptoniffler.data.api.models.CoinsAndExchanges) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$2 -> b.b.a.b.b.x:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$2 -> b.b.a.b.b.z:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl this$0 -> a
     java.util.ArrayList apply(java.lang.Throwable) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$3 -> b.b.a.b.b.y:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$3 -> b.b.a.b.b.A:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl this$0 -> a
     java.util.ArrayList apply(java.lang.Integer) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$4 -> b.b.a.b.b.A:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$4 -> b.b.a.b.b.C:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$4 INSTANCE -> a
     java.util.ArrayList apply(java.util.ArrayList) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$4$$special$$inlined$sortByDescending$1 -> b.b.a.b.b.z:
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$1 -> b.b.a.b.b.B:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getCoins$4$$special$$inlined$sortByDescending$1 -> b.b.a.b.b.B:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$1 -> b.b.a.b.b.D:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl this$0 -> a
     long $updatedVersion -> b
     java.util.ArrayList apply(com.bariski.cryptoniffler.data.api.models.CoinsAndExchanges) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$2 -> b.b.a.b.b.C:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$2 -> b.b.a.b.b.E:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl this$0 -> a
     java.util.ArrayList apply(java.lang.Throwable) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$3 -> b.b.a.b.b.D:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$3 -> b.b.a.b.b.F:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl this$0 -> a
     java.util.ArrayList apply(java.lang.Integer) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$4 -> b.b.a.b.b.F:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$4 -> b.b.a.b.b.H:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$4 INSTANCE -> a
     java.util.ArrayList apply(java.util.ArrayList) -> a
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$4$$special$$inlined$sortByDescending$1 -> b.b.a.b.b.E:
-com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getFiltersList$$inlined$let$lambda$1 -> b.b.a.b.b.G:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getExchanges$4$$special$$inlined$sortByDescending$1 -> b.b.a.b.b.G:
+com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl$getFiltersList$$inlined$let$lambda$1 -> b.b.a.b.b.I:
     com.bariski.cryptoniffler.data.factory.NifflerRepositoryImpl this$0 -> b
     java.lang.String $str -> a
     com.bariski.cryptoniffler.domain.model.ArbitrageFilter apply(java.lang.Integer) -> a
-com.bariski.cryptoniffler.data.factory.StaticContentRepositoryImpl -> b.b.a.b.b.I:
-    com.google.firebase.remoteconfig.FirebaseRemoteConfig remoteConfig -> c
+com.bariski.cryptoniffler.data.factory.StaticContentRepositoryImpl -> b.b.a.b.b.K:
+    com.google.firebase.remoteconfig.FirebaseRemoteConfig remoteConfig -> d
     java.lang.String KEY_EXCHANGE_INFO -> a
     java.lang.String KEY_UPCOMING_FEATURES -> b
+    java.lang.String PRIVACY_POLICY -> c
     com.google.firebase.remoteconfig.FirebaseRemoteConfig getRemoteConfig() -> n
     io.reactivex.Single getStaticInfo() -> f
 com.bariski.cryptoniffler.data.injection.CoinModule -> b.b.a.b.c.a:
@@ -11694,8 +11707,9 @@ com.bariski.cryptoniffler.domain.injection.DaggerAppComponent$CalendarFragmentSu
     void seedInstance(com.bariski.cryptoniffler.presentation.calendar.CalendarFragment) -> a
     void seedInstance(java.lang.Object) -> b
 com.bariski.cryptoniffler.domain.injection.DaggerAppComponent$CalendarFragmentSubcomponentImpl -> b.b.a.c.b.j$g:
-    com.bariski.cryptoniffler.domain.injection.DaggerAppComponent this$0 -> c
-    dagger.MembersInjector calendarFragmentMembersInjector -> b
+    com.bariski.cryptoniffler.domain.injection.DaggerAppComponent this$0 -> d
+    dagger.MembersInjector calendarFragmentMembersInjector -> c
+    javax.inject.Provider calendarAdapterProvider -> b
     javax.inject.Provider providesPresenterProvider -> a
     void initialize(com.bariski.cryptoniffler.domain.injection.DaggerAppComponent$CalendarFragmentSubcomponentBuilder) -> a
     void inject(com.bariski.cryptoniffler.presentation.calendar.CalendarFragment) -> a
@@ -11813,8 +11827,10 @@ com.bariski.cryptoniffler.domain.model.Exchange$Creator -> com.bariski.cryptonif
 com.bariski.cryptoniffler.domain.model.FilterItem -> com.bariski.cryptoniffler.domain.model.FilterItem:
 com.bariski.cryptoniffler.domain.model.Info -> com.bariski.cryptoniffler.domain.model.a:
     java.lang.String exchangeInfo -> a
+    java.lang.String privacyPolicyUrl -> c
     java.lang.String upcomingFeatures -> b
     java.lang.String getExchangeInfo() -> a
+    java.lang.String getPrivacyPolicyUrl() -> c
     java.lang.String getUpcomingFeatures() -> b
 com.bariski.cryptoniffler.domain.model.Info$Creator -> com.bariski.cryptoniffler.domain.model.a$a:
 com.bariski.cryptoniffler.domain.model.IntraArbitrage -> com.bariski.cryptoniffler.domain.model.IntraArbitrage:
@@ -11833,6 +11849,8 @@ com.bariski.cryptoniffler.domain.repository.AndroidDataStore_Factory -> b.b.a.c.
     dagger.internal.Factory create(javax.inject.Provider) -> a
 com.bariski.cryptoniffler.domain.repository.DeviceDataStore -> b.b.a.c.c.c:
     boolean hasPermissionRationaleShown(java.lang.String) -> a
+    int getLastAppVersion() -> a
+    void setLastAppVersion(int) -> a
     void setPermissionRationaleShown(java.lang.String,boolean) -> a
 com.bariski.cryptoniffler.domain.repository.EventsRepository -> b.b.a.c.c.d:
     boolean isAuthenticated() -> d
@@ -11993,13 +12011,13 @@ com.bariski.cryptoniffler.presentation.arbitrage.ArbitrageFragment -> com.barisk
     com.bariski.cryptoniffler.presentation.common.utils.DeviceInfo deviceInfo -> g
     java.util.HashMap _$_findViewCache -> A
     com.bariski.cryptoniffler.presentation.arbitrage.ArbitrageFragment$Companion Companion -> d
-    android.app.Dialog getRateDialog() -> o
-    android.support.design.widget.Snackbar getSnackbar() -> n
-    com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter getPresenter() -> m
-    com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter getFromAdapter() -> p
-    com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter getToAdapter() -> q
+    android.app.Dialog getRateDialog() -> p
+    android.support.design.widget.Snackbar getSnackbar() -> o
+    com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter getPresenter() -> n
+    com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter getFromAdapter() -> q
+    com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter getToAdapter() -> r
     java.lang.String getMessage(int) -> a
-    void _$_clearFindViewByIdCache() -> k
+    void _$_clearFindViewByIdCache() -> l
     void launchUrl(java.lang.String) -> b
     void navigateToApp(android.content.Intent) -> a
     void setData(com.bariski.cryptoniffler.domain.model.Arbitrage,int) -> a
@@ -12008,7 +12026,7 @@ com.bariski.cryptoniffler.presentation.arbitrage.ArbitrageFragment -> com.barisk
     void showFilters(int,java.util.List,java.util.Set,java.util.Set) -> a
     void showInfo() -> b
     void showMessage(java.lang.String) -> c
-    void showRateDialog() -> e
+    void showRateDialog() -> f
     void toggleError(java.lang.String) -> a
     void toggleProgress(boolean) -> a
 com.bariski.cryptoniffler.presentation.arbitrage.ArbitrageFragment$Companion -> com.bariski.cryptoniffler.presentation.a.a$a:
@@ -12152,7 +12170,7 @@ com.bariski.cryptoniffler.presentation.arbitrage.ArbitrageView -> com.bariski.cr
     void showFilters(int,java.util.List,java.util.Set,java.util.Set) -> a
     void showInfo() -> b
     void showMessage(java.lang.String) -> c
-    void showRateDialog() -> e
+    void showRateDialog() -> f
     void toggleError(java.lang.String) -> a
     void toggleProgress(boolean) -> a
 com.bariski.cryptoniffler.presentation.arbitrage.adapters.ArbitrageAdapter -> com.bariski.cryptoniffler.presentation.a.a.a:
@@ -12327,23 +12345,23 @@ com.bariski.cryptoniffler.presentation.calendar.CalendarFilterPresenter$onFilter
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.lang.Throwable) -> a
 com.bariski.cryptoniffler.presentation.calendar.CalendarFragment -> com.bariski.cryptoniffler.presentation.b.l:
-    android.support.design.widget.Snackbar snackbar -> G
-    android.support.v7.widget.RecyclerView list -> B
-    android.view.View bottomProgress -> C
-    android.view.View centerProgress -> D
-    android.view.View container -> F
-    android.widget.TextView empty -> E
+    android.support.design.widget.Snackbar snackbar -> H
+    android.support.v7.widget.RecyclerView list -> C
+    android.view.View bottomProgress -> D
+    android.view.View centerProgress -> E
+    android.view.View container -> G
+    android.widget.TextView empty -> F
     com.bariski.cryptoniffler.presentation.calendar.CalendarPresenter presenter -> A
-    com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter adapter -> H
+    com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter adapter -> B
     java.util.HashMap _$_findViewCache -> I
     com.bariski.cryptoniffler.presentation.calendar.CalendarFragment$Companion Companion -> z
-    android.support.design.widget.Snackbar getSnackbar() -> I
-    android.support.v7.widget.RecyclerView getList() -> H
-    com.bariski.cryptoniffler.presentation.calendar.CalendarPresenter getCalendarPresenter() -> F
-    com.bariski.cryptoniffler.presentation.calendar.CalendarPresenter getPresenter() -> G
-    com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter getAdapter() -> J
+    android.support.design.widget.Snackbar getSnackbar() -> K
+    android.support.v7.widget.RecyclerView getList() -> J
+    com.bariski.cryptoniffler.presentation.calendar.CalendarPresenter getCalendarPresenter() -> G
+    com.bariski.cryptoniffler.presentation.calendar.CalendarPresenter getPresenter() -> H
+    com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter getAdapter() -> I
     java.lang.String getMessage(int) -> a
-    void _$_clearFindViewByIdCache() -> k
+    void _$_clearFindViewByIdCache() -> l
     void setData(java.util.List,boolean) -> a
     void setFilterCategoryData(java.util.List,java.util.Set) -> b
     void setFilterCoinData(java.util.List,java.util.Set) -> a
@@ -12361,10 +12379,11 @@ com.bariski.cryptoniffler.presentation.calendar.CalendarFragment$onCreateView$1 
 com.bariski.cryptoniffler.presentation.calendar.CalendarFragment$toggleError$1 -> com.bariski.cryptoniffler.presentation.b.n:
     com.bariski.cryptoniffler.presentation.calendar.CalendarFragment this$0 -> a
 com.bariski.cryptoniffler.presentation.calendar.CalendarFragment_MembersInjector -> com.bariski.cryptoniffler.presentation.b.o:
+    javax.inject.Provider adapterProvider -> d
     javax.inject.Provider childFragmentInjectorProvider -> a
     javax.inject.Provider presenterProvider -> c
     javax.inject.Provider storageProvider -> b
-    dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
+    dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
     void injectMembers(com.bariski.cryptoniffler.presentation.calendar.CalendarFragment) -> a
     void injectMembers(java.lang.Object) -> a
 com.bariski.cryptoniffler.presentation.calendar.CalendarPresenter -> com.bariski.cryptoniffler.presentation.b.p:
@@ -12455,25 +12474,25 @@ com.bariski.cryptoniffler.presentation.calendar.EventFilterFragment -> com.baris
     java.text.SimpleDateFormat formatter -> q
     void access$switchContents(com.bariski.cryptoniffler.presentation.calendar.EventFilterFragment,android.view.View) -> a
     void switchContents(android.view.View) -> a
-    android.app.DatePickerDialog getFromPicker() -> w
-    android.app.DatePickerDialog getToPicker() -> x
-    android.app.Dialog getDialog() -> C
-    android.support.v7.widget.RecyclerView getListFilter() -> r
-    android.view.View getFilterCategory() -> p
-    android.view.View getFilterCoin() -> o
-    android.view.View getFilterPeriod() -> q
-    android.view.View getPeriodContainer() -> s
-    android.view.View getProgress() -> u
-    android.widget.EditText getSearch() -> t
-    android.widget.TextView getFromDate() -> m
-    android.widget.TextView getToDate() -> n
-    boolean isLoadingFilters() -> D
-    com.bariski.cryptoniffler.presentation.calendar.CalendarPresenter getCalendarPresenter() -> F
-    com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter getCategoryAdapter() -> B
-    com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter getCoinAdapter() -> A
-    java.lang.Integer[] getFrom() -> y
-    java.lang.Integer[] getTo() -> z
-    java.text.SimpleDateFormat getFormatter() -> v
+    android.app.DatePickerDialog getFromPicker() -> x
+    android.app.DatePickerDialog getToPicker() -> y
+    android.app.Dialog getDialog() -> D
+    android.support.v7.widget.RecyclerView getListFilter() -> s
+    android.view.View getFilterCategory() -> q
+    android.view.View getFilterCoin() -> p
+    android.view.View getFilterPeriod() -> r
+    android.view.View getPeriodContainer() -> t
+    android.view.View getProgress() -> v
+    android.widget.EditText getSearch() -> u
+    android.widget.TextView getFromDate() -> n
+    android.widget.TextView getToDate() -> o
+    boolean isLoadingFilters() -> E
+    com.bariski.cryptoniffler.presentation.calendar.CalendarPresenter getCalendarPresenter() -> G
+    com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter getCategoryAdapter() -> C
+    com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter getCoinAdapter() -> B
+    java.lang.Integer[] getFrom() -> z
+    java.lang.Integer[] getTo() -> A
+    java.text.SimpleDateFormat getFormatter() -> w
     void setCategoryAdapter(com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter) -> b
     void setCoinAdapter(com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter) -> a
     void setFrom(java.lang.Integer[]) -> a
@@ -12481,7 +12500,7 @@ com.bariski.cryptoniffler.presentation.calendar.EventFilterFragment -> com.baris
     void setLoadingFilters(boolean) -> k
     void setTo(java.lang.Integer[]) -> b
     void setToPicker(android.app.DatePickerDialog) -> b
-    void showDialog() -> E
+    void showDialog() -> F
 com.bariski.cryptoniffler.presentation.calendar.EventFilterFragment$showDialog$$inlined$apply$lambda$1 -> com.bariski.cryptoniffler.presentation.b.x:
     com.bariski.cryptoniffler.presentation.calendar.EventFilterFragment this$0 -> a
 com.bariski.cryptoniffler.presentation.calendar.EventFilterFragment$showDialog$$inlined$apply$lambda$1$1 -> com.bariski.cryptoniffler.presentation.b.w:
@@ -12505,6 +12524,7 @@ com.bariski.cryptoniffler.presentation.calendar.EventFilterFragment$showDialog$$
 com.bariski.cryptoniffler.presentation.calendar.EventFilterFragment$showDialog$1$7 -> com.bariski.cryptoniffler.presentation.b.F:
     com.bariski.cryptoniffler.presentation.calendar.EventFilterFragment$showDialog$1$7 INSTANCE -> a
 com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter -> com.bariski.cryptoniffler.presentation.b.a.a:
+    com.bariski.cryptoniffler.data.factory.Logger logger -> d
     java.util.ArrayList data -> c
     android.support.v7.widget.RecyclerView$ViewHolder onCreateViewHolder(android.view.ViewGroup,int) -> a
     int getItemCount() -> a
@@ -12525,6 +12545,7 @@ com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter$ViewHol
     void setData(com.bariski.cryptoniffler.presentation.calendar.models.CalendarItem) -> a
 com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter$ViewHolder$1 -> com.bariski.cryptoniffler.presentation.b.a.e:
     android.view.View $view -> b
+    com.bariski.cryptoniffler.data.factory.Logger $logger -> c
     com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter$ViewHolder this$0 -> a
 com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter$ViewHolder$1$1$1 -> com.bariski.cryptoniffler.presentation.b.a.b:
     android.view.View $calendarIcon -> a
@@ -12532,7 +12553,11 @@ com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter$ViewHol
     android.view.View $calendarHeader -> a
 com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter$ViewHolder$1$1$listener$1 -> com.bariski.cryptoniffler.presentation.b.a.d:
     com.bariski.cryptoniffler.presentation.calendar.models.CalendarItem receiver$0 -> a
-com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter -> com.bariski.cryptoniffler.presentation.b.a.g:
+com.bariski.cryptoniffler.presentation.calendar.adapters.CalendarAdapter_Factory -> com.bariski.cryptoniffler.presentation.b.a.f:
+    dagger.MembersInjector calendarAdapterMembersInjector -> a
+    javax.inject.Provider loggerProvider -> b
+    dagger.internal.Factory create(dagger.MembersInjector,javax.inject.Provider) -> a
+com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter -> com.bariski.cryptoniffler.presentation.b.a.h:
     java.util.ArrayList filteredData -> c
     java.util.List data -> d
     java.util.Set selected -> e
@@ -12543,12 +12568,12 @@ com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter -> co
     void filterDataSet(java.lang.String) -> a
     void onBindViewHolder(android.support.v7.widget.RecyclerView$ViewHolder,int) -> a
     void onBindViewHolder(com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter$ViewHolder,int) -> a
-com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter$ViewHolder -> com.bariski.cryptoniffler.presentation.b.a.g$a:
+com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter$ViewHolder -> com.bariski.cryptoniffler.presentation.b.a.h$a:
     android.widget.CheckBox item -> t
     java.util.Set selected -> u
     java.util.Set getSelected() -> y
     void setData(com.bariski.cryptoniffler.domain.model.FilterItem,boolean) -> a
-com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter$ViewHolder$setData$1 -> com.bariski.cryptoniffler.presentation.b.a.f:
+com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter$ViewHolder$setData$1 -> com.bariski.cryptoniffler.presentation.b.a.g:
     com.bariski.cryptoniffler.presentation.calendar.adapters.FilterItemAdapter$ViewHolder this$0 -> a
 com.bariski.cryptoniffler.presentation.calendar.inject.ArbitrageModule -> com.bariski.cryptoniffler.presentation.b.b.a:
     com.bariski.cryptoniffler.presentation.arbitrage.ArbitragePresenter providesPresenter(com.bariski.cryptoniffler.domain.repository.NifflerRepository,com.bariski.cryptoniffler.domain.common.Schedulers,com.bariski.cryptoniffler.analytics.Analytics,com.bariski.cryptoniffler.presentation.common.utils.DeviceInfo) -> a
@@ -12575,24 +12600,26 @@ com.bariski.cryptoniffler.presentation.calendar.inject.CalendarModule_ProvidesPr
 com.bariski.cryptoniffler.presentation.calendar.models.CalendarItem -> com.bariski.cryptoniffler.presentation.calendar.models.CalendarItem:
 com.bariski.cryptoniffler.presentation.common.BaseActivity -> com.bariski.cryptoniffler.presentation.c.a:
     android.view.View rootLayout -> y
+    com.bariski.cryptoniffler.data.factory.Logger logger -> A
     com.bariski.cryptoniffler.domain.repository.AndroidDataStore storage -> z
-    int revealX -> A
-    int revealY -> B
+    int revealX -> B
+    int revealY -> C
     com.bariski.cryptoniffler.presentation.common.BaseActivity$Companion Companion -> x
     java.lang.String EXTRA_CIRCULAR_REVEAL_X -> v
     java.lang.String EXTRA_CIRCULAR_REVEAL_Y -> w
     android.graphics.Bitmap getScreenShot() -> a
-    android.view.View getRootLayout() -> y
-    boolean isAlive() -> D
-    com.bariski.cryptoniffler.presentation.common.BasePresenter getBasePresenter() -> A
-    int getLayoutResId() -> z
-    int getRevealX() -> B
-    int getRevealY() -> C
+    android.view.View getRootLayout() -> z
+    boolean isAlive() -> F
+    com.bariski.cryptoniffler.data.factory.Logger getLogger() -> B
+    com.bariski.cryptoniffler.presentation.common.BasePresenter getBasePresenter() -> C
+    int getLayoutResId() -> A
+    int getRevealX() -> D
+    int getRevealY() -> E
     java.lang.String getMessage(int) -> a
     void onPermissionDenied(java.lang.String) -> e
     void onPermissionGranted(java.lang.String) -> d
     void revealActivity(int,int) -> a
-    void unRevealActivity() -> E
+    void unRevealActivity() -> G
 com.bariski.cryptoniffler.presentation.common.BaseActivity$Companion -> com.bariski.cryptoniffler.presentation.c.a$a:
 com.bariski.cryptoniffler.presentation.common.BaseActivity$onCreate$1 -> com.bariski.cryptoniffler.presentation.c.b:
     com.bariski.cryptoniffler.presentation.common.BaseActivity this$0 -> a
@@ -12600,19 +12627,20 @@ com.bariski.cryptoniffler.presentation.common.BaseActivity$unRevealActivity$1 ->
     com.bariski.cryptoniffler.presentation.common.BaseActivity this$0 -> a
 com.bariski.cryptoniffler.presentation.common.BaseActivity_MembersInjector -> com.bariski.cryptoniffler.presentation.c.d:
     javax.inject.Provider frameworkFragmentInjectorProvider -> b
+    javax.inject.Provider loggerProvider -> d
     javax.inject.Provider storageProvider -> c
     javax.inject.Provider supportFragmentInjectorProvider -> a
-    dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
+    dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
     void injectMembers(com.bariski.cryptoniffler.presentation.common.BaseActivity) -> a
     void injectMembers(java.lang.Object) -> a
 com.bariski.cryptoniffler.presentation.common.BaseFragment -> com.bariski.cryptoniffler.presentation.c.e:
-    boolean isAlive() -> j
-    void _$_clearFindViewByIdCache() -> k
+    boolean isAlive() -> k
+    void _$_clearFindViewByIdCache() -> l
 com.bariski.cryptoniffler.presentation.common.BaseInjectFragment -> com.bariski.cryptoniffler.presentation.c.f:
     com.bariski.cryptoniffler.domain.repository.AndroidDataStore storage -> b
     java.util.HashMap _$_findViewCache -> c
-    boolean isAlive() -> j
-    void _$_clearFindViewByIdCache() -> k
+    boolean isAlive() -> k
+    void _$_clearFindViewByIdCache() -> l
 com.bariski.cryptoniffler.presentation.common.BaseInjectFragment_MembersInjector -> com.bariski.cryptoniffler.presentation.c.g:
     javax.inject.Provider childFragmentInjectorProvider -> a
     javax.inject.Provider storageProvider -> b
@@ -12734,13 +12762,13 @@ com.bariski.cryptoniffler.presentation.main.AmountFragment -> com.bariski.crypto
     com.bariski.cryptoniffler.presentation.main.MainPresenter presenter -> b
     java.util.HashMap _$_findViewCache -> f
     com.bariski.cryptoniffler.presentation.main.AmountFragment$Companion Companion -> a
-    io.reactivex.Observer getObserver() -> p
+    io.reactivex.Observer getObserver() -> q
     android.view.View _$_findCachedViewById(int) -> c
-    android.widget.EditText getInrInput() -> m
-    android.widget.TextView getBtcEquivalent() -> n
-    android.widget.TextView getNext() -> o
-    com.bariski.cryptoniffler.presentation.main.MainPresenter getPresenter() -> l
-    void _$_clearFindViewByIdCache() -> k
+    android.widget.EditText getInrInput() -> n
+    android.widget.TextView getBtcEquivalent() -> o
+    android.widget.TextView getNext() -> p
+    com.bariski.cryptoniffler.presentation.main.MainPresenter getPresenter() -> m
+    void _$_clearFindViewByIdCache() -> l
 com.bariski.cryptoniffler.presentation.main.AmountFragment$Companion -> com.bariski.cryptoniffler.presentation.main.a$a:
     android.app.Fragment getInstance(boolean) -> a
 com.bariski.cryptoniffler.presentation.main.AmountFragment$getObserver$1 -> com.bariski.cryptoniffler.presentation.main.b:
@@ -12763,19 +12791,19 @@ com.bariski.cryptoniffler.presentation.main.BuyNSellFragment -> com.bariski.cryp
     com.bariski.cryptoniffler.presentation.main.MainPresenter presenter -> b
     java.util.HashMap _$_findViewCache -> c
     com.bariski.cryptoniffler.presentation.main.BuyNSellFragment$Companion Companion -> a
-    void _$_clearFindViewByIdCache() -> k
+    void _$_clearFindViewByIdCache() -> l
 com.bariski.cryptoniffler.presentation.main.BuyNSellFragment$Companion -> com.bariski.cryptoniffler.presentation.main.g$a:
     android.app.Fragment getInstance() -> a
 com.bariski.cryptoniffler.presentation.main.CoinDetailActivity -> com.bariski.cryptoniffler.presentation.main.CoinDetailActivity:
-    android.support.design.widget.Snackbar snackbar -> F
-    com.bariski.cryptoniffler.domain.repository.ImageLoader loader -> E
-    com.bariski.cryptoniffler.presentation.main.ItemDetailPresenter presenter -> C
-    com.bariski.cryptoniffler.presentation.main.adapters.ItemDetailAdapter adapter -> D
-    java.util.HashMap _$_findViewCache -> G
+    android.support.design.widget.Snackbar snackbar -> G
+    com.bariski.cryptoniffler.domain.repository.ImageLoader loader -> F
+    com.bariski.cryptoniffler.presentation.main.ItemDetailPresenter presenter -> D
+    com.bariski.cryptoniffler.presentation.main.adapters.ItemDetailAdapter adapter -> E
+    java.util.HashMap _$_findViewCache -> H
     android.view.View _$_findCachedViewById(int) -> f
-    com.bariski.cryptoniffler.presentation.common.BasePresenter getBasePresenter() -> A
-    com.bariski.cryptoniffler.presentation.main.ItemDetailPresenter getPresenter() -> F
-    int getLayoutResId() -> z
+    com.bariski.cryptoniffler.presentation.common.BasePresenter getBasePresenter() -> C
+    com.bariski.cryptoniffler.presentation.main.ItemDetailPresenter getPresenter() -> H
+    int getLayoutResId() -> A
     void setData(com.bariski.cryptoniffler.presentation.main.model.GridDetailWrapper) -> a
     void toggleDummyCards(boolean) -> d
     void toggleError(boolean,java.lang.String) -> a
@@ -12783,13 +12811,14 @@ com.bariski.cryptoniffler.presentation.main.CoinDetailActivity -> com.bariski.cr
 com.bariski.cryptoniffler.presentation.main.CoinDetailActivity$toggleError$1 -> com.bariski.cryptoniffler.presentation.main.h:
     com.bariski.cryptoniffler.presentation.main.CoinDetailActivity this$0 -> a
 com.bariski.cryptoniffler.presentation.main.CoinDetailActivity_MembersInjector -> com.bariski.cryptoniffler.presentation.main.i:
-    javax.inject.Provider adapterProvider -> e
+    javax.inject.Provider adapterProvider -> f
     javax.inject.Provider frameworkFragmentInjectorProvider -> b
-    javax.inject.Provider loaderProvider -> f
-    javax.inject.Provider presenterProvider -> d
+    javax.inject.Provider loaderProvider -> g
+    javax.inject.Provider loggerProvider -> d
+    javax.inject.Provider presenterProvider -> e
     javax.inject.Provider storageProvider -> c
     javax.inject.Provider supportFragmentInjectorProvider -> a
-    dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
+    dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
     void injectMembers(com.bariski.cryptoniffler.presentation.main.CoinDetailActivity) -> a
     void injectMembers(java.lang.Object) -> a
 com.bariski.cryptoniffler.presentation.main.CoinDetailView -> com.bariski.cryptoniffler.presentation.main.j:
@@ -12803,7 +12832,7 @@ com.bariski.cryptoniffler.presentation.main.GridSelectFragment -> com.bariski.cr
     com.bariski.cryptoniffler.presentation.main.adapters.GridItemAdapter adapter -> g
     java.util.HashMap _$_findViewCache -> h
     com.bariski.cryptoniffler.presentation.main.GridSelectFragment$Companion Companion -> d
-    void _$_clearFindViewByIdCache() -> k
+    void _$_clearFindViewByIdCache() -> l
 com.bariski.cryptoniffler.presentation.main.GridSelectFragment$Companion -> com.bariski.cryptoniffler.presentation.main.k$a:
     android.app.Fragment getInstance(java.util.ArrayList,java.lang.String,int) -> a
 com.bariski.cryptoniffler.presentation.main.GridSelectFragment$onCreateView$1 -> com.bariski.cryptoniffler.presentation.main.l:
@@ -12820,19 +12849,22 @@ com.bariski.cryptoniffler.presentation.main.InfoFragment -> com.bariski.cryptoni
     com.bariski.cryptoniffler.presentation.main.InfoPresenter presenter -> f
     java.util.HashMap _$_findViewCache -> g
     com.bariski.cryptoniffler.presentation.main.InfoFragment$Companion Companion -> d
-    void _$_clearFindViewByIdCache() -> k
+    void _$_clearFindViewByIdCache() -> l
     void displayInfo(com.bariski.cryptoniffler.domain.model.Info) -> a
 com.bariski.cryptoniffler.presentation.main.InfoFragment$Companion -> com.bariski.cryptoniffler.presentation.main.n$a:
     android.app.Fragment getInstance(com.bariski.cryptoniffler.domain.model.Info) -> a
-com.bariski.cryptoniffler.presentation.main.InfoFragment_MembersInjector -> com.bariski.cryptoniffler.presentation.main.o:
+com.bariski.cryptoniffler.presentation.main.InfoFragment$displayInfo$1 -> com.bariski.cryptoniffler.presentation.main.o:
+    com.bariski.cryptoniffler.domain.model.Info $info -> b
+    com.bariski.cryptoniffler.presentation.main.InfoFragment this$0 -> a
+com.bariski.cryptoniffler.presentation.main.InfoFragment_MembersInjector -> com.bariski.cryptoniffler.presentation.main.p:
     javax.inject.Provider childFragmentInjectorProvider -> a
     javax.inject.Provider presenterProvider -> c
     javax.inject.Provider storageProvider -> b
     dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
     void injectMembers(com.bariski.cryptoniffler.presentation.main.InfoFragment) -> a
     void injectMembers(java.lang.Object) -> a
-com.bariski.cryptoniffler.presentation.main.InfoPresenter -> com.bariski.cryptoniffler.presentation.main.p:
-com.bariski.cryptoniffler.presentation.main.InfoPresenterImpl -> com.bariski.cryptoniffler.presentation.main.s:
+com.bariski.cryptoniffler.presentation.main.InfoPresenter -> com.bariski.cryptoniffler.presentation.main.q:
+com.bariski.cryptoniffler.presentation.main.InfoPresenterImpl -> com.bariski.cryptoniffler.presentation.main.t:
     android.content.ClipboardManager clipboardManager -> e
     com.bariski.cryptoniffler.analytics.Analytics analytics -> h
     com.bariski.cryptoniffler.domain.common.Schedulers schedulers -> g
@@ -12849,23 +12881,24 @@ com.bariski.cryptoniffler.presentation.main.InfoPresenterImpl -> com.bariski.cry
     void onRefresh() -> a
     void saveState(android.os.Bundle) -> a
     void setInfo(com.bariski.cryptoniffler.domain.model.Info) -> a
-com.bariski.cryptoniffler.presentation.main.InfoPresenterImpl$fetchInfo$1 -> com.bariski.cryptoniffler.presentation.main.q:
+com.bariski.cryptoniffler.presentation.main.InfoPresenterImpl$fetchInfo$1 -> com.bariski.cryptoniffler.presentation.main.r:
     com.bariski.cryptoniffler.presentation.main.InfoPresenterImpl this$0 -> b
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(com.bariski.cryptoniffler.domain.model.Info) -> a
-com.bariski.cryptoniffler.presentation.main.InfoPresenterImpl$fetchInfo$2 -> com.bariski.cryptoniffler.presentation.main.r:
+com.bariski.cryptoniffler.presentation.main.InfoPresenterImpl$fetchInfo$2 -> com.bariski.cryptoniffler.presentation.main.s:
     com.bariski.cryptoniffler.presentation.main.InfoPresenterImpl this$0 -> b
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.lang.Throwable) -> a
-com.bariski.cryptoniffler.presentation.main.InfoView -> com.bariski.cryptoniffler.presentation.main.t:
+com.bariski.cryptoniffler.presentation.main.InfoView -> com.bariski.cryptoniffler.presentation.main.u:
     void displayInfo(com.bariski.cryptoniffler.domain.model.Info) -> a
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenter -> com.bariski.cryptoniffler.presentation.main.u:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenter -> com.bariski.cryptoniffler.presentation.main.v:
     void onRetry() -> c
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl -> com.bariski.cryptoniffler.presentation.main.K:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl -> com.bariski.cryptoniffler.presentation.main.L:
     android.content.Context context -> j
     boolean ignoreFees -> a
     boolean loadFinished -> f
     com.bariski.cryptoniffler.analytics.Analytics analytics -> k
+    com.bariski.cryptoniffler.data.factory.Logger logger -> l
     com.bariski.cryptoniffler.domain.common.Schedulers schedulerProvider -> i
     com.bariski.cryptoniffler.domain.repository.NifflerRepository repository -> h
     io.reactivex.disposables.CompositeDisposable disposable -> e
@@ -12885,106 +12918,111 @@ com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl -> com.baris
     void onRetry() -> c
     void saveState(android.os.Bundle) -> a
     void setLoadFinished(boolean) -> a
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$1 -> com.bariski.cryptoniffler.presentation.main.x:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$1 -> com.bariski.cryptoniffler.presentation.main.y:
     com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl this$0 -> b
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.lang.Integer) -> a
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$10 -> com.bariski.cryptoniffler.presentation.main.v:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$10 -> com.bariski.cryptoniffler.presentation.main.w:
     boolean $ignoreFees -> e
     com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl this$0 -> b
     java.lang.String $exchange -> c
     long $amount -> d
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(com.bariski.cryptoniffler.presentation.main.model.GridDetailWrapper) -> a
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$11 -> com.bariski.cryptoniffler.presentation.main.w:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$11 -> com.bariski.cryptoniffler.presentation.main.x:
     boolean $ignoreFees -> e
     com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl this$0 -> b
     java.lang.String $exchange -> c
     long $amount -> d
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.lang.Throwable) -> a
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$2 -> com.bariski.cryptoniffler.presentation.main.y:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$2 -> com.bariski.cryptoniffler.presentation.main.z:
     com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl this$0 -> a
     void accept(io.reactivex.disposables.Disposable) -> a
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$3 -> com.bariski.cryptoniffler.presentation.main.B:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$3 -> com.bariski.cryptoniffler.presentation.main.C:
     com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl this$0 -> a
     java.lang.String $coinName -> b
     com.bariski.cryptoniffler.presentation.main.model.GridDetailWrapper apply(com.bariski.cryptoniffler.data.api.models.BestExchangeResponse) -> a
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$3$$special$$inlined$compareByDescending$1 -> com.bariski.cryptoniffler.presentation.main.z:
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$3$$special$$inlined$compareByDescending$2 -> com.bariski.cryptoniffler.presentation.main.A:
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$4 -> com.bariski.cryptoniffler.presentation.main.C:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$3$$special$$inlined$compareByDescending$1 -> com.bariski.cryptoniffler.presentation.main.A:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$3$$special$$inlined$compareByDescending$2 -> com.bariski.cryptoniffler.presentation.main.B:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$4 -> com.bariski.cryptoniffler.presentation.main.D:
     com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl this$0 -> a
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$5 -> com.bariski.cryptoniffler.presentation.main.D:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$5 -> com.bariski.cryptoniffler.presentation.main.E:
     boolean $ignoreFees -> e
     com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl this$0 -> b
     java.lang.String $coinName -> c
     long $amount -> d
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(com.bariski.cryptoniffler.presentation.main.model.GridDetailWrapper) -> a
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$6 -> com.bariski.cryptoniffler.presentation.main.E:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$6 -> com.bariski.cryptoniffler.presentation.main.F:
     boolean $ignoreFees -> e
     com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl this$0 -> b
     java.lang.String $coinName -> c
     long $amount -> d
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.lang.Throwable) -> a
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$7 -> com.bariski.cryptoniffler.presentation.main.F:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$7 -> com.bariski.cryptoniffler.presentation.main.G:
     com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl this$0 -> a
     void accept(io.reactivex.disposables.Disposable) -> a
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$8 -> com.bariski.cryptoniffler.presentation.main.I:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$8 -> com.bariski.cryptoniffler.presentation.main.J:
     com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl this$0 -> a
     com.bariski.cryptoniffler.presentation.main.model.GridDetailWrapper apply(com.bariski.cryptoniffler.data.api.models.BestCoinResponse) -> a
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$8$$special$$inlined$compareByDescending$1 -> com.bariski.cryptoniffler.presentation.main.G:
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$8$$special$$inlined$compareByDescending$2 -> com.bariski.cryptoniffler.presentation.main.H:
-com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$9 -> com.bariski.cryptoniffler.presentation.main.J:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$8$$special$$inlined$compareByDescending$1 -> com.bariski.cryptoniffler.presentation.main.H:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$8$$special$$inlined$compareByDescending$2 -> com.bariski.cryptoniffler.presentation.main.I:
+com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl$loadData$9 -> com.bariski.cryptoniffler.presentation.main.K:
     com.bariski.cryptoniffler.presentation.main.ItemDetailPresenterImpl this$0 -> a
 com.bariski.cryptoniffler.presentation.main.MainActivity -> com.bariski.cryptoniffler.presentation.main.MainActivity:
-    android.app.Dialog permissionDialog -> D
-    com.bariski.cryptoniffler.presentation.main.MainPresenter presenter -> C
-    java.util.HashMap _$_findViewCache -> E
+    android.app.Dialog permissionDialog -> E
+    com.bariski.cryptoniffler.presentation.main.MainPresenter presenter -> D
+    java.util.HashMap _$_findViewCache -> F
     android.app.Dialog access$getPermissionDialog$p(com.bariski.cryptoniffler.presentation.main.MainActivity) -> a
     android.view.View _$_findCachedViewById(int) -> f
     boolean onNavigationItemSelected(android.view.MenuItem) -> a
-    com.bariski.cryptoniffler.presentation.common.BasePresenter getBasePresenter() -> A
-    com.bariski.cryptoniffler.presentation.main.MainPresenter getCommonPresenter() -> g
-    com.bariski.cryptoniffler.presentation.main.MainPresenter getPresenter() -> F
-    int getLayoutResId() -> z
-    void exit() -> f
+    com.bariski.cryptoniffler.presentation.common.BasePresenter getBasePresenter() -> C
+    com.bariski.cryptoniffler.presentation.main.MainPresenter getCommonPresenter() -> h
+    com.bariski.cryptoniffler.presentation.main.MainPresenter getPresenter() -> H
+    int getLayoutResId() -> A
+    void exit() -> g
     void moveToDetailsScreen(boolean,java.lang.String,java.lang.String,long) -> a
     void moveToNext(android.app.Fragment,boolean) -> a
     void onItemClick(int) -> d
     void onPermissionDenied(java.lang.String) -> e
     void onPermissionGranted(java.lang.String) -> d
-    void openSearch() -> d
+    void openSearch() -> e
     void requestStoragePermission(boolean) -> i
-    void sendFeedback() -> h
-    void shareApp() -> i
+    void sendFeedback() -> i
+    void shareApp() -> j
     void shareArbitrage(java.io.File) -> a
     void showInfo() -> b
+    void showVersionChangeInfo() -> d
     void toggleDrawer(boolean) -> e
     void toggleFilter(boolean) -> h
     void toggleInfo(boolean) -> g
     void toggleProgress(boolean) -> a
     void toggleSearch(boolean) -> f
-com.bariski.cryptoniffler.presentation.main.MainActivity$onCreate$1 -> com.bariski.cryptoniffler.presentation.main.L:
+com.bariski.cryptoniffler.presentation.main.MainActivity$onCreate$1 -> com.bariski.cryptoniffler.presentation.main.M:
     com.bariski.cryptoniffler.presentation.main.MainActivity this$0 -> a
-com.bariski.cryptoniffler.presentation.main.MainActivity$onCreate$2 -> com.bariski.cryptoniffler.presentation.main.M:
+com.bariski.cryptoniffler.presentation.main.MainActivity$onCreate$2 -> com.bariski.cryptoniffler.presentation.main.N:
     com.bariski.cryptoniffler.presentation.main.MainActivity this$0 -> a
-com.bariski.cryptoniffler.presentation.main.MainActivity$onCreate$3 -> com.bariski.cryptoniffler.presentation.main.N:
+com.bariski.cryptoniffler.presentation.main.MainActivity$onCreate$3 -> com.bariski.cryptoniffler.presentation.main.O:
     com.bariski.cryptoniffler.presentation.main.MainActivity this$0 -> a
-com.bariski.cryptoniffler.presentation.main.MainActivity$requestStoragePermission$1 -> com.bariski.cryptoniffler.presentation.main.O:
+com.bariski.cryptoniffler.presentation.main.MainActivity$requestStoragePermission$1 -> com.bariski.cryptoniffler.presentation.main.P:
     com.bariski.cryptoniffler.presentation.main.MainActivity this$0 -> a
-com.bariski.cryptoniffler.presentation.main.MainActivity$showInfo$1 -> com.bariski.cryptoniffler.presentation.main.P:
+com.bariski.cryptoniffler.presentation.main.MainActivity$showInfo$1 -> com.bariski.cryptoniffler.presentation.main.Q:
     com.bariski.cryptoniffler.presentation.main.MainActivity$showInfo$1 INSTANCE -> a
-com.bariski.cryptoniffler.presentation.main.MainActivity_MembersInjector -> com.bariski.cryptoniffler.presentation.main.Q:
+com.bariski.cryptoniffler.presentation.main.MainActivity$showVersionChangeInfo$1 -> com.bariski.cryptoniffler.presentation.main.R:
+    com.bariski.cryptoniffler.presentation.main.MainActivity$showVersionChangeInfo$1 INSTANCE -> a
+    void onClick(com.afollestad.materialdialogs.MaterialDialog,com.afollestad.materialdialogs.DialogAction) -> a
+com.bariski.cryptoniffler.presentation.main.MainActivity_MembersInjector -> com.bariski.cryptoniffler.presentation.main.S:
     javax.inject.Provider frameworkFragmentInjectorProvider -> b
-    javax.inject.Provider presenterProvider -> d
+    javax.inject.Provider loggerProvider -> d
+    javax.inject.Provider presenterProvider -> e
     javax.inject.Provider storageProvider -> c
     javax.inject.Provider supportFragmentInjectorProvider -> a
-    dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
+    dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
     void injectMembers(com.bariski.cryptoniffler.presentation.main.MainActivity) -> a
     void injectMembers(java.lang.Object) -> a
-com.bariski.cryptoniffler.presentation.main.MainPresenter -> com.bariski.cryptoniffler.presentation.main.R:
+com.bariski.cryptoniffler.presentation.main.MainPresenter -> com.bariski.cryptoniffler.presentation.main.T:
     void onAmountScreenCreated(io.reactivex.Observable,io.reactivex.Observer) -> a
     void onAmountScreenDestroyed() -> m
     void onAmountScreenRefresh() -> i
@@ -12998,7 +13036,7 @@ com.bariski.cryptoniffler.presentation.main.MainPresenter -> com.bariski.crypton
     void onSearchResult(com.bariski.cryptoniffler.domain.model.Coin) -> a
     void onStorageFailed() -> n
     void onStorageGranted() -> l
-com.bariski.cryptoniffler.presentation.main.MainPresenterImpl -> com.bariski.cryptoniffler.presentation.main.ea:
+com.bariski.cryptoniffler.presentation.main.MainPresenterImpl -> com.bariski.cryptoniffler.presentation.main.ga:
     boolean ignoreFees -> i
     boolean isShareScreenMode -> j
     com.bariski.cryptoniffler.analytics.Analytics analytics -> q
@@ -13056,95 +13094,97 @@ com.bariski.cryptoniffler.presentation.main.MainPresenterImpl -> com.bariski.cry
     void setAmount(long) -> a
     void setBtcRate(float) -> a
     void setState(int) -> e
-com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$getNavigateToCoinSelectionSuccessListener$1 -> com.bariski.cryptoniffler.presentation.main.S:
+com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$getNavigateToCoinSelectionSuccessListener$1 -> com.bariski.cryptoniffler.presentation.main.U:
     boolean $isForward -> c
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl this$0 -> b
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.util.List) -> a
-com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$getNavigateToExchangeSelectionSuccessReceiver$1 -> com.bariski.cryptoniffler.presentation.main.T:
+com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$getNavigateToExchangeSelectionSuccessReceiver$1 -> com.bariski.cryptoniffler.presentation.main.V:
     boolean $isForward -> c
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl this$0 -> b
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.util.List) -> a
-com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$initView$2 -> com.bariski.cryptoniffler.presentation.main.U:
+com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$initView$2 -> com.bariski.cryptoniffler.presentation.main.W:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$initView$2 INSTANCE -> b
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.lang.Throwable) -> a
-com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$initView$3 -> com.bariski.cryptoniffler.presentation.main.V:
+com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$initView$3 -> com.bariski.cryptoniffler.presentation.main.X:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$initView$3 INSTANCE -> b
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(com.bariski.cryptoniffler.data.api.models.AuthTokenResponse) -> a
-com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToCoinSelection$1 -> com.bariski.cryptoniffler.presentation.main.W:
+com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToCoinSelection$1 -> com.bariski.cryptoniffler.presentation.main.Y:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl this$0 -> a
     void accept(io.reactivex.disposables.Disposable) -> a
-com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToCoinSelection$2 -> com.bariski.cryptoniffler.presentation.main.X:
+com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToCoinSelection$2 -> com.bariski.cryptoniffler.presentation.main.Z:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToCoinSelection$2 INSTANCE -> b
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.lang.Throwable) -> a
-com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToExchangeSelection$1 -> com.bariski.cryptoniffler.presentation.main.Y:
+com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToExchangeSelection$1 -> com.bariski.cryptoniffler.presentation.main.aa:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToExchangeSelection$1 INSTANCE -> a
     java.util.List apply(java.util.ArrayList) -> a
-com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToExchangeSelection$2 -> com.bariski.cryptoniffler.presentation.main.Z:
+com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToExchangeSelection$2 -> com.bariski.cryptoniffler.presentation.main.ba:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl this$0 -> a
     void accept(io.reactivex.disposables.Disposable) -> a
-com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToExchangeSelection$3 -> com.bariski.cryptoniffler.presentation.main.aa:
+com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToExchangeSelection$3 -> com.bariski.cryptoniffler.presentation.main.ca:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$navigateToExchangeSelection$3 INSTANCE -> b
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.lang.Throwable) -> a
-com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$onAmountScreenCreated$1 -> com.bariski.cryptoniffler.presentation.main.ba:
+com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$onAmountScreenCreated$1 -> com.bariski.cryptoniffler.presentation.main.da:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl this$0 -> b
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.lang.CharSequence) -> a
-com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$onAmountScreenRefresh$1 -> com.bariski.cryptoniffler.presentation.main.ca:
+com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$onAmountScreenRefresh$1 -> com.bariski.cryptoniffler.presentation.main.ea:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl this$0 -> b
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.util.List) -> a
-com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$onAmountScreenRefresh$2 -> com.bariski.cryptoniffler.presentation.main.da:
+com.bariski.cryptoniffler.presentation.main.MainPresenterImpl$onAmountScreenRefresh$2 -> com.bariski.cryptoniffler.presentation.main.fa:
     com.bariski.cryptoniffler.presentation.main.MainPresenterImpl this$0 -> b
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.lang.Throwable) -> a
-com.bariski.cryptoniffler.presentation.main.MainView -> com.bariski.cryptoniffler.presentation.main.fa:
-    com.bariski.cryptoniffler.presentation.main.MainPresenter getCommonPresenter() -> g
-    void exit() -> f
+com.bariski.cryptoniffler.presentation.main.MainView -> com.bariski.cryptoniffler.presentation.main.ha:
+    com.bariski.cryptoniffler.presentation.main.MainPresenter getCommonPresenter() -> h
+    void exit() -> g
     void moveToDetailsScreen(boolean,java.lang.String,java.lang.String,long) -> a
     void moveToNext(android.app.Fragment,boolean) -> a
-    void openSearch() -> d
+    void openSearch() -> e
     void requestStoragePermission(boolean) -> i
-    void sendFeedback() -> h
-    void shareApp() -> i
+    void sendFeedback() -> i
+    void shareApp() -> j
     void shareArbitrage(java.io.File) -> a
     void showInfo() -> b
+    void showVersionChangeInfo() -> d
     void toggleDrawer(boolean) -> e
     void toggleFilter(boolean) -> h
     void toggleInfo(boolean) -> g
     void toggleProgress(boolean) -> a
     void toggleSearch(boolean) -> f
 com.bariski.cryptoniffler.presentation.main.SearchActivity -> com.bariski.cryptoniffler.presentation.main.SearchActivity:
-    com.bariski.cryptoniffler.domain.repository.ImageLoader loader -> E
-    com.bariski.cryptoniffler.presentation.main.SearchPresenter presenter -> D
-    com.bariski.cryptoniffler.presentation.main.adapters.SearchAdapter adapter -> F
-    int layoutResId -> C
-    java.util.HashMap _$_findViewCache -> G
+    com.bariski.cryptoniffler.domain.repository.ImageLoader loader -> F
+    com.bariski.cryptoniffler.presentation.main.SearchPresenter presenter -> E
+    com.bariski.cryptoniffler.presentation.main.adapters.SearchAdapter adapter -> G
+    int layoutResId -> D
+    java.util.HashMap _$_findViewCache -> H
     android.view.View _$_findCachedViewById(int) -> f
-    com.bariski.cryptoniffler.presentation.common.BasePresenter getBasePresenter() -> A
-    com.jakewharton.rxbinding2.InitialValueObservable getSearchObservable() -> n
-    int getLayoutResId() -> z
+    com.bariski.cryptoniffler.presentation.common.BasePresenter getBasePresenter() -> C
+    com.jakewharton.rxbinding2.InitialValueObservable getSearchObservable() -> o
+    int getLayoutResId() -> A
     void finishAndSendData(com.bariski.cryptoniffler.domain.model.Coin) -> a
     void showData(java.util.List) -> a
     void toggleEmptyView(boolean) -> b
-com.bariski.cryptoniffler.presentation.main.SearchActivity$onCreate$2 -> com.bariski.cryptoniffler.presentation.main.ga:
+com.bariski.cryptoniffler.presentation.main.SearchActivity$onCreate$2 -> com.bariski.cryptoniffler.presentation.main.ia:
     com.bariski.cryptoniffler.presentation.main.SearchActivity this$0 -> a
-com.bariski.cryptoniffler.presentation.main.SearchActivity_MembersInjector -> com.bariski.cryptoniffler.presentation.main.ha:
+com.bariski.cryptoniffler.presentation.main.SearchActivity_MembersInjector -> com.bariski.cryptoniffler.presentation.main.ja:
     javax.inject.Provider frameworkFragmentInjectorProvider -> b
-    javax.inject.Provider loaderProvider -> e
-    javax.inject.Provider presenterProvider -> d
+    javax.inject.Provider loaderProvider -> f
+    javax.inject.Provider loggerProvider -> d
+    javax.inject.Provider presenterProvider -> e
     javax.inject.Provider storageProvider -> c
     javax.inject.Provider supportFragmentInjectorProvider -> a
-    dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
+    dagger.MembersInjector create(javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
     void injectMembers(com.bariski.cryptoniffler.presentation.main.SearchActivity) -> a
     void injectMembers(java.lang.Object) -> a
-com.bariski.cryptoniffler.presentation.main.SearchPresenter -> com.bariski.cryptoniffler.presentation.main.ia:
-com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl -> com.bariski.cryptoniffler.presentation.main.na:
+com.bariski.cryptoniffler.presentation.main.SearchPresenter -> com.bariski.cryptoniffler.presentation.main.ka:
+com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl -> com.bariski.cryptoniffler.presentation.main.pa:
     com.bariski.cryptoniffler.analytics.Analytics analytics -> e
     com.bariski.cryptoniffler.domain.common.Schedulers schedulers -> d
     com.bariski.cryptoniffler.domain.repository.NifflerRepository repository -> c
@@ -13157,25 +13197,25 @@ com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl -> com.bariski.c
     void initView(java.lang.Object,android.os.Bundle,android.os.Bundle) -> a
     void onClick(com.bariski.cryptoniffler.presentation.common.models.GridItem) -> a
     void onRefresh() -> a
-com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl$initView$1 -> com.bariski.cryptoniffler.presentation.main.ja:
+com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl$initView$1 -> com.bariski.cryptoniffler.presentation.main.la:
     com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl this$0 -> a
     kotlin.jvm.internal.Ref$ObjectRef $input -> b
     java.util.ArrayList apply(java.lang.CharSequence) -> a
-com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl$initView$2 -> com.bariski.cryptoniffler.presentation.main.ka:
+com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl$initView$2 -> com.bariski.cryptoniffler.presentation.main.ma:
     com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl this$0 -> b
     kotlin.jvm.internal.Ref$ObjectRef $input -> c
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.util.ArrayList) -> a
-com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl$initView$3 -> com.bariski.cryptoniffler.presentation.main.la:
+com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl$initView$3 -> com.bariski.cryptoniffler.presentation.main.na:
     com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl$initView$3 INSTANCE -> b
     java.lang.Object invoke(java.lang.Object) -> a
     void invoke(java.lang.Throwable) -> a
-com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl$initView$4 -> com.bariski.cryptoniffler.presentation.main.ma:
+com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl$initView$4 -> com.bariski.cryptoniffler.presentation.main.oa:
     com.bariski.cryptoniffler.presentation.main.SearchPresenterImpl$initView$4 INSTANCE -> b
     java.lang.Object invoke() -> f
     void invoke() -> c
-com.bariski.cryptoniffler.presentation.main.SearchView -> com.bariski.cryptoniffler.presentation.main.oa:
-    com.jakewharton.rxbinding2.InitialValueObservable getSearchObservable() -> n
+com.bariski.cryptoniffler.presentation.main.SearchView -> com.bariski.cryptoniffler.presentation.main.qa:
+    com.jakewharton.rxbinding2.InitialValueObservable getSearchObservable() -> o
     void finishAndSendData(com.bariski.cryptoniffler.domain.model.Coin) -> a
     void showData(java.util.List) -> a
     void toggleEmptyView(boolean) -> b
@@ -13258,14 +13298,15 @@ com.bariski.cryptoniffler.presentation.main.adapters.SearchAdapter$ViewHolder$1 
     com.bariski.cryptoniffler.presentation.main.adapters.GridItemAdapter$OnItemClickListener $itemClickListener -> b
     com.bariski.cryptoniffler.presentation.main.adapters.SearchAdapter$ViewHolder this$0 -> a
 com.bariski.cryptoniffler.presentation.main.inject.CoinDetailModule -> com.bariski.cryptoniffler.presentation.main.b.a:
-    com.bariski.cryptoniffler.presentation.main.ItemDetailPresenter providesPresenter(com.bariski.cryptoniffler.domain.repository.NifflerRepository,com.bariski.cryptoniffler.domain.common.Schedulers,android.content.Context,com.bariski.cryptoniffler.analytics.Analytics) -> a
+    com.bariski.cryptoniffler.presentation.main.ItemDetailPresenter providesPresenter(com.bariski.cryptoniffler.domain.repository.NifflerRepository,com.bariski.cryptoniffler.domain.common.Schedulers,android.content.Context,com.bariski.cryptoniffler.analytics.Analytics,com.bariski.cryptoniffler.data.factory.Logger) -> a
 com.bariski.cryptoniffler.presentation.main.inject.CoinDetailModule_ProvidesPresenterFactory -> com.bariski.cryptoniffler.presentation.main.b.b:
     com.bariski.cryptoniffler.presentation.main.inject.CoinDetailModule module -> a
     javax.inject.Provider analyticsProvider -> e
     javax.inject.Provider contextProvider -> d
+    javax.inject.Provider loggerProvider -> f
     javax.inject.Provider repositoryProvider -> b
     javax.inject.Provider schedulersProvider -> c
-    dagger.internal.Factory create(com.bariski.cryptoniffler.presentation.main.inject.CoinDetailModule,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
+    dagger.internal.Factory create(com.bariski.cryptoniffler.presentation.main.inject.CoinDetailModule,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider,javax.inject.Provider) -> a
 com.bariski.cryptoniffler.presentation.main.inject.InfoModule -> com.bariski.cryptoniffler.presentation.main.b.c:
     android.content.ClipboardManager providesClipboardManager(android.content.Context) -> a
     com.bariski.cryptoniffler.presentation.main.InfoPresenter providesPresenter(android.content.ClipboardManager,com.bariski.cryptoniffler.domain.repository.NifflerRepository,com.bariski.cryptoniffler.domain.common.Schedulers,com.bariski.cryptoniffler.analytics.Analytics) -> a
@@ -13314,7 +13355,6 @@ com.crashlytics.android.Crashlytics -> com.crashlytics.android.a:
     java.util.Collection kits -> j
     com.crashlytics.android.Crashlytics getInstance() -> t
     void checkInitialized() -> v
-    void logException(java.lang.Throwable) -> a
     void setBool(java.lang.String,boolean) -> a
     void setLong(java.lang.String,long) -> a
     void setString(java.lang.String,java.lang.String) -> a
@@ -13341,7 +13381,6 @@ com.crashlytics.android.answers.Answers -> com.crashlytics.android.a.b:
     java.lang.String getOverridenSpiEndpoint() -> u
     java.lang.String getVersion() -> i
     void onException(io.fabric.sdk.android.services.common.Crash$FatalException) -> a
-    void onException(io.fabric.sdk.android.services.common.Crash$LoggedException) -> a
 com.crashlytics.android.answers.AnswersEvent -> com.crashlytics.android.a.c:
 com.crashlytics.android.answers.AnswersEventsHandler -> com.crashlytics.android.a.j:
     android.content.Context context -> b
@@ -13538,7 +13577,6 @@ com.crashlytics.android.answers.SessionAnalyticsManager -> com.crashlytics.andro
     void enable() -> b
     void onBackground() -> a
     void onCrash(java.lang.String,java.lang.String) -> a
-    void onError(java.lang.String) -> a
     void onInstall(long) -> a
     void onLifecycle(android.app.Activity,com.crashlytics.android.answers.SessionEvent$Type) -> a
     void setAnalyticsSettingsData(io.fabric.sdk.android.services.settings.AnalyticsSettingsData,java.lang.String) -> a
@@ -13584,19 +13622,17 @@ com.crashlytics.android.answers.SessionEvent$Type -> com.crashlytics.android.a.J
     com.crashlytics.android.answers.SessionEvent$Type STOP -> d
     com.crashlytics.android.answers.SessionEvent$Type[] $VALUES -> i
 com.crashlytics.android.answers.SessionEventMetadata -> com.crashlytics.android.a.K:
-    java.lang.Boolean limitAdTrackingEnabled -> f
-    java.lang.String advertisingId -> e
-    java.lang.String androidId -> d
+    java.lang.Boolean limitAdTrackingEnabled -> d
     java.lang.String appBundleId -> a
-    java.lang.String appVersionCode -> k
-    java.lang.String appVersionName -> l
-    java.lang.String betaDeviceToken -> g
-    java.lang.String buildId -> h
-    java.lang.String deviceModel -> j
+    java.lang.String appVersionCode -> i
+    java.lang.String appVersionName -> j
+    java.lang.String betaDeviceToken -> e
+    java.lang.String buildId -> f
+    java.lang.String deviceModel -> h
     java.lang.String executionId -> b
     java.lang.String installationId -> c
-    java.lang.String osVersion -> i
-    java.lang.String stringRepresentation -> m
+    java.lang.String osVersion -> g
+    java.lang.String stringRepresentation -> k
 com.crashlytics.android.answers.SessionEventTransform -> com.crashlytics.android.a.L:
     byte[] toBytes(com.crashlytics.android.answers.SessionEvent) -> a
     byte[] toBytes(java.lang.Object) -> a
@@ -13607,80 +13643,12 @@ com.crashlytics.android.answers.SessionMetadataCollector -> com.crashlytics.andr
     java.lang.String versionCode -> c
     java.lang.String versionName -> d
     com.crashlytics.android.answers.SessionEventMetadata getMetadata() -> a
-com.crashlytics.android.beta.AbstractCheckForUpdatesController -> com.crashlytics.android.b.a:
-    android.content.Context context -> c
-    com.crashlytics.android.beta.Beta beta -> d
-    com.crashlytics.android.beta.BuildProperties buildProps -> g
-    io.fabric.sdk.android.services.common.CurrentTimeProvider currentTimeProvider -> i
-    io.fabric.sdk.android.services.common.IdManager idManager -> e
-    io.fabric.sdk.android.services.network.HttpRequestFactory httpRequestFactory -> j
-    io.fabric.sdk.android.services.persistence.PreferenceStore preferenceStore -> h
-    io.fabric.sdk.android.services.settings.BetaSettingsData betaSettings -> f
-    java.util.concurrent.atomic.AtomicBoolean externallyReady -> b
-    java.util.concurrent.atomic.AtomicBoolean initialized -> a
-    long lastCheckTimeMillis -> k
-    void performUpdateCheck() -> e
-    boolean signalExternallyReady() -> a
-    boolean signalInitialized() -> b
-    long getLastCheckTimeMillis() -> d
-    void checkForUpdates() -> c
-    void initialize(android.content.Context,com.crashlytics.android.beta.Beta,io.fabric.sdk.android.services.common.IdManager,io.fabric.sdk.android.services.settings.BetaSettingsData,com.crashlytics.android.beta.BuildProperties,io.fabric.sdk.android.services.persistence.PreferenceStore,io.fabric.sdk.android.services.common.CurrentTimeProvider,io.fabric.sdk.android.services.network.HttpRequestFactory) -> a
-    void setLastCheckTimeMillis(long) -> a
-com.crashlytics.android.beta.ActivityLifecycleCheckForUpdatesController -> com.crashlytics.android.b.d:
-    io.fabric.sdk.android.ActivityLifecycleManager$Callbacks callbacks -> l
-    java.util.concurrent.ExecutorService executorService -> m
-    java.util.concurrent.ExecutorService access$000(com.crashlytics.android.beta.ActivityLifecycleCheckForUpdatesController) -> a
-com.crashlytics.android.beta.ActivityLifecycleCheckForUpdatesController$1 -> com.crashlytics.android.b.c:
-    com.crashlytics.android.beta.ActivityLifecycleCheckForUpdatesController this$0 -> a
-    void onActivityStarted(android.app.Activity) -> a
-com.crashlytics.android.beta.ActivityLifecycleCheckForUpdatesController$1$1 -> com.crashlytics.android.b.b:
-    com.crashlytics.android.beta.ActivityLifecycleCheckForUpdatesController$1 this$1 -> a
-com.crashlytics.android.beta.Beta -> com.crashlytics.android.b.e:
-    com.crashlytics.android.beta.DeviceTokenLoader deviceTokenLoader -> h
-    com.crashlytics.android.beta.UpdatesController updatesController -> i
-    io.fabric.sdk.android.services.cache.MemoryValueCache deviceTokenCache -> g
-    com.crashlytics.android.beta.BuildProperties loadBuildProperties(android.content.Context) -> a
-    io.fabric.sdk.android.services.settings.BetaSettingsData getBetaSettingsData() -> v
-    java.lang.String getBetaDeviceToken(android.content.Context,java.lang.String) -> a
-    boolean canCheckForUpdates(io.fabric.sdk.android.services.settings.BetaSettingsData,com.crashlytics.android.beta.BuildProperties) -> a
-    boolean onPreExecute() -> k
-    com.crashlytics.android.beta.UpdatesController createUpdatesController(int,android.app.Application) -> a
+com.crashlytics.android.beta.Beta -> com.crashlytics.android.b.a:
     java.lang.Boolean doInBackground() -> t
     java.lang.Object doInBackground() -> l
     java.lang.String getIdentifier() -> p
-    java.lang.String getOverridenSpiEndpoint() -> u
     java.lang.String getVersion() -> i
     java.util.Map getDeviceIdentifiers() -> a
-com.crashlytics.android.beta.BuildProperties -> com.crashlytics.android.b.f:
-    java.lang.String buildId -> c
-    java.lang.String packageName -> d
-    java.lang.String versionCode -> a
-    java.lang.String versionName -> b
-    com.crashlytics.android.beta.BuildProperties fromProperties(java.util.Properties) -> a
-    com.crashlytics.android.beta.BuildProperties fromPropertiesStream(java.io.InputStream) -> a
-com.crashlytics.android.beta.CheckForUpdatesRequest -> com.crashlytics.android.b.g:
-    com.crashlytics.android.beta.CheckForUpdatesResponseTransform responseTransform -> g
-    io.fabric.sdk.android.services.network.HttpRequest applyHeadersTo(io.fabric.sdk.android.services.network.HttpRequest,java.lang.String,java.lang.String) -> a
-    java.lang.String createBetaTokenHeaderValueFor(java.lang.String) -> a
-    java.util.Map getQueryParamsFor(com.crashlytics.android.beta.BuildProperties) -> a
-    com.crashlytics.android.beta.CheckForUpdatesResponse invoke(java.lang.String,java.lang.String,com.crashlytics.android.beta.BuildProperties) -> a
-com.crashlytics.android.beta.CheckForUpdatesResponse -> com.crashlytics.android.b.h:
-    java.lang.String buildVersion -> d
-    java.lang.String displayVersion -> c
-    java.lang.String instanceId -> f
-    java.lang.String packageName -> e
-    java.lang.String url -> a
-    java.lang.String versionString -> b
-com.crashlytics.android.beta.CheckForUpdatesResponseTransform -> com.crashlytics.android.b.i:
-    com.crashlytics.android.beta.CheckForUpdatesResponse fromJson(org.json.JSONObject) -> a
-com.crashlytics.android.beta.DeviceTokenLoader -> com.crashlytics.android.b.j:
-    java.lang.Object load(android.content.Context) -> a
-    java.lang.String determineDeviceToken(java.util.zip.ZipInputStream) -> a
-    java.lang.String load(android.content.Context) -> b
-    java.util.zip.ZipInputStream getZipInputStreamOfApkFrom(android.content.Context,java.lang.String) -> a
-com.crashlytics.android.beta.ImmediateCheckForUpdatesController -> com.crashlytics.android.b.k:
-com.crashlytics.android.beta.UpdatesController -> com.crashlytics.android.b.l:
-    void initialize(android.content.Context,com.crashlytics.android.beta.Beta,io.fabric.sdk.android.services.common.IdManager,io.fabric.sdk.android.services.settings.BetaSettingsData,com.crashlytics.android.beta.BuildProperties,io.fabric.sdk.android.services.persistence.PreferenceStore,io.fabric.sdk.android.services.common.CurrentTimeProvider,io.fabric.sdk.android.services.network.HttpRequestFactory) -> a
 com.crashlytics.android.core.AppData -> com.crashlytics.android.c.a:
     java.lang.String apiKey -> a
     java.lang.String buildId -> b
@@ -13697,10 +13665,13 @@ com.crashlytics.android.core.BinaryImagesConverter -> com.crashlytics.android.c.
     boolean isRelevant(com.crashlytics.android.core.ProcMapEntry) -> a
     byte[] generateBinaryImagesJsonString(org.json.JSONArray) -> a
     java.io.File correctDataPath(java.io.File) -> a
-    java.io.File getLibraryFile(java.lang.String) -> c
+    java.io.File getLibraryFile(java.lang.String) -> d
     java.lang.String joinMapsEntries(org.json.JSONArray) -> b
-    org.json.JSONArray parseProcMapsJson(java.lang.String) -> b
+    org.json.JSONArray parseProcMapsJsonFromStream(java.io.BufferedReader) -> b
+    org.json.JSONArray parseProcMapsJsonFromString(java.lang.String) -> b
     org.json.JSONObject createBinaryImageJson(java.lang.String,com.crashlytics.android.core.ProcMapEntry) -> a
+    org.json.JSONObject jsonFromMapEntryString(java.lang.String) -> c
+    byte[] convert(java.io.BufferedReader) -> a
     byte[] convert(java.lang.String) -> a
 com.crashlytics.android.core.BinaryImagesConverter$FileIdStrategy -> com.crashlytics.android.c.c$a:
     java.lang.String createId(java.io.File) -> a
@@ -13823,7 +13794,7 @@ com.crashlytics.android.core.CrashlyticsBackgroundWorker$1 -> com.crashlytics.an
 com.crashlytics.android.core.CrashlyticsBackgroundWorker$2 -> com.crashlytics.android.c.p:
     com.crashlytics.android.core.CrashlyticsBackgroundWorker this$0 -> b
     java.util.concurrent.Callable val$callable -> a
-com.crashlytics.android.core.CrashlyticsController -> com.crashlytics.android.c.T:
+com.crashlytics.android.core.CrashlyticsController -> com.crashlytics.android.c.S:
     com.crashlytics.android.answers.EventLogger firebaseAnalyticsLogger -> y
     com.crashlytics.android.core.AppData appData -> p
     com.crashlytics.android.core.AppMeasurementEventListenerRegistrar appMeasurementEventListenerRegistrar -> x
@@ -13875,7 +13846,6 @@ com.crashlytics.android.core.CrashlyticsController -> com.crashlytics.android.c.
     java.lang.String getPreviousSessionId() -> n
     java.lang.String getSessionIdFromSessionFile(java.io.File) -> a
     java.util.regex.Pattern access$000() -> a
-    void access$1100(com.crashlytics.android.core.CrashlyticsController,java.util.Date,java.lang.Thread,java.lang.Throwable) -> b
     void access$1300(com.crashlytics.android.core.CrashlyticsController,io.fabric.sdk.android.services.settings.SessionSettingsData,boolean) -> a
     void access$1700(com.crashlytics.android.core.CrashlyticsController,android.content.Context,java.io.File,java.lang.String) -> a
     void access$1800(com.crashlytics.android.core.CrashlyticsController,java.util.Set) -> a
@@ -13889,13 +13859,11 @@ com.crashlytics.android.core.CrashlyticsController -> com.crashlytics.android.c.
     void deleteSessionPartFilesFor(java.lang.String) -> a
     void doCloseSessions(io.fabric.sdk.android.services.settings.SessionSettingsData,boolean) -> a
     void doOpenSession() -> o
-    void doWriteNonFatal(java.util.Date,java.lang.Thread,java.lang.Throwable) -> b
     void finalizeMostRecentNativeCrash(android.content.Context,java.io.File,java.lang.String) -> a
     void gzip(byte[],java.io.File) -> b
     void gzipIfNotEmpty(byte[],java.io.File) -> a
-    void recordFatalExceptionAnswersEvent(java.lang.String,java.lang.String) -> d
+    void recordFatalExceptionAnswersEvent(java.lang.String,java.lang.String) -> c
     void recordFatalFirebaseEvent(long) -> a
-    void recordLoggedExceptionAnswersEvent(java.lang.String,java.lang.String) -> c
     void recursiveDelete(java.io.File) -> b
     void recursiveDelete(java.util.Set) -> a
     void retainSessions(java.io.File[],java.util.Set) -> a
@@ -13938,7 +13906,6 @@ com.crashlytics.android.core.CrashlyticsController -> com.crashlytics.android.c.
     void registerDevicePowerStateListener() -> l
     void submitAllReports(float,io.fabric.sdk.android.services.settings.SettingsData) -> a
     void trimSessionFiles(int) -> a
-    void writeNonFatalException(java.lang.Thread,java.lang.Throwable) -> a
     void writeToLog(long,java.lang.String) -> a
 com.crashlytics.android.core.CrashlyticsController$1 -> com.crashlytics.android.c.B:
 com.crashlytics.android.core.CrashlyticsController$11 -> com.crashlytics.android.c.r:
@@ -14045,51 +14012,46 @@ com.crashlytics.android.core.CrashlyticsController$8 -> com.crashlytics.android.
     com.crashlytics.android.core.CrashlyticsController this$0 -> c
     java.lang.String val$msg -> b
     long val$timestamp -> a
-com.crashlytics.android.core.CrashlyticsController$9 -> com.crashlytics.android.c.S:
-    com.crashlytics.android.core.CrashlyticsController this$0 -> d
-    java.lang.Thread val$thread -> b
-    java.lang.Throwable val$ex -> c
-    java.util.Date val$now -> a
-com.crashlytics.android.core.CrashlyticsController$AnySessionPartFileFilter -> com.crashlytics.android.c.T$a:
-com.crashlytics.android.core.CrashlyticsController$CodedOutputStreamWriteAction -> com.crashlytics.android.c.T$b:
+com.crashlytics.android.core.CrashlyticsController$AnySessionPartFileFilter -> com.crashlytics.android.c.S$a:
+com.crashlytics.android.core.CrashlyticsController$CodedOutputStreamWriteAction -> com.crashlytics.android.c.S$b:
     void writeTo(com.crashlytics.android.core.CodedOutputStream) -> a
-com.crashlytics.android.core.CrashlyticsController$DefaultSettingsDataProvider -> com.crashlytics.android.c.T$c:
+com.crashlytics.android.core.CrashlyticsController$DefaultSettingsDataProvider -> com.crashlytics.android.c.S$c:
     io.fabric.sdk.android.services.settings.SettingsData getSettingsData() -> a
-com.crashlytics.android.core.CrashlyticsController$FileNameContainsFilter -> com.crashlytics.android.c.T$d:
+com.crashlytics.android.core.CrashlyticsController$FileNameContainsFilter -> com.crashlytics.android.c.S$d:
     java.lang.String string -> a
-com.crashlytics.android.core.CrashlyticsController$FileOutputStreamWriteAction -> com.crashlytics.android.c.T$e:
+com.crashlytics.android.core.CrashlyticsController$FileOutputStreamWriteAction -> com.crashlytics.android.c.S$e:
     void writeTo(java.io.FileOutputStream) -> a
-com.crashlytics.android.core.CrashlyticsController$InvalidPartFileFilter -> com.crashlytics.android.c.T$f:
-com.crashlytics.android.core.CrashlyticsController$LogFileDirectoryProvider -> com.crashlytics.android.c.T$g:
+com.crashlytics.android.core.CrashlyticsController$InvalidPartFileFilter -> com.crashlytics.android.c.S$f:
+com.crashlytics.android.core.CrashlyticsController$LogFileDirectoryProvider -> com.crashlytics.android.c.S$g:
     io.fabric.sdk.android.services.persistence.FileStore rootFileStore -> a
     java.io.File getLogFileDir() -> a
-com.crashlytics.android.core.CrashlyticsController$PrivacyDialogCheck -> com.crashlytics.android.c.T$h:
+com.crashlytics.android.core.CrashlyticsController$PrivacyDialogCheck -> com.crashlytics.android.c.S$h:
     com.crashlytics.android.core.PreferenceManager preferenceManager -> b
     io.fabric.sdk.android.Kit kit -> a
     io.fabric.sdk.android.services.settings.PromptSettingsData promptData -> c
     com.crashlytics.android.core.PreferenceManager access$2100(com.crashlytics.android.core.CrashlyticsController$PrivacyDialogCheck) -> a
     boolean canSendReports() -> a
-com.crashlytics.android.core.CrashlyticsController$PrivacyDialogCheck$1 -> com.crashlytics.android.c.U:
+com.crashlytics.android.core.CrashlyticsController$PrivacyDialogCheck$1 -> com.crashlytics.android.c.T:
     com.crashlytics.android.core.CrashlyticsController$PrivacyDialogCheck this$0 -> a
     void sendUserReportsWithoutPrompting(boolean) -> a
-com.crashlytics.android.core.CrashlyticsController$PrivacyDialogCheck$2 -> com.crashlytics.android.c.V:
+com.crashlytics.android.core.CrashlyticsController$PrivacyDialogCheck$2 -> com.crashlytics.android.c.U:
     com.crashlytics.android.core.CrashPromptDialog val$dialog -> a
     com.crashlytics.android.core.CrashlyticsController$PrivacyDialogCheck this$0 -> b
-com.crashlytics.android.core.CrashlyticsController$ReportUploaderFilesProvider -> com.crashlytics.android.c.T$i:
+com.crashlytics.android.core.CrashlyticsController$ReportUploaderFilesProvider -> com.crashlytics.android.c.S$i:
     com.crashlytics.android.core.CrashlyticsController this$0 -> a
     java.io.File[] getCompleteSessionFiles() -> b
     java.io.File[] getInvalidSessionFiles() -> c
     java.io.File[] getNativeReportFiles() -> a
-com.crashlytics.android.core.CrashlyticsController$ReportUploaderHandlingExceptionCheck -> com.crashlytics.android.c.T$j:
+com.crashlytics.android.core.CrashlyticsController$ReportUploaderHandlingExceptionCheck -> com.crashlytics.android.c.S$j:
     com.crashlytics.android.core.CrashlyticsController this$0 -> a
     boolean isHandlingException() -> a
-com.crashlytics.android.core.CrashlyticsController$SendReportRunnable -> com.crashlytics.android.c.T$k:
+com.crashlytics.android.core.CrashlyticsController$SendReportRunnable -> com.crashlytics.android.c.S$k:
     android.content.Context context -> a
     com.crashlytics.android.core.Report report -> b
     com.crashlytics.android.core.ReportUploader reportUploader -> c
-com.crashlytics.android.core.CrashlyticsController$SessionPartFileFilter -> com.crashlytics.android.c.T$l:
+com.crashlytics.android.core.CrashlyticsController$SessionPartFileFilter -> com.crashlytics.android.c.S$l:
     java.lang.String sessionId -> a
-com.crashlytics.android.core.CrashlyticsCore -> com.crashlytics.android.c.Z:
+com.crashlytics.android.core.CrashlyticsCore -> com.crashlytics.android.c.Y:
     boolean disabled -> q
     com.crashlytics.android.core.CrashlyticsBackgroundWorker backgroundWorker -> t
     com.crashlytics.android.core.CrashlyticsController controller -> l
@@ -14128,58 +14090,57 @@ com.crashlytics.android.core.CrashlyticsCore -> com.crashlytics.android.c.Z:
     java.util.Map getAttributes() -> v
     void createCrashMarker() -> D
     void log(java.lang.String) -> a
-    void logException(java.lang.Throwable) -> a
     void markInitializationComplete() -> A
     void markInitializationStarted() -> z
     void setBool(java.lang.String,boolean) -> b
     void setLong(java.lang.String,long) -> a
     void setString(java.lang.String,java.lang.String) -> a
-com.crashlytics.android.core.CrashlyticsCore$1 -> com.crashlytics.android.c.W:
+com.crashlytics.android.core.CrashlyticsCore$1 -> com.crashlytics.android.c.V:
     com.crashlytics.android.core.CrashlyticsCore this$0 -> d
     io.fabric.sdk.android.services.concurrency.Priority getPriority() -> c
-com.crashlytics.android.core.CrashlyticsCore$2 -> com.crashlytics.android.c.X:
+com.crashlytics.android.core.CrashlyticsCore$2 -> com.crashlytics.android.c.W:
     com.crashlytics.android.core.CrashlyticsCore this$0 -> a
-com.crashlytics.android.core.CrashlyticsCore$3 -> com.crashlytics.android.c.Y:
+com.crashlytics.android.core.CrashlyticsCore$3 -> com.crashlytics.android.c.X:
     com.crashlytics.android.core.CrashlyticsCore this$0 -> a
-com.crashlytics.android.core.CrashlyticsCore$CrashMarkerCheck -> com.crashlytics.android.c.Z$a:
+com.crashlytics.android.core.CrashlyticsCore$CrashMarkerCheck -> com.crashlytics.android.c.Y$a:
     com.crashlytics.android.core.CrashlyticsFileMarker crashMarker -> a
-com.crashlytics.android.core.CrashlyticsCore$NoOpListener -> com.crashlytics.android.c.Z$b:
+com.crashlytics.android.core.CrashlyticsCore$NoOpListener -> com.crashlytics.android.c.Y$b:
     void crashlyticsDidDetectCrashDuringPreviousExecution() -> a
-com.crashlytics.android.core.CrashlyticsFileMarker -> com.crashlytics.android.c.aa:
+com.crashlytics.android.core.CrashlyticsFileMarker -> com.crashlytics.android.c.Z:
     io.fabric.sdk.android.services.persistence.FileStore fileStore -> b
     java.lang.String markerName -> a
     java.io.File getMarkerFile() -> d
     boolean create() -> a
     boolean isPresent() -> b
     boolean remove() -> c
-com.crashlytics.android.core.CrashlyticsListener -> com.crashlytics.android.c.ba:
+com.crashlytics.android.core.CrashlyticsListener -> com.crashlytics.android.c.aa:
     void crashlyticsDidDetectCrashDuringPreviousExecution() -> a
-com.crashlytics.android.core.CrashlyticsNdkData -> com.crashlytics.android.c.ca:
-com.crashlytics.android.core.CrashlyticsNdkDataProvider -> com.crashlytics.android.c.da:
+com.crashlytics.android.core.CrashlyticsNdkData -> com.crashlytics.android.c.ba:
+com.crashlytics.android.core.CrashlyticsNdkDataProvider -> com.crashlytics.android.c.ca:
     com.crashlytics.android.core.CrashlyticsNdkData getCrashlyticsNdkData() -> a
-com.crashlytics.android.core.CrashlyticsPinningInfoProvider -> com.crashlytics.android.c.ea:
+com.crashlytics.android.core.CrashlyticsPinningInfoProvider -> com.crashlytics.android.c.da:
     com.crashlytics.android.core.PinningInfoProvider pinningInfo -> a
     java.io.InputStream getKeyStoreStream() -> a
     java.lang.String getKeyStorePassword() -> b
     java.lang.String[] getPins() -> c
     long getPinCreationTimeInMillis() -> d
-com.crashlytics.android.core.CrashlyticsUncaughtExceptionHandler -> com.crashlytics.android.c.fa:
+com.crashlytics.android.core.CrashlyticsUncaughtExceptionHandler -> com.crashlytics.android.c.ea:
     boolean firebaseCrashlyticsClientFlag -> c
     com.crashlytics.android.core.CrashlyticsUncaughtExceptionHandler$CrashListener crashListener -> a
     com.crashlytics.android.core.CrashlyticsUncaughtExceptionHandler$SettingsDataProvider settingsDataProvider -> b
     java.lang.Thread$UncaughtExceptionHandler defaultHandler -> d
     java.util.concurrent.atomic.AtomicBoolean isHandlingException -> e
     boolean isHandlingException() -> a
-com.crashlytics.android.core.CrashlyticsUncaughtExceptionHandler$CrashListener -> com.crashlytics.android.c.fa$a:
+com.crashlytics.android.core.CrashlyticsUncaughtExceptionHandler$CrashListener -> com.crashlytics.android.c.ea$a:
     void onUncaughtException(com.crashlytics.android.core.CrashlyticsUncaughtExceptionHandler$SettingsDataProvider,java.lang.Thread,java.lang.Throwable,boolean) -> a
-com.crashlytics.android.core.CrashlyticsUncaughtExceptionHandler$SettingsDataProvider -> com.crashlytics.android.c.fa$b:
+com.crashlytics.android.core.CrashlyticsUncaughtExceptionHandler$SettingsDataProvider -> com.crashlytics.android.c.ea$b:
     io.fabric.sdk.android.services.settings.SettingsData getSettingsData() -> a
-com.crashlytics.android.core.CreateReportRequest -> com.crashlytics.android.c.ga:
+com.crashlytics.android.core.CreateReportRequest -> com.crashlytics.android.c.fa:
     com.crashlytics.android.core.Report report -> b
     java.lang.String apiKey -> a
-com.crashlytics.android.core.CreateReportSpiCall -> com.crashlytics.android.c.ha:
+com.crashlytics.android.core.CreateReportSpiCall -> com.crashlytics.android.c.ga:
     boolean invoke(com.crashlytics.android.core.CreateReportRequest) -> a
-com.crashlytics.android.core.DefaultAppMeasurementEventListenerRegistrar -> com.crashlytics.android.c.ja:
+com.crashlytics.android.core.DefaultAppMeasurementEventListenerRegistrar -> com.crashlytics.android.c.ia:
     com.crashlytics.android.core.CrashlyticsCore crashlyticsCore -> a
     boolean invoke(java.lang.Class,java.lang.Object,java.lang.String) -> a
     com.crashlytics.android.core.AppMeasurementEventListenerRegistrar instanceFrom(com.crashlytics.android.core.CrashlyticsCore) -> a
@@ -14191,13 +14152,13 @@ com.crashlytics.android.core.DefaultAppMeasurementEventListenerRegistrar -> com.
     void access$100(com.crashlytics.android.core.CrashlyticsCore,java.lang.String,android.os.Bundle) -> a
     void writeEventToUserLog(com.crashlytics.android.core.CrashlyticsCore,java.lang.String,android.os.Bundle) -> b
     boolean register() -> a
-com.crashlytics.android.core.DefaultAppMeasurementEventListenerRegistrar$1 -> com.crashlytics.android.c.ia:
+com.crashlytics.android.core.DefaultAppMeasurementEventListenerRegistrar$1 -> com.crashlytics.android.c.ha:
     com.crashlytics.android.core.DefaultAppMeasurementEventListenerRegistrar this$0 -> a
-com.crashlytics.android.core.DefaultCreateReportSpiCall -> com.crashlytics.android.c.ka:
+com.crashlytics.android.core.DefaultCreateReportSpiCall -> com.crashlytics.android.c.ja:
     io.fabric.sdk.android.services.network.HttpRequest applyHeadersTo(io.fabric.sdk.android.services.network.HttpRequest,com.crashlytics.android.core.CreateReportRequest) -> a
     io.fabric.sdk.android.services.network.HttpRequest applyMultipartDataTo(io.fabric.sdk.android.services.network.HttpRequest,com.crashlytics.android.core.Report) -> a
     boolean invoke(com.crashlytics.android.core.CreateReportRequest) -> a
-com.crashlytics.android.core.DevicePowerStateListener -> com.crashlytics.android.c.na:
+com.crashlytics.android.core.DevicePowerStateListener -> com.crashlytics.android.c.ma:
     android.content.BroadcastReceiver powerConnectedReceiver -> g
     android.content.BroadcastReceiver powerDisconnectedReceiver -> f
     android.content.Context context -> e
@@ -14210,11 +14171,11 @@ com.crashlytics.android.core.DevicePowerStateListener -> com.crashlytics.android
     boolean isPowerConnected() -> b
     void dispose() -> c
     void initialize() -> a
-com.crashlytics.android.core.DevicePowerStateListener$1 -> com.crashlytics.android.c.la:
+com.crashlytics.android.core.DevicePowerStateListener$1 -> com.crashlytics.android.c.ka:
     com.crashlytics.android.core.DevicePowerStateListener this$0 -> a
-com.crashlytics.android.core.DevicePowerStateListener$2 -> com.crashlytics.android.c.ma:
+com.crashlytics.android.core.DevicePowerStateListener$2 -> com.crashlytics.android.c.la:
     com.crashlytics.android.core.DevicePowerStateListener this$0 -> a
-com.crashlytics.android.core.DialogStringResolver -> com.crashlytics.android.c.oa:
+com.crashlytics.android.core.DialogStringResolver -> com.crashlytics.android.c.na:
     android.content.Context context -> a
     io.fabric.sdk.android.services.settings.PromptSettingsData promptData -> b
     boolean isNullOrEmpty(java.lang.String) -> a
@@ -14225,13 +14186,13 @@ com.crashlytics.android.core.DialogStringResolver -> com.crashlytics.android.c.o
     java.lang.String getMessage() -> b
     java.lang.String getSendButtonTitle() -> c
     java.lang.String getTitle() -> a
-com.crashlytics.android.core.FileLogStore -> com.crashlytics.android.c.pa:
+com.crashlytics.android.core.FileLogStore -> com.crashlytics.android.c.oa:
     byte[] getLogAsBytes() -> b
     com.crashlytics.android.core.ByteString getLogAsByteString() -> c
     void closeLogFile() -> a
     void deleteLogFile() -> d
     void writeToLog(long,java.lang.String) -> a
-com.crashlytics.android.core.InvalidSessionReport -> com.crashlytics.android.c.qa:
+com.crashlytics.android.core.InvalidSessionReport -> com.crashlytics.android.c.pa:
     java.io.File[] files -> a
     java.lang.String identifier -> c
     java.util.Map customHeaders -> b
@@ -14239,7 +14200,7 @@ com.crashlytics.android.core.InvalidSessionReport -> com.crashlytics.android.c.q
     java.io.File getFile() -> a
     java.io.File[] getFiles() -> d
     java.util.Map getCustomHeaders() -> b
-com.crashlytics.android.core.LogFileManager -> com.crashlytics.android.c.sa:
+com.crashlytics.android.core.LogFileManager -> com.crashlytics.android.c.ra:
     android.content.Context context -> b
     com.crashlytics.android.core.FileLogStore currentLog -> d
     com.crashlytics.android.core.LogFileManager$DirectoryProvider directoryProvider -> c
@@ -14253,20 +14214,20 @@ com.crashlytics.android.core.LogFileManager -> com.crashlytics.android.c.sa:
     void setCurrentSession(java.lang.String) -> a
     void setLogFile(java.io.File,int) -> a
     void writeToLog(long,java.lang.String) -> a
-com.crashlytics.android.core.LogFileManager$1 -> com.crashlytics.android.c.ra:
-com.crashlytics.android.core.LogFileManager$DirectoryProvider -> com.crashlytics.android.c.sa$a:
+com.crashlytics.android.core.LogFileManager$1 -> com.crashlytics.android.c.qa:
+com.crashlytics.android.core.LogFileManager$DirectoryProvider -> com.crashlytics.android.c.ra$a:
     java.io.File getLogFileDir() -> a
-com.crashlytics.android.core.LogFileManager$NoopLogStore -> com.crashlytics.android.c.sa$b:
+com.crashlytics.android.core.LogFileManager$NoopLogStore -> com.crashlytics.android.c.ra$b:
     byte[] getLogAsBytes() -> b
     com.crashlytics.android.core.ByteString getLogAsByteString() -> c
     void closeLogFile() -> a
     void deleteLogFile() -> d
     void writeToLog(long,java.lang.String) -> a
-com.crashlytics.android.core.ManifestUnityVersionProvider -> com.crashlytics.android.c.ta:
+com.crashlytics.android.core.ManifestUnityVersionProvider -> com.crashlytics.android.c.sa:
     android.content.Context context -> a
     java.lang.String packageName -> b
     java.lang.String getUnityVersion() -> a
-com.crashlytics.android.core.MetaDataStore -> com.crashlytics.android.c.ua:
+com.crashlytics.android.core.MetaDataStore -> com.crashlytics.android.c.ta:
     java.io.File filesDir -> b
     java.nio.charset.Charset UTF_8 -> a
     com.crashlytics.android.core.UserMetaData jsonToUserData(java.lang.String) -> d
@@ -14276,21 +14237,22 @@ com.crashlytics.android.core.MetaDataStore -> com.crashlytics.android.c.ua:
     java.io.File getKeysFileForSession(java.lang.String) -> c
     java.io.File getUserDataFileForSession(java.lang.String) -> b
     void writeKeyData(java.lang.String,java.util.Map) -> a
-com.crashlytics.android.core.MiddleOutFallbackStrategy -> com.crashlytics.android.c.va:
+com.crashlytics.android.core.MiddleOutFallbackStrategy -> com.crashlytics.android.c.ua:
     com.crashlytics.android.core.MiddleOutStrategy middleOutStrategy -> c
     com.crashlytics.android.core.StackTraceTrimmingStrategy[] trimmingStrategies -> b
     int maximumStackSize -> a
     java.lang.StackTraceElement[] getTrimmedStackTrace(java.lang.StackTraceElement[]) -> a
-com.crashlytics.android.core.MiddleOutStrategy -> com.crashlytics.android.c.wa:
+com.crashlytics.android.core.MiddleOutStrategy -> com.crashlytics.android.c.va:
     int trimmedSize -> a
     java.lang.StackTraceElement[] getTrimmedStackTrace(java.lang.StackTraceElement[]) -> a
-com.crashlytics.android.core.NativeCreateReportSpiCall -> com.crashlytics.android.c.xa:
+com.crashlytics.android.core.NativeCreateReportSpiCall -> com.crashlytics.android.c.wa:
     io.fabric.sdk.android.services.network.HttpRequest applyHeadersTo(io.fabric.sdk.android.services.network.HttpRequest,java.lang.String) -> a
     io.fabric.sdk.android.services.network.HttpRequest applyMultipartDataTo(io.fabric.sdk.android.services.network.HttpRequest,com.crashlytics.android.core.Report) -> a
     boolean invoke(com.crashlytics.android.core.CreateReportRequest) -> a
-com.crashlytics.android.core.NativeFileUtils -> com.crashlytics.android.c.ya:
+com.crashlytics.android.core.NativeFileUtils -> com.crashlytics.android.c.xa:
+    byte[] binaryImagesJsonFromBinaryLibsFile(java.io.File,android.content.Context) -> b
     byte[] binaryImagesJsonFromDirectory(java.io.File,android.content.Context) -> a
-    byte[] binaryImagesJsonFromFile(java.io.File,android.content.Context) -> b
+    byte[] binaryImagesJsonFromMapsFile(java.io.File,android.content.Context) -> c
     byte[] metadataJsonFromDirectory(java.io.File) -> c
     byte[] minidumpFromDirectory(java.io.File) -> b
     byte[] minidumpFromFile(java.io.File) -> d
@@ -14298,31 +14260,31 @@ com.crashlytics.android.core.NativeFileUtils -> com.crashlytics.android.c.ya:
     byte[] readBytes(java.io.InputStream) -> a
     byte[] readFile(java.io.File) -> a
     java.io.File filter(java.io.File,java.lang.String) -> a
-com.crashlytics.android.core.NativeSessionReport -> com.crashlytics.android.c.za:
+com.crashlytics.android.core.NativeSessionReport -> com.crashlytics.android.c.ya:
     java.io.File reportDirectory -> a
     com.crashlytics.android.core.Report$Type getType() -> c
     java.io.File getFile() -> a
     java.io.File[] getFiles() -> d
     java.util.Map getCustomHeaders() -> b
-com.crashlytics.android.core.PinningInfoProvider -> com.crashlytics.android.c.Aa:
+com.crashlytics.android.core.PinningInfoProvider -> com.crashlytics.android.c.za:
     java.io.InputStream getKeyStoreStream() -> a
     java.lang.String getKeyStorePassword() -> b
     java.lang.String[] getPins() -> c
-com.crashlytics.android.core.PreferenceManager -> com.crashlytics.android.c.Ba:
+com.crashlytics.android.core.PreferenceManager -> com.crashlytics.android.c.Aa:
     com.crashlytics.android.core.CrashlyticsCore kit -> b
     io.fabric.sdk.android.services.persistence.PreferenceStore preferenceStore -> a
     com.crashlytics.android.core.PreferenceManager create(io.fabric.sdk.android.services.persistence.PreferenceStore,com.crashlytics.android.core.CrashlyticsCore) -> a
     boolean shouldAlwaysSendReports() -> a
     void setShouldAlwaysSendReports(boolean) -> a
-com.crashlytics.android.core.ProcMapEntry -> com.crashlytics.android.c.Ca:
+com.crashlytics.android.core.ProcMapEntry -> com.crashlytics.android.c.Ba:
     java.lang.String path -> d
     java.lang.String perms -> c
     long address -> a
     long size -> b
-com.crashlytics.android.core.ProcMapEntryParser -> com.crashlytics.android.c.Da:
+com.crashlytics.android.core.ProcMapEntryParser -> com.crashlytics.android.c.Ca:
     java.util.regex.Pattern MAP_REGEX -> a
     com.crashlytics.android.core.ProcMapEntry parse(java.lang.String) -> a
-com.crashlytics.android.core.QueueFileLogStore -> com.crashlytics.android.c.Fa:
+com.crashlytics.android.core.QueueFileLogStore -> com.crashlytics.android.c.Ea:
     int maxLogSize -> b
     io.fabric.sdk.android.services.common.QueueFile logFile -> c
     java.io.File workingFile -> a
@@ -14334,30 +14296,30 @@ com.crashlytics.android.core.QueueFileLogStore -> com.crashlytics.android.c.Fa:
     void closeLogFile() -> a
     void deleteLogFile() -> d
     void writeToLog(long,java.lang.String) -> a
-com.crashlytics.android.core.QueueFileLogStore$1 -> com.crashlytics.android.c.Ea:
+com.crashlytics.android.core.QueueFileLogStore$1 -> com.crashlytics.android.c.Da:
     byte[] val$logBytes -> a
     com.crashlytics.android.core.QueueFileLogStore this$0 -> c
     int[] val$offsetHolder -> b
     void read(java.io.InputStream,int) -> a
-com.crashlytics.android.core.QueueFileLogStore$LogBytes -> com.crashlytics.android.c.Fa$a:
+com.crashlytics.android.core.QueueFileLogStore$LogBytes -> com.crashlytics.android.c.Ea$a:
     byte[] bytes -> a
     com.crashlytics.android.core.QueueFileLogStore this$0 -> c
     int offset -> b
-com.crashlytics.android.core.RemoveRepeatsStrategy -> com.crashlytics.android.c.Ga:
+com.crashlytics.android.core.RemoveRepeatsStrategy -> com.crashlytics.android.c.Fa:
     int maxRepetitions -> a
     boolean isRepeatingSequence(java.lang.StackTraceElement[],int,int) -> a
     java.lang.StackTraceElement[] trimRepeats(java.lang.StackTraceElement[],int) -> a
     java.lang.StackTraceElement[] getTrimmedStackTrace(java.lang.StackTraceElement[]) -> a
-com.crashlytics.android.core.Report -> com.crashlytics.android.c.Ha:
+com.crashlytics.android.core.Report -> com.crashlytics.android.c.Ga:
     com.crashlytics.android.core.Report$Type getType() -> c
     java.io.File getFile() -> a
     java.io.File[] getFiles() -> d
     java.util.Map getCustomHeaders() -> b
-com.crashlytics.android.core.Report$Type -> com.crashlytics.android.c.Ha$a:
+com.crashlytics.android.core.Report$Type -> com.crashlytics.android.c.Ga$a:
     com.crashlytics.android.core.Report$Type JAVA -> a
     com.crashlytics.android.core.Report$Type NATIVE -> b
     com.crashlytics.android.core.Report$Type[] $VALUES -> c
-com.crashlytics.android.core.ReportUploader -> com.crashlytics.android.c.Ia:
+com.crashlytics.android.core.ReportUploader -> com.crashlytics.android.c.Ha:
     com.crashlytics.android.core.CreateReportSpiCall createReportCall -> d
     com.crashlytics.android.core.ReportUploader$HandlingExceptionCheck handlingExceptionCheck -> g
     com.crashlytics.android.core.ReportUploader$ReportFilesProvider reportFilesProvider -> f
@@ -14372,23 +14334,23 @@ com.crashlytics.android.core.ReportUploader -> com.crashlytics.android.c.Ia:
     boolean forceUpload(com.crashlytics.android.core.Report) -> a
     java.util.List findReports() -> b
     void uploadReports(float,com.crashlytics.android.core.ReportUploader$SendCheck) -> a
-com.crashlytics.android.core.ReportUploader$AlwaysSendCheck -> com.crashlytics.android.c.Ia$a:
+com.crashlytics.android.core.ReportUploader$AlwaysSendCheck -> com.crashlytics.android.c.Ha$a:
     boolean canSendReports() -> a
-com.crashlytics.android.core.ReportUploader$HandlingExceptionCheck -> com.crashlytics.android.c.Ia$b:
+com.crashlytics.android.core.ReportUploader$HandlingExceptionCheck -> com.crashlytics.android.c.Ha$b:
     boolean isHandlingException() -> a
-com.crashlytics.android.core.ReportUploader$ReportFilesProvider -> com.crashlytics.android.c.Ia$c:
+com.crashlytics.android.core.ReportUploader$ReportFilesProvider -> com.crashlytics.android.c.Ha$c:
     java.io.File[] getCompleteSessionFiles() -> b
     java.io.File[] getInvalidSessionFiles() -> c
     java.io.File[] getNativeReportFiles() -> a
-com.crashlytics.android.core.ReportUploader$SendCheck -> com.crashlytics.android.c.Ia$d:
+com.crashlytics.android.core.ReportUploader$SendCheck -> com.crashlytics.android.c.Ha$d:
     boolean canSendReports() -> a
-com.crashlytics.android.core.ReportUploader$Worker -> com.crashlytics.android.c.Ia$e:
+com.crashlytics.android.core.ReportUploader$Worker -> com.crashlytics.android.c.Ha$e:
     com.crashlytics.android.core.ReportUploader this$0 -> c
     com.crashlytics.android.core.ReportUploader$SendCheck sendCheck -> b
     float delay -> a
     void attemptUploadWithRetry() -> b
     void onRun() -> a
-com.crashlytics.android.core.SessionProtobufHelper -> com.crashlytics.android.c.Ja:
+com.crashlytics.android.core.SessionProtobufHelper -> com.crashlytics.android.c.Ia:
     com.crashlytics.android.core.ByteString SIGNAL_DEFAULT_BYTE_STRING -> a
     com.crashlytics.android.core.ByteString UNITY_PLATFORM_BYTE_STRING -> b
     com.crashlytics.android.core.ByteString stringToByteString(java.lang.String) -> a
@@ -14422,7 +14384,7 @@ com.crashlytics.android.core.SessionProtobufHelper -> com.crashlytics.android.c.
     void writeSessionOS(com.crashlytics.android.core.CodedOutputStream,java.lang.String,java.lang.String,boolean) -> a
     void writeSessionUser(com.crashlytics.android.core.CodedOutputStream,java.lang.String,java.lang.String,java.lang.String) -> a
     void writeThread(com.crashlytics.android.core.CodedOutputStream,java.lang.Thread,java.lang.StackTraceElement[],int,boolean) -> a
-com.crashlytics.android.core.SessionReport -> com.crashlytics.android.c.Ka:
+com.crashlytics.android.core.SessionReport -> com.crashlytics.android.c.Ja:
     java.io.File file -> a
     java.io.File[] files -> b
     java.util.Map customHeaders -> c
@@ -14430,29 +14392,29 @@ com.crashlytics.android.core.SessionReport -> com.crashlytics.android.c.Ka:
     java.io.File getFile() -> a
     java.io.File[] getFiles() -> d
     java.util.Map getCustomHeaders() -> b
-com.crashlytics.android.core.Sha1FileIdStrategy -> com.crashlytics.android.c.La:
+com.crashlytics.android.core.Sha1FileIdStrategy -> com.crashlytics.android.c.Ka:
     java.lang.String getFileSHA(java.lang.String) -> a
     java.lang.String createId(java.io.File) -> a
-com.crashlytics.android.core.StackTraceTrimmingStrategy -> com.crashlytics.android.c.Ma:
+com.crashlytics.android.core.StackTraceTrimmingStrategy -> com.crashlytics.android.c.La:
     java.lang.StackTraceElement[] getTrimmedStackTrace(java.lang.StackTraceElement[]) -> a
-com.crashlytics.android.core.TrimmedThrowableData -> com.crashlytics.android.c.Na:
+com.crashlytics.android.core.TrimmedThrowableData -> com.crashlytics.android.c.Ma:
     com.crashlytics.android.core.TrimmedThrowableData cause -> d
     java.lang.StackTraceElement[] stacktrace -> c
     java.lang.String className -> b
     java.lang.String localizedMessage -> a
-com.crashlytics.android.core.UnityVersionProvider -> com.crashlytics.android.c.Oa:
+com.crashlytics.android.core.UnityVersionProvider -> com.crashlytics.android.c.Na:
     java.lang.String getUnityVersion() -> a
-com.crashlytics.android.core.UserMetaData -> com.crashlytics.android.c.Pa:
+com.crashlytics.android.core.UserMetaData -> com.crashlytics.android.c.Oa:
     java.lang.String email -> d
     java.lang.String id -> b
     java.lang.String name -> c
     com.crashlytics.android.core.UserMetaData EMPTY -> a
-com.crashlytics.android.core.Utils -> com.crashlytics.android.c.Ra:
+com.crashlytics.android.core.Utils -> com.crashlytics.android.c.Qa:
     java.io.FilenameFilter ALL_FILES_FILTER -> a
     int capFileCount(java.io.File,int,java.util.Comparator) -> a
     int capFileCount(java.io.File,java.io.FilenameFilter,int,java.util.Comparator) -> a
-com.crashlytics.android.core.Utils$1 -> com.crashlytics.android.c.Qa:
-com.crashlytics.android.core.WireFormat -> com.crashlytics.android.c.Sa:
+com.crashlytics.android.core.Utils$1 -> com.crashlytics.android.c.Pa:
+com.crashlytics.android.core.WireFormat -> com.crashlytics.android.c.Ra:
     int MESSAGE_SET_ITEM_END_TAG -> b
     int MESSAGE_SET_ITEM_TAG -> a
     int MESSAGE_SET_MESSAGE_TAG -> d
@@ -18825,19 +18787,18 @@ com.google.android.gms.measurement.AppMeasurement$Event -> com.google.android.gm
     java.lang.String zzil(java.lang.String) -> a
 com.google.android.gms.measurement.AppMeasurement$EventInterceptor -> com.google.android.gms.measurement.AppMeasurement$b:
     void interceptEvent(java.lang.String,java.lang.String,android.os.Bundle,long) -> a
-com.google.android.gms.measurement.AppMeasurement$OnEventListener -> com.google.android.gms.measurement.AppMeasurement$c:
-    void onEvent(java.lang.String,java.lang.String,android.os.Bundle,long) -> a
-com.google.android.gms.measurement.AppMeasurement$Param -> com.google.android.gms.measurement.AppMeasurement$d:
+com.google.android.gms.measurement.AppMeasurement$OnEventListener -> com.google.android.gms.measurement.AppMeasurement$OnEventListener:
+com.google.android.gms.measurement.AppMeasurement$Param -> com.google.android.gms.measurement.AppMeasurement$c:
     java.lang.String[] zzikk -> a
     java.lang.String[] zzikl -> b
     java.lang.String zzil(java.lang.String) -> a
-com.google.android.gms.measurement.AppMeasurement$UserProperty -> com.google.android.gms.measurement.AppMeasurement$e:
+com.google.android.gms.measurement.AppMeasurement$UserProperty -> com.google.android.gms.measurement.AppMeasurement$d:
     java.lang.String[] zzikp -> a
     java.lang.String[] zzikq -> b
     java.lang.String zzil(java.lang.String) -> a
-com.google.android.gms.measurement.AppMeasurement$zza -> com.google.android.gms.measurement.AppMeasurement$f:
+com.google.android.gms.measurement.AppMeasurement$zza -> com.google.android.gms.measurement.AppMeasurement$e:
     boolean zza(com.google.android.gms.measurement.AppMeasurement$zzb,com.google.android.gms.measurement.AppMeasurement$zzb) -> a
-com.google.android.gms.measurement.AppMeasurement$zzb -> com.google.android.gms.measurement.AppMeasurement$g:
+com.google.android.gms.measurement.AppMeasurement$zzb -> com.google.android.gms.measurement.AppMeasurement$f:
     java.lang.String zzikm -> a
     java.lang.String zzikn -> b
     long zziko -> c
@@ -18918,7 +18879,7 @@ com.google.android.gms.tasks.zzo -> com.google.android.gms.tasks.l:
     com.google.android.gms.tasks.zzn zzkgn -> a
     java.util.concurrent.Callable zzdbw -> b
 com.google.firebase.FirebaseApiNotAvailableException -> com.google.firebase.FirebaseApiNotAvailableException:
-com.google.firebase.FirebaseApp -> com.google.firebase.a:
+com.google.firebase.FirebaseApp -> com.google.firebase.FirebaseApp:
     android.content.Context mApplicationContext -> h
     com.google.firebase.FirebaseApp$zzc zzlgl -> p
     com.google.firebase.FirebaseOptions zzlge -> j
@@ -18935,32 +18896,31 @@ com.google.firebase.FirebaseApp -> com.google.firebase.a:
     java.util.List zzlgc -> d
     java.util.Map zzhtm -> g
     java.util.Set zzlgd -> e
-    com.google.firebase.FirebaseApp getInstance() -> a
     com.google.firebase.FirebaseApp initializeApp(android.content.Context) -> a
     com.google.firebase.FirebaseApp initializeApp(android.content.Context,com.google.firebase.FirebaseOptions) -> a
     com.google.firebase.FirebaseApp initializeApp(android.content.Context,com.google.firebase.FirebaseOptions,java.lang.String) -> a
-    java.lang.Object zzbfc() -> b
+    java.lang.Object zzbfc() -> a
     void zza(com.google.firebase.FirebaseApp) -> a
     void zza(java.lang.Class,java.lang.Object,java.lang.Iterable) -> a
     void zzbe(boolean) -> a
-    void zzbnm() -> g
-    void zzbnq() -> h
+    void zzbnm() -> f
+    void zzbnq() -> g
     void zzbz(boolean) -> b
-    android.content.Context getApplicationContext() -> c
-    boolean zzbnn() -> f
-    com.google.firebase.FirebaseOptions getOptions() -> e
-    java.lang.String getName() -> d
-com.google.firebase.FirebaseApp$zza -> com.google.firebase.a$a:
+    android.content.Context getApplicationContext() -> b
+    boolean zzbnn() -> e
+    com.google.firebase.FirebaseOptions getOptions() -> d
+    java.lang.String getName() -> c
+com.google.firebase.FirebaseApp$zza -> com.google.firebase.FirebaseApp$a:
     void zzbe(boolean) -> a
-com.google.firebase.FirebaseApp$zzc -> com.google.firebase.a$b:
-com.google.firebase.FirebaseApp$zzd -> com.google.firebase.a$c:
+com.google.firebase.FirebaseApp$zzc -> com.google.firebase.FirebaseApp$b:
+com.google.firebase.FirebaseApp$zzd -> com.google.firebase.FirebaseApp$c:
     android.content.Context mApplicationContext -> b
     java.util.concurrent.atomic.AtomicReference zzlgm -> a
     void zzef(android.content.Context) -> b
     void zzeg(android.content.Context) -> a
 com.google.firebase.FirebaseException -> com.google.firebase.FirebaseException:
 com.google.firebase.FirebaseNetworkException -> com.google.firebase.FirebaseNetworkException:
-com.google.firebase.FirebaseOptions -> com.google.firebase.b:
+com.google.firebase.FirebaseOptions -> com.google.firebase.a:
     java.lang.String zzehx -> b
     java.lang.String zzlgn -> a
     java.lang.String zzlgo -> c
@@ -19502,7 +19462,7 @@ com.google.firebase.remoteconfig.zza -> com.google.firebase.remoteconfig.e:
     com.google.firebase.remoteconfig.FirebaseRemoteConfig zzmse -> b
     void onResult(com.google.android.gms.common.api.Result) -> a
 com.google.firebase.remoteconfig.zzb -> com.google.firebase.remoteconfig.f:
-com.google.firebase.zza -> com.google.firebase.c:
+com.google.firebase.zza -> com.google.firebase.b:
     void zzbe(boolean) -> a
 com.jakewharton.picasso.OkHttp3Downloader -> b.d.a.a:
     okhttp3.Cache cache -> b
@@ -20584,7 +20544,7 @@ dagger.android.AndroidInjector$Factory -> dagger.android.b$b:
     dagger.android.AndroidInjector create(java.lang.Object) -> a
 dagger.android.DaggerFragment -> dagger.android.c:
     dagger.android.DispatchingAndroidInjector childFragmentInjector -> a
-    dagger.android.AndroidInjector fragmentInjector() -> l
+    dagger.android.AndroidInjector fragmentInjector() -> m
 dagger.android.DaggerFragment_MembersInjector -> dagger.android.d:
     void injectChildFragmentInjector(dagger.android.DaggerFragment,javax.inject.Provider) -> a
 dagger.android.DispatchingAndroidInjector -> dagger.android.DispatchingAndroidInjector:
@@ -20599,11 +20559,11 @@ dagger.android.DispatchingAndroidInjector_Factory -> dagger.android.e:
 dagger.android.HasActivityInjector -> dagger.android.f:
     dagger.android.AndroidInjector activityInjector() -> a
 dagger.android.HasFragmentInjector -> dagger.android.g:
-    dagger.android.AndroidInjector fragmentInjector() -> l
+    dagger.android.AndroidInjector fragmentInjector() -> m
 dagger.android.support.DaggerAppCompatActivity -> dagger.android.a.a:
     dagger.android.DispatchingAndroidInjector frameworkFragmentInjector -> u
     dagger.android.DispatchingAndroidInjector supportFragmentInjector -> t
-    dagger.android.AndroidInjector fragmentInjector() -> l
+    dagger.android.AndroidInjector fragmentInjector() -> m
 dagger.android.support.DaggerAppCompatActivity_MembersInjector -> dagger.android.a.b:
     void injectFrameworkFragmentInjector(dagger.android.support.DaggerAppCompatActivity,javax.inject.Provider) -> b
     void injectSupportFragmentInjector(dagger.android.support.DaggerAppCompatActivity,javax.inject.Provider) -> a
@@ -20708,16 +20668,15 @@ io.fabric.sdk.android.Fabric -> io.fabric.sdk.android.f:
     java.util.Map getKitMap(java.util.Collection) -> b
     java.util.concurrent.atomic.AtomicBoolean access$200(io.fabric.sdk.android.Fabric) -> a
     void addToKitMap(java.util.Map,java.util.Collection) -> a
-    void init() -> k
+    void init() -> j
     void setFabric(io.fabric.sdk.android.Fabric) -> c
     android.app.Activity getCurrentActivity() -> e
-    io.fabric.sdk.android.ActivityLifecycleManager getActivityLifecycleManager() -> h
     io.fabric.sdk.android.Fabric setCurrentActivity(android.app.Activity) -> a
     io.fabric.sdk.android.InitializationCallback createKitInitializationCallback(int) -> a
     java.lang.String getIdentifier() -> g
     java.lang.String getVersion() -> f
-    java.util.Collection getKits() -> j
-    java.util.concurrent.ExecutorService getExecutorService() -> i
+    java.util.Collection getKits() -> i
+    java.util.concurrent.ExecutorService getExecutorService() -> h
     java.util.concurrent.Future getKitsFinderFuture(android.content.Context) -> c
     void addAnnotatedDependencies(java.util.Map,io.fabric.sdk.android.Kit) -> a
     void initializeKits(android.content.Context) -> b
@@ -20945,8 +20904,7 @@ io.fabric.sdk.android.services.common.CommonUtils -> io.fabric.sdk.android.a.b.l
     java.lang.String hash(java.io.InputStream,java.lang.String) -> a
     java.lang.String hash(java.lang.String,java.lang.String) -> a
     java.lang.String hexify(byte[]) -> a
-    java.lang.String logPriorityToString(int) -> b
-    java.lang.String padWithZerosToMaxIntWidth(int) -> a
+    java.lang.String logPriorityToString(int) -> a
     java.lang.String resolveBuildId(android.content.Context) -> m
     java.lang.String sha1(java.io.InputStream) -> b
     java.lang.String sha1(java.lang.String) -> a
@@ -20985,7 +20943,6 @@ io.fabric.sdk.android.services.common.Crash -> io.fabric.sdk.android.a.b.m:
     java.lang.String getExceptionName() -> b
     java.lang.String getSessionId() -> a
 io.fabric.sdk.android.services.common.Crash$FatalException -> io.fabric.sdk.android.a.b.m$a:
-io.fabric.sdk.android.services.common.Crash$LoggedException -> io.fabric.sdk.android.a.b.m$b:
 io.fabric.sdk.android.services.common.CurrentTimeProvider -> io.fabric.sdk.android.a.b.n:
     long getCurrentTimeMillis() -> a
 io.fabric.sdk.android.services.common.DeliveryMechanism -> io.fabric.sdk.android.a.b.o:
@@ -21017,11 +20974,19 @@ io.fabric.sdk.android.services.common.ExecutorUtils$2 -> io.fabric.sdk.android.a
     java.util.concurrent.TimeUnit val$timeUnit -> d
     long val$terminationTimeout -> c
     void onRun() -> a
-io.fabric.sdk.android.services.common.FirebaseInfo -> io.fabric.sdk.android.a.b.u:
+io.fabric.sdk.android.services.common.FirebaseApp -> io.fabric.sdk.android.a.b.u:
+    boolean isDataCollectionDefaultEnabled() -> a
+io.fabric.sdk.android.services.common.FirebaseAppImpl -> io.fabric.sdk.android.a.b.v:
+    java.lang.Object firebaseAppInstance -> b
+    java.lang.reflect.Method isDataCollectionDefaultEnabledMethod -> a
+    io.fabric.sdk.android.services.common.FirebaseApp getInstance(android.content.Context) -> a
+    boolean isDataCollectionDefaultEnabled() -> a
+io.fabric.sdk.android.services.common.FirebaseInfo -> io.fabric.sdk.android.a.b.w:
+    boolean isDataCollectionDefaultEnabled(android.content.Context) -> c
     boolean isFirebaseCrashlyticsEnabled(android.content.Context) -> b
     java.lang.String createApiKeyFromFirebaseAppId(java.lang.String) -> a
     java.lang.String getApiKeyFromFirebaseAppId(android.content.Context) -> a
-io.fabric.sdk.android.services.common.IdManager -> io.fabric.sdk.android.a.b.v:
+io.fabric.sdk.android.services.common.IdManager -> io.fabric.sdk.android.a.b.x:
     android.content.Context appContext -> g
     boolean collectHardwareIds -> e
     boolean collectUserIds -> f
@@ -21036,7 +21001,7 @@ io.fabric.sdk.android.services.common.IdManager -> io.fabric.sdk.android.a.b.v:
     java.util.concurrent.locks.ReentrantLock installationIdLock -> c
     java.lang.String FORWARD_SLASH_REGEX -> b
     java.util.regex.Pattern ID_PATTERN -> a
-    java.lang.Boolean explicitCheckLimitAdTracking() -> o
+    java.lang.Boolean explicitCheckLimitAdTracking() -> m
     java.lang.String createInstallationUUID(android.content.SharedPreferences) -> a
     java.lang.String formatId(java.lang.String) -> a
     java.lang.String removeForwardSlashesIn(java.lang.String) -> b
@@ -21044,11 +21009,9 @@ io.fabric.sdk.android.services.common.IdManager -> io.fabric.sdk.android.a.b.v:
     void flushInstallationIdIfNecessary(android.content.SharedPreferences,java.lang.String) -> a
     void putNonNullIdInto(java.util.Map,io.fabric.sdk.android.services.common.IdManager$DeviceIdentifierType,java.lang.String) -> a
     boolean canCollectUserIds() -> a
-    boolean shouldCollectHardwareIds() -> m
-    io.fabric.sdk.android.services.common.AdvertisingInfo getAdvertisingInfo() -> n
+    boolean shouldCollectHardwareIds() -> k
+    io.fabric.sdk.android.services.common.AdvertisingInfo getAdvertisingInfo() -> l
     java.lang.Boolean isLimitAdTrackingEnabled() -> j
-    java.lang.String getAdvertisingId() -> k
-    java.lang.String getAndroidId() -> l
     java.lang.String getAppIdentifier() -> c
     java.lang.String getAppInstallIdentifier() -> b
     java.lang.String getInstallerPackageName() -> i
@@ -21057,7 +21020,7 @@ io.fabric.sdk.android.services.common.IdManager -> io.fabric.sdk.android.a.b.v:
     java.lang.String getOsDisplayVersionString() -> e
     java.lang.String getOsVersionString() -> d
     java.util.Map getDeviceIdentifiers() -> h
-io.fabric.sdk.android.services.common.IdManager$DeviceIdentifierType -> io.fabric.sdk.android.a.b.v$a:
+io.fabric.sdk.android.services.common.IdManager$DeviceIdentifierType -> io.fabric.sdk.android.a.b.x$a:
     int protobufIndex -> i
     io.fabric.sdk.android.services.common.IdManager$DeviceIdentifierType ANDROID_ADVERTISING_ID -> g
     io.fabric.sdk.android.services.common.IdManager$DeviceIdentifierType ANDROID_DEVICE_ID -> e
@@ -21067,15 +21030,15 @@ io.fabric.sdk.android.services.common.IdManager$DeviceIdentifierType -> io.fabri
     io.fabric.sdk.android.services.common.IdManager$DeviceIdentifierType FONT_TOKEN -> c
     io.fabric.sdk.android.services.common.IdManager$DeviceIdentifierType WIFI_MAC_ADDRESS -> a
     io.fabric.sdk.android.services.common.IdManager$DeviceIdentifierType[] $VALUES -> h
-io.fabric.sdk.android.services.common.InstallerPackageNameProvider -> io.fabric.sdk.android.a.b.x:
+io.fabric.sdk.android.services.common.InstallerPackageNameProvider -> io.fabric.sdk.android.a.b.z:
     io.fabric.sdk.android.services.cache.MemoryValueCache installerPackageNameCache -> b
     io.fabric.sdk.android.services.cache.ValueLoader installerPackageNameLoader -> a
     java.lang.String getInstallerPackageName(android.content.Context) -> a
-io.fabric.sdk.android.services.common.InstallerPackageNameProvider$1 -> io.fabric.sdk.android.a.b.w:
+io.fabric.sdk.android.services.common.InstallerPackageNameProvider$1 -> io.fabric.sdk.android.a.b.y:
     io.fabric.sdk.android.services.common.InstallerPackageNameProvider this$0 -> a
     java.lang.Object load(android.content.Context) -> a
     java.lang.String load(android.content.Context) -> b
-io.fabric.sdk.android.services.common.QueueFile -> io.fabric.sdk.android.a.b.z:
+io.fabric.sdk.android.services.common.QueueFile -> io.fabric.sdk.android.a.b.B:
     byte[] buffer -> g
     int elementCount -> d
     int fileLength -> c
@@ -21110,26 +21073,26 @@ io.fabric.sdk.android.services.common.QueueFile -> io.fabric.sdk.android.a.b.z:
     void clear() -> u
     void forEach(io.fabric.sdk.android.services.common.QueueFile$ElementReader) -> a
     void remove() -> t
-io.fabric.sdk.android.services.common.QueueFile$1 -> io.fabric.sdk.android.a.b.y:
+io.fabric.sdk.android.services.common.QueueFile$1 -> io.fabric.sdk.android.a.b.A:
     boolean first -> a
     io.fabric.sdk.android.services.common.QueueFile this$0 -> c
     java.lang.StringBuilder val$builder -> b
     void read(java.io.InputStream,int) -> a
-io.fabric.sdk.android.services.common.QueueFile$Element -> io.fabric.sdk.android.a.b.z$a:
+io.fabric.sdk.android.services.common.QueueFile$Element -> io.fabric.sdk.android.a.b.B$a:
     int length -> c
     int position -> b
     io.fabric.sdk.android.services.common.QueueFile$Element NULL -> a
-io.fabric.sdk.android.services.common.QueueFile$ElementInputStream -> io.fabric.sdk.android.a.b.z$b:
+io.fabric.sdk.android.services.common.QueueFile$ElementInputStream -> io.fabric.sdk.android.a.b.B$b:
     int position -> a
     int remaining -> b
     io.fabric.sdk.android.services.common.QueueFile this$0 -> c
-io.fabric.sdk.android.services.common.QueueFile$ElementReader -> io.fabric.sdk.android.a.b.z$c:
+io.fabric.sdk.android.services.common.QueueFile$ElementReader -> io.fabric.sdk.android.a.b.B$c:
     void read(java.io.InputStream,int) -> a
-io.fabric.sdk.android.services.common.ResponseParser -> io.fabric.sdk.android.a.b.A:
+io.fabric.sdk.android.services.common.ResponseParser -> io.fabric.sdk.android.a.b.C:
     int parse(int) -> a
-io.fabric.sdk.android.services.common.SystemCurrentTimeProvider -> io.fabric.sdk.android.a.b.B:
+io.fabric.sdk.android.services.common.SystemCurrentTimeProvider -> io.fabric.sdk.android.a.b.D:
     long getCurrentTimeMillis() -> a
-io.fabric.sdk.android.services.common.TimingMetric -> io.fabric.sdk.android.a.b.C:
+io.fabric.sdk.android.services.common.TimingMetric -> io.fabric.sdk.android.a.b.E:
     boolean disabled -> c
     java.lang.String eventName -> a
     java.lang.String tag -> b
@@ -21410,22 +21373,21 @@ io.fabric.sdk.android.services.network.HttpRequest -> io.fabric.sdk.android.serv
     java.lang.String getValidCharset(java.lang.String) -> f
     java.lang.StringBuilder addParamPrefix(java.lang.String,java.lang.StringBuilder) -> b
     java.lang.StringBuilder addPathSeparator(java.lang.String,java.lang.StringBuilder) -> a
-    java.net.HttpURLConnection createConnection() -> r
-    java.net.Proxy createProxy() -> q
-    boolean ok() -> c
+    java.net.HttpURLConnection createConnection() -> q
+    java.net.Proxy createProxy() -> p
     int code() -> b
-    int contentLength() -> j
+    int contentLength() -> i
     int intHeader(java.lang.String) -> d
     int intHeader(java.lang.String,int) -> a
-    io.fabric.sdk.android.services.network.HttpRequest closeOutput() -> k
-    io.fabric.sdk.android.services.network.HttpRequest closeOutputQuietly() -> l
+    io.fabric.sdk.android.services.network.HttpRequest closeOutput() -> j
+    io.fabric.sdk.android.services.network.HttpRequest closeOutputQuietly() -> k
     io.fabric.sdk.android.services.network.HttpRequest connectTimeout(int) -> a
     io.fabric.sdk.android.services.network.HttpRequest contentType(java.lang.String) -> e
     io.fabric.sdk.android.services.network.HttpRequest contentType(java.lang.String,java.lang.String) -> d
     io.fabric.sdk.android.services.network.HttpRequest copy(java.io.InputStream,java.io.OutputStream) -> a
     io.fabric.sdk.android.services.network.HttpRequest header(java.lang.String,java.lang.String) -> a
     io.fabric.sdk.android.services.network.HttpRequest header(java.util.Map$Entry) -> a
-    io.fabric.sdk.android.services.network.HttpRequest openOutput() -> m
+    io.fabric.sdk.android.services.network.HttpRequest openOutput() -> l
     io.fabric.sdk.android.services.network.HttpRequest part(java.lang.String,java.lang.Number) -> a
     io.fabric.sdk.android.services.network.HttpRequest part(java.lang.String,java.lang.String) -> e
     io.fabric.sdk.android.services.network.HttpRequest part(java.lang.String,java.lang.String,java.lang.Number) -> a
@@ -21435,22 +21397,22 @@ io.fabric.sdk.android.services.network.HttpRequest -> io.fabric.sdk.android.serv
     io.fabric.sdk.android.services.network.HttpRequest part(java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> a
     io.fabric.sdk.android.services.network.HttpRequest partHeader(java.lang.String,java.lang.String) -> f
     io.fabric.sdk.android.services.network.HttpRequest send(java.lang.CharSequence) -> f
-    io.fabric.sdk.android.services.network.HttpRequest startPart() -> n
+    io.fabric.sdk.android.services.network.HttpRequest startPart() -> m
     io.fabric.sdk.android.services.network.HttpRequest useCaches(boolean) -> a
     io.fabric.sdk.android.services.network.HttpRequest writePartHeader(java.lang.String,java.lang.String,java.lang.String) -> a
-    java.io.BufferedInputStream buffer() -> f
-    java.io.ByteArrayOutputStream byteStream() -> d
-    java.io.InputStream stream() -> g
-    java.lang.String body() -> e
+    java.io.BufferedInputStream buffer() -> e
+    java.io.ByteArrayOutputStream byteStream() -> c
+    java.io.InputStream stream() -> f
+    java.lang.String body() -> d
     java.lang.String body(java.lang.String) -> b
-    java.lang.String charset() -> h
-    java.lang.String contentEncoding() -> i
+    java.lang.String charset() -> g
+    java.lang.String contentEncoding() -> h
     java.lang.String getParam(java.lang.String,java.lang.String) -> c
     java.lang.String header(java.lang.String) -> c
-    java.lang.String method() -> p
+    java.lang.String method() -> o
     java.lang.String parameter(java.lang.String,java.lang.String) -> b
     java.net.HttpURLConnection getConnection() -> a
-    java.net.URL url() -> o
+    java.net.URL url() -> n
 io.fabric.sdk.android.services.network.HttpRequest$6 -> io.fabric.sdk.android.services.network.e:
     io.fabric.sdk.android.services.network.HttpRequest this$0 -> e
     java.io.InputStream val$input -> c
@@ -21677,16 +21639,14 @@ io.fabric.sdk.android.services.settings.SettingsJsonConstants -> io.fabric.sdk.a
 io.fabric.sdk.android.services.settings.SettingsJsonTransform -> io.fabric.sdk.android.a.e.x:
     io.fabric.sdk.android.services.settings.SettingsData buildFromJson(io.fabric.sdk.android.services.common.CurrentTimeProvider,org.json.JSONObject) -> a
 io.fabric.sdk.android.services.settings.SettingsRequest -> io.fabric.sdk.android.a.e.y:
-    int source -> k
-    java.lang.String advertisingId -> e
-    java.lang.String androidId -> g
+    int source -> i
     java.lang.String apiKey -> a
-    java.lang.String buildVersion -> j
+    java.lang.String buildVersion -> h
     java.lang.String deviceModel -> b
-    java.lang.String displayVersion -> i
-    java.lang.String iconHash -> l
-    java.lang.String installationId -> f
-    java.lang.String instanceId -> h
+    java.lang.String displayVersion -> g
+    java.lang.String iconHash -> j
+    java.lang.String installationId -> e
+    java.lang.String instanceId -> f
     java.lang.String osBuildVersion -> c
     java.lang.String osDisplayVersion -> d
 io.fabric.sdk.android.services.settings.SettingsSpiCall -> io.fabric.sdk.android.a.e.z:
@@ -38288,12 +38248,10 @@ timber.log.Timber -> j.a.b:
     timber.log.Timber$Tree[] TREE_ARRAY_EMPTY -> a
     timber.log.Timber$Tree[] forestAsArray -> c
     void d(java.lang.String,java.lang.Object[]) -> a
-    void e(java.lang.String,java.lang.Object[]) -> b
     void e(java.lang.Throwable) -> a
     void plant(timber.log.Timber$Tree) -> a
 timber.log.Timber$1 -> j.a.a:
     void d(java.lang.String,java.lang.Object[]) -> a
-    void e(java.lang.String,java.lang.Object[]) -> b
     void e(java.lang.Throwable) -> a
     void log(int,java.lang.String,java.lang.String,java.lang.Throwable) -> a
 timber.log.Timber$DebugTree -> j.a.b$a:
@@ -38306,45 +38264,44 @@ timber.log.Timber$Tree -> j.a.b$b:
     void prepareLog(int,java.lang.Throwable,java.lang.String,java.lang.Object[]) -> a
     boolean isLoggable(int) -> a
     boolean isLoggable(java.lang.String,int) -> a
-    java.lang.String formatMessage(java.lang.String,java.lang.Object[]) -> d
+    java.lang.String formatMessage(java.lang.String,java.lang.Object[]) -> c
     java.lang.String getTag() -> a
     void d(java.lang.String,java.lang.Object[]) -> a
-    void e(java.lang.String,java.lang.Object[]) -> b
     void e(java.lang.Throwable) -> a
     void log(int,java.lang.String,java.lang.String,java.lang.Throwable) -> a
-    void wtf(java.lang.String,java.lang.Object[]) -> c
-android.support.v7.widget.ActivityChooserView -> android.support.v7.widget.ActivityChooserView:
-android.support.coreui.R -> a.b.b.a:
-com.bariski.cryptoniffler.presentation.injection.FragmentBindingModule_BaseInjectFragment -> com.bariski.cryptoniffler.presentation.d.e:
-com.facebook.shimmer.R -> com.facebook.shimmer.a:
-android.support.constraint.R -> android.support.constraint.f:
-android.arch.lifecycle.ViewModelProvider -> android.arch.lifecycle.j:
+    void wtf(java.lang.String,java.lang.Object[]) -> b
 me.grantland.widget.R -> me.grantland.widget.c:
-com.bariski.cryptoniffler.presentation.injection.ActivityBindingModule_CoindetailActivity -> com.bariski.cryptoniffler.presentation.d.a:
-android.support.constraint.solver.Pools -> android.support.constraint.a.g:
-android.support.v4.media.session.MediaControllerCompat -> android.support.v4.media.session.MediaControllerCompat:
-android.support.v4.media.session.MediaSessionCompat -> android.support.v4.media.session.MediaSessionCompat:
-android.support.v4.content.Loader -> a.b.f.a.c:
-android.support.transition.R -> android.support.transition.G:
-android.support.v7.appcompat.R -> a.b.g.a.a:
-com.bariski.cryptoniffler.presentation.injection.ActivityBindingModule_MainActivity -> com.bariski.cryptoniffler.presentation.d.b:
-com.google.android.gms.R -> b.c.a.a.a:
-android.support.v7.cardview.R -> a.b.g.b.a:
-com.bariski.cryptoniffler.R -> b.b.a.a:
-android.support.compat.R -> a.b.a.a:
-android.support.v4.media.session.MediaSessionCompatApi21 -> android.support.v4.media.session.g:
-com.bariski.cryptoniffler.presentation.injection.FragmentBindingModule_GridSelectFragment -> com.bariski.cryptoniffler.presentation.d.g:
-com.afollestad.materialdialogs.R -> b.a.a.m:
-com.bariski.cryptoniffler.presentation.injection.FragmentBindingModule_InfoFragment -> com.bariski.cryptoniffler.presentation.d.h:
-android.support.v7.recyclerview.R -> a.b.g.e.a:
 com.bariski.cryptoniffler.presentation.injection.ActivityBindingModule_SearchActivity -> com.bariski.cryptoniffler.presentation.d.c:
-com.bariski.cryptoniffler.presentation.injection.FragmentBindingModule_CalendarFragment -> com.bariski.cryptoniffler.presentation.d.f:
-me.toptas.fancyshowcase.R -> f.a.a.t:
-com.google.android.gms.internal.zzeeo -> com.google.android.gms.internal.zzeeo:
-android.support.v7.widget.helper.ItemTouchHelper -> android.support.v7.widget.a.a:
-com.bariski.cryptoniffler.presentation.injection.FragmentBindingModule_ArbitrageFragment -> com.bariski.cryptoniffler.presentation.d.d:
-kotlin.reflect.jvm.internal.impl.serialization.ProtoBuf -> kotlin.reflect.a.a.a.i.i:
-android.support.design.R -> a.b.c.a:
+android.support.constraint.solver.Pools -> android.support.constraint.a.g:
 kotlin.jvm.internal.Ref -> kotlin.d.b.u:
-okhttp3.WebSocket -> g.Q:
+com.bariski.cryptoniffler.presentation.injection.FragmentBindingModule_CalendarFragment -> com.bariski.cryptoniffler.presentation.d.f:
+android.support.v7.cardview.R -> a.b.g.b.a:
+com.bariski.cryptoniffler.presentation.injection.ActivityBindingModule_CoindetailActivity -> com.bariski.cryptoniffler.presentation.d.a:
+android.arch.lifecycle.ViewModelProvider -> android.arch.lifecycle.j:
+com.bariski.cryptoniffler.R -> b.b.a.a:
+android.support.v4.media.session.MediaSessionCompat -> android.support.v4.media.session.MediaSessionCompat:
+android.support.transition.R -> android.support.transition.G:
+kotlin.reflect.jvm.internal.impl.serialization.ProtoBuf -> kotlin.reflect.a.a.a.i.i:
+android.support.v7.widget.helper.ItemTouchHelper -> android.support.v7.widget.a.a:
+me.toptas.fancyshowcase.R -> f.a.a.t:
 android.support.v4.util.Pools -> a.b.f.g.m:
+android.support.v4.media.session.MediaSessionCompatApi21 -> android.support.v4.media.session.g:
+com.facebook.shimmer.R -> com.facebook.shimmer.a:
+android.support.v4.media.session.MediaControllerCompat -> android.support.v4.media.session.MediaControllerCompat:
+com.afollestad.materialdialogs.R -> b.a.a.m:
+android.support.design.R -> a.b.c.a:
+android.support.compat.R -> a.b.a.a:
+android.support.v4.content.Loader -> a.b.f.a.c:
+com.bariski.cryptoniffler.presentation.injection.FragmentBindingModule_ArbitrageFragment -> com.bariski.cryptoniffler.presentation.d.d:
+android.support.coreui.R -> a.b.b.a:
+android.support.v7.recyclerview.R -> a.b.g.e.a:
+com.bariski.cryptoniffler.presentation.injection.FragmentBindingModule_InfoFragment -> com.bariski.cryptoniffler.presentation.d.h:
+android.support.v7.widget.ActivityChooserView -> android.support.v7.widget.ActivityChooserView:
+com.bariski.cryptoniffler.presentation.injection.FragmentBindingModule_GridSelectFragment -> com.bariski.cryptoniffler.presentation.d.g:
+com.google.android.gms.internal.zzeeo -> com.google.android.gms.internal.zzeeo:
+android.support.v7.appcompat.R -> a.b.g.a.a:
+com.google.android.gms.R -> b.c.a.a.a:
+okhttp3.WebSocket -> g.Q:
+com.bariski.cryptoniffler.presentation.injection.ActivityBindingModule_MainActivity -> com.bariski.cryptoniffler.presentation.d.b:
+android.support.constraint.R -> android.support.constraint.f:
+com.bariski.cryptoniffler.presentation.injection.FragmentBindingModule_BaseInjectFragment -> com.bariski.cryptoniffler.presentation.d.e:

@@ -11,6 +11,7 @@ open class DeviceDataStoreImpl @Inject constructor(private val keyValue: KeyValu
     private val FCM_TOKEN = "fcm_token"
     private val INSTANCE_ID = "instance_id"
     private val DEVICE_TOKEN = "device_token"
+    private val APP_VERSION = "app_version"
     private val IS_DEVICE_REGISTERED = "is_device_registered"
     private val IS_PERMISSION_RATIONALE_SHOWN = "is_permission_rationale_shown"
 
@@ -42,6 +43,14 @@ open class DeviceDataStoreImpl @Inject constructor(private val keyValue: KeyValu
 
     override fun setPermissionRationaleShown(permission: String, b: Boolean) {
         keyValue.storeBoolean(IS_PERMISSION_RATIONALE_SHOWN + permission, b)
+    }
+
+    override fun getLastAppVersion(): Int {
+        return keyValue.getInt(APP_VERSION)
+    }
+
+    override fun setLastAppVersion(version:Int) {
+         keyValue.storeInt(APP_VERSION,version)
     }
 
 

@@ -3,6 +3,7 @@ package com.bariski.cryptoniffler.presentation.main
 import android.Manifest
 import android.os.Bundle
 import android.support.annotation.VisibleForTesting
+import com.bariski.cryptoniffler.BuildConfig
 import com.bariski.cryptoniffler.R
 import com.bariski.cryptoniffler.analytics.Analytics
 import com.bariski.cryptoniffler.domain.common.Schedulers
@@ -301,7 +302,6 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
 
     override fun initView(view: MainView, savedState: Bundle?, args: Bundle?) {
         viewWeak = WeakReference(view)
-
         if (savedState != null) {
             savedState.apply {
                 btcRate = getFloat("btcRate")
@@ -322,6 +322,7 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
                 viewWeak.get()?.toggleDrawer(true)
                 repository.setDrawerShown(true)
             }
+
             if (!eventsRepository.isAuthenticated()) {
                 disposable.add(eventsRepository.getAndSaveToken().subscribeOn(schedulerProvider.io()).observeOn(schedulerProvider.ui())
                         .subscribeBy(onError = { Timber.e(it) }, onSuccess = {}))
@@ -377,6 +378,11 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
         if (!deviceStore.hasPermissionRationaleShown(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             deviceStore.setPermissionRationaleShown(Manifest.permission.WRITE_EXTERNAL_STORAGE, true)
             viewWeak.get()?.requestStoragePermission(false)
+        }
+        if (deviceStore.getLastAppVersion() < BuildConfig.VERSION_CODE) {
+            deviceStore.setLastAppVersion(BuildConfig.VERSION_CODE)
+            viewWeak.get()?.showVersionChangeInfo()
+
         }
 
     }
