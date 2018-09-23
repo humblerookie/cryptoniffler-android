@@ -3,8 +3,8 @@ object Version {
     val target_sdk = 27
     val compile_sdk = 27
 
-    val version_code = 35
-    val version_name = "2.2.10"
+    val version_code = 37
+    val version_name = "2.3.1"
 
     val kotlin = "1.2.61"
     val support = "27.1.1"
@@ -30,8 +30,9 @@ object Version {
     val autofit = "0.2.1"
     val dialogs = "0.9.6.0"
     val timber = "4.5.1"
-    val room="1.1.0"
-    val leakcanary="1.6.1"
+    val room = "1.1.0"
+    val leakcanary = "1.6.1"
+    val bugsnag = "4.6.1"
 
 
 }
@@ -56,7 +57,7 @@ object Deps {
     val firebase_config = "com.google.firebase:firebase-config:${Version.firebase}"
     val firebase_messaging = "com.google.firebase:firebase-messaging:${Version.firebase}"
     val firebase_performance = "com.google.firebase:firebase-perf:${Version.firebase}"
-    val firebase_crashlytics = "com.crashlytics.sdk.android:crashlytics:${Version.crashlytics}"
+    val bugsnag = "com.bugsnag:bugsnag-android:${Version.bugsnag}"
 
     val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofit}"
     val moshi = "com.squareup.moshi:moshi-kotlin:${Version.moshi}"
@@ -83,13 +84,13 @@ object Deps {
     val traceur = "com.tspoon.traceur:traceur:${Version.traceur}"
 
     val room = "android.arch.persistence.room:runtime:${Version.room}"
-    val room_compiler= "android.arch.persistence.room:compiler:${Version.room}"
+    val room_compiler = "android.arch.persistence.room:compiler:${Version.room}"
 
 
     val dagger_java_compiler = "com.google.dagger:dagger-compiler:${Version.dagger}"
     val dagger_android_compiler = "com.google.dagger:dagger-android-processor:${Version.dagger}"
-    val leakcanary_debug= "com.squareup.leakcanary:leakcanary-android:${Version.leakcanary}"
-    val leakcanary_release= "com.squareup.leakcanary:leakcanary-android-no-op:${Version.leakcanary}"
+    val leakcanary_debug = "com.squareup.leakcanary:leakcanary-android:${Version.leakcanary}"
+    val leakcanary_release = "com.squareup.leakcanary:leakcanary-android-no-op:${Version.leakcanary}"
 
     val junit = "junit:junit:${Version.junit}"
     val espresso = "com.android.support.test.espresso:espresso-core:${Version.espresso}"
@@ -97,14 +98,13 @@ object Deps {
 
     val rx = listOf(rxandroid, rxkotlin, rxbindings, rx_call_adapter)
     val support = listOf(appcompat, recyclerview, constraint, support_annotation, cardview, design, multidex)
-    val firebase = listOf(firebase_core, firebase_messaging, firebase_config, firebase_performance, firebase_crashlytics)
+    val firebase = listOf(firebase_core, firebase_messaging, firebase_config, firebase_performance, bugsnag)
     val network = listOf(retrofit, moshi, picasso, picasso_downloader, converter)
     val dagger = listOf(dagger_java, dagger_android, dagger_support)
     val storage = listOf(room)
     val custom_ui = listOf(shimmer, showcase, autofit, dialogs)
     val logging = listOf(timber, traceur)
     val annotation_procs = listOf(dagger_android_compiler, dagger_java_compiler, room_compiler)
-
 
 
 }

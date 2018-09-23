@@ -54,7 +54,6 @@ abstract class BaseActivity : DaggerAppCompatActivity(), BaseView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        logger.initLogger(this)
         setContentView(layoutResId)
         rootLayout = findViewById<View>(android.R.id.content)
         if (savedInstanceState == null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP &&

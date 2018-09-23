@@ -1,0 +1,894 @@
+{
+  "exchanges": [
+    {
+      "symbol": "ALL",
+      "name": "All of them",
+      "inrWithdrawalsActive": "",
+      "imageUrl": null,
+      "fees": "",
+      "coins": [
+        "BTC"
+      ],
+      "priority": 100
+    },
+    {
+      "imageUrl": "https://image.ibb.co/fs0mUR/koinex.jpg",
+      "tradeUrlPattern": "https://koinex.in/",
+      "fees": "Seller: None, Buyer: 0.25% ",
+      "coins": [],
+      "priority": 99,
+      "appIdentifier": {
+        "android": "in.koinex.android"
+      },
+      "tradeFee": {
+        "sell": 0.15,
+        "buy": 0.15
+      },
+      "symbol": "KOINEX",
+      "name": "Koinex",
+      "inrWithdrawalsActive": "2 - 3 days"
+    },
+    {
+      "priority": 98,
+      "appIdentifier": {
+        "android": "com.bitbns"
+      },
+      "tradeFee": {
+        "sell": 0.25,
+        "buy": 0.25
+      },
+      "symbol": "BITBNS",
+      "name": "BitBns",
+      "inrWithdrawalsActive": "1 day",
+      "imageUrl": "https://image.ibb.co/bRa39R/bitbns.jpg",
+      "tradeUrlPattern": "https://bitbns.com/trade/#/%s",
+      "fees": "Seller: 0.25%, Buyer: 0.25% ",
+      "coins": [
+        "BTC"
+      ]
+    },
+    {
+      "priority": 97,
+      "appIdentifier": {},
+      "tradeFee": {
+        "sell": 0,
+        "buy": 0.3
+      },
+      "symbol": "COINDELTA",
+      "name": "Coin Delta",
+      "inrWithdrawalsActive": "NA",
+      "imageUrl": "https://image.ibb.co/jqvH3m/coindelta.jpg",
+      "tradeUrlPattern": "https://coindelta.com/market?active=%s-INR",
+      "fees": "Seller: None, Buyer: 0.3% ",
+      "coins": []
+    },
+    {
+      "symbol": "ZEBPAY",
+      "name": "Zebpay",
+      "inrWithdrawalsActive": "NA",
+      "imageUrl": "https://image.ibb.co/g4Y4im/zebpay.jpg",
+      "tradeUrlPattern": "https://www.zebpay.com",
+      "fees": "NA",
+      "coins": [],
+      "priority": 96,
+      "appIdentifier": {
+        "android": "zebpay.Application"
+      },
+      "tradeFee": {
+        "buy": 0.25,
+        "sell": 0.2
+      }
+    },
+    {
+      "priority": 95,
+      "appIdentifier": {},
+      "tradeFee": {
+        "buy": 0.84,
+        "sell": 0.42
+      },
+      "symbol": "BUYUCOIN",
+      "name": "BuyUcoin",
+      "inrWithdrawalsActive": "NA",
+      "imageUrl": "https://image.ibb.co/hoLvpR/buyucoin.jpg",
+      "tradeUrlPattern": "https://www.buyucoin.com/trade?currency=%s",
+      "fees": "NA",
+      "coins": []
+    },
+    {
+      "priority": 94,
+      "appIdentifier": {},
+      "tradeFee": {
+        "buy": 0,
+        "sell": 0
+      },
+      "symbol": "POCKETBITS",
+      "name": "Pocketbits",
+      "inrWithdrawalsActive": "NA",
+      "imageUrl": "https://i.imgur.com/POfkhCk.png",
+      "tradeUrlPattern": "https://www.pocketbits.in/AltCoins/BuySellCoinIndex",
+      "fees": "NA",
+      "coins": []
+    },
+    {
+      "priority": 93,
+      "appIdentifier": {},
+      "tradeFee": {
+        "sell": 0.1,
+        "buy": 0.3
+      },
+      "symbol": "COINOME",
+      "name": "Coinome",
+      "inrWithdrawalsActive": "NA",
+      "imageUrl": "https://i.imgur.com/1O77yK9.png",
+      "tradeUrlPattern": "https://www.coinome.com/exchange/%s-inr",
+      "fees": "Seller 0.1%, Buyer 0.3%",
+      "coins": []
+    },
+    {
+      "appIdentifier": {
+        "android": "com.wrx.wazirx"
+      },
+      "tradeFee": {
+        "sell": 0.1,
+        "buy": 0.25
+      },
+      "symbol": "WAZIRX",
+      "name": "WazirX",
+      "inrWithdrawalsActive": "NA",
+      "imageUrl": "https://i.imgur.com/aFHkeAR.png",
+      "tradeUrlPattern": "https://wazirx.com/#/exchange/%s-INR",
+      "fees": "None",
+      "coins": [],
+      "priority": 97
+    },
+    {
+      "symbol": "THROUGHBIT",
+      "name": "ThroughBit",
+      "inrWithdrawalsActive": "NA",
+      "imageUrl": "https://i.imgur.com/qXXCWMV.png",
+      "tradeUrlPattern": "https://www.throughbit.com/dashboard/bitcoin",
+      "fees": "None",
+      "coins": [
+        "ETH",
+        "BTC",
+        "LSK"
+      ],
+      "priority": 92,
+      "appIdentifier": {},
+      "tradeFee": {
+        "sell": 0.75,
+        "buy": 0.75
+      }
+    }
+  ],
+  "coins": [
+    {
+      "symbol": "ALL",
+      "name": "All Coins",
+      "imageUrl": null,
+      "id": "99999999999",
+      "priority": 1000
+    },
+    {
+      "imageUrl": "https://i.imgur.com/j2x6jLe.png",
+      "id": "5039",
+      "priority": 1,
+      "symbol": "BTS",
+      "name": "Bitshares"
+    },
+    {
+      "priority": 1,
+      "symbol": "XEM",
+      "name": "NEM",
+      "imageUrl": "https://i.imgur.com/s6wr7cf.png",
+      "id": "5285"
+    },
+    {
+      "symbol": "DOGE",
+      "name": "Dogecoin",
+      "imageUrl": "https://i.imgur.com/7X4MPY2.png",
+      "id": "4432",
+      "priority": 980
+    },
+    {
+      "priority": 982,
+      "symbol": "PAY",
+      "name": "TenX",
+      "imageUrl": "https://i.imgur.com/aZnazuu.png",
+      "id": "45260"
+    },
+    {
+      "symbol": "NXT",
+      "name": "Nxt",
+      "imageUrl": "https://i.imgur.com/MrCPorx.png",
+      "id": "1183",
+      "priority": 1
+    },
+    {
+      "priority": 1,
+      "symbol": "GNT",
+      "name": "Golem",
+      "imageUrl": "https://i.imgur.com/kPNBJAF.png",
+      "id": "33022"
+    },
+    {
+      "priority": 985,
+      "symbol": "DASH",
+      "name": "DigitalCash",
+      "imageUrl": "https://i.imgur.com/VwE7xVM.png",
+      "id": "3807"
+    },
+    {
+      "symbol": "SC",
+      "name": "Siacoin",
+      "imageUrl": "https://i.imgur.com/xdXvxwl.png",
+      "id": "13072",
+      "priority": 982
+    },
+    {
+      "imageUrl": "https://i.imgur.com/aeHbEi3.png",
+      "id": "20333",
+      "priority": 1,
+      "symbol": "STEEM",
+      "name": "Steem"
+    },
+    {
+      "imageUrl": "https://i.imgur.com/3IrUJ86.png",
+      "id": "5031",
+      "priority": 996,
+      "symbol": "XRP",
+      "name": "Ripple"
+    },
+    {
+      "symbol": "QTUM",
+      "name": "QTUM",
+      "imageUrl": "https://image.ibb.co/gdHEt7/image.png",
+      "id": "112392",
+      "priority": 1
+    },
+    {
+      "symbol": "PIVX",
+      "name": "PIVX",
+      "imageUrl": "https://i.imgur.com/J1zKXRK.png",
+      "id": "42433",
+      "priority": 1
+    },
+    {
+      "symbol": "DGB",
+      "name": "DigiByte",
+      "imageUrl": "https://i.imgur.com/ZHdHeNC.png",
+      "id": "4430",
+      "priority": 1
+    },
+    {
+      "symbol": "CLOAK",
+      "name": "CloakCoin",
+      "imageUrl": "https://i.imgur.com/9qxtVEC.png",
+      "id": "4417",
+      "priority": 1
+    },
+    {
+      "priority": 1,
+      "symbol": "LSK",
+      "name": "Lisk",
+      "imageUrl": "https://i.imgur.com/6PWxgrb.png",
+      "id": "19745"
+    },
+    {
+      "symbol": "BCH",
+      "name": "Bitcoin Cash",
+      "imageUrl": "https://i.imgur.com/CxSNn8t.png",
+      "id": "202330",
+      "priority": 1
+    },
+    {
+      "priority": 1,
+      "symbol": "OMG",
+      "name": "OmiseGo",
+      "imageUrl": "https://i.imgur.com/O6aDahi.png",
+      "id": "187440"
+    },
+    {
+      "priority": 999,
+      "symbol": "BTC",
+      "name": "Bitcoin",
+      "imageUrl": "https://i.imgur.com/TitYFwg.png",
+      "id": "1182"
+    },
+    {
+      "symbol": "CVC",
+      "name": "Civic",
+      "imageUrl": "https://i.imgur.com/a2D1Ahv.png",
+      "id": "139467",
+      "priority": 1
+    },
+    {
+      "symbol": "BAT",
+      "name": "Basic Attention Token",
+      "imageUrl": "https://i.imgur.com/JFGQXKN.png",
+      "id": "107672",
+      "priority": 1
+    },
+    {
+      "priority": 994,
+      "symbol": "ETC",
+      "name": "Ethereum Classic",
+      "imageUrl": "https://i.imgur.com/vIMwJ75.png",
+      "id": "5324"
+    },
+    {
+      "symbol": "FCT",
+      "name": "Factoids",
+      "imageUrl": "https://i.imgur.com/Pjndiaf.png",
+      "id": "13280",
+      "priority": 1
+    },
+    {
+      "symbol": "GAS",
+      "name": "Gas",
+      "imageUrl": "https://i.imgur.com/gYGSoG1.png",
+      "id": "213532",
+      "priority": 1
+    },
+    {
+      "symbol": "ETH",
+      "name": "Ethereum",
+      "imageUrl": "https://i.imgur.com/i5mVVpm.png",
+      "id": "7605",
+      "priority": 998
+    },
+    {
+      "priority": 992,
+      "symbol": "ZEC",
+      "name": "ZCash",
+      "imageUrl": "https://i.imgur.com/pXIZzAE.png",
+      "id": "24854"
+    },
+    {
+      "symbol": "NEO",
+      "name": "NEO",
+      "imageUrl": "https://i.imgur.com/gYGSoG1.png",
+      "id": "27368",
+      "priority": 993
+    },
+    {
+      "priority": 997,
+      "symbol": "LTC",
+      "name": "Litecoin",
+      "imageUrl": "https://i.imgur.com/maBbJtY.png",
+      "id": "3808"
+    },
+    {
+      "symbol": "ARK",
+      "name": "ARK",
+      "imageUrl": "https://i.imgur.com/Bf8pdB5.png",
+      "id": "32699",
+      "priority": 1
+    },
+    {
+      "priority": 992,
+      "symbol": "XMR",
+      "name": "Monero",
+      "imageUrl": "https://i.imgur.com/1CgZyli.png",
+      "id": "5038"
+    },
+    {
+      "symbol": "REP",
+      "name": "Augur",
+      "imageUrl": "https://i.imgur.com/xJl8KJE.png",
+      "id": "17778",
+      "priority": 1
+    },
+    {
+      "priority": 991,
+      "symbol": "STRAT",
+      "name": "Stratis",
+      "imageUrl": "https://i.imgur.com/p2sNCnM.png",
+      "id": "24294"
+    },
+    {
+      "symbol": "XLM",
+      "name": "Stellar",
+      "imageUrl": "https://i.imgur.com/sKjSMeQ.png",
+      "id": "4614",
+      "priority": 995
+    },
+    {
+      "symbol": "REQ",
+      "name": "Request Network",
+      "imageUrl": "https://i.imgur.com/q8MVIFT.png",
+      "id": "335059",
+      "priority": 950
+    },
+    {
+      "symbol": "RVR",
+      "name": "RevolutionVR",
+      "imageUrl": "https://i.imgur.com/IFMcrM9.png",
+      "id": "18180",
+      "priority": 940
+    },
+    {
+      "imageUrl": "https://i.imgur.com/TZz5Me1.png",
+      "id": "4433",
+      "priority": 983,
+      "symbol": "XVG",
+      "name": "Verge"
+    },
+    {
+      "symbol": "BTG",
+      "name": "Bitcoin Gold",
+      "imageUrl": "https://i.imgur.com/ikiAJkF.png",
+      "id": "347235",
+      "priority": 983
+    },
+    {
+      "priority": 943,
+      "symbol": "RPX",
+      "name": "Red Pulse",
+      "imageUrl": "https://i.imgur.com/YLyHH68.png",
+      "id": "341267"
+    },
+    {
+      "symbol": "ZRX",
+      "name": "0x",
+      "imageUrl": "https://i.imgur.com/InVLTws.png",
+      "id": "186277",
+      "priority": 970
+    },
+    {
+      "priority": 969,
+      "symbol": "DBC",
+      "name": "DeepBrain Chain",
+      "imageUrl": "https://i.imgur.com/LXyYsnV.png",
+      "id": "586088"
+    },
+    {
+      "symbol": "AE",
+      "name": "Aeternity",
+      "imageUrl": "https://i.imgur.com/9WHwML4.jpg",
+      "id": "190978",
+      "priority": 963
+    },
+    {
+      "symbol": "TRX",
+      "name": "Tron",
+      "imageUrl": "https://i.imgur.com/uGe2R5K.png",
+      "id": "310829",
+      "priority": 982
+    },
+    {
+      "priority": 929,
+      "symbol": "DCN",
+      "name": "Dentacoin",
+      "imageUrl": "https://i.imgur.com/qHYUHRh.png",
+      "id": "218906"
+    },
+    {
+      "symbol": "ZIL",
+      "name": "Zilliqa",
+      "imageUrl": "https://i.imgur.com/peZePLW.png",
+      "id": "716725",
+      "priority": 911
+    },
+    {
+      "priority": 913,
+      "symbol": "NCASH",
+      "name": "Nucleus Vision",
+      "imageUrl": "https://i.imgur.com/x1mSYml.png",
+      "id": "792548"
+    },
+    {
+      "symbol": "AION",
+      "name": "Aion",
+      "imageUrl": "https://i.imgur.com/ooS5SUJ.png",
+      "id": "431235",
+      "priority": 914
+    },
+    {
+      "symbol": "ONT",
+      "name": "Ontology",
+      "imageUrl": "https://i.imgur.com/T2dIFhu.jpg",
+      "id": "808414",
+      "priority": 910
+    },
+    {
+      "priority": 934,
+      "symbol": "ETN",
+      "name": "Electroneum",
+      "imageUrl": "https://i.imgur.com/fDzlZWQ.png",
+      "id": "361881"
+    },
+    {
+      "priority": 910,
+      "symbol": "POLY",
+      "name": "Polymath Network",
+      "imageUrl": "https://i.imgur.com/8l3e80S.png",
+      "id": "744820"
+    },
+    {
+      "imageUrl": "https://i.imgur.com/BgQFFd1.png",
+      "id": "109",
+      "priority": 908,
+      "symbol": "EOS",
+      "name": "EOS"
+    },
+    {
+      "imageUrl": "https://i.imgur.com/Ybbim0e.png",
+      "id": "310497",
+      "priority": 923,
+      "symbol": "KNC",
+      "name": "Kyber Network"
+    },
+    {
+      "symbol": "VEN",
+      "name": "Vechain",
+      "imageUrl": "https://i.imgur.com/X67OjBB.png",
+      "id": "236131",
+      "priority": 923
+    },
+    {
+      "symbol": "ICX",
+      "name": "ICON",
+      "imageUrl": "https://i.imgur.com/x8b757K.png",
+      "id": "324068",
+      "priority": 953
+    },
+    {
+      "symbol": "ADA",
+      "name": "Cardano",
+      "imageUrl": "https://i.imgur.com/ukcfTSS.png",
+      "id": "321992",
+      "priority": 980
+    },
+    {
+      "priority": 950,
+      "symbol": "NANO",
+      "name": "Nano",
+      "imageUrl": "https://i.imgur.com/MzScl9X.png",
+      "id": "172091"
+    },
+    {
+      "symbol": "POWR",
+      "name": "Power Ledger",
+      "imageUrl": "https://i.imgur.com/j0DINMF.png",
+      "id": "339617",
+      "priority": 950
+    },
+    {
+      "imageUrl": "https://i.imgur.com/nZJ4oQD.jpg",
+      "id": "18907",
+      "priority": 800,
+      "symbol": "DGD",
+      "name": "DigixDAO"
+    },
+    {
+      "imageUrl": "https://i.imgur.com/JRZGQMg.jpg",
+      "id": "637681",
+      "priority": 840,
+      "symbol": "QLC",
+      "name": "QLINK"
+    },
+    {
+      "symbol": "WPR",
+      "name": "WePower",
+      "imageUrl": "https://i.imgur.com/qBFTsP5.jpg",
+      "id": "355242",
+      "priority": 830
+    },
+    {
+      "priority": 800,
+      "symbol": "ENG",
+      "name": "Enigma",
+      "imageUrl": "https://i.imgur.com/hGk9ARQ.png",
+      "id": "338335"
+    },
+    {
+      "symbol": "MANA",
+      "name": "Decentraland",
+      "imageUrl": "https://i.imgur.com/KiC7NBj.png",
+      "id": "199148",
+      "priority": 910
+    },
+    {
+      "symbol": "SPANK",
+      "name": "SpankChain",
+      "imageUrl": "https://i.imgur.com/fAJc1JR.png",
+      "id": "411496",
+      "priority": 810
+    },
+    {
+      "priority": 907,
+      "symbol": "CND",
+      "name": "Cindicator",
+      "imageUrl": "https://i.imgur.com/o2W7ICu.png",
+      "id": "338070"
+    },
+    {
+      "priority": 890,
+      "symbol": "ACT",
+      "name": "AChain",
+      "imageUrl": "https://i.imgur.com/0MFCdPG.png",
+      "id": "177157"
+    },
+    {
+      "symbol": "IOST",
+      "name": "IosToken",
+      "imageUrl": "https://i.imgur.com/RbNHr8i.png",
+      "id": "716522",
+      "priority": 890
+    },
+    {
+      "priority": 880,
+      "symbol": "WAN",
+      "name": "Wanchain",
+      "imageUrl": "https://i.imgur.com/qfMF1g9.jpg",
+      "id": "240142"
+    },
+    {
+      "imageUrl": "https://i.imgur.com/LYTKQXw.png",
+      "id": "20131",
+      "priority": 885,
+      "symbol": "WAVES",
+      "name": "Waves"
+    },
+    {
+      "symbol": "STORJ",
+      "name": "Storage",
+      "imageUrl": "https://i.imgur.com/dp6Uzw2.png",
+      "id": "5288",
+      "priority": 919
+    },
+    {
+      "priority": 819,
+      "symbol": "UBQ",
+      "name": "Ubiq",
+      "imageUrl": "https://i.imgur.com/Ss3tTWY.png",
+      "id": "43044"
+    },
+    {
+      "symbol": "SUB",
+      "name": "Substratum",
+      "imageUrl": "https://i.imgur.com/XtO8MzC.png",
+      "id": "221463",
+      "priority": 845
+    },
+    {
+      "symbol": "LRC",
+      "name": "Loopring",
+      "imageUrl": "https://i.imgur.com/mv70lF6.png",
+      "id": "318169",
+      "priority": 840
+    },
+    {
+      "priority": 839,
+      "symbol": "BLZ",
+      "name": "Bluzelle",
+      "imageUrl": "https://i.imgur.com/0teo96m.png",
+      "id": "752710"
+    },
+    {
+      "imageUrl": "https://i.imgur.com/0teo96m.png",
+      "id": "752710",
+      "priority": 839,
+      "symbol": "BLZ",
+      "name": "Bluzelle"
+    },
+    {
+      "symbol": "ZCO",
+      "name": "Zebi",
+      "imageUrl": "https://i.imgur.com/y4VvyAl.jpg",
+      "id": "876390",
+      "priority": 700
+    },
+    {
+      "symbol": "NEXO",
+      "name": "Nexo",
+      "imageUrl": "https://i.imgur.com/8QtxN2s.jpg",
+      "id": "877073",
+      "priority": 710
+    },
+    {
+      "symbol": "NULS",
+      "name": "Nuls",
+      "imageUrl": "https://i.imgur.com/JlU5jAo.png",
+      "id": "377792",
+      "priority": 790
+    },
+    {
+      "imageUrl": "https://i.imgur.com/leAj0qm.jpg",
+      "id": "186875",
+      "priority": 791,
+      "symbol": "STORM",
+      "name": "Storm"
+    },
+    {
+      "priority": 793,
+      "symbol": "LOOM",
+      "name": "Loom Network",
+      "imageUrl": "https://i.imgur.com/PjyIvTU.png",
+      "id": "836492"
+    },
+    {
+      "symbol": "EFX",
+      "name": "Effect AI",
+      "imageUrl": "https://i.imgur.com/so2FJ1b.jpg",
+      "id": "866525",
+      "priority": 710
+    },
+    {
+      "symbol": "CPX",
+      "name": "Apex Token",
+      "imageUrl": "https://i.imgur.com/Z1ASg2y.jpg",
+      "id": "866525",
+      "priority": 705
+    },
+    {
+      "symbol": "ELF",
+      "name": "Aelf",
+      "imageUrl": "https://i.imgur.com/bqKfP9E.png",
+      "id": "571314",
+      "priority": 704
+    },
+    {
+      "symbol": "CMT",
+      "name": "Cyber Miles",
+      "imageUrl": "https://i.imgur.com/V76Qoth.png",
+      "id": "22354",
+      "priority": 721
+    },
+    {
+      "symbol": "GRS",
+      "name": "Groestlcoin",
+      "imageUrl": "https://i.imgur.com/V76Qoth.png",
+      "id": "13070",
+      "priority": 933
+    },
+    {
+      "symbol": "DAI",
+      "name": "Dai",
+      "imageUrl": "https://i.imgur.com/NTEdZxi.jpg",
+      "id": "769546",
+      "priority": 833
+    },
+    {
+      "priority": 813,
+      "symbol": "SNT",
+      "name": "Status Network",
+      "imageUrl": "https://i.imgur.com/a4JKhH1.png",
+      "id": "137013"
+    },
+    {
+      "symbol": "NPXS",
+      "name": "Pundi X",
+      "imageUrl": "https://i.imgur.com/zHUm8PA.png",
+      "id": "731516",
+      "priority": 713
+    },
+    {
+      "imageUrl": "https://i.imgur.com/hrBtvXx.png",
+      "id": "8692",
+      "priority": 711,
+      "symbol": "CS",
+      "name": "Credits"
+    },
+    {
+      "imageUrl": "https://i.imgur.com/x2noXyV.png",
+      "id": "8692123",
+      "priority": 813,
+      "symbol": "QKC",
+      "name": "QuarkChain"
+    },
+    {
+      "priority": 814,
+      "symbol": "EOSD",
+      "name": "EOSDAC",
+      "imageUrl": "https://i.imgur.com/WPqq3RN.png",
+      "id": "855289"
+    },
+    {
+      "imageUrl": "https://i.imgur.com/jJmagzZ.png",
+      "id": "714811",
+      "priority": 823,
+      "symbol": "THETA",
+      "name": "Theta Token"
+    },
+    {
+      "imageUrl": "https://i.imgur.com/s2NNgjC.png",
+      "id": "141331",
+      "priority": 824,
+      "symbol": "DENT",
+      "name": "Dent"
+    },
+    {
+      "symbol": "STQ",
+      "name": "Storiq",
+      "imageUrl": "https://i.imgur.com/qDxSDbg.png",
+      "id": "777187",
+      "priority": 764
+    },
+    {
+      "symbol": "LET",
+      "name": "LinkEye",
+      "imageUrl": "https://i.imgur.com/I9ioJ31.jpg",
+      "id": "918514",
+      "priority": 762
+    },
+    {
+      "priority": 763,
+      "symbol": "KMD",
+      "name": "Komodo",
+      "imageUrl": "https://i.imgur.com/s8Ock9Z.png",
+      "id": "26132"
+    },
+    {
+      "symbol": "SOUL",
+      "name": "Phantasma",
+      "imageUrl": "https://i.imgur.com/cCemR8V.png",
+      "id": "20585",
+      "priority": 762
+    },
+    {
+      "symbol": "USDT",
+      "name": "Tether",
+      "imageUrl": "https://i.imgur.com/xL0Ymzh.png",
+      "id": "171986",
+      "priority": 920
+    },
+    {
+      "priority": 910,
+      "symbol": "TUSD",
+      "name": "True USD",
+      "imageUrl": "https://s3.ap-south-1.amazonaws.com/koin-images/true_usd.png",
+      "id": "844139"
+    },
+    {
+      "priority": 910,
+      "symbol": "XZC",
+      "name": "Zcoin",
+      "imageUrl": "https://s3.ap-south-1.amazonaws.com/koin-images/zcoin.png",
+      "id": "30022"
+    },
+    {
+      "symbol": "BANCA",
+      "name": "Banca",
+      "imageUrl": "https://s2.coinmarketcap.com/static/img/coins/32x32/2592.png",
+      "id": "757568",
+      "priority": 710
+    },
+    {
+      "symbol": "FUN",
+      "name": "FunFair",
+      "imageUrl": "https://s2.coinmarketcap.com/static/img/coins/32x32/1757.png",
+      "id": "178978",
+      "priority": 811
+    },
+    {
+      "imageUrl": "https://s2.coinmarketcap.com/static/img/coins/32x32/2682.png",
+      "id": "868276",
+      "priority": 721,
+      "symbol": "HOT",
+      "name": "Holo"
+    },
+    {
+      "imageUrl": "https://s2.coinmarketcap.com/static/img/coins/32x32/2599.png",
+      "id": "882302",
+      "priority": 701,
+      "symbol": "NOAH",
+      "name": "Noah"
+    },
+    {
+      "imageUrl": "https://s2.coinmarketcap.com/static/img/coins/32x32/2458.png",
+      "id": "882302",
+      "priority": 701,
+      "symbol": "OCN",
+      "name": "Odyssey"
+    },
+    {
+      "priority": 721,
+      "symbol": "POE",
+      "name": "Po.Et",
+      "imageUrl": "https://s2.coinmarketcap.com/static/img/coins/32x32/1937.png",
+      "id": "188811"
+    }
+  ]
+}

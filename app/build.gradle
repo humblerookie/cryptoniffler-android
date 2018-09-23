@@ -8,8 +8,6 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'org.jetbrains.kotlin.android.extensions'
 
-apply plugin: 'io.fabric'
-
 androidExtensions {
     experimental = true
 }
@@ -127,3 +125,4 @@ dependencies {
 
 
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.bugsnag.android.gradle'

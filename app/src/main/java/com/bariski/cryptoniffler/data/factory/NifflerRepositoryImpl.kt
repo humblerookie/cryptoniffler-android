@@ -10,6 +10,8 @@ import com.bariski.cryptoniffler.data.api.models.CoinsAndExchanges
 import com.bariski.cryptoniffler.data.cache.CNDao
 import com.bariski.cryptoniffler.data.cache.DataCache
 import com.bariski.cryptoniffler.data.storage.KeyValueStore
+import com.bariski.cryptoniffler.data.utils.COIN_EXCHANGE_FILE
+import com.bariski.cryptoniffler.data.utils.getAssetFromDevice
 import com.bariski.cryptoniffler.domain.model.*
 import com.bariski.cryptoniffler.domain.repository.NifflerRepository
 import com.bariski.cryptoniffler.domain.util.BTC_INR_API
@@ -85,7 +87,13 @@ class NifflerRepositoryImpl(val context: Context,
     }
 
     private fun getDiskCachedData(): CoinsAndExchanges {
-        return CoinsAndExchanges(dao.loadAllExchanges(),dao.loadAllCoins())
+        var exchanges = dao.loadAllExchanges()
+        var coins = dao.loadAllCoins()
+        if (exchanges.isEmpty()) {
+            return moshi.adapter(CoinsAndExchanges::class.java).fromJson(getAssetFromDevice(COIN_EXCHANGE_FILE, context))!!
+        }
+        return CoinsAndExchanges(exchanges, coins)
+
     }
 
 

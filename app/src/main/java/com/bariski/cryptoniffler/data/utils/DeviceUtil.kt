@@ -6,7 +6,7 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 
-
+const val COIN_EXCHANGE_FILE = "coins_exchanges.json"
 fun getAssetFromDevice(fileName: String, context: Context): String? {
     var reader: BufferedReader? = null
     try {

@@ -14,6 +14,7 @@ import com.bariski.cryptoniffler.domain.injection.DaggerAppComponent
 import com.bariski.cryptoniffler.domain.repository.ImageLoader
 import com.bariski.cryptoniffler.domain.util.LogTree
 import com.bariski.cryptoniffler.presentation.common.notification.NotificationUtils
+import com.bugsnag.android.Bugsnag
 import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
@@ -48,6 +49,7 @@ class CryptNifflerApplication : MultiDexApplication(), HasActivityInjector {
         if (LeakCanary.isInAnalyzerProcess(this)) {
             return
         }
+        Bugsnag.init(this)
         LeakCanary.install(this)
         instance = this
         if (BuildConfig.DEBUG) {

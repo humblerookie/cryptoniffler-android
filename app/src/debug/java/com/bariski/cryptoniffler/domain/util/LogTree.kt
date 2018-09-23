@@ -1,6 +1,6 @@
 package com.bariski.cryptoniffler.domain.util
 
-import com.crashlytics.android.Crashlytics
+import com.bugsnag.android.Bugsnag
 import timber.log.Timber
 
 class LogTree : Timber.DebugTree() {
@@ -12,7 +12,7 @@ class LogTree : Timber.DebugTree() {
 
     override fun log(priority: Int, t: Throwable?) {
         if (sendToRemoteLogger) {
-            Crashlytics.logException(t)
+            t?.let { Bugsnag.notify(it) }
         }
         super.log(priority, t)
     }
