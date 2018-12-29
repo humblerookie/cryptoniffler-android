@@ -33,6 +33,7 @@ object Version {
     val room = "1.1.0"
     val leakcanary = "1.6.1"
     val bugsnag = "4.6.1"
+    val charting_lib = "v3.0.3"
 
 
 }
@@ -95,6 +96,8 @@ object Deps {
     val junit = "junit:junit:${Version.junit}"
     val espresso = "com.android.support.test.espresso:espresso-core:${Version.espresso}"
     val android_test_runner = "com.android.support.test:runner:${Version.android_testrunner}"
+
+    val charting_lib = "com.github.PhilJay:MPAndroidChart:${Version.charting_lib}"
 
     val rx = listOf(rxandroid, rxkotlin, rxbindings, rx_call_adapter)
     val support = listOf(appcompat, recyclerview, constraint, support_annotation, cardview, design, multidex)

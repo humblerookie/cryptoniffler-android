@@ -7,6 +7,7 @@ import com.bariski.cryptoniffler.data.utils.HEADER_VERSION_2
 import com.bariski.cryptoniffler.data.utils.HEADER_VERSION_3
 import com.bariski.cryptoniffler.domain.model.Arbitrage
 import com.bariski.cryptoniffler.domain.model.CoinRate
+import com.bariski.cryptoniffler.domain.model.VolumeInfo
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -36,5 +37,9 @@ interface CryptoNifflerApi {
     @GET("/arbitrage")
     @Headers(HEADER_VERSION_3)
     fun getArbitrage(@Query("src") source: String?, @Query("dest") dest: String?, @Query("srcInternational") sourceInternational: String?, @Query("destInternational") destInternational: String?, @Query("intraExchanges") intraExchanges: String?): Single<Arbitrage>
+
+
+    @GET("/getVolumeData")
+    fun getVolumeInfo(): Single<VolumeInfo>
 
 }

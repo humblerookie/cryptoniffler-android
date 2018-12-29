@@ -5,13 +5,16 @@ import timber.log.Timber
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
+import java.io.Reader
 
 const val COIN_EXCHANGE_FILE = "coins_exchanges.json"
+const val TMP_FILE = "tmp.json"
+
 fun getAssetFromDevice(fileName: String, context: Context): String? {
     var reader: BufferedReader? = null
     try {
         reader = BufferedReader(
-                InputStreamReader(context.assets.open(fileName)))
+            InputStreamReader(context.assets.open(fileName)) as Reader?)
 
         // do reading, usually loop until end of file reading
         val sb = StringBuilder()

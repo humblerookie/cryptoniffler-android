@@ -73,6 +73,7 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
                 R.id.calendar -> navigateToEvents()
                 R.id.home -> navigateToMain(true)
                 R.id.report -> navigateToFeedback()
+                R.id.volume -> navigateToVolume()
                 R.id.shareScreen -> {
                     isShareScreenMode = true
                     createScreenAndShare()
@@ -82,6 +83,16 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
                     infoClicked()
                 }
             }
+        }
+    }
+
+    private fun navigateToVolume() {
+        viewWeak.get()?.let {
+            it.toggleSearch(false)
+            it.toggleInfo(false)
+            it.toggleFilter(false)
+            state = -4
+            it.moveToNext(VolumeMonitorFragment.getInstance(null), true)
         }
     }
 
@@ -170,38 +181,38 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
 
     override fun onAmountScreenRefresh() {
         repository.getBtcInrRates()
-                .subscribeOn(schedulerProvider.io())
-                .observeOn(schedulerProvider.ui())
-                .subscribeBy(
-                        onSuccess = {
-                            btcRate = it[0].price
-                            analytics.logBtcValEvent(true, null)
+            .subscribeOn(schedulerProvider.io())
+            .observeOn(schedulerProvider.ui())
+            .subscribeBy(
+                onSuccess = {
+                    btcRate = it[0].price
+                    analytics.logBtcValEvent(true, null)
 
-                        }, onError = {
-                    analytics.logBtcValEvent(true, it.toString())
-                    Timber.e(it)
-                }
+                }, onError = {
+                analytics.logBtcValEvent(true, it.toString())
+                Timber.e(it)
+            }
 
-                )
+            )
 
     }
 
     override fun onAmountScreenCreated(textChanges: Observable<CharSequence>, observer: Observer<AmountInput>) {
         amountSubscriber = PublishProcessor.create()
         amountDisposable.add(textChanges
-                .subscribeOn(schedulerProvider.ui())
-                .observeOn(schedulerProvider.io())
-                .subscribeBy {
-                    amount = it.toString().toLong()
-                    if (btcRate != 0.0f) {
-                        amountSubscriber?.onNext(AmountInput((it.toString().toLong() / btcRate).toString(), amount >= 1000))
-                    }
-                })
+            .subscribeOn(schedulerProvider.ui())
+            .observeOn(schedulerProvider.io())
+            .subscribeBy {
+                amount = it.toString().toLong()
+                if (btcRate != 0.0f) {
+                    amountSubscriber?.onNext(AmountInput((it.toString().toLong() / btcRate).toString(), amount >= 1000))
+                }
+            })
         amountSubscriber?.let {
             it
-                    .toObservable()
-                    .observeOn(schedulerProvider.ui())
-                    .subscribe(observer)
+                .toObservable()
+                .observeOn(schedulerProvider.ui())
+                .subscribe(observer)
         }
     }
 
@@ -214,7 +225,7 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
                     navigateToCoinSelection(repository.getCoins(), getNavigateToCoinSelectionSuccessListener(false))
                 }
             }
-            0, -2, -3, -4 -> {
+            0, -2, -3, -4, -5 -> {
                 navigateToMain(false)
             }
             else -> viewWeak.get()?.exit()
@@ -243,15 +254,15 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
 
     private fun navigateToExchangeSelection(dataSource: Single<ArrayList<Exchange>>, subscriber: (List<Exchange>) -> Unit) {
         disposable.add(dataSource
-                .observeOn(schedulerProvider.io())
-                .subscribeOn(schedulerProvider.io())
-                .map { it.filter { it.isHidden == null || !it.isHidden } }
-                .observeOn(schedulerProvider.ui())
-                .doOnSubscribe {
-                    viewWeak.get()?.toggleProgress(true)
-                }
-                .subscribeBy(onSuccess = subscriber, onError = {}
-                )
+            .observeOn(schedulerProvider.io())
+            .subscribeOn(schedulerProvider.io())
+            .map { it.filter { it.isHidden == null || !it.isHidden } }
+            .observeOn(schedulerProvider.ui())
+            .doOnSubscribe {
+                viewWeak.get()?.toggleProgress(true)
+            }
+            .subscribeBy(onSuccess = subscriber, onError = {}
+            )
         )
 
     }
@@ -273,16 +284,16 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
     @VisibleForTesting
     private fun navigateToCoinSelection(source: Single<ArrayList<Coin>>, successSubscriber: (List<Coin>) -> Unit) {
         disposable.add(source
-                .observeOn(schedulerProvider.io())
-                .subscribeOn(schedulerProvider.io())
-                .observeOn(schedulerProvider.ui())
-                .doOnSubscribe {
-                    viewWeak.get()?.toggleProgress(true)
-                }
-                .subscribeBy(
-                        onSuccess = successSubscriber, onError = {
+            .observeOn(schedulerProvider.io())
+            .subscribeOn(schedulerProvider.io())
+            .observeOn(schedulerProvider.ui())
+            .doOnSubscribe {
+                viewWeak.get()?.toggleProgress(true)
+            }
+            .subscribeBy(
+                onSuccess = successSubscriber, onError = {
 
-                })
+            })
         )
 
     }
@@ -325,7 +336,7 @@ class MainPresenterImpl(val repository: NifflerRepository, val eventsRepository:
 
             if (!eventsRepository.isAuthenticated()) {
                 disposable.add(eventsRepository.getAndSaveToken().subscribeOn(schedulerProvider.io()).observeOn(schedulerProvider.ui())
-                        .subscribeBy(onError = { Timber.e(it) }, onSuccess = {}))
+                    .subscribeBy(onError = { Timber.e(it) }, onSuccess = {}))
             }
             when {
                 args?.getString("target") == Screen.ARBITRAGE -> navigateToArbitrage()

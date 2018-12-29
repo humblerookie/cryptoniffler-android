@@ -114,6 +114,8 @@ dependencies {
     implementation Deps.logging
     implementation Deps.storage
     implementation Deps.dagger
+    implementation Deps.charting_lib
+
     debugImplementation Deps.leakcanary_debug
     releaseImplementation Deps.leakcanary_release
     testImplementation Deps.junit

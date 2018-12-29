@@ -12,6 +12,8 @@ interface NifflerRepository : StaticContentRepository {
     fun getBtcInrRates(): Single<List<CoinRate>>
     fun getBestRates(coin: String?, amount: Long, ignoreFees: Boolean): Single<BestExchangeResponse>
     fun getBestCoin(exchange: String, amount: Long, ignoreFees: Boolean): Single<BestCoinResponse>
+    fun getVolumes(): Single<VolumeInfo>
+
     fun fetchLatestConfig()
     fun hasDrawerBeenShown(): Boolean
     fun setDrawerShown(b: Boolean)

@@ -16,6 +16,11 @@
             android:id="@+id/report"
             android:icon="@drawable/ic_help"
             android:title="@string/drawer.title.report" />
+
+        <item
+            android:id="@+id/volume"
+            android:icon="@drawable/ic_volume"
+            android:title="@string/drawer.title.volume_monitor" />
         <item
             android:id="@+id/share"
             android:icon="@drawable/ic_menu_share"

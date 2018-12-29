@@ -43,10 +43,10 @@ class NifflerRepositoryImpl(val context: Context,
 
     override fun getArbitrage(source: Set<FilterItem>, dest: Set<FilterItem>, sourceInternational: Set<FilterItem>, destInternational: Set<FilterItem>, intraExchanges: Set<FilterItem>): Single<Arbitrage> {
         return api.getArbitrage(source.joinToString(",", transform = { it.getIdentifier() }),
-                dest.joinToString(",", transform = { it.getIdentifier() }),
-                sourceInternational.joinToString(",", transform = { it.getIdentifier() }),
-                destInternational.joinToString(",", transform = { it.getIdentifier() }),
-                intraExchanges.joinToString(",", transform = { it.getIdentifier() })
+            dest.joinToString(",", transform = { it.getIdentifier() }),
+            sourceInternational.joinToString(",", transform = { it.getIdentifier() }),
+            destInternational.joinToString(",", transform = { it.getIdentifier() }),
+            intraExchanges.joinToString(",", transform = { it.getIdentifier() })
         )
     }
 
@@ -128,25 +128,29 @@ class NifflerRepositoryImpl(val context: Context,
 
     override fun getBestRates(coin: String?, amount: Long, ignoreFees: Boolean): Single<BestExchangeResponse> {
         return api.getBestRates(coin, amount, ignoreFees)
-                .map { it ->
-                    getExchanges().blockingGet()
-                    val list = ArrayList<BestCoin>()
-                    it.values.mapTo(list) { it.copy(imgUrl = cache.getExchanges()[it.symbol.toUpperCase()]?.imgUrl) }
-                    val response = it.copy(values = list, imgUrl = cache.getCoins()[it.symbol.toUpperCase()]?.imgUrl)
-                    response
-                }
+            .map { it ->
+                getExchanges().blockingGet()
+                val list = ArrayList<BestCoin>()
+                it.values.mapTo(list) { it.copy(imgUrl = cache.getExchanges()[it.symbol.toUpperCase()]?.imgUrl) }
+                val response = it.copy(values = list, imgUrl = cache.getCoins()[it.symbol.toUpperCase()]?.imgUrl)
+                response
+            }
     }
 
     override fun getBestCoin(exchange: String, amount: Long, ignoreFees: Boolean): Single<BestCoinResponse> {
         return api.getBestCoin(exchange, amount, ignoreFees)
-                .map { it ->
+            .map { it ->
 
-                    getCoins().blockingGet() //updates Map
-                    val list = ArrayList<BestCoin>()
-                    it.coins.mapTo(list) { it.copy(imgUrl = cache.getCoins()[it.symbol.toUpperCase()]?.imgUrl) }
-                    val response = it.copy(coins = list, imgUrl = cache.getExchanges()[it.exchangeSymbol.toUpperCase()]?.imgUrl)
-                    response
-                }
+                getCoins().blockingGet() //updates Map
+                val list = ArrayList<BestCoin>()
+                it.coins.mapTo(list) { it.copy(imgUrl = cache.getCoins()[it.symbol.toUpperCase()]?.imgUrl) }
+                val response = it.copy(coins = list, imgUrl = cache.getExchanges()[it.exchangeSymbol.toUpperCase()]?.imgUrl)
+                response
+            }
+    }
+
+    override fun getVolumes(): Single<VolumeInfo> {
+        return api.getVolumeInfo()
     }
 
     override fun hasDrawerBeenShown() = keyValueStore.getBoolean(KEY_FLAG_NAV_DRAWER_SHOWN)
